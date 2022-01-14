@@ -11,7 +11,7 @@
     "start:back": "yarn workspace back start",
     "develop:back": "yarn workspace back develop",
     "develop:front": "yarn workspace front develop",
-    "prettier:front": "yarn prettier front --write"
+    "prettier:front": "yarn workspace front prettier"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,5 @@
   "bugs": {
     "url": "https://github.com/labasarea/laba-webgunea/issues"
   },
-  "homepage": "https://github.com/labasarea/laba-webgunea#readme",
-  "devDependencies": {
-    "prettier": "^2.5.1"
-  }
+  "homepage": "https://github.com/labasarea/laba-webgunea#readme"
 }
