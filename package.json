@@ -7,7 +7,8 @@
     "back"
   ],
   "scripts": {
-    "start:back": "yarn workspace back start"
+    "start:back": "yarn workspace back start",
+    "develop:back": "yarn workspace back develop"
   },
   "repository": {
     "type": "git",
