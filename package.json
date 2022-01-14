@@ -4,11 +4,13 @@
   "description": "Laba sarerako webgunea",
   "private": true,
   "workspaces": [
-    "back"
+    "back",
+    "front"
   ],
   "scripts": {
     "start:back": "yarn workspace back start",
-    "develop:back": "yarn workspace back develop"
+    "develop:back": "yarn workspace back develop",
+    "develop:front": "yarn workspace front develop"
   },
   "repository": {
     "type": "git",
