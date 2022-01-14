@@ -9,11 +9,10 @@
     "e2e"
   ],
   "scripts": {
-    "start:back": "yarn workspace back start",
-    "develop:back": "yarn workspace back develop",
-    "develop:front": "yarn workspace front develop",
-    "prettier:front": "yarn workspace front prettier",
-    "test:e2e": "yarn workspace e2e test"
+    "front": "yarn workspace front",
+    "back": "yarn workspace back",
+    "e2e": "yarn workspace e2e",
+    "prettier:front": "front prettier"
   },
   "repository": {
     "type": "git",
