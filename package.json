@@ -1,0 +1,25 @@
+{
+  "name": "laba-webgunea",
+  "version": "1.0.0",
+  "description": "Laba sarerako webgunea",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labasarea/laba-webgunea.git"
+  },
+  "keywords": [
+    "laba",
+    "webgunea",
+    "labasarea",
+    "laba.eus"
+  ],
+  "author": "Laba Sarea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/labasarea/laba-webgunea/issues"
+  },
+  "homepage": "https://github.com/labasarea/laba-webgunea#readme"
+}
