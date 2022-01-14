@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "hasierak",
+  "info": {
+    "singularName": "hasiera",
+    "pluralName": "hasierak",
+    "displayName": "Hasiera",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "deskribapena": {
+      "type": "text"
+    },
+    "izenburua": {
+      "type": "string"
+    },
+    "Helbidea": {
+      "type": "component",
+      "repeatable": false,
+      "component": "orokorra.helbidea"
+    }
+  }
+}

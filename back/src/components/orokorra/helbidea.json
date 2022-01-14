@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_helbidea_helbideas",
+  "info": {
+    "displayName": "helbidea",
+    "icon": "home",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lehenLerroa": {
+      "type": "string"
+    },
+    "bigarrenLerroa": {
+      "type": "string"
+    }
+  }
+}
