@@ -2,9 +2,12 @@
   "name": "laba-webgunea",
   "version": "1.0.0",
   "description": "Laba sarerako webgunea",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "back"
+  ],
   "scripts": {
-    "test": "test"
+    "start:back": "yarn workspace back start"
   },
   "repository": {
     "type": "git",

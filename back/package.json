@@ -2,7 +2,7 @@
   "name": "back",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Laba webgunerako kudeaketa",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -17,7 +17,7 @@
     "sqlite3": "5.0.2"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Laba Sarea"
   },
   "strapi": {
     "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
