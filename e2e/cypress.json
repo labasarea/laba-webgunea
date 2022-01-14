@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:8000",
+  "defaultCommandTimeout": 15000,
+  "videosFolder": "artifacts/videos",
+  "screenshotsFolder": "artifacts/screenshots",
+  "downloadsFolder": "artifacts/downloads",
+  "testFiles": "**/*.spec.ts",
+  "video": false,
+  "chromeWebSecurity": false,
+  "viewportWidth": 1200
+}

@@ -5,13 +5,15 @@
   "private": true,
   "workspaces": [
     "back",
-    "front"
+    "front",
+    "e2e"
   ],
   "scripts": {
     "start:back": "yarn workspace back start",
     "develop:back": "yarn workspace back develop",
     "develop:front": "yarn workspace front develop",
-    "prettier:front": "yarn workspace front prettier"
+    "prettier:front": "yarn workspace front prettier",
+    "test:e2e": "yarn workspace e2e test"
   },
   "repository": {
     "type": "git",

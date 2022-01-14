@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "Laba webgunerako E2E testak",
+  "private": true,
+  "scripts": {
+    "test": "cypress open"
+  },
+  "author": "Laba Sarea",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "cypress": "^9.2.1",
+    "typescript": "^4.5.4"
+  }
+}
