@@ -21,7 +21,8 @@
     "Helbidea": {
       "type": "component",
       "repeatable": false,
-      "component": "orokorra.helbidea"
+      "component": "orokorra.helbidea",
+      "required": true
     }
   }
 }
