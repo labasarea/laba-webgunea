@@ -1,3 +1,3 @@
 module.exports = ({ env }) => ({
-  url: env("PUBLIC_URL", "") + "/admin",
+  url: env("PUBLIC_URL", "") + "/dashboard",
 });
