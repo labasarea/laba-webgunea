@@ -18,7 +18,7 @@
     "izenburua": {
       "type": "string"
     },
-    "Helbidea": {
+    "helbidea": {
       "type": "component",
       "repeatable": false,
       "component": "orokorra.helbidea",
