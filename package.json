@@ -12,7 +12,8 @@
     "front": "yarn workspace front",
     "back": "yarn workspace back",
     "e2e": "yarn workspace e2e",
-    "prettier:front": "front prettier"
+    "prettier:front": "front prettier",
+    "build": "yarn back build && rm -rf build && mkdir build && cp back/build/* build"
   },
   "repository": {
     "type": "git",
