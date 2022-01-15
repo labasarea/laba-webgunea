@@ -12,8 +12,6 @@
     "front": "yarn workspace front",
     "back": "yarn workspace back",
     "e2e": "yarn workspace e2e",
-    "prettier:front": "front prettier",
-    "start": "yarn back start",
     "heroku-postbuild": "yarn back build"
   },
   "repository": {
