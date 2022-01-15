@@ -9,7 +9,7 @@ module.exports = {
 
   // App customizations
   app: (config) => {
-    config.locales = ["es", "en"];
+    config.locales = ["es"];
 
     return config;
   },
