@@ -49,7 +49,7 @@ const IndexPage: React.VFC<PageProps> = () => {
 
       <Gainburua>
         <LogoWrapper>
-          <Logo title="Laba logoa" />
+          <Logo title="Laba gara" />
         </LogoWrapper>
 
         <Kontaktua>
@@ -61,13 +61,13 @@ const IndexPage: React.VFC<PageProps> = () => {
           <SareSozialak>
             <SareSoziala>
               <a href="https://twitter.com/labasarea/">
-                <Twitter />
+                <Twitter tabindex="0" role="link" title="Laba Twitterren" />
               </a>
             </SareSoziala>
 
             <SareSoziala>
               <a href="https://www.instagram.com/labasarea/">
-                <Instagram />
+                <Instagram tabindex="0" role="link" title="Laba Instagramen" />
               </a>
             </SareSoziala>
           </SareSozialak>
