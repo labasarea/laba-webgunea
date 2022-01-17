@@ -38,7 +38,7 @@ const IndexPage: React.VFC<PageProps> = () => {
 
       <Gainburua>
         <LogoWrapper>
-          <Logo />
+          <Logo title="Laba logoa" />
         </LogoWrapper>
 
         <Helbidea>
