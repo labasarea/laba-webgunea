@@ -61,13 +61,13 @@ const IndexPage: React.VFC<PageProps> = () => {
           <SareSozialak>
             <SareSoziala>
               <a href="https://twitter.com/labasarea/">
-                <Twitter tabindex="0" role="link" title="Laba Twitterren" />
+                <Twitter tabIndex="0" role="link" title="Laba Twitterren" />
               </a>
             </SareSoziala>
 
             <SareSoziala>
               <a href="https://www.instagram.com/labasarea/">
-                <Instagram tabindex="0" role="link" title="Laba Instagramen" />
+                <Instagram tabIndex="0" role="link" title="Laba Instagramen" />
               </a>
             </SareSoziala>
           </SareSozialak>
