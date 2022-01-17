@@ -171,11 +171,13 @@ const Deskribapena = styled.p`
 const IzenburuWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 
-const Marra = styled.hr`
+const Marra = styled.div`
+  /* altuera erabiliko den letraren berdina da */
+  height: ${rem(41.83)};
   flex-grow: 1;
-  border: none;
   box-shadow: inset 0px -3px 0px 0px white;
   margin-right: ${rem(size.tiny)};
 `;
