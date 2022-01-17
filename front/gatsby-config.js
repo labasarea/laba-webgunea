@@ -26,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Laba Sarea',
-        short_name: 'laba',
+        name: 'Laba webgunea',
+        short_name: 'Laba',
         start_url: '/',
         background_color: `#fd3447`,
         theme_color: `#fd3447`,
@@ -35,6 +35,7 @@ module.exports = {
         icon: `src/images/logo.png`,
       },
     },
+    'gatsby-plugin-offline',
     // 'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-react-svg',
