@@ -6,6 +6,9 @@ import { Container } from '../components/Container';
 import { GlobalStyles } from '../ui/GlobalStyles';
 import { font, media, size } from '../ui/theme';
 import LabaLogo from '../assets/logo.svg';
+import InstagramLogo from '../assets/instagram.svg';
+import TwitterLogo from '../assets/twitter.svg';
+
 import { Helmet } from 'react-helmet';
 
 interface DataProps {
@@ -49,10 +52,26 @@ const IndexPage: React.VFC<PageProps> = () => {
           <Logo title="Laba logoa" />
         </LogoWrapper>
 
-        <Helbidea>
-          <p>Gazteluko plaza 2</p>
-          <p>Iruñea</p>
-        </Helbidea>
+        <Kontaktua>
+          <Helbidea>
+            <p>Gazteluko plaza 2</p>
+            <p>Iruñea</p>
+          </Helbidea>
+
+          <SareSozialak>
+            <SareSoziala>
+              <a href="https://twitter.com/labasarea/">
+                <Twitter />
+              </a>
+            </SareSoziala>
+
+            <SareSoziala>
+              <a href="https://www.instagram.com/labasarea/">
+                <Instagram />
+              </a>
+            </SareSoziala>
+          </SareSozialak>
+        </Kontaktua>
       </Gainburua>
 
       <Container>
@@ -79,22 +98,57 @@ const LogoWrapper = styled.div`
   `}
 `;
 
+const Kontaktua = styled.div`
+  display: flex;
+`;
+
+const SareSoziala = styled.li`
+  width: ${rem(size.base)};
+  height: ${rem(size.base)};
+  :not(:last-child) {
+    margin-right: ${rem(size.small)};
+  }
+`;
+
+const Instagram = styled(InstagramLogo)`
+  width: ${rem(size.base)};
+  height: ${rem(size.base)};
+  path {
+    fill: white;
+  }
+`;
+
+const Twitter = styled(TwitterLogo)`
+  width: ${rem(size.base)};
+  height: ${rem(size.base)};
+  path {
+    fill: white;
+  }
+`;
+
 const Logo = styled(LabaLogo)`
   path {
     fill: white;
   }
 `;
 
+const SareSozialak = styled.ul`
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+`;
+
 const Helbidea = styled.address`
-  align-self: start;
   border-right: 3px solid white;
   padding-right: ${rem(size.small)};
+  margin-right: ${rem(size.small)};
   ${font.tiny()};
 `;
 
 const Gainburua = styled.header`
   padding: ${rem(size.tiny)};
   display: flex;
+  align-items: start;
   justify-content: space-between;
   margin-bottom: ${rem(size.base)};
 
