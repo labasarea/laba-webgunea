@@ -197,10 +197,10 @@ export const GlobalStyles = createGlobalStyle`
   ${reboot};
 
   body {
-      font-family: 'Arial', 'Open Sans', sans-serif;
+      font-family: 'Work Sans', sans-serif;
 
       ${font.base()}
-      font-weight: 700;
+      font-weight: 500;
 
       background-color: #fd3447;
       color: #fff;

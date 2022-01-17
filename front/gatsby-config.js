@@ -44,5 +44,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`work sans\:500`],
+        display: 'swap',
+      },
+    },
   ],
 };
