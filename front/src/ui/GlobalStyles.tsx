@@ -200,7 +200,7 @@ export const GlobalStyles = createGlobalStyle`
       font-family: 'Work Sans', sans-serif;
 
       ${font.base()}
-      font-weight: 500;
+      font-weight: 600;
 
       background-color: #fd3447;
       color: #fff;
