@@ -64,7 +64,11 @@ const IndexPage: React.VFC<PageProps> = () => {
 };
 
 const LogoWrapper = styled.div`
-  width: ${rem(size.huge)};
+  width: ${rem(size.large)};
+
+  ${media.tablet`
+    width: ${rem(size.huge)};
+  `}
 `;
 
 const Logo = styled(LabaLogo)`
@@ -81,7 +85,7 @@ const Helbidea = styled.address`
 `;
 
 const Gainburua = styled.header`
-  padding: ${rem(size.base)};
+  padding: ${rem(size.tiny)};
   display: flex;
   justify-content: space-between;
   margin-bottom: ${rem(size.base)};
