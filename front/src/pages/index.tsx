@@ -6,6 +6,7 @@ import { Container } from '../components/Container';
 import { GlobalStyles } from '../ui/GlobalStyles';
 import { font, media, size } from '../ui/theme';
 import LabaLogo from '../assets/logo.svg';
+import { Helmet } from 'react-helmet';
 
 interface DataProps {
   strapiHasiera: {
@@ -34,6 +35,8 @@ const IndexPage: React.VFC<PageProps> = () => {
 
   return (
     <>
+      <Helmet title="Laba gara | Laba" htmlAttributes={{ lang: 'eu' }} />
+
       <GlobalStyles />
 
       <Gainburua>
