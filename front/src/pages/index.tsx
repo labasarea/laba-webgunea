@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Container } from '../components/Container';
 import { GlobalStyles } from '../ui/GlobalStyles';
 import { font, media, size } from '../ui/theme';
+import LabaLogo from '../assets/logo.svg';
 
 interface DataProps {
   strapiHasiera: {
@@ -36,7 +37,9 @@ const IndexPage: React.VFC<PageProps> = () => {
       <GlobalStyles />
 
       <Gainburua>
-        <div>LABA LOGOA</div>
+        <LogoWrapper>
+          <Logo />
+        </LogoWrapper>
 
         <Helbidea>
           <p>Gazteluko plaza 2</p>
@@ -60,10 +63,21 @@ const IndexPage: React.VFC<PageProps> = () => {
   );
 };
 
-const Helbidea = styled.div`
+const LogoWrapper = styled.div`
+  width: ${rem(size.huge)};
+`;
+
+const Logo = styled(LabaLogo)`
+  path {
+    fill: white;
+  }
+`;
+
+const Helbidea = styled.address`
+  align-self: start;
   border-right: 3px solid white;
   padding-right: ${rem(size.small)};
-  ${font.small()};
+  ${font.tiny()};
 `;
 
 const Gainburua = styled.header`
@@ -79,10 +93,13 @@ const Gainburua = styled.header`
 
 const Deskribapena = styled.p`
   margin-bottom: ${rem(size.xlarge)};
-
   text-align: justify;
 
-  ${font.large()};
+  ${font.base()};
+
+  ${media.tablet`
+    ${font.large()};
+  `};
 `;
 
 const IzenburuWrapper = styled.div`
@@ -98,9 +115,12 @@ const Marra = styled.hr`
 `;
 
 const Izenburua = styled.h1`
-  text-transform: uppercase;
   text-align: right;
   vertical-align: bottom;
+
+  &:after {
+    content: '.';
+  }
 
   ${font.gargantuan()};
 `;
