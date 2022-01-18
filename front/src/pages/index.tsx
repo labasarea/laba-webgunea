@@ -38,7 +38,10 @@ const IndexPage: React.VFC<PageProps> = () => {
 
   return (
     <>
-      <Helmet title="Laba gara | Laba" htmlAttributes={{ lang: 'eu' }}>
+      <Helmet
+        title={`${strapiHasiera.data.attributes.izenburua} | Laba`}
+        htmlAttributes={{ lang: 'eu' }}
+      >
         <meta
           name="description"
           content={strapiHasiera.data.attributes.deskribapena}

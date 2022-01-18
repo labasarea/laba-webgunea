@@ -1,6 +1,6 @@
 import { graphql, Link, PageProps, useStaticQuery } from 'gatsby';
 import { rem } from 'polished';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Container } from '../components/Container';
 import { GlobalStyles } from '../ui/GlobalStyles';
@@ -36,9 +36,14 @@ const Kafetegia: React.VFC<PageProps> = () => {
     }
   `);
 
+  const [kafetegianDago, setKafetegianDago] = useState(false);
+
   return (
     <>
-      <Helmet title="Laba gara | Laba" htmlAttributes={{ lang: 'eu' }}>
+      <Helmet
+        title={`${strapiKafetegia.data.attributes.izenburua} | Laba`}
+        htmlAttributes={{ lang: 'eu' }}
+      >
         <meta
           name="description"
           content={strapiKafetegia.data.attributes.deskribapena}
@@ -98,8 +103,17 @@ const Kafetegia: React.VFC<PageProps> = () => {
               <Esteka>
                 <Link to="/">Laba gara</Link>
               </Esteka>
-              <Esteka>
-                <Link to="/kafetegia">Dastatu Laba</Link>
+              <Esteka kafetegianDago={kafetegianDago}>
+                <Link
+                  getProps={({ isCurrent }) => {
+                    setKafetegianDago(isCurrent);
+
+                    return {};
+                  }}
+                  to="/kafetegia"
+                >
+                  Dastatu Laba
+                </Link>
               </Esteka>
             </EstekaZerrenda>
           </Nabigazioa>
@@ -122,15 +136,20 @@ const EstekaZerrenda = styled.ul`
   list-style-type: none;
 `;
 
-const Esteka = styled.li`
+const Esteka = styled.li<{ kafetegianDago?: boolean }>`
   padding: ${rem(size.small)};
-  border-bottom: 3px solid black;
+
+  ${({ kafetegianDago }) =>
+    !kafetegianDago &&
+    `
+    border-bottom: 3px solid black;
+  `}
 `;
 
 const Wrapper = styled.div`
   background-color: #fdb201;
   color: black;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 const LogoWrapper = styled.div`
