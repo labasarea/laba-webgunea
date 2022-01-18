@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "kafetegiak",
+  "info": {
+    "singularName": "kafetegia",
+    "pluralName": "kafetegiak",
+    "displayName": "Kafetegia"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
