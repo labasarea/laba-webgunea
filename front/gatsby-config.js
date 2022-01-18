@@ -16,7 +16,7 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: process.env.API_URL || 'http://localhost:1337/api',
-        singleTypes: ['hasiera'],
+        singleTypes: ['hasiera', 'kafetegia'],
         queryLimit: 1000,
       },
     },
