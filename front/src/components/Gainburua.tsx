@@ -12,13 +12,18 @@ import TwitterLogo from '../assets/twitter.svg';
 interface Props {
   izenburua: string;
   deskribapena: string;
+  atala: 'hasiera' | 'kafetegia';
 }
 
-export const Gainburua: React.FC<Props> = ({ izenburua, deskribapena }) => {
+export const Gainburua: React.FC<Props> = ({
+  izenburua,
+  deskribapena,
+  atala,
+}) => {
   const [kafetegianDago, setKafetegianDago] = useState(false);
 
   return (
-    <Wrapper>
+    <Wrapper atala={atala}>
       <GainburuWrapper>
         <Link to="/">
           <LogoWrapper>
@@ -101,13 +106,18 @@ const Esteka = styled.li<{ kafetegianDago?: boolean }>`
   ${({ kafetegianDago }) =>
     !kafetegianDago &&
     `
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid var(--color);
   `}
 `;
 
-const Wrapper = styled.div`
-  background-color: #fdb201;
-  color: black;
+const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
+  & {
+    --color: ${({ atala }) => (atala === 'hasiera' ? 'white' : 'black')};
+  }
+
+  background-color: ${({ atala }) =>
+    atala === 'hasiera' ? '#fd3447' : '#fdb201'};
+  color: var(--color);
   min-height: 100vh;
 `;
 
@@ -135,7 +145,7 @@ const Instagram = styled(InstagramLogo)`
   width: ${rem(size.base)};
   height: ${rem(size.base)};
   path {
-    fill: black;
+    fill: var(--color);
   }
 `;
 
@@ -143,13 +153,13 @@ const Twitter = styled(TwitterLogo)`
   width: ${rem(size.base)};
   height: ${rem(size.base)};
   path {
-    fill: black;
+    fill: var(--color);
   }
 `;
 
 const Logo = styled(LabaLogo)`
   path {
-    fill: black;
+    fill: var(--color);
   }
 `;
 
@@ -160,7 +170,7 @@ const SareSozialak = styled.ul`
 `;
 
 const Helbidea = styled.address`
-  border-right: 3px solid black;
+  border-right: 3px solid var(--color);
   padding-right: ${rem(size.small)};
   margin-right: ${rem(size.small)};
   ${font.tiny()};
@@ -199,7 +209,7 @@ const Marra = styled.div`
   /* altuera erabiliko den letraren berdina da */
   height: ${rem(41.83)};
   flex-grow: 1;
-  box-shadow: inset 0px -3px 0px 0px black;
+  box-shadow: inset 0px -3px 0px 0px var(--color);
   margin-right: ${rem(size.tiny)};
 `;
 

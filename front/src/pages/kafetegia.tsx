@@ -45,6 +45,7 @@ const Kafetegia: React.VFC<PageProps> = () => {
       <GlobalStyles />
 
       <Gainburua
+        atala="kafetegia"
         izenburua={strapiKafetegia.data.attributes.izenburua}
         deskribapena={strapiKafetegia.data.attributes.deskribapena}
       />
