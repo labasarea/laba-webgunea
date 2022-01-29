@@ -8,6 +8,7 @@ import { font, media, size } from '../ui/theme';
 import LabaLogo from '../assets/logo.svg';
 import InstagramLogo from '../assets/instagram.svg';
 import TwitterLogo from '../assets/twitter.svg';
+import { colors } from '../ui/theme/colors';
 
 interface Props {
   izenburua: string;
@@ -111,12 +112,11 @@ const Esteka = styled.li<{ kafetegianDago?: boolean }>`
 `;
 
 const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
-  & {
-    --color: ${({ atala }) => (atala === 'hasiera' ? 'white' : 'black')};
-  }
+  --color: ${({ atala }) =>
+    atala === 'hasiera' ? colors.zuria : colors.beltza};
 
   background-color: ${({ atala }) =>
-    atala === 'hasiera' ? '#fd3447' : '#fdb201'};
+    atala === 'hasiera' ? colors.gorria : colors.horia};
   color: var(--color);
   min-height: 100vh;
 `;

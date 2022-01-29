@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { font } from './theme';
+import { colors } from './theme/colors';
 
 /**
  * Inicializa estilos base
@@ -202,7 +203,6 @@ export const GlobalStyles = createGlobalStyle`
       ${font.base()}
       font-weight: 600;
 
-      background-color: #fd3447;
-      color: #fff;
+      color: ${colors.beltza};
   }
 `;
