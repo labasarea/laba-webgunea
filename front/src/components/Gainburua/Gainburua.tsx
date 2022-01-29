@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 
 import { rem } from 'polished';
 import styled from 'styled-components';
-import { Container } from '../components/Container';
-import { font, media, size } from '../ui/theme';
-import LabaLogo from '../assets/logo.svg';
-import InstagramLogo from '../assets/instagram.svg';
-import TwitterLogo from '../assets/twitter.svg';
-import { colors } from '../ui/theme/colors';
+import { Container } from '../../components/Container';
+import { font, media, size } from '../../ui/theme';
+import LabaLogo from '../../assets/logo.svg';
+import InstagramLogo from '../../assets/instagram.svg';
+import TwitterLogo from '../../assets/twitter.svg';
+import { colors } from '../../ui/theme/colors';
+import { DesktopNabigazioa } from './DesktopNabigazioa';
 
 interface Props {
   izenburua: string;
@@ -21,8 +22,6 @@ export const Gainburua: React.FC<Props> = ({
   deskribapena,
   atala,
 }) => {
-  const [kafetegianDago, setKafetegianDago] = useState(false);
-
   return (
     <Wrapper atala={atala}>
       <GainburuWrapper>
@@ -64,52 +63,11 @@ export const Gainburua: React.FC<Props> = ({
           </IzenburuWrapper>
         </main>
 
-        <Nabigazioa>
-          <EstekaZerrenda>
-            <Esteka>
-              <Link to="/">Laba gara</Link>
-            </Esteka>
-            <Esteka kafetegianDago={kafetegianDago}>
-              <Link
-                getProps={({ isCurrent }) => {
-                  setKafetegianDago(isCurrent);
-
-                  return {};
-                }}
-                to="/kafetegia"
-              >
-                Dastatu Laba
-              </Link>
-            </Esteka>
-          </EstekaZerrenda>
-        </Nabigazioa>
+        <DesktopNabigazioa atala={atala} />
       </Container>
     </Wrapper>
   );
 };
-
-const Nabigazioa = styled.nav`
-  width: 100%;
-  position: absolute;
-  bottom: ${rem(size.tiny)};
-  left: 0;
-`;
-
-const EstekaZerrenda = styled.ul`
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-`;
-
-const Esteka = styled.li<{ kafetegianDago?: boolean }>`
-  padding: ${rem(size.small)};
-
-  ${({ kafetegianDago }) =>
-    !kafetegianDago &&
-    `
-    border-bottom: 3px solid var(--color);
-  `}
-`;
 
 const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
   --color: ${({ atala }) =>
