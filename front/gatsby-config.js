@@ -2,6 +2,38 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const qs = require('qs');
+const query = qs.stringify(
+  {
+    populate: {
+      edariBeroak: {
+        populate: ['alergenoak'],
+      },
+      infusioEkologikoak: {
+        populate: ['alergenoak'],
+      },
+      edariHotzak: {
+        populate: ['alergenoak'],
+      },
+      pikatzekoak: {
+        populate: ['alergenoak'],
+      },
+      gozoak: {
+        populate: ['alergenoak'],
+      },
+      anizkoJogurta: {
+        populate: ['alergenoak'],
+      },
+      tostadak: {
+        populate: ['alergenoak'],
+      },
+    },
+  },
+  {
+    encodeValuesOnly: true,
+  },
+);
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -13,10 +45,25 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-custom-api',
+      options: {
+        rootKey: 'kafetegia',
+        url: `http://localhost:1337/api/kafetegia?${query}`,
+      },
+    },
+    {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: process.env.API_URL || 'http://localhost:1337/api',
-        singleTypes: ['hasiera', 'kafetegia'],
+        singleTypes: [
+          'hasiera',
+          {
+            name: 'kafetegia',
+            queryParams: {
+              populate: '*',
+            },
+          },
+        ],
         queryLimit: 1000,
       },
     },
@@ -48,7 +95,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`almarai\:600`],
+        fonts: [`almarai\:600`, `almarai\:300`],
         display: 'swap',
       },
     },

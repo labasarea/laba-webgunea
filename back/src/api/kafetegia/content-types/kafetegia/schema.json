@@ -4,7 +4,8 @@
   "info": {
     "singularName": "kafetegia",
     "pluralName": "kafetegiak",
-    "displayName": "Kafetegia"
+    "displayName": "Kafetegia",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,6 +19,42 @@
     "deskribapena": {
       "type": "text",
       "required": true
+    },
+    "edariBeroak": {
+      "displayName": "edaria",
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
+    },
+    "infusioEkologikoak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
+    },
+    "edariHotzak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
+    },
+    "pikatzekoak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
+    },
+    "gozoak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
+    },
+    "anizkoJogurta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "kafetegia.edaria"
+    },
+    "tostadak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_kafetegia_edarias",
+  "info": {
+    "displayName": "produktua",
+    "icon": "coffee",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "beganoa": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "ekologikoa": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "prezioa": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    },
+    "izena": {
+      "type": "string",
+      "required": true
+    },
+    "alergenoak": {
+      "displayName": "alergenoa",
+      "type": "component",
+      "repeatable": false,
+      "component": "kafetegia.alergenoa",
+      "required": true
+    }
+  }
+}
