@@ -17,12 +17,6 @@
     },
     "izenburua": {
       "type": "string"
-    },
-    "helbidea": {
-      "type": "component",
-      "repeatable": false,
-      "component": "orokorra.helbidea",
-      "required": true
     }
   }
 }
