@@ -34,6 +34,8 @@ const query = qs.stringify(
   },
 );
 
+const apiUrl = process.env.API_URL || 'http://localhost:1337/api';
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -48,13 +50,13 @@ module.exports = {
       resolve: 'gatsby-source-custom-api',
       options: {
         rootKey: 'kafetegia',
-        url: `http://localhost:1337/api/kafetegia?${query}`,
+        url: `${apiUrl}/kafetegia?${query}`,
       },
     },
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: process.env.API_URL || 'http://localhost:1337/api',
+        apiURL: apiUrl,
         singleTypes: [
           'hasiera',
           {
