@@ -4,12 +4,14 @@ import { Link } from 'gatsby';
 import { rem } from 'polished';
 import styled from 'styled-components';
 import { Container } from '../../components/Container';
-import { font, media, size } from '../../ui/theme';
+import { breakpoints, font, media, size } from '../../ui/theme';
 import LabaLogo from '../../assets/logo.svg';
-import InstagramLogo from '../../assets/instagram.svg';
-import TwitterLogo from '../../assets/twitter.svg';
+
 import { colors } from '../../ui/theme/colors';
 import { DesktopNabigazioa } from './DesktopNabigazioa';
+import { MugikorNabigazioa } from './MugikorNabigazioa';
+import MediaQuery from 'react-responsive';
+import { KontaktuDatuak } from './KontaktuDatuak';
 
 interface Props {
   izenburua: string;
@@ -24,34 +26,34 @@ export const Gainburua: React.FC<Props> = ({
 }) => {
   return (
     <Wrapper atala={atala}>
-      <GainburuWrapper>
-        <Link to="/">
-          <LogoWrapper>
-            <Logo title="Laba gara" />
-          </LogoWrapper>
-        </Link>
+      <MediaQuery maxWidth={breakpoints.tablet}>
+        <Container>
+          <MugikorWrapper>
+            <MenuWrapper>
+              <MugikorNabigazioa />
+            </MenuWrapper>
+            <MugikorLogoWrapper>
+              <Link to="/">
+                <LogoWrapper>
+                  <Logo title="Laba gara" />
+                </LogoWrapper>
+              </Link>
+            </MugikorLogoWrapper>
+          </MugikorWrapper>
+        </Container>
+      </MediaQuery>
 
-        <Kontaktua>
-          <Helbidea>
-            <p>Gazteluko plaza 2</p>
-            <p>Iruñea</p>
-          </Helbidea>
+      <MediaQuery minWidth={breakpoints.tablet}>
+        <GainburuWrapper>
+          <Link to="/">
+            <LogoWrapper>
+              <Logo title="Laba gara" />
+            </LogoWrapper>
+          </Link>
 
-          <SareSozialak>
-            <SareSoziala>
-              <a href="https://twitter.com/labasarea/">
-                <Twitter tabIndex="0" role="link" title="Laba Twitterren" />
-              </a>
-            </SareSoziala>
-
-            <SareSoziala>
-              <a href="https://www.instagram.com/labasarea/">
-                <Instagram tabIndex="0" role="link" title="Laba Instagramen" />
-              </a>
-            </SareSoziala>
-          </SareSozialak>
-        </Kontaktua>
-      </GainburuWrapper>
+          <KontaktuDatuak />
+        </GainburuWrapper>
+      </MediaQuery>
 
       <Container>
         <main>
@@ -63,11 +65,35 @@ export const Gainburua: React.FC<Props> = ({
           </IzenburuWrapper>
         </main>
 
-        <DesktopNabigazioa atala={atala} />
+        <MediaQuery minWidth={breakpoints.tablet}>
+          <DesktopNabigazioa atala={atala} />
+        </MediaQuery>
       </Container>
     </Wrapper>
   );
 };
+
+const MugikorWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: ${rem(size.base)};
+
+  margin-bottom: ${rem(size.medium)};
+`;
+
+const MenuWrapper = styled.div`
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const MugikorLogoWrapper = styled.div`
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+`;
 
 const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
   --color: ${({ atala }) =>
@@ -76,62 +102,21 @@ const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
   background-color: ${({ atala }) =>
     atala === 'hasiera' ? colors.gorria : colors.horia};
   color: var(--color);
+
+  padding-bottom: ${rem(size.base)};
+
   min-height: 100vh;
+  padding-bottom: 0;
 `;
 
 const LogoWrapper = styled.div`
-  width: ${rem(size.large)};
-
-  ${media.tablet`
-    width: ${rem(size.huge)};
-  `}
-`;
-
-const Kontaktua = styled.div`
-  display: flex;
-`;
-
-const SareSoziala = styled.li`
-  width: ${rem(size.base)};
-  height: ${rem(size.base)};
-  :not(:last-child) {
-    margin-right: ${rem(size.small)};
-  }
-`;
-
-const Instagram = styled(InstagramLogo)`
-  width: ${rem(size.base)};
-  height: ${rem(size.base)};
-  path {
-    fill: var(--color);
-  }
-`;
-
-const Twitter = styled(TwitterLogo)`
-  width: ${rem(size.base)};
-  height: ${rem(size.base)};
-  path {
-    fill: var(--color);
-  }
+  width: ${rem(size.huge)};
 `;
 
 const Logo = styled(LabaLogo)`
   path {
     fill: var(--color);
   }
-`;
-
-const SareSozialak = styled.ul`
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-`;
-
-const Helbidea = styled.address`
-  border-right: 3px solid var(--color);
-  padding-right: ${rem(size.small)};
-  margin-right: ${rem(size.small)};
-  ${font.tiny()};
 `;
 
 const GainburuWrapper = styled.header`
