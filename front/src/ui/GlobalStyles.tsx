@@ -198,7 +198,7 @@ export const GlobalStyles = createGlobalStyle`
   ${reboot};
 
   body {
-      font-family: 'Work Sans', sans-serif;
+      font-family: 'Almarai', sans-serif;
 
       ${font.base()}
       font-weight: 600;
