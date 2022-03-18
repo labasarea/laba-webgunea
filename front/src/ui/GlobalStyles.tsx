@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { font } from './theme';
+import { font, fontWeight } from './theme';
 import { colors } from './theme/colors';
 
 /**
@@ -201,7 +201,7 @@ export const GlobalStyles = createGlobalStyle`
       font-family: 'Almarai', sans-serif;
 
       ${font.base()}
-      font-weight: 600;
+      font-weight: ${fontWeight.bold};
 
       color: ${colors.beltza};
   }
