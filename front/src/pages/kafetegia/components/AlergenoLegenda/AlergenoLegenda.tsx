@@ -15,6 +15,11 @@ import Soja from './assets/alergenoak/soja.svg';
 import Sulfitoak from './assets/alergenoak/sulfitoak.svg';
 import Apioa from './assets/alergenoak/apioa.svg';
 import Ziapea from './assets/alergenoak/ziapea.svg';
+import styled from 'styled-components';
+import { rem } from 'polished';
+import { colors, fontWeight, size } from '../../../../ui/theme';
+import { mapAlergenoIdentifikadoreaToIzena } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
+import { mapAlergenoIdentifikadoreaToZenbakia } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
 
 const alergenoakOrdenaturik: AlergenoIdentifikadorea[] = [
   'esnekiak',
@@ -35,29 +40,69 @@ const alergenoakOrdenaturik: AlergenoIdentifikadorea[] = [
 
 export const AlergenoLegenda: React.VFC = () => {
   return (
-    <>
+    <Wrapper>
       {alergenoakOrdenaturik.map(alergenoa => (
-        <AlergenoLogoa alergenoId={alergenoa} />
+        <AlergenoWrapper>
+          <LogoWrapper>
+            <AlergenoLogoa alergenoId={alergenoa} />
+          </LogoWrapper>
+
+          <Izena>{mapAlergenoIdentifikadoreaToIzena(alergenoa)}</Izena>
+          <Zenbakia>{mapAlergenoIdentifikadoreaToZenbakia(alergenoa)}</Zenbakia>
+        </AlergenoWrapper>
       ))}
-    </>
+    </Wrapper>
   );
 };
 
+const Izena = styled.div`
+  margin-bottom: ${rem(size.tiny)};
+  font-weight: ${fontWeight.bold};
+  text-align: center;
+`;
+
+const Zenbakia = styled.div`
+  font-weight: ${fontWeight.bold};
+  text-align: center;
+  color: ${colors.morea};
+`;
+
+const AlergenoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Wrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: ${rem(size.tiny)};
+  grid-row-gap: ${rem(size.base)};
+`;
+
+const LogoWrapper = styled.div`
+  margin-bottom: ${rem(size.mini)};
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+`;
+
 const alergenoIdToLogo: { [id in AlergenoIdentifikadorea]: React.ReactNode } = {
-  esnekiak: <Esnekiak />,
-  arrautzak: <Arrautzak />,
-  glutena: <Glutena />,
-  moluskuak: <Moluskuak />,
-  krustazeoak: <Krustazeoak />,
-  arraina: <Arraina />,
-  lupinuak: <Lupinuak />,
-  fruituLehorrak: <FruituLehorrak />,
-  kakahueteak: <Kakahueteak />,
-  sesamoa: <Sesamoa />,
-  soja: <Soja />,
-  sulfitoak: <Sulfitoak />,
-  apioa: <Apioa />,
-  ziapea: <Ziapea />,
+  esnekiak: <Esnekiak height={rem(size.huge)} />,
+  arrautzak: <Arrautzak height={rem(size.huge)} />,
+  glutena: <Glutena height={rem(size.huge)} />,
+  moluskuak: <Moluskuak height={rem(size.huge)} />,
+  krustazeoak: <Krustazeoak height={rem(size.huge)} />,
+  arraina: <Arraina height={rem(size.huge)} />,
+  lupinuak: <Lupinuak height={rem(size.huge)} />,
+  fruituLehorrak: <FruituLehorrak height={rem(size.huge)} />,
+  kakahueteak: <Kakahueteak height={rem(size.huge)} />,
+  sesamoa: <Sesamoa height={rem(size.huge)} />,
+  soja: <Soja height={rem(size.huge)} />,
+  sulfitoak: <Sulfitoak height={rem(size.huge)} />,
+  apioa: <Apioa height={rem(size.huge)} />,
+  ziapea: <Ziapea height={rem(size.huge)} />,
 };
 
 const AlergenoLogoa: React.VFC<{ alergenoId: AlergenoIdentifikadorea }> = ({

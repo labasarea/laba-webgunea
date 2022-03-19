@@ -159,7 +159,7 @@ const ProduktuZerrenda: React.FC<{
 );
 
 const Alergenoa = styled.span`
-  color: ${colors.horia};
+  color: ${colors.morea};
   font-weight: ${fontWeight.bold};
 
   &:not(:last-child)::after {
