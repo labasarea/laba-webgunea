@@ -1,4 +1,4 @@
-import { AlergenoIdentifikadorea } from './AlergenoIdentifikadorea';
+import { Alergenoa } from './Alergenoa';
 
 export interface Produktua {
   id: string;
@@ -6,7 +6,5 @@ export interface Produktua {
   prezioa: number;
   ekologikoa: boolean;
   beganoa: boolean;
-  alergenoak: {
-    [alergenoa in AlergenoIdentifikadorea]: boolean;
-  };
+  alergenoak: Alergenoa[];
 }

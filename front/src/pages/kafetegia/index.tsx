@@ -131,7 +131,12 @@ const ProduktuZerrenda: React.FC<{
             <EkologikoaLogo title="Produktu ekologikoa" />
           )}
         </Ezaugarria>
-        <Izena scope="row">{produktua.izena}</Izena>
+        <Izena scope="row">
+          {produktua.izena}{' '}
+          {produktua.alergenoak.map(alergenoa => (
+            <Alergenoa>{alergenoa.zenbakia}</Alergenoa>
+          ))}
+        </Izena>
         <Prezioa>
           {new Intl.NumberFormat('eu-ES', {
             style: 'currency',
@@ -142,6 +147,15 @@ const ProduktuZerrenda: React.FC<{
     ))}
   </ProduktuTaula>
 );
+
+const Alergenoa = styled.span`
+  color: ${colors.horia};
+  font-weight: ${fontWeight.bold};
+
+  &:not(:last-child)::after {
+    content: ', ';
+  }
+`;
 
 const ProduktuTaula = styled.table`
   width: 100%;
