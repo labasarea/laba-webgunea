@@ -97,7 +97,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`almarai\:600`, `almarai\:300`],
+        fonts: [`almarai\:800`, `almarai\:300`],
         display: 'swap',
       },
     },

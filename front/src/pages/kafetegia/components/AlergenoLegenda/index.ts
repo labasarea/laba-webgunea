@@ -1,0 +1,1 @@
+export { AlergenoLegenda } from './AlergenoLegenda';
