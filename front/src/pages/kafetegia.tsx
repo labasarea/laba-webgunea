@@ -11,18 +11,8 @@ import { colors, font, fontWeight, size } from '../ui/theme';
 import BeganoaLogo from '../assets/beganoa.svg';
 import EkologikoaLogo from '../assets/ekologikoa.svg';
 import { rem } from 'polished';
-import { Alergenoa } from '../domain/models/Alergenoa';
+import { Produktua } from '../domain/models/Produktua';
 
-interface Produktua {
-  id: string;
-  izena: string;
-  prezioa: number;
-  ekologikoa: boolean;
-  beganoa: boolean;
-  alergenoak: {
-    [alergenoa in Alergenoa]: boolean;
-  };
-}
 interface DataProps {
   kafetegia: {
     data: {
