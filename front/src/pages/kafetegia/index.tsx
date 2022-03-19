@@ -188,7 +188,7 @@ const Izena = styled.td`
 `;
 
 const Prezioa = styled.td`
-  min-width: ${size.medium}px;
+  width: ${size.huge}px;
   text-align: right;
   font-weight: ${fontWeight.regular};
   padding: 0 ${size.xtiny}px;
