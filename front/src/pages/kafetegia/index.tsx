@@ -36,80 +36,80 @@ const Kafetegia: React.VFC<PageProps> = () => {
 
       <GlobalStyles />
 
-      <GainburuaWrapper>
-        <Gainburua
-          atala="kafetegia"
-          izenburua={izenburua}
-          deskribapena={deskribapena}
-        />
-      </GainburuaWrapper>
+      <Gainburua
+        atala="kafetegia"
+        izenburua={izenburua}
+        deskribapena={deskribapena}
+      />
 
       <Container>
-        <TaldeWrapper>
-          <IzenburuWrapper>
-            <Marra />
-            <Izenburua>Edariak</Izenburua>
-          </IzenburuWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda
-              izena="Edari beroak"
-              produktuZerrenda={edariBeroak}
-            />
-          </ZerrendaWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda
-              izena="Infusio ekologikoak"
-              produktuZerrenda={infusioEkologikoak}
-            />
-          </ZerrendaWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda
-              izena="Edari hotzak"
-              produktuZerrenda={edariHotzak}
-            />
-          </ZerrendaWrapper>
-        </TaldeWrapper>
+        <ContentWrapper>
+          <TaldeWrapper>
+            <IzenburuWrapper>
+              <Marra />
+              <Izenburua>Edariak</Izenburua>
+            </IzenburuWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda
+                izena="Edari beroak"
+                produktuZerrenda={edariBeroak}
+              />
+            </ZerrendaWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda
+                izena="Infusio ekologikoak"
+                produktuZerrenda={infusioEkologikoak}
+              />
+            </ZerrendaWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda
+                izena="Edari hotzak"
+                produktuZerrenda={edariHotzak}
+              />
+            </ZerrendaWrapper>
+          </TaldeWrapper>
 
-        <TaldeWrapper>
-          <IzenburuWrapper>
-            <Marra />
-            <Izenburua>Jakiak</Izenburua>
-          </IzenburuWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda
-              izena="Pikatzekoak"
-              produktuZerrenda={pikatzekoak}
-            />
-          </ZerrendaWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda izena="Tostadak" produktuZerrenda={tostadak} />
-          </ZerrendaWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda izena="Gozoak" produktuZerrenda={gozoak} />
-          </ZerrendaWrapper>
-          <ZerrendaWrapper>
-            <ProduktuZerrenda
-              izena="Anizko Jogurta"
-              produktuZerrenda={[anizkoJogurta]}
-            />
-          </ZerrendaWrapper>
-        </TaldeWrapper>
+          <TaldeWrapper>
+            <IzenburuWrapper>
+              <Marra />
+              <Izenburua>Jakiak</Izenburua>
+            </IzenburuWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda
+                izena="Pikatzekoak"
+                produktuZerrenda={pikatzekoak}
+              />
+            </ZerrendaWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda izena="Tostadak" produktuZerrenda={tostadak} />
+            </ZerrendaWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda izena="Gozoak" produktuZerrenda={gozoak} />
+            </ZerrendaWrapper>
+            <ZerrendaWrapper>
+              <ProduktuZerrenda
+                izena="Anizko Jogurta"
+                produktuZerrenda={[anizkoJogurta]}
+              />
+            </ZerrendaWrapper>
+          </TaldeWrapper>
 
-        <TaldeWrapper>
-          <IzenburuWrapper>
-            <Marra />
-            <Izenburua>Alergenoak</Izenburua>
-          </IzenburuWrapper>
+          <TaldeWrapper>
+            <IzenburuWrapper>
+              <Marra />
+              <Izenburua>Alergenoak</Izenburua>
+            </IzenburuWrapper>
 
-          <AlergenoLegenda />
-        </TaldeWrapper>
+            <AlergenoLegenda />
+          </TaldeWrapper>
+        </ContentWrapper>
       </Container>
     </>
   );
 };
 
-const GainburuaWrapper = styled.div`
-  margin-bottom: ${rem(size.huge)};
+const ContentWrapper = styled.div`
+  padding: ${size.huge}px 0;
 `;
 
 const TaldeWrapper = styled.section`
