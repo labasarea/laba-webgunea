@@ -17,9 +17,16 @@ import Apioa from './assets/alergenoak/apioa.svg';
 import Ziapea from './assets/alergenoak/ziapea.svg';
 import styled from 'styled-components';
 import { rem } from 'polished';
-import { colors, fontWeight, media, size } from '../../../../ui/theme';
+import {
+  breakpoints,
+  colors,
+  fontWeight,
+  media,
+  size,
+} from '../../../../ui/theme';
 import { mapAlergenoIdentifikadoreaToIzena } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
 import { mapAlergenoIdentifikadoreaToZenbakia } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
+import { useMediaQuery } from 'react-responsive';
 
 const alergenoakOrdenaturik: AlergenoIdentifikadorea[] = [
   'esnekiak',
@@ -81,9 +88,6 @@ const Wrapper = styled.div`
 
   grid-template-columns: repeat(3, 1fr);
   ${media.tablet`
-    grid-template-columns: repeat(4, 1fr);
-  `};
-  ${media.desktop`
     grid-template-columns: repeat(5, 1fr);
   `};
 `;
@@ -95,23 +99,28 @@ const LogoWrapper = styled.div`
   justify-content: center;
 `;
 
-const alergenoIdToLogo: { [id in AlergenoIdentifikadorea]: React.ReactNode } = {
-  esnekiak: <Esnekiak height={rem(size.huge)} />,
-  arrautzak: <Arrautzak height={rem(size.huge)} />,
-  glutena: <Glutena height={rem(size.huge)} />,
-  moluskuak: <Moluskuak height={rem(size.huge)} />,
-  krustazeoak: <Krustazeoak height={rem(size.huge)} />,
-  arraina: <Arraina height={rem(size.huge)} />,
-  lupinuak: <Lupinuak height={rem(size.huge)} />,
-  fruituLehorrak: <FruituLehorrak height={rem(size.huge)} />,
-  kakahueteak: <Kakahueteak height={rem(size.huge)} />,
-  sesamoa: <Sesamoa height={rem(size.huge)} />,
-  soja: <Soja height={rem(size.huge)} />,
-  sulfitoak: <Sulfitoak height={rem(size.huge)} />,
-  apioa: <Apioa height={rem(size.huge)} />,
-  ziapea: <Ziapea height={rem(size.huge)} />,
-};
-
 const AlergenoLogoa: React.VFC<{ alergenoId: AlergenoIdentifikadorea }> = ({
   alergenoId,
-}) => <>{alergenoIdToLogo[alergenoId]}</>;
+}) => {
+  const isAboveDesktop = useMediaQuery({ minWidth: breakpoints.desktop });
+  const height = rem(isAboveDesktop ? size.huge : size.medium);
+
+  const alergenoIdToLogo: { [id in AlergenoIdentifikadorea]: React.ReactNode } =
+    {
+      esnekiak: <Esnekiak height={height} />,
+      arrautzak: <Arrautzak height={height} />,
+      glutena: <Glutena height={height} />,
+      moluskuak: <Moluskuak height={height} />,
+      krustazeoak: <Krustazeoak height={height} />,
+      arraina: <Arraina height={height} />,
+      lupinuak: <Lupinuak height={height} />,
+      fruituLehorrak: <FruituLehorrak height={height} />,
+      kakahueteak: <Kakahueteak height={height} />,
+      sesamoa: <Sesamoa height={height} />,
+      soja: <Soja height={height} />,
+      sulfitoak: <Sulfitoak height={height} />,
+      apioa: <Apioa height={height} />,
+      ziapea: <Ziapea height={height} />,
+    };
+  return <>{alergenoIdToLogo[alergenoId]}</>;
+};
