@@ -17,7 +17,7 @@ import Apioa from './assets/alergenoak/apioa.svg';
 import Ziapea from './assets/alergenoak/ziapea.svg';
 import styled from 'styled-components';
 import { rem } from 'polished';
-import { colors, fontWeight, size } from '../../../../ui/theme';
+import { colors, fontWeight, media, size } from '../../../../ui/theme';
 import { mapAlergenoIdentifikadoreaToIzena } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
 import { mapAlergenoIdentifikadoreaToZenbakia } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
 
@@ -76,9 +76,16 @@ const AlergenoWrapper = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: ${rem(size.tiny)};
   grid-row-gap: ${rem(size.base)};
+
+  grid-template-columns: repeat(3, 1fr);
+  ${media.tablet`
+    grid-template-columns: repeat(4, 1fr);
+  `};
+  ${media.desktop`
+    grid-template-columns: repeat(5, 1fr);
+  `};
 `;
 
 const LogoWrapper = styled.div`
