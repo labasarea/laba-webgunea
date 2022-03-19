@@ -1,4 +1,4 @@
-export type Alergenoa =
+export type AlergenoIdentifikadorea =
   | 'apioa'
   | 'arraina'
   | 'arrautzak'
