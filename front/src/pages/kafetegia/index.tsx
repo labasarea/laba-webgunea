@@ -13,6 +13,7 @@ import EkologikoaLogo from '../../assets/ekologikoa.svg';
 import { rem } from 'polished';
 import { Produktua } from '../../domain/models/Produktua';
 import { useKafetegiaData } from './useKafetegiaData';
+import { AlergenoLegenda } from './components/AlergenoLegenda';
 
 const Kafetegia: React.VFC<PageProps> = () => {
   const {
@@ -92,6 +93,15 @@ const Kafetegia: React.VFC<PageProps> = () => {
               produktuZerrenda={[anizkoJogurta]}
             />
           </ZerrendaWrapper>
+        </TaldeWrapper>
+
+        <TaldeWrapper>
+          <IzenburuWrapper>
+            <Marra />
+            <Izenburua>Alergenoak</Izenburua>
+          </IzenburuWrapper>
+
+          <AlergenoLegenda />
         </TaldeWrapper>
       </Container>
     </>
