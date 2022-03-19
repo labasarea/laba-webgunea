@@ -133,7 +133,7 @@ const GainburuWrapper = styled.header`
 
 const Deskribapena = styled.p`
   margin-bottom: ${rem(size.xlarge)};
-  text-align: justify;
+  hyphens: auto;
 
   ${font.base()};
 
