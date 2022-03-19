@@ -1,19 +1,19 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
-import { GlobalStyles } from '../../ui/GlobalStyles';
+import { GlobalStyles } from '../ui/GlobalStyles';
 
 import { Helmet } from 'react-helmet';
-import { Gainburua } from '../../components/Gainburua';
-import { Container } from '../../components/Container';
+import { Gainburua } from '../components/Gainburua';
+import { Container } from '../components/Container';
 import styled from 'styled-components';
-import { colors, font, fontWeight, size } from '../../ui/theme';
+import { colors, font, fontWeight, size } from '../ui/theme';
 
-import BeganoaLogo from '../../assets/beganoa.svg';
-import EkologikoaLogo from '../../assets/ekologikoa.svg';
+import BeganoaLogo from '../assets/beganoa.svg';
+import EkologikoaLogo from '../assets/ekologikoa.svg';
 import { rem } from 'polished';
-import { Produktua } from '../../domain/models/Produktua';
-import { useKafetegiaData } from './useKafetegiaData';
-import { AlergenoLegenda } from './components/AlergenoLegenda';
+import { Produktua } from '../domain/models/Produktua';
+import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
+import { AlergenoLegenda } from '../components/AlergenoLegenda';
 
 const Kafetegia: React.VFC<PageProps> = () => {
   const {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AlergenoIdentifikadorea } from '../../../../domain/models/AlergenoIdentifikadorea';
+import { AlergenoIdentifikadorea } from '../../domain/models/AlergenoIdentifikadorea';
 import Esnekiak from './assets/alergenoak/esnekiak.svg';
 import Arrautzak from './assets/alergenoak/arrautzak.svg';
 import Glutena from './assets/alergenoak/glutena.svg';
@@ -17,15 +17,9 @@ import Apioa from './assets/alergenoak/apioa.svg';
 import Ziapea from './assets/alergenoak/ziapea.svg';
 import styled from 'styled-components';
 import { rem } from 'polished';
-import {
-  breakpoints,
-  colors,
-  fontWeight,
-  media,
-  size,
-} from '../../../../ui/theme';
-import { mapAlergenoIdentifikadoreaToIzena } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
-import { mapAlergenoIdentifikadoreaToZenbakia } from '../../../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
+import { breakpoints, colors, fontWeight, media, size } from '../../ui/theme';
+import { mapAlergenoIdentifikadoreaToIzena } from '../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
+import { mapAlergenoIdentifikadoreaToZenbakia } from '../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
 import { useMediaQuery } from 'react-responsive';
 
 const alergenoakOrdenaturik: AlergenoIdentifikadorea[] = [

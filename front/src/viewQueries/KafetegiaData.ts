@@ -1,4 +1,4 @@
-import { Produktua } from '../../domain/models/Produktua';
+import { Produktua } from '../domain/models/Produktua';
 
 export interface KafetegiaData {
   deskribapena: string;

@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { ProduktuaDTO } from '../../domain/dtos/ProduktuaDTO';
-import { produktuaFactory } from '../../domain/factories/produktuaFactory';
+import { ProduktuaDTO } from '../domain/dtos/ProduktuaDTO';
+import { produktuaFactory } from '../domain/factories/produktuaFactory';
 import { KafetegiaData } from './KafetegiaData';
 
 interface DataProps {
