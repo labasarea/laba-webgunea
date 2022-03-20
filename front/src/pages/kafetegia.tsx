@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
 import { Container } from '../components/Container';
 import styled from 'styled-components';
-import { colors, font, fontWeight, size } from '../ui/theme';
+import { colors, font, fontWeight, media, size } from '../ui/theme';
 
 import BeganoaLogo from '../assets/beganoa.svg';
 import EkologikoaLogo from '../assets/ekologikoa.svg';
@@ -213,10 +213,15 @@ const ProduktuTaula = styled.table`
 `;
 
 const Ezaugarria = styled.td`
-  width: ${size.medium}px;
-  height: ${size.medium}px;
+  width: ${size.base}px;
+  height: ${size.base}px;
   padding: 0 ${size.xtiny}px;
   vertical-align: top;
+
+  ${media.tablet`
+    width: ${size.medium}px;
+    height: ${size.medium}px;
+  `}
 `;
 
 const Izena = styled.td`
