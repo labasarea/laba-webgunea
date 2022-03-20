@@ -26,6 +26,7 @@ const Kafetegia: React.VFC<PageProps> = () => {
     pikatzekoak,
     gozoak,
     tostadak,
+    konboak,
   } = useKafetegiaData();
 
   return (
@@ -42,8 +43,8 @@ const Kafetegia: React.VFC<PageProps> = () => {
         deskribapena={deskribapena}
       />
 
-      <Container>
-        <ContentWrapper>
+      <ContentWrapper>
+        <Container>
           <TaldeWrapper>
             <IzenburuWrapper>
               <Marra />
@@ -93,7 +94,24 @@ const Kafetegia: React.VFC<PageProps> = () => {
               />
             </ZerrendaWrapper>
           </TaldeWrapper>
+        </Container>
 
+        <KonboWrapper>
+          <Container>
+            <IzenburuWrapper>
+              <Marra />
+              <Izenburua>GOSARI KONBOAK</Izenburua>
+            </IzenburuWrapper>
+
+            <OrduaWrapper>
+              <p>11:00ak arte</p>
+            </OrduaWrapper>
+
+            <ProduktuZerrenda produktuZerrenda={konboak} />
+          </Container>
+        </KonboWrapper>
+
+        <Container>
           <TaldeWrapper>
             <IzenburuWrapper>
               <Marra />
@@ -102,20 +120,41 @@ const Kafetegia: React.VFC<PageProps> = () => {
 
             <AlergenoLegenda />
           </TaldeWrapper>
-        </ContentWrapper>
-      </Container>
+
+          <OnEgin>
+            <p>On egin!</p>
+          </OnEgin>
+        </Container>
+      </ContentWrapper>
     </>
   );
 };
+
+const OrduaWrapper = styled.div`
+  ${font.small()};
+  font-weight: ${fontWeight.bold};
+  text-align: right;
+  margin-bottom: ${size.base}px;
+`;
+
+const KonboWrapper = styled.div`
+  background-color: ${colors.horia};
+  padding-top: ${size.base}px;
+  padding-bottom: ${size.base}px;
+  margin-bottom: ${size.large}px;
+`;
+
+const OnEgin = styled.div`
+  text-align: center;
+  ${font.gargantuan()};
+`;
 
 const ContentWrapper = styled.div`
   padding: ${size.huge}px 0;
 `;
 
 const TaldeWrapper = styled.section`
-  &:not(:last-child) {
-    margin-bottom: ${size.large}px;
-  }
+  margin-bottom: ${size.large}px;
 `;
 
 const ZerrendaWrapper = styled.div`
@@ -126,10 +165,10 @@ const ZerrendaWrapper = styled.div`
 
 const ProduktuZerrenda: React.FC<{
   produktuZerrenda: Produktua[];
-  izena: React.ReactNode;
+  izena?: React.ReactNode;
 }> = ({ produktuZerrenda, izena }) => (
   <ProduktuTaula>
-    <ProduktuMota>{izena}</ProduktuMota>
+    {izena && <ProduktuMota>{izena}</ProduktuMota>}
 
     {produktuZerrenda.map(produktua => (
       <tr key={produktua.id}>

@@ -16,6 +16,7 @@ interface DataProps {
         gozoak: ProduktuaDTO[];
         anizkoJogurta: ProduktuaDTO;
         tostadak: ProduktuaDTO[];
+        konboak: ProduktuaDTO[];
       };
     };
   };
@@ -35,6 +36,7 @@ export function useKafetegiaData(): KafetegiaData {
           pikatzekoak,
           gozoak,
           tostadak,
+          konboak,
         },
       },
     },
@@ -206,6 +208,29 @@ export function useKafetegiaData(): KafetegiaData {
                 ziapea
               }
             }
+            konboak {
+              id
+              ekologikoa
+              beganoa
+              izena
+              prezioa
+              alergenoak {
+                apioa
+                arraina
+                arrautzak
+                esnekiak
+                fruituLehorrak
+                glutena
+                kakahueteak
+                krustazeoak
+                lupinuak
+                moluskuak
+                sesamoa
+                soja
+                sulfitoak
+                ziapea
+              }
+            }
           }
         }
       }
@@ -222,5 +247,6 @@ export function useKafetegiaData(): KafetegiaData {
     pikatzekoak: pikatzekoak.map(produktuaFactory),
     gozoak: gozoak.map(produktuaFactory),
     tostadak: tostadak.map(produktuaFactory),
+    konboak: konboak.map(produktuaFactory),
   };
 }

@@ -55,6 +55,11 @@
       "type": "component",
       "repeatable": true,
       "component": "kafetegia.edaria"
+    },
+    "konboak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kafetegia.edaria"
     }
   }
 }

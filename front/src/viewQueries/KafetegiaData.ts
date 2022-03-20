@@ -10,4 +10,5 @@ export interface KafetegiaData {
   gozoak: Produktua[];
   anizkoJogurta: Produktua;
   tostadak: Produktua[];
+  konboak: Produktua[];
 }
