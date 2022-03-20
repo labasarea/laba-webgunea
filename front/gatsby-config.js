@@ -27,6 +27,9 @@ const query = qs.stringify(
       tostadak: {
         populate: ['alergenoak'],
       },
+      konboak: {
+        populate: ['alergenoak'],
+      },
     },
   },
   {
