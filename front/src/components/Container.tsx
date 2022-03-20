@@ -6,8 +6,8 @@ import { size } from '../ui/theme/size';
 export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${rem(size.base)};
-  padding-right: ${rem(size.base)};
+  padding-left: ${rem(size.small)};
+  padding-right: ${rem(size.small)};
 
   width: 100%;
 
