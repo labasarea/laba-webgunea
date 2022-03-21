@@ -102,11 +102,10 @@ const Kafetegia: React.VFC<PageProps> = () => {
               <Marra />
               <Izenburua>GOSARI KONBOAK</Izenburua>
             </IzenburuWrapper>
-
-            <OrduaWrapper>
-              <p>11:00ak arte</p>
-            </OrduaWrapper>
-
+            <KonboAzalpena>
+              11:00ak arte. Gehitu hauetako bat zure tostada, pintxo edo
+              bizkotxoari.
+            </KonboAzalpena>
             <ProduktuZerrenda produktuZerrenda={konboak} />
           </Container>
         </KonboWrapper>
@@ -130,10 +129,7 @@ const Kafetegia: React.VFC<PageProps> = () => {
   );
 };
 
-const OrduaWrapper = styled.div`
-  ${font.small()};
-  font-weight: ${fontWeight.bold};
-  text-align: right;
+const KonboAzalpena = styled.p`
   margin-bottom: ${size.base}px;
 `;
 
