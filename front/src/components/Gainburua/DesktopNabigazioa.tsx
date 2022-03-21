@@ -22,10 +22,8 @@ export const DesktopNabigazioa: React.FC<{
 };
 
 export const Nabigazioa = styled.nav`
-  width: 100%;
-  position: absolute;
-  bottom: ${rem(size.tiny)};
-  left: 0;
+  display: flex;
+  justify-content: center;
 `;
 
 export const EstekaZerrenda = styled.ul`

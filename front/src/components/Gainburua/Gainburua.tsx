@@ -55,23 +55,27 @@ export const Gainburua: React.FC<Props> = ({
         </GainburuWrapper>
       </MediaQuery>
 
-      <Container>
-        <main>
+      <Nagusia>
+        <Container>
           <Deskribapena>{deskribapena}</Deskribapena>
 
           <IzenburuWrapper>
             <Marra />
             <Izenburua>{izenburua}</Izenburua>
           </IzenburuWrapper>
-        </main>
+        </Container>
+      </Nagusia>
 
-        <MediaQuery minWidth={breakpoints.tablet}>
-          <DesktopNabigazioa atala={atala} />
-        </MediaQuery>
-      </Container>
+      <MediaQuery minWidth={breakpoints.tablet}>
+        <DesktopNabigazioa atala={atala} />
+      </MediaQuery>
     </Wrapper>
   );
 };
+
+const Nagusia = styled.main`
+  flex-grow: 1;
+`;
 
 const MugikorWrapper = styled.div`
   display: grid;
@@ -99,14 +103,21 @@ const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
   --color: ${({ atala }) =>
     atala === 'hasiera' ? colors.zuria : colors.beltza};
 
+  display: flex;
+  flex-direction: column;
+
   background-color: ${({ atala }) =>
     atala === 'hasiera' ? colors.gorria : colors.horia};
   color: var(--color);
 
-  padding-bottom: ${rem(size.base)};
+  padding-bottom: ${rem(size.tiny)};
 
-  min-height: 100vh;
-  padding-bottom: 0;
+  /* HACK: Hasiera orriak edukirik ez duenez, gainburuak altuera osoa hartuko du */
+  min-height: ${({ atala }) => (atala === 'hasiera' ? '100vh' : '0')};
+
+  ${media.desktop`
+    min-height: 100vh;  
+  `}
 `;
 
 const LogoWrapper = styled.div`
