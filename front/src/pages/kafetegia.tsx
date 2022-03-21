@@ -131,6 +131,7 @@ const Kafetegia: React.VFC<PageProps> = () => {
 
 const KonboAzalpena = styled.p`
   margin-bottom: ${size.base}px;
+  text-align: right;
 `;
 
 const KonboWrapper = styled.div`
