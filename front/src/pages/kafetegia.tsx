@@ -206,6 +206,12 @@ const ProduktuTaula = styled.table`
   width: 100%;
   table-layout: fixed;
   overflow-wrap: break-word;
+  border-collapse: separate;
+  border-spacing: 0 ${size.tiny}px;
+
+  ${media.tablet`
+    border-spacing: 0 ${size.xtiny}px;
+  `}
 `;
 
 const Ezaugarria = styled.td`
@@ -238,12 +244,16 @@ const Prezioa = styled.td`
 const ProduktuMota = styled.caption`
   ${font.large()};
   text-align: left;
-  padding-left: 67px;
+  padding-left: 52px;
   margin-bottom: ${rem(size.mini)};
 
   &::after {
     content: '.';
   }
+
+  ${media.tablet`
+    padding-left: 67px;
+  `}
 `;
 
 const IzenburuWrapper = styled.div`
