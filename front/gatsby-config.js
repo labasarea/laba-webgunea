@@ -78,7 +78,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Laba webgunea',
+        name: 'Laba',
         short_name: 'Laba',
         start_url: '/',
         background_color: `#ffffff`,
