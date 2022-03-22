@@ -98,10 +98,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [`almarai\:800`, `almarai\:300`],
-        display: 'swap',
+        fonts: {
+          google: [
+            {
+              family: 'Almarai',
+              variants: ['300', '800'],
+            },
+          ],
+        },
       },
     },
   ],
