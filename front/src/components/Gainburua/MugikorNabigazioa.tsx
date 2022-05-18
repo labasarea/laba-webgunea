@@ -127,14 +127,22 @@ const KontaktuDatuak: React.FC = () => {
 
       <SareSozialak>
         <SareSoziala>
-          <a href="https://twitter.com/labasarea/">
-            <Twitter tabIndex="0" role="link" title="Laba Twitterren" />
+          <a
+            tabIndex={0}
+            aria-label="Laba Twitterren"
+            href="https://twitter.com/labasarea/"
+          >
+            <Twitter aria-role="link" title="Laba Twitterren" />
           </a>
         </SareSoziala>
 
         <SareSoziala>
-          <a href="https://www.instagram.com/labasarea/">
-            <Instagram tabIndex="0" role="link" title="Laba Instagramen" />
+          <a
+            tabIndex={0}
+            aria-label="Laba Instagramen"
+            href="https://www.instagram.com/labasarea/"
+          >
+            <Instagram role="link" title="Laba Instagramen" />
           </a>
         </SareSoziala>
       </SareSozialak>
