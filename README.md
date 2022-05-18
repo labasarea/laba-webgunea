@@ -7,7 +7,7 @@ Laba Sarerako webgune publikoa. Teknologiak:
 - Backend: [Strapi](https://strapi.io/resource-center)
 - Frontend: [Gatsby](https://www.gatsbyjs.com/docs)
 
-## 👀 Saltseatzen hasteko
+## 👀 Hasi saltseatzen
 
 ### Backend-a altxatzeko
 
@@ -18,7 +18,7 @@ Laba Sarerako webgune publikoa. Teknologiak:
 yarn back develop
 ```
 
-#### Frontend-a altxatzeko
+### Frontend-a altxatzeko
 
 1. [Altxatu backend proiektua](#backend-a-altxatzeko)
 2. Altxatu frontend proiektua:
@@ -27,7 +27,7 @@ yarn back develop
 yarn front develop
 ```
 
-#### Testak pasatzeko
+### Testak pasatzeko
 
 1. [Altxatu backend proiektua](#backend-a-altxatzeko)
 2. [Altxatu frontend proiektua](#frontend-a-altxatzeko):
