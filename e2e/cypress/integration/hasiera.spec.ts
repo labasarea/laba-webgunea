@@ -6,10 +6,7 @@ describe("Hasiera", () => {
   });
 
   it("Twitter-era bideratzen du", () => {
-    cy.intercept("https://twitter.com/labasarea/", {
-      statusCode: 200,
-      body: "<h1>Kanpoko web orria</h1>",
-    });
+    interceptExternalPageLoad("https://twitter.com/labasarea/");
 
     visitHasiera();
     cy.findByRole("link", { name: /laba twitterren/i }).click();
@@ -18,10 +15,7 @@ describe("Hasiera", () => {
   });
 
   it("Instagram-era bideratzen du", () => {
-    cy.intercept("https://www.instagram.com/labasarea/", {
-      statusCode: 200,
-      body: "<h1>Kanpoko web orria</h1>",
-    });
+    interceptExternalPageLoad("https://www.instagram.com/labasarea/");
 
     visitHasiera();
     cy.findByRole("link", { name: /laba instagramen/i }).click();
@@ -36,6 +30,14 @@ describe("Hasiera", () => {
     cy.location("pathname").should("include", "/kafetegia");
   });
 });
+
+function interceptExternalPageLoad(url: string) {
+  cy.intercept(url, {
+    statusCode: 200,
+    body: "<h1>Kanpoko web orria</h1>",
+  });
+}
+
 function visitHasiera() {
   cy.visit("/");
 }
