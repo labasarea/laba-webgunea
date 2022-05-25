@@ -1,9 +1,15 @@
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { graphql, Link, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
 import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
+import styled from 'styled-components';
+import { colors, font, fontWeight, size } from '../ui/theme';
+import { Container } from '../components/Container';
+import { rem } from 'polished';
+import Gezia from '../assets/gezia.svg';
+import ReactMarkdown from 'react-markdown';
 
 interface DataProps {
   strapiHasiera: {
@@ -11,6 +17,7 @@ interface DataProps {
       attributes: {
         deskribapena: string;
         izenburua: string;
+        bazkidetza: string;
       };
     };
   };
@@ -24,6 +31,7 @@ const IndexPage: React.VFC<PageProps> = () => {
           attributes {
             deskribapena
             izenburua
+            bazkidetza
           }
         }
       }
@@ -49,8 +57,50 @@ const IndexPage: React.VFC<PageProps> = () => {
         izenburua={strapiHasiera.data.attributes.izenburua}
         deskribapena={strapiHasiera.data.attributes.deskribapena}
       />
+
+      <ContentWrapper>
+        <Container>
+          <Deskribapena>
+            {strapiHasiera.data.attributes.bazkidetza}
+          </Deskribapena>
+
+          <IzanLabaWrapper>
+            <Link to="https://forms.gle/sRq2ejXqv6q88sQe9">
+              <Botoia>
+                <Gezia /> Izan Laba.
+              </Botoia>
+            </Link>
+          </IzanLabaWrapper>
+        </Container>
+      </ContentWrapper>
     </>
   );
 };
+
+const Deskribapena = styled(ReactMarkdown)`
+  margin-bottom: ${rem(size.large)};
+
+  p:not(-last-child) {
+    margin-bottom: ${rem(size.base)};
+  }
+`;
+
+const ContentWrapper = styled.div`
+  padding: ${size.huge}px 0;
+  font-weight: ${fontWeight.regular};
+  ${font.large()};
+`;
+
+const Botoia = styled.button`
+  border: 2px solid ${colors.beltza};
+  ${font.large()};
+  padding: ${rem(size.base)};
+  background: ${colors.zuria};
+  cursor: pointer;
+`;
+
+const IzanLabaWrapper = styled.div`
+  text-align: right;
+`;
 
 export default IndexPage;
