@@ -17,6 +17,10 @@
     },
     "izenburua": {
       "type": "string"
+    },
+    "bazkidetza": {
+      "type": "richtext",
+      "required": true
     }
   }
 }
