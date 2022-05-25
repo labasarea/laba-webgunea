@@ -61,8 +61,8 @@ const IndexPage: React.VFC<PageProps> = () => {
         }}
       />
 
-      <ContentWrapper>
-        <Container id="labazkidetza">
+      <ContentWrapper id="labazkidetza">
+        <Container>
           <Deskribapena>
             {strapiHasiera.data.attributes.bazkidetza}
           </Deskribapena>

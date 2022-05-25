@@ -27,7 +27,7 @@ export const KontaktuDatuak: React.FC = () => {
             aria-label="Laba Twitterren"
             href="https://twitter.com/labasarea/"
           >
-            <Twitter aria-role="link" title="Laba Twitterren" />
+            <Twitter title="Laba Twitterren" />
           </a>
         </SareSoziala>
 
