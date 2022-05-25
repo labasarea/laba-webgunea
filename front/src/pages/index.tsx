@@ -1,4 +1,4 @@
-import { graphql, Link, PageProps, useStaticQuery } from 'gatsby';
+import { graphql, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
@@ -68,11 +68,9 @@ const IndexPage: React.VFC<PageProps> = () => {
           </Deskribapena>
 
           <IzanLabaWrapper>
-            <Link to="https://forms.gle/sRq2ejXqv6q88sQe9">
-              <Botoia>
-                <GeziaLogo /> Izan Laba.
-              </Botoia>
-            </Link>
+            <Botoia href="https://forms.gle/sRq2ejXqv6q88sQe9">
+              <GeziaLogo /> Izan Laba.
+            </Botoia>
           </IzanLabaWrapper>
         </Container>
       </ContentWrapper>
@@ -94,7 +92,7 @@ const ContentWrapper = styled.div`
   ${font.large()};
 `;
 
-const Botoia = styled.button`
+const Botoia = styled.a`
   border: 2px solid ${colors.beltza};
   ${font.large()};
   padding: ${rem(size.base)};
