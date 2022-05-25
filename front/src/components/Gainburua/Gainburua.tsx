@@ -194,7 +194,7 @@ const IzenburuWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: ${rem(size.medium)};
+  margin-bottom: ${rem(size.large)};
 `;
 
 const Marra = styled.div`
