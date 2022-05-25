@@ -67,7 +67,7 @@ const IndexPage: React.VFC<PageProps> = () => {
           <IzanLabaWrapper>
             <Link to="https://forms.gle/sRq2ejXqv6q88sQe9">
               <Botoia>
-                <Gezia /> Izan Laba.
+                <GeziaLogo /> Izan Laba.
               </Botoia>
             </Link>
           </IzanLabaWrapper>
@@ -96,11 +96,19 @@ const Botoia = styled.button`
   ${font.large()};
   padding: ${rem(size.base)};
   background: ${colors.zuria};
+  font-weight: ${fontWeight.bold};
   cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
+const GeziaLogo = styled(Gezia)`
+  margin-right: ${rem(size.tiny)};
 `;
 
 const IzanLabaWrapper = styled.div`
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export default IndexPage;
