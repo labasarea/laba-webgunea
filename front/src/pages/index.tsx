@@ -56,10 +56,13 @@ const IndexPage: React.VFC<PageProps> = () => {
         atala="hasiera"
         izenburua={strapiHasiera.data.attributes.izenburua}
         deskribapena={strapiHasiera.data.attributes.deskribapena}
+        onClick={() => {
+          window.location.replace('/#labazkidetza');
+        }}
       />
 
       <ContentWrapper>
-        <Container>
+        <Container id="labazkidetza">
           <Deskribapena>
             {strapiHasiera.data.attributes.bazkidetza}
           </Deskribapena>

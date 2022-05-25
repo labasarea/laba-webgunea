@@ -41,9 +41,12 @@ const Kafetegia: React.VFC<PageProps> = () => {
         atala="kafetegia"
         izenburua={izenburua}
         deskribapena={deskribapena}
+        onClick={() => {
+          window.location.replace('/kafetegia/#kafetegia');
+        }}
       />
 
-      <ContentWrapper>
+      <ContentWrapper id="kafetegia">
         <Container>
           <TaldeWrapper>
             <IzenburuWrapper>

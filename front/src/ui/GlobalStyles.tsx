@@ -197,6 +197,10 @@ export const GlobalStyles = createGlobalStyle`
   ${reset};
   ${reboot};
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
       font-family: 'Almarai', sans-serif;
 
