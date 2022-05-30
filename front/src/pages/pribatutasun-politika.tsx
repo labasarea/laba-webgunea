@@ -115,6 +115,12 @@ const Edukia = styled(ReactMarkdown).attrs({ remarkPlugins: [remarkGfm] })`
     padding: ${size.small}px;
     border: 1px solid ${colors.beltza};
   }
+
+  hr {
+    border: 2px solid ${colors.horia};
+    margin-bottom: ${rem(size.base)};
+    margin-top: ${rem(size.base)};
+  }
 `;
 
 export default PribatutasunPolitika;
