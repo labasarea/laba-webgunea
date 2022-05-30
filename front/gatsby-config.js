@@ -69,6 +69,7 @@ module.exports = {
             },
           },
           'lege-oharra',
+          'pribatutasun-politika',
         ],
         queryLimit: 1000,
       },
