@@ -104,6 +104,11 @@ const Botoia = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;
+
+  transition: color 500ms ease-out 100ms;
+  &:hover {
+    color: ${colors.morea};
+  }
 `;
 
 const GeziaLogo = styled(Gezia)`
