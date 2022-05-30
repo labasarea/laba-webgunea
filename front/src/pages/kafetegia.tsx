@@ -14,6 +14,7 @@ import { rem } from 'polished';
 import { Produktua } from '../domain/models/Produktua';
 import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
 import { AlergenoLegenda } from '../components/AlergenoLegenda';
+import { Oina } from '../components/Oina';
 
 const Kafetegia: React.VFC<PageProps> = () => {
   const {
@@ -41,9 +42,12 @@ const Kafetegia: React.VFC<PageProps> = () => {
         atala="kafetegia"
         izenburua={izenburua}
         deskribapena={deskribapena}
+        onClick={() => {
+          window.location.replace('/kafetegia/#kafetegia');
+        }}
       />
 
-      <ContentWrapper>
+      <ContentWrapper id="kafetegia">
         <Container>
           <TaldeWrapper>
             <IzenburuWrapper>
@@ -125,6 +129,8 @@ const Kafetegia: React.VFC<PageProps> = () => {
           </OnEgin>
         </Container>
       </ContentWrapper>
+
+      <Oina />
     </>
   );
 };

@@ -6,7 +6,7 @@ const NotFoundPage: React.VFC = () => {
     <main>
       <h1>Ez dugu orria topatu</h1>
       <br />
-      <Link to="/">Go home</Link>.
+      <Link to="/">Hasierara bueltatu</Link>
     </main>
   );
 };

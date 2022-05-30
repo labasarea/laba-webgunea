@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "hasierak",
+  "collectionName": "lege_oharrak",
   "info": {
-    "singularName": "hasiera",
-    "pluralName": "hasierak",
-    "displayName": "Hasiera",
+    "singularName": "lege-oharra",
+    "pluralName": "lege-oharrak",
+    "displayName": "Lege Oharra",
     "description": ""
   },
   "options": {
@@ -12,13 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "deskribapena": {
-      "type": "text"
-    },
     "izenburua": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "bazkidetza": {
+    "edukia": {
       "type": "richtext",
       "required": true
     }

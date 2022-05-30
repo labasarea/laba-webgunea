@@ -12,17 +12,20 @@ import { DesktopNabigazioa } from './DesktopNabigazioa';
 import { MugikorNabigazioa } from './MugikorNabigazioa';
 import MediaQuery from 'react-responsive';
 import { KontaktuDatuak } from './KontaktuDatuak';
+import Gezia from '../../assets/gezia.svg';
 
 interface Props {
-  izenburua: string;
-  deskribapena: string;
-  atala: 'hasiera' | 'kafetegia';
+  izenburua?: string;
+  deskribapena?: string;
+  atala?: 'hasiera' | 'kafetegia';
+  onClick?: () => void;
 }
 
 export const Gainburua: React.FC<Props> = ({
   izenburua,
   deskribapena,
   atala,
+  onClick,
 }) => {
   return (
     <Wrapper atala={atala}>
@@ -55,16 +58,22 @@ export const Gainburua: React.FC<Props> = ({
         </GainburuWrapper>
       </MediaQuery>
 
-      <Nagusia>
-        <Container>
-          <Deskribapena>{deskribapena}</Deskribapena>
+      {deskribapena && (
+        <Nagusia>
+          <Container>
+            <Deskribapena>{deskribapena}</Deskribapena>
 
-          <IzenburuWrapper>
-            <Marra />
-            <Izenburua>{izenburua}</Izenburua>
-          </IzenburuWrapper>
-        </Container>
-      </Nagusia>
+            <IzenburuWrapper>
+              <Marra />
+              <Izenburua>{izenburua}</Izenburua>
+            </IzenburuWrapper>
+
+            <GeziaWrapper>
+              <GeziaLogo atala={atala} onClick={onClick} />
+            </GeziaWrapper>
+          </Container>
+        </Nagusia>
+      )}
 
       <MediaQuery minWidth={breakpoints.tablet}>
         <DesktopNabigazioa atala={atala} />
@@ -72,6 +81,36 @@ export const Gainburua: React.FC<Props> = ({
     </Wrapper>
   );
 };
+
+const GeziaWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
+  cursor: pointer;
+  path {
+    fill: ${({ atala }) =>
+      atala === 'hasiera' ? colors.zuria : colors.beltza};
+  }
+
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: bounce-2;
+  animation-timing-function: ease;
+
+  @keyframes bounce-2 {
+    0% {
+      transform: rotate(90deg) translateX(0);
+    }
+    50% {
+      transform: rotate(90deg) translateX(-${size.base}px);
+    }
+    100% {
+      transform: rotate(90deg) translateX(0);
+    }
+  }
+`;
 
 const Nagusia = styled.main`
   flex-grow: 1;
@@ -99,7 +138,7 @@ const MugikorLogoWrapper = styled.div`
   justify-content: center;
 `;
 
-const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
+const Wrapper = styled.div<{ atala?: 'hasiera' | 'kafetegia' }>`
   --color: ${({ atala }) =>
     atala === 'hasiera' ? colors.zuria : colors.beltza};
 
@@ -110,13 +149,12 @@ const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
     atala === 'hasiera' ? colors.gorria : colors.horia};
   color: var(--color);
 
-  padding-bottom: ${rem(size.tiny)};
-
   /* HACK: Hasiera orriak edukirik ez duenez, gainburuak altuera osoa hartuko du */
   min-height: ${({ atala }) => (atala === 'hasiera' ? '100vh' : '0')};
 
   ${media.desktop`
-    min-height: 100vh;  
+    min-height: ${({ atala }: { atala: 'hasiera' | 'kafetegia' }) =>
+      Boolean(atala) ? '100vh' : '0'};  
   `}
 `;
 
@@ -135,7 +173,6 @@ const GainburuWrapper = styled.header`
   display: flex;
   align-items: start;
   justify-content: space-between;
-  margin-bottom: ${rem(size.base)};
 
   ${media.tablet`
     padding: ${rem(size.large)};
@@ -157,6 +194,7 @@ const IzenburuWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: ${rem(size.large)};
 `;
 
 const Marra = styled.div`

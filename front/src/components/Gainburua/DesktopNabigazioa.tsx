@@ -5,7 +5,7 @@ import { rem } from 'polished';
 import { size } from '../../ui/theme';
 
 export const DesktopNabigazioa: React.FC<{
-  atala: 'hasiera' | 'kafetegia';
+  atala?: 'hasiera' | 'kafetegia';
 }> = ({ atala }) => {
   return (
     <Nabigazioa>
@@ -24,6 +24,7 @@ export const DesktopNabigazioa: React.FC<{
 export const Nabigazioa = styled.nav`
   display: flex;
   justify-content: center;
+  padding-bottom: ${rem(size.tiny)};
 `;
 
 export const EstekaZerrenda = styled.ul`

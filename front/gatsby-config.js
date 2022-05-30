@@ -68,6 +68,8 @@ module.exports = {
               populate: '*',
             },
           },
+          'lege-oharra',
+          'pribatutasun-politika',
         ],
         queryLimit: 1000,
       },
