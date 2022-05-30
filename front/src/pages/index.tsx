@@ -69,7 +69,7 @@ const IndexPage: React.VFC<PageProps> = () => {
           </Deskribapena>
 
           <IzanLabaWrapper>
-            <Botoia href="https://forms.gle/sRq2ejXqv6q88sQe9">
+            <Botoia href="https://forms.gle/wV41CVkRX1JtHsAu9">
               <GeziaLogo /> Labazkidetu.
             </Botoia>
           </IzanLabaWrapper>
