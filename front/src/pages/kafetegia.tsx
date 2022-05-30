@@ -14,6 +14,7 @@ import { rem } from 'polished';
 import { Produktua } from '../domain/models/Produktua';
 import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
 import { AlergenoLegenda } from '../components/AlergenoLegenda';
+import { Oina } from '../components/Oina';
 
 const Kafetegia: React.VFC<PageProps> = () => {
   const {
@@ -128,6 +129,8 @@ const Kafetegia: React.VFC<PageProps> = () => {
           </OnEgin>
         </Container>
       </ContentWrapper>
+
+      <Oina />
     </>
   );
 };

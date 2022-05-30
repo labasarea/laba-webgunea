@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "lege_oharrak",
+  "info": {
+    "singularName": "lege-oharra",
+    "pluralName": "lege-oharrak",
+    "displayName": "Lege Oharra",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string",
+      "required": true
+    },
+    "edukia": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

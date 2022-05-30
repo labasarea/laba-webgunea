@@ -10,6 +10,7 @@ import { Container } from '../components/Container';
 import { rem } from 'polished';
 import Gezia from '../assets/gezia.svg';
 import ReactMarkdown from 'react-markdown';
+import { Oina } from '../components/Oina';
 
 interface DataProps {
   strapiHasiera: {
@@ -74,6 +75,8 @@ const IndexPage: React.VFC<PageProps> = () => {
           </IzanLabaWrapper>
         </Container>
       </ContentWrapper>
+
+      <Oina />
     </>
   );
 };

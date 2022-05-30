@@ -15,10 +15,10 @@ import { KontaktuDatuak } from './KontaktuDatuak';
 import Gezia from '../../assets/gezia.svg';
 
 interface Props {
-  izenburua: string;
-  deskribapena: string;
-  atala: 'hasiera' | 'kafetegia';
-  onClick: () => void;
+  izenburua?: string;
+  deskribapena?: string;
+  atala?: 'hasiera' | 'kafetegia';
+  onClick?: () => void;
 }
 
 export const Gainburua: React.FC<Props> = ({
@@ -58,20 +58,22 @@ export const Gainburua: React.FC<Props> = ({
         </GainburuWrapper>
       </MediaQuery>
 
-      <Nagusia>
-        <Container>
-          <Deskribapena>{deskribapena}</Deskribapena>
+      {deskribapena && (
+        <Nagusia>
+          <Container>
+            <Deskribapena>{deskribapena}</Deskribapena>
 
-          <IzenburuWrapper>
-            <Marra />
-            <Izenburua>{izenburua}</Izenburua>
-          </IzenburuWrapper>
+            <IzenburuWrapper>
+              <Marra />
+              <Izenburua>{izenburua}</Izenburua>
+            </IzenburuWrapper>
 
-          <GeziaWrapper>
-            <GeziaLogo atala={atala} onClick={onClick} />
-          </GeziaWrapper>
-        </Container>
-      </Nagusia>
+            <GeziaWrapper>
+              <GeziaLogo atala={atala} onClick={onClick} />
+            </GeziaWrapper>
+          </Container>
+        </Nagusia>
+      )}
 
       <MediaQuery minWidth={breakpoints.tablet}>
         <DesktopNabigazioa atala={atala} />
@@ -136,7 +138,7 @@ const MugikorLogoWrapper = styled.div`
   justify-content: center;
 `;
 
-const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
+const Wrapper = styled.div<{ atala?: 'hasiera' | 'kafetegia' }>`
   --color: ${({ atala }) =>
     atala === 'hasiera' ? colors.zuria : colors.beltza};
 
@@ -147,13 +149,12 @@ const Wrapper = styled.div<{ atala: 'hasiera' | 'kafetegia' }>`
     atala === 'hasiera' ? colors.gorria : colors.horia};
   color: var(--color);
 
-  padding-bottom: ${rem(size.tiny)};
-
   /* HACK: Hasiera orriak edukirik ez duenez, gainburuak altuera osoa hartuko du */
   min-height: ${({ atala }) => (atala === 'hasiera' ? '100vh' : '0')};
 
   ${media.desktop`
-    min-height: 100vh;  
+    min-height: ${({ atala }: { atala: 'hasiera' | 'kafetegia' }) =>
+      Boolean(atala) ? '100vh' : '0'};  
   `}
 `;
 
@@ -172,7 +173,6 @@ const GainburuWrapper = styled.header`
   display: flex;
   align-items: start;
   justify-content: space-between;
-  margin-bottom: ${rem(size.base)};
 
   ${media.tablet`
     padding: ${rem(size.large)};

@@ -68,6 +68,7 @@ module.exports = {
               populate: '*',
             },
           },
+          'lege-oharra',
         ],
         queryLimit: 1000,
       },
