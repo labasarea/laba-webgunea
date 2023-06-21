@@ -7,7 +7,7 @@ Laba Sarerako webgune publikoa. Teknologiak:
 - Backend: [Strapi](https://strapi.io/resource-center)
 - Frontend: [Gatsby](https://www.gatsbyjs.com/docs)
 
-## 👀 Hasi saltseatzen
+## 👀 Saltseatzen hasteko
 
 ### Backend-a altxatzeko
 
