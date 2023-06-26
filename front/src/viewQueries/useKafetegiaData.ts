@@ -4,7 +4,7 @@ import { produktuaFactory } from '../domain/factories/produktuaFactory';
 import { KafetegiaData } from './KafetegiaData';
 
 interface DataProps {
-  kafetegia: {
+  strapiKafetegia: {
     deskribapena: string;
     izenburua: string;
     edariBeroak: ProduktuaDTO[];
@@ -20,7 +20,7 @@ interface DataProps {
 
 export function useKafetegiaData(): KafetegiaData {
   const {
-    kafetegia: {
+    strapiKafetegia: {
       izenburua,
       deskribapena,
       anizkoJogurta,
