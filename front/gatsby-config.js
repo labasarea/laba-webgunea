@@ -15,7 +15,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi-graphql',
       options: {
-        apiURL: 'http://localhost:1337',
+        apiURL: process.env.API_URL,
         collectionTypes: [],
         singleTypes: [
           'hasiera',
