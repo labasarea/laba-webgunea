@@ -13,12 +13,8 @@ import { Oina } from '../components/Oina';
 
 interface DataProps {
   strapiLegeOharra: {
-    data: {
-      attributes: {
-        izenburua: string;
-        edukia: string;
-      };
-    };
+    izenburua: string;
+    edukia: string;
   };
 }
 
@@ -26,12 +22,8 @@ const LegeOharra: React.VFC<PageProps> = () => {
   const { strapiLegeOharra } = useStaticQuery<DataProps>(graphql`
     {
       strapiLegeOharra {
-        data {
-          attributes {
-            izenburua
-            edukia
-          }
-        }
+        izenburua
+        edukia
       }
     }
   `);
@@ -39,7 +31,7 @@ const LegeOharra: React.VFC<PageProps> = () => {
   return (
     <>
       <Helmet
-        title={`${strapiLegeOharra.data.attributes.izenburua} | Laba`}
+        title={`${strapiLegeOharra.izenburua} | Laba`}
         htmlAttributes={{ lang: 'eu' }}
       />
 
@@ -49,7 +41,7 @@ const LegeOharra: React.VFC<PageProps> = () => {
 
       <Container>
         <Atala>
-          <Edukia>{strapiLegeOharra.data.attributes.edukia}</Edukia>
+          <Edukia>{strapiLegeOharra.edukia}</Edukia>
         </Atala>
       </Container>
 

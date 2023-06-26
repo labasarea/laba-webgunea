@@ -14,13 +14,9 @@ import { Oina } from '../components/Oina';
 
 interface DataProps {
   strapiHasiera: {
-    data: {
-      attributes: {
-        deskribapena: string;
-        izenburua: string;
-        bazkidetza: string;
-      };
-    };
+    deskribapena: string;
+    izenburua: string;
+    bazkidetza: string;
   };
 }
 
@@ -28,13 +24,9 @@ const IndexPage: React.VFC<PageProps> = () => {
   const { strapiHasiera } = useStaticQuery<DataProps>(graphql`
     {
       strapiHasiera {
-        data {
-          attributes {
-            deskribapena
-            izenburua
-            bazkidetza
-          }
-        }
+        deskribapena
+        izenburua
+        bazkidetza
       }
     }
   `);
@@ -42,21 +34,18 @@ const IndexPage: React.VFC<PageProps> = () => {
   return (
     <>
       <Helmet
-        title={`${strapiHasiera.data.attributes.izenburua} | Laba`}
+        title={`${strapiHasiera.izenburua} | Laba`}
         htmlAttributes={{ lang: 'eu' }}
       >
-        <meta
-          name="description"
-          content={strapiHasiera.data.attributes.deskribapena}
-        />
+        <meta name="description" content={strapiHasiera.deskribapena} />
       </Helmet>
 
       <GlobalStyles />
 
       <Gainburua
         atala="hasiera"
-        izenburua={strapiHasiera.data.attributes.izenburua}
-        deskribapena={strapiHasiera.data.attributes.deskribapena}
+        izenburua={strapiHasiera.izenburua}
+        deskribapena={strapiHasiera.deskribapena}
         onClick={() => {
           window.location.replace('/#labazkidetza');
         }}
@@ -64,9 +53,7 @@ const IndexPage: React.VFC<PageProps> = () => {
 
       <ContentWrapper id="labazkidetza">
         <Container>
-          <Deskribapena>
-            {strapiHasiera.data.attributes.bazkidetza}
-          </Deskribapena>
+          <Deskribapena>{strapiHasiera.bazkidetza}</Deskribapena>
 
           <IzanLabaWrapper>
             <Botoia href="https://forms.gle/wV41CVkRX1JtHsAu9">
