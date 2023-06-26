@@ -16,7 +16,8 @@
     "@strapi/strapi": "4.11.2",
     "pg": "^8.11.0",
     "pg-connection-string": "^2.6.0",
-    "sqlite3": "5.1.6"
+    "sqlite3": "5.1.6",
+    "strapi-plugin-netlify-deployments": "^2.0.0"
   },
   "author": {
     "name": "Laba Sarea"
