@@ -14,12 +14,8 @@ import { Oina } from '../components/Oina';
 
 interface DataProps {
   strapiPribatutasunPolitika: {
-    data: {
-      attributes: {
-        izenburua: string;
-        edukia: string;
-      };
-    };
+    izenburua: string;
+    edukia: string;
   };
 }
 
@@ -27,12 +23,8 @@ const PribatutasunPolitika: React.VFC<PageProps> = () => {
   const { strapiPribatutasunPolitika } = useStaticQuery<DataProps>(graphql`
     {
       strapiPribatutasunPolitika {
-        data {
-          attributes {
-            izenburua
-            edukia
-          }
-        }
+        izenburua
+        edukia
       }
     }
   `);
@@ -40,7 +32,7 @@ const PribatutasunPolitika: React.VFC<PageProps> = () => {
   return (
     <>
       <Helmet
-        title={`${strapiPribatutasunPolitika.data.attributes.izenburua} | Laba`}
+        title={`${strapiPribatutasunPolitika.izenburua} | Laba`}
         htmlAttributes={{ lang: 'eu' }}
       />
 
@@ -50,7 +42,7 @@ const PribatutasunPolitika: React.VFC<PageProps> = () => {
 
       <Container>
         <Atala>
-          <Edukia>{strapiPribatutasunPolitika.data.attributes.edukia}</Edukia>
+          <Edukia>{strapiPribatutasunPolitika.edukia}</Edukia>
         </Atala>
       </Container>
 
