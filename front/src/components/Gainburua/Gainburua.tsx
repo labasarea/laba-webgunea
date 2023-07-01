@@ -14,10 +14,12 @@ import MediaQuery from 'react-responsive';
 import { KontaktuDatuak } from './KontaktuDatuak';
 import Gezia from '../../assets/gezia.svg';
 
+export type AtalaName = 'hasiera' | 'kafetegia' | 'laba-gara';
+
 interface Props {
   izenburua?: string;
   deskribapena?: string;
-  atala?: 'hasiera' | 'kafetegia';
+  atala?: AtalaName;
   onClick?: () => void;
 }
 
@@ -90,8 +92,7 @@ const GeziaWrapper = styled.div`
 const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
   cursor: pointer;
   path {
-    fill: ${({ atala }) =>
-      atala === 'hasiera' ? colors.zuria : colors.beltza};
+    fill: var(--color);
   }
 
   animation-duration: 2s;
@@ -138,15 +139,13 @@ const MugikorLogoWrapper = styled.div`
   justify-content: center;
 `;
 
-const Wrapper = styled.div<{ atala?: 'hasiera' | 'kafetegia' }>`
-  --color: ${({ atala }) =>
-    atala === 'hasiera' ? colors.zuria : colors.beltza};
+const Wrapper = styled.div<{ atala?: AtalaName }>`
+  --color: ${({ atala }) => getAtalaColor(atala)};
 
   display: flex;
   flex-direction: column;
 
-  background-color: ${({ atala }) =>
-    atala === 'hasiera' ? colors.gorria : colors.horia};
+  background-color: ${({ atala }) => getAtalaBackground(atala)};
   color: var(--color);
 
   /* HACK: Hasiera orriak edukirik ez duenez, gainburuak altuera osoa hartuko du */
@@ -215,3 +214,27 @@ const Izenburua = styled.h1`
 
   ${font.gargantuan()};
 `;
+
+function getAtalaBackground(atala?: AtalaName) {
+  if (atala === 'hasiera') {
+    return colors.zuria;
+  }
+
+  if (atala === 'laba-gara') {
+    return colors.gorria;
+  }
+
+  return colors.horia;
+}
+
+function getAtalaColor(atala?: AtalaName) {
+  if (atala === 'laba-gara') {
+    return colors.zuria;
+  }
+
+  if (atala === 'hasiera') {
+    return colors.morea;
+  }
+
+  return colors.beltza;
+}

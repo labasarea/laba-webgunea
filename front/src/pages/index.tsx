@@ -5,10 +5,9 @@ import { GlobalStyles } from '../ui/GlobalStyles';
 import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
 import styled from 'styled-components';
-import { colors, font, fontWeight, size } from '../ui/theme';
+import { font, fontWeight, size } from '../ui/theme';
 import { Container } from '../components/Container';
 import { rem } from 'polished';
-import Gezia from '../assets/gezia.svg';
 import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 
@@ -16,7 +15,7 @@ interface DataProps {
   strapiHasiera: {
     deskribapena: string;
     izenburua: string;
-    bazkidetza: string;
+    edukia?: string;
   };
 }
 
@@ -26,7 +25,7 @@ const IndexPage: React.VFC<PageProps> = () => {
       strapiHasiera {
         deskribapena
         izenburua
-        bazkidetza
+        edukia
       }
     }
   `);
@@ -47,19 +46,15 @@ const IndexPage: React.VFC<PageProps> = () => {
         izenburua={strapiHasiera.izenburua}
         deskribapena={strapiHasiera.deskribapena}
         onClick={() => {
-          window.location.replace('/#labazkidetza');
+          window.location.replace('/#edukia');
         }}
       />
 
-      <ContentWrapper id="labazkidetza">
+      <ContentWrapper id="edukia">
         <Container>
-          <Deskribapena>{strapiHasiera.bazkidetza}</Deskribapena>
-
-          <IzanLabaWrapper>
-            <Botoia href="https://forms.gle/wV41CVkRX1JtHsAu9">
-              <GeziaLogo /> Labazkidetu.
-            </Botoia>
-          </IzanLabaWrapper>
+          {strapiHasiera.edukia && (
+            <Deskribapena>{strapiHasiera.edukia}</Deskribapena>
+          )}
         </Container>
       </ContentWrapper>
 
@@ -80,31 +75,6 @@ const ContentWrapper = styled.div`
   padding: ${size.huge}px 0;
   font-weight: ${fontWeight.regular};
   ${font.large()};
-`;
-
-const Botoia = styled.a`
-  border: 2px solid ${colors.beltza};
-  ${font.large()};
-  padding: ${rem(size.base)};
-  background: ${colors.zuria};
-  font-weight: ${fontWeight.bold};
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-
-  transition: color 500ms ease-out 100ms;
-  &:hover {
-    color: ${colors.morea};
-  }
-`;
-
-const GeziaLogo = styled(Gezia)`
-  margin-right: ${rem(size.tiny)};
-`;
-
-const IzanLabaWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
 `;
 
 export default IndexPage;

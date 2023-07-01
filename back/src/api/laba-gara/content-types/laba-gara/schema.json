@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "hasierak",
+  "collectionName": "laba_garas",
   "info": {
-    "singularName": "hasiera",
-    "pluralName": "hasierak",
-    "displayName": "Hasiera",
+    "singularName": "laba-gara",
+    "pluralName": "laba-garas",
+    "displayName": "Laba gara",
     "description": ""
   },
   "options": {
@@ -12,15 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "deskribapena": {
-      "type": "text"
-    },
     "izenburua": {
       "type": "string"
     },
+    "deskribapena": {
+      "type": "text"
+    },
     "edukia": {
-      "type": "richtext",
-      "required": false
+      "type": "richtext"
     }
   }
 }
