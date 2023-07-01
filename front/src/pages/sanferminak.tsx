@@ -1,4 +1,4 @@
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { graphql, navigate, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
@@ -67,7 +67,7 @@ const IndexPage: React.VFC<PageProps> = () => {
         izenburua={strapiHasiera.izenburua}
         deskribapena={strapiHasiera.deskribapena}
         onClick={() => {
-          window.location.replace('/#edukia');
+          navigate('/sanferminak#edukia');
         }}
       />
 

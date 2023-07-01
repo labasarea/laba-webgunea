@@ -1,4 +1,4 @@
-import { PageProps } from 'gatsby';
+import { PageProps, navigate } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
@@ -43,11 +43,11 @@ const Kafetegia: React.VFC<PageProps> = () => {
         izenburua={izenburua}
         deskribapena={deskribapena}
         onClick={() => {
-          window.location.replace('/kafetegia/#kafetegia');
+          navigate('/kafetegia#edukia');
         }}
       />
 
-      <ContentWrapper id="kafetegia">
+      <ContentWrapper id="edukia">
         <Container>
           <TaldeWrapper>
             <IzenburuWrapper>
