@@ -23,10 +23,10 @@ export const MugikorNabigazioa: React.FC = () => {
           <nav>
             <ul>
               <Esteka>
-                <Link to="/">Hasiera</Link>
+                <Link to="/">Laba gara</Link>
               </Esteka>
               <Esteka>
-                <Link to="/laba-gara">Laba gara</Link>
+                <Link to="/sanferminak">Sanferminak</Link>
               </Esteka>
               <Esteka>
                 <Link to="/kafetegia">Dastatu Laba</Link>
