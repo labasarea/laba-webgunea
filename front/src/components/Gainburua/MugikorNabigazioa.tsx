@@ -23,7 +23,10 @@ export const MugikorNabigazioa: React.FC = () => {
           <nav>
             <ul>
               <Esteka>
-                <Link to="/">Laba gara</Link>
+                <Link to="/">Hasiera</Link>
+              </Esteka>
+              <Esteka>
+                <Link to="/laba-gara">Laba gara</Link>
               </Esteka>
               <Esteka>
                 <Link to="/kafetegia">Dastatu Laba</Link>
@@ -85,7 +88,7 @@ const OpenClose = styled.div`
 const NabigazioaWrapper = styled.div`
   @keyframes sartu {
     from {
-      right: -300px;
+      right: -100vw;
     }
     to {
       right: 0;
@@ -104,7 +107,7 @@ const NabigazioaWrapper = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  min-width: 300px;
+  width: 100vw;
   background-color: ${colors.beltza};
   color: ${colors.zuria};
   height: 100vh;

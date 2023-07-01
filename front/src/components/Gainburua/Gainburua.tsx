@@ -85,8 +85,12 @@ export const Gainburua: React.FC<Props> = ({
 };
 
 const GeziaWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  display: none;
+
+  ${media.desktop`
+    display: flex;
+    justify-content: flex-end;
+  `}
 `;
 
 const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
@@ -147,9 +151,6 @@ const Wrapper = styled.div<{ atala?: AtalaName }>`
 
   background-color: ${({ atala }) => getAtalaBackground(atala)};
   color: var(--color);
-
-  /* HACK: Hasiera orriak edukirik ez duenez, gainburuak altuera osoa hartuko du */
-  min-height: ${({ atala }) => (atala === 'hasiera' ? '100vh' : '0')};
 
   ${media.desktop`
     min-height: ${({ atala }: { atala: 'hasiera' | 'kafetegia' }) =>
@@ -217,7 +218,7 @@ const Izenburua = styled.h1`
 
 function getAtalaBackground(atala?: AtalaName) {
   if (atala === 'hasiera') {
-    return colors.zuria;
+    return colors.morea;
   }
 
   if (atala === 'laba-gara') {
@@ -233,7 +234,7 @@ function getAtalaColor(atala?: AtalaName) {
   }
 
   if (atala === 'hasiera') {
-    return colors.morea;
+    return colors.zuria;
   }
 
   return colors.beltza;

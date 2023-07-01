@@ -10,18 +10,24 @@ import { Container } from '../components/Container';
 import { rem } from 'polished';
 import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
-import { datesUtils } from '../utils/dateUtils';
+import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
+
+export interface SFEguna {
+  id: string;
+  eguna: string;
+  ekitaldi_nagusia: {
+    id: string;
+    hitzordua: string;
+    izenburua: string;
+  };
+}
 
 interface DataProps {
   strapiHasiera: {
     deskribapena: string;
     izenburua: string;
     edukia?: string;
-    sf_egunak?: {
-      id: string;
-      eguna: string;
-      ekitaldi_nagusia: { id: string; hitzordua: string; izenburua: string };
-    }[];
+    sf_egunak?: SFEguna[];
   };
 }
 
@@ -73,27 +79,11 @@ const IndexPage: React.VFC<PageProps> = () => {
 
           {strapiHasiera.sf_egunak && strapiHasiera.sf_egunak.length > 0 && (
             <SFEgunZerrenda>
-              {strapiHasiera.sf_egunak.map(
-                ({ eguna, id, ekitaldi_nagusia }) => (
-                  <SFEguna key={id}>
-                    <SFEgunEdukia>
-                      <SFEgunaEguna>
-                        Uztailak {new Date(eguna).getDate()}.
-                      </SFEgunaEguna>
-
-                      <SFEgunaNagusiaOrdua>
-                        {datesUtils.getHour(
-                          new Date(ekitaldi_nagusia.hitzordua),
-                        )}
-                      </SFEgunaNagusiaOrdua>
-
-                      <SFEgunaNagusiaIzenburua>
-                        {ekitaldi_nagusia.izenburua}
-                      </SFEgunaNagusiaIzenburua>
-                    </SFEgunEdukia>
-                  </SFEguna>
-                ),
-              )}
+              {strapiHasiera.sf_egunak.map(sfeguna => (
+                <SFEgunaElementua key={sfeguna.id}>
+                  <SFEgunaEdukia sfeguna={sfeguna} />
+                </SFEgunaElementua>
+              ))}
             </SFEgunZerrenda>
           )}
         </Container>
@@ -104,50 +94,29 @@ const IndexPage: React.VFC<PageProps> = () => {
   );
 };
 
-const SFEgunaEguna = styled.p`
-  margin-bottom: ${rem(size.base)};
+const SFEgunaElementua = styled.li`
+  padding: ${rem(size.small)};
 
-  ${font.large()};
-  color: ${colors.zuria};
-`;
+  width: 100%;
+  background-color: ${colors.beltza};
 
-const SFEgunaNagusiaIzenburua = styled.h2`
-  ${font.large()};
-  color: ${colors.zuria};
-  font-weight: ${fontWeight.bold};
-  text-align: center;
-`;
-
-const SFEgunaNagusiaOrdua = styled.p`
-  ${font.base()};
-  color: ${colors.zuria};
-  font-weight: ${fontWeight.bold};
-  text-align: center;
-`;
-
-const SFEgunZerrenda = styled.ul`
   ${media.tablet`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: ${rem(size.mini)};
-    grid-row-gap: ${rem(size.mini)};
+    aspect-ratio: 1/1;
+    margin-bottom: 0;
   `}
 `;
 
-const SFEgunEdukia = styled.div`
-  padding: ${rem(size.tiny)};
-`;
-
-const SFEguna = styled.li`
-  margin-bottom: ${rem(size.base)};
-
-  width: 100%;
-  background-color: ${colors.gorria};
+const SFEgunZerrenda = styled.ul`
+  display: grid;
+  grid-column-gap: ${rem(size.mini)};
+  grid-row-gap: ${rem(size.mini)};
 
   ${media.tablet`
-    height: 0;
-    padding-bottom: 100%;
-    margin-bottom: 0;
+    grid-template-columns: repeat(2, 1fr);
+  `}
+
+  ${media.desktop`
+    grid-template-columns: repeat(3, 1fr);
   `}
 `;
 

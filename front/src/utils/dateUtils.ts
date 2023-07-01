@@ -6,6 +6,7 @@ dayjs.extend(utc);
 export const datesUtils = {
   getDate,
   getHour,
+  areSameDay,
 };
 
 function getDate(rawDate: string): Date {
@@ -14,4 +15,8 @@ function getDate(rawDate: string): Date {
 
 function getHour(date: Date): string {
   return dayjs(date).format('H:mm');
+}
+
+function areSameDay(date: Date, reference: Date): boolean {
+  return dayjs(date).isSame(reference, 'day');
 }
