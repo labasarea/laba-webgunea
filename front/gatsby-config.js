@@ -22,7 +22,7 @@ module.exports = {
           'kafetegia',
           'lege-oharra',
           'pribatutasun-politika',
-          'laba-gara',
+          'sanferminak',
         ],
         contentTypes: [],
         // Enable/disable cache.

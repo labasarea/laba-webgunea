@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * laba-gara service
+ * sanferminak service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::laba-gara.laba-gara');
+module.exports = createCoreService('api::sanferminak.sanferminak');

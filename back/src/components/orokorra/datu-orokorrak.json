@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_orokorra_datu_orokorraks",
+  "info": {
+    "displayName": "Datu orokorrak",
+    "icon": "house"
+  },
+  "options": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string"
+    },
+    "deskribapena": {
+      "type": "text"
+    }
+  }
+}

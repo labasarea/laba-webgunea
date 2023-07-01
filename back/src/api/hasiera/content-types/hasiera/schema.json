@@ -21,11 +21,6 @@
     "edukia": {
       "type": "richtext",
       "required": false
-    },
-    "sf_egunak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "hasiera.sf-eguna"
     }
   }
 }

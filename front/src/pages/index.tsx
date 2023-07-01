@@ -13,7 +13,7 @@ import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 
 interface DataProps {
-  strapiLabaGara: {
+  strapiHasiera: {
     deskribapena: string;
     izenburua: string;
     edukia: string;
@@ -21,9 +21,9 @@ interface DataProps {
 }
 
 const IndexPage: React.VFC<PageProps> = () => {
-  const { strapiLabaGara } = useStaticQuery<DataProps>(graphql`
+  const { strapiHasiera } = useStaticQuery<DataProps>(graphql`
     {
-      strapiLabaGara {
+      strapiHasiera {
         deskribapena
         izenburua
         edukia
@@ -34,18 +34,18 @@ const IndexPage: React.VFC<PageProps> = () => {
   return (
     <>
       <Helmet
-        title={`${strapiLabaGara.izenburua} | Laba`}
+        title={`${strapiHasiera.izenburua} | Laba`}
         htmlAttributes={{ lang: 'eu' }}
       >
-        <meta name="description" content={strapiLabaGara.deskribapena} />
+        <meta name="description" content={strapiHasiera.deskribapena} />
       </Helmet>
 
       <GlobalStyles />
 
       <Gainburua
         atala="hasiera"
-        izenburua={strapiLabaGara.izenburua}
-        deskribapena={strapiLabaGara.deskribapena}
+        izenburua={strapiHasiera.izenburua}
+        deskribapena={strapiHasiera.deskribapena}
         onClick={() => {
           navigate('/#edukia');
         }}
@@ -53,7 +53,7 @@ const IndexPage: React.VFC<PageProps> = () => {
 
       <ContentWrapper id="edukia">
         <Container>
-          <Deskribapena>{strapiLabaGara.edukia}</Deskribapena>
+          <Deskribapena>{strapiHasiera.edukia}</Deskribapena>
 
           <IzanLabaWrapper>
             <Botoia href="https://forms.gle/wV41CVkRX1JtHsAu9">

@@ -23,20 +23,24 @@ export interface SFEguna {
 }
 
 interface DataProps {
-  strapiHasiera: {
-    deskribapena: string;
-    izenburua: string;
+  strapiSanferminak: {
+    datu_orokorrak: {
+      deskribapena: string;
+      izenburua: string;
+    };
     edukia?: string;
     sf_egunak?: SFEguna[];
   };
 }
 
 const IndexPage: React.VFC<PageProps> = () => {
-  const { strapiHasiera } = useStaticQuery<DataProps>(graphql`
+  const { strapiSanferminak } = useStaticQuery<DataProps>(graphql`
     {
-      strapiHasiera {
-        deskribapena
-        izenburua
+      strapiSanferminak {
+        datu_orokorrak {
+          izenburua
+          deskribapena
+        }
         edukia
         sf_egunak {
           eguna
@@ -54,18 +58,21 @@ const IndexPage: React.VFC<PageProps> = () => {
   return (
     <>
       <Helmet
-        title={`${strapiHasiera.izenburua} | Laba`}
+        title={`${strapiSanferminak.datu_orokorrak.izenburua} | Laba`}
         htmlAttributes={{ lang: 'eu' }}
       >
-        <meta name="description" content={strapiHasiera.deskribapena} />
+        <meta
+          name="description"
+          content={strapiSanferminak.datu_orokorrak.deskribapena}
+        />
       </Helmet>
 
       <GlobalStyles />
 
       <Gainburua
         atala="sanferminak"
-        izenburua={strapiHasiera.izenburua}
-        deskribapena={strapiHasiera.deskribapena}
+        izenburua={strapiSanferminak.datu_orokorrak.izenburua}
+        deskribapena={strapiSanferminak.datu_orokorrak.deskribapena}
         onClick={() => {
           navigate('/sanferminak#edukia');
         }}
@@ -73,19 +80,20 @@ const IndexPage: React.VFC<PageProps> = () => {
 
       <ContentWrapper id="edukia">
         <Container>
-          {strapiHasiera.edukia && (
-            <Deskribapena>{strapiHasiera.edukia}</Deskribapena>
+          {strapiSanferminak.edukia && (
+            <Deskribapena>{strapiSanferminak.edukia}</Deskribapena>
           )}
 
-          {strapiHasiera.sf_egunak && strapiHasiera.sf_egunak.length > 0 && (
-            <SFEgunZerrenda>
-              {strapiHasiera.sf_egunak.map(sfeguna => (
-                <SFEgunaElementua key={sfeguna.id}>
-                  <SFEgunaEdukia sfeguna={sfeguna} />
-                </SFEgunaElementua>
-              ))}
-            </SFEgunZerrenda>
-          )}
+          {strapiSanferminak.sf_egunak &&
+            strapiSanferminak.sf_egunak.length > 0 && (
+              <SFEgunZerrenda>
+                {strapiSanferminak.sf_egunak.map(sfeguna => (
+                  <SFEgunaElementua key={sfeguna.id}>
+                    <SFEgunaEdukia sfeguna={sfeguna} />
+                  </SFEgunaElementua>
+                ))}
+              </SFEgunZerrenda>
+            )}
         </Container>
       </ContentWrapper>
 
