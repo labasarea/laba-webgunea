@@ -61,7 +61,7 @@ module.exports = {
           google: [
             {
               family: 'Almarai',
-              variants: ['300', '800'],
+              variants: ['300', '700'],
             },
           ],
         },
