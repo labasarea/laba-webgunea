@@ -26,6 +26,9 @@ export const MugikorNabigazioa: React.FC = () => {
                 <Link to="/">Laba gara</Link>
               </Esteka>
               <Esteka>
+                <Link to="/sanferminak">Sanferminak</Link>
+              </Esteka>
+              <Esteka>
                 <Link to="/kafetegia">Dastatu Laba</Link>
               </Esteka>
             </ul>
@@ -85,7 +88,7 @@ const OpenClose = styled.div`
 const NabigazioaWrapper = styled.div`
   @keyframes sartu {
     from {
-      right: -300px;
+      right: -100vw;
     }
     to {
       right: 0;
@@ -104,7 +107,7 @@ const NabigazioaWrapper = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  min-width: 300px;
+  width: 100vw;
   background-color: ${colors.beltza};
   color: ${colors.zuria};
   height: 100vh;
@@ -121,7 +124,7 @@ const KontaktuDatuak: React.FC = () => {
   return (
     <Kontaktua>
       <Helbidea>
-        <p>Gazteluko plaza 2</p>
+        <p>Gazteluko plaza, 2</p>
         <p>Iruñea</p>
       </Helbidea>
 

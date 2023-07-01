@@ -1,4 +1,4 @@
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { graphql, navigate, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
@@ -16,7 +16,7 @@ interface DataProps {
   strapiHasiera: {
     deskribapena: string;
     izenburua: string;
-    bazkidetza: string;
+    edukia: string;
   };
 }
 
@@ -26,7 +26,7 @@ const IndexPage: React.VFC<PageProps> = () => {
       strapiHasiera {
         deskribapena
         izenburua
-        bazkidetza
+        edukia
       }
     }
   `);
@@ -47,13 +47,13 @@ const IndexPage: React.VFC<PageProps> = () => {
         izenburua={strapiHasiera.izenburua}
         deskribapena={strapiHasiera.deskribapena}
         onClick={() => {
-          window.location.replace('/#labazkidetza');
+          navigate('/#edukia');
         }}
       />
 
-      <ContentWrapper id="labazkidetza">
+      <ContentWrapper id="edukia">
         <Container>
-          <Deskribapena>{strapiHasiera.bazkidetza}</Deskribapena>
+          <Deskribapena>{strapiHasiera.edukia}</Deskribapena>
 
           <IzanLabaWrapper>
             <Botoia href="https://forms.gle/wV41CVkRX1JtHsAu9">
@@ -92,7 +92,7 @@ const Botoia = styled.a`
   display: flex;
   align-items: center;
 
-  transition: color 500ms ease-out 100ms;
+  transition: color 0.4s ease;
   &:hover {
     color: ${colors.morea};
   }

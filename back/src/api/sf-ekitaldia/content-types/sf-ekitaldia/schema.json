@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sf_ekitaldias",
+  "info": {
+    "singularName": "sf-ekitaldia",
+    "pluralName": "sf-ekitaldias",
+    "displayName": "SF-ekitaldia",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hitzordua": {
+      "type": "datetime"
+    },
+    "izenburua": {
+      "type": "string"
+    }
+  }
+}

@@ -16,12 +16,13 @@ module.exports = {
       resolve: 'gatsby-source-strapi-graphql',
       options: {
         apiURL: process.env.API_URL,
-        collectionTypes: [],
+        collectionTypes: ['sf-ekitaldia'],
         singleTypes: [
           'hasiera',
           'kafetegia',
           'lege-oharra',
           'pribatutasun-politika',
+          'sanferminak',
         ],
         contentTypes: [],
         // Enable/disable cache.
@@ -41,7 +42,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/logo.png`,
+        icon: `src/assets/favicon.svg`,
       },
     },
     'gatsby-plugin-offline',
@@ -60,7 +61,7 @@ module.exports = {
           google: [
             {
               family: 'Almarai',
-              variants: ['300', '800'],
+              variants: ['300', '700'],
             },
           ],
         },

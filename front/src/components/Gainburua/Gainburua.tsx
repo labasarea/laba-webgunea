@@ -14,10 +14,12 @@ import MediaQuery from 'react-responsive';
 import { KontaktuDatuak } from './KontaktuDatuak';
 import Gezia from '../../assets/gezia.svg';
 
+export type AtalaName = 'hasiera' | 'kafetegia' | 'sanferminak';
+
 interface Props {
   izenburua?: string;
   deskribapena?: string;
-  atala?: 'hasiera' | 'kafetegia';
+  atala?: AtalaName;
   onClick?: () => void;
 }
 
@@ -38,7 +40,7 @@ export const Gainburua: React.FC<Props> = ({
             <MugikorLogoWrapper>
               <Link to="/">
                 <LogoWrapper>
-                  <Logo title="Laba gara" />
+                  <Logo title="Laba gara" atala={atala} />
                 </LogoWrapper>
               </Link>
             </MugikorLogoWrapper>
@@ -50,7 +52,7 @@ export const Gainburua: React.FC<Props> = ({
         <GainburuWrapper>
           <Link to="/">
             <LogoWrapper>
-              <Logo title="Laba gara" />
+              <Logo title="Laba gara" atala={atala} />
             </LogoWrapper>
           </Link>
 
@@ -83,15 +85,19 @@ export const Gainburua: React.FC<Props> = ({
 };
 
 const GeziaWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  display: none;
+
+  ${media.desktop`
+    display: flex;
+    justify-content: flex-end;
+  `}
 `;
 
 const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
   cursor: pointer;
   path {
-    fill: ${({ atala }) =>
-      atala === 'hasiera' ? colors.zuria : colors.beltza};
+    transition: fill 0.4s ease;
+    fill: var(--color);
   }
 
   animation-duration: 2s;
@@ -108,6 +114,12 @@ const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
     }
     100% {
       transform: rotate(90deg) translateX(0);
+    }
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
     }
   }
 `;
@@ -138,19 +150,15 @@ const MugikorLogoWrapper = styled.div`
   justify-content: center;
 `;
 
-const Wrapper = styled.div<{ atala?: 'hasiera' | 'kafetegia' }>`
-  --color: ${({ atala }) =>
-    atala === 'hasiera' ? colors.zuria : colors.beltza};
+const Wrapper = styled.div<{ atala?: AtalaName }>`
+  --color: ${({ atala }) => getAtalaColor(atala)};
+  --hover-color: ${({ atala }) => getAtalaHoverColor(atala)};
 
   display: flex;
   flex-direction: column;
 
-  background-color: ${({ atala }) =>
-    atala === 'hasiera' ? colors.gorria : colors.horia};
+  background-color: ${({ atala }) => getAtalaBackground(atala)};
   color: var(--color);
-
-  /* HACK: Hasiera orriak edukirik ez duenez, gainburuak altuera osoa hartuko du */
-  min-height: ${({ atala }) => (atala === 'hasiera' ? '100vh' : '0')};
 
   ${media.desktop`
     min-height: ${({ atala }: { atala: 'hasiera' | 'kafetegia' }) =>
@@ -162,9 +170,16 @@ const LogoWrapper = styled.div`
   width: ${rem(size.huge)};
 `;
 
-const Logo = styled(LabaLogo)`
+const Logo = styled(LabaLogo)<{ atala?: AtalaName }>`
   path {
+    transition: fill 0.4s ease;
     fill: var(--color);
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
+    }
   }
 `;
 
@@ -215,3 +230,39 @@ const Izenburua = styled.h1`
 
   ${font.gargantuan()};
 `;
+
+function getAtalaBackground(atala?: AtalaName) {
+  if (atala === 'sanferminak') {
+    return colors.morea;
+  }
+
+  if (atala === 'hasiera') {
+    return colors.gorria;
+  }
+
+  if (atala === 'kafetegia') {
+    return colors.horia;
+  }
+
+  return colors.beltza;
+}
+
+function getAtalaColor(atala?: AtalaName) {
+  if (atala === 'hasiera' || atala === 'sanferminak') {
+    return colors.zuria;
+  }
+
+  if (atala === 'kafetegia') {
+    return colors.beltza;
+  }
+
+  return colors.zuria;
+}
+
+function getAtalaHoverColor(atala?: AtalaName) {
+  if (atala === 'sanferminak' || atala === 'hasiera') {
+    return colors.horia;
+  }
+
+  return colors.gorria;
+}

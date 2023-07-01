@@ -18,9 +18,9 @@
     "izenburua": {
       "type": "string"
     },
-    "bazkidetza": {
+    "edukia": {
       "type": "richtext",
-      "required": true
+      "required": false
     }
   }
 }

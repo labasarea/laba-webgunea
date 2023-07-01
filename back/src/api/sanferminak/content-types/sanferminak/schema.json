@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "sanferminaks",
+  "info": {
+    "singularName": "sanferminak",
+    "pluralName": "sanferminaks",
+    "displayName": "Sanferminak"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "datu_orokorrak": {
+      "displayName": "Datu orokorrak",
+      "type": "component",
+      "repeatable": false,
+      "component": "orokorra.datu-orokorrak"
+    },
+    "edukia": {
+      "type": "richtext"
+    },
+    "sf_egunak": {
+      "type": "component",
+      "repeatable": true,
+      "component": "hasiera.sf-eguna"
+    }
+  }
+}
