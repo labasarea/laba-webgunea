@@ -202,7 +202,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-      font-family: 'Almarai', sans-serif;
+      font-family: 'Martel Sans', sans-serif;
 
       ${font.base()}
       font-weight: ${fontWeight.bold};

@@ -124,7 +124,7 @@ const KontaktuDatuak: React.FC = () => {
   return (
     <Kontaktua>
       <Helbidea>
-        <p>Gazteluko plaza 2</p>
+        <p>Gazteluko plaza, 2</p>
         <p>Iruñea</p>
       </Helbidea>
 
