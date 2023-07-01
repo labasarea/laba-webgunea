@@ -10,12 +10,12 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.11.2",
-    "@strapi/plugin-i18n": "4.11.2",
-    "@strapi/plugin-users-permissions": "4.11.2",
-    "@strapi/strapi": "4.11.2",
-    "pg": "^8.11.0",
-    "pg-connection-string": "^2.6.0",
+    "@strapi/plugin-graphql": "^4.11.3",
+    "@strapi/plugin-i18n": "4.11.3",
+    "@strapi/plugin-users-permissions": "4.11.3",
+    "@strapi/strapi": "4.11.3",
+    "pg": "^8.11.1",
+    "pg-connection-string": "^2.6.1",
     "sqlite3": "5.1.6",
     "strapi-plugin-netlify-deployments": "^2.0.0"
   },
