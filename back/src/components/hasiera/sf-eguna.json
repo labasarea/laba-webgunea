@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_hasiera_sf_egunas",
+  "info": {
+    "displayName": "SF-eguna",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "ekitaldi_nagusia": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sf-ekitaldia.sf-ekitaldia"
+    },
+    "eguna": {
+      "type": "date"
+    }
+  }
+}

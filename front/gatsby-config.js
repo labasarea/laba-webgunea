@@ -16,7 +16,7 @@ module.exports = {
       resolve: 'gatsby-source-strapi-graphql',
       options: {
         apiURL: process.env.API_URL,
-        collectionTypes: [],
+        collectionTypes: ['sf-ekitaldia'],
         singleTypes: [
           'hasiera',
           'kafetegia',
