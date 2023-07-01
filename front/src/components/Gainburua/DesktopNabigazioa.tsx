@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { rem } from 'polished';
 import { size } from '../../ui/theme';
 import { AtalaName } from './Gainburua';
@@ -42,9 +42,18 @@ export const EstekaZerrenda = styled.ul`
 export const Esteka = styled.li<{ aktiboa?: boolean }>`
   padding: ${rem(size.small)};
 
+  color: var(--color);
+
   ${({ aktiboa }) =>
-    aktiboa &&
-    `
-    border-bottom: 3px solid var(--color);
-  `}
+    aktiboa
+      ? css`
+          border-bottom: 3px solid var(--color);
+        `
+      : css`
+          transition: color 0.4s ease;
+
+          &:hover {
+            color: var(--hover-color);
+          }
+        `}
 `;

@@ -92,7 +92,7 @@ const Botoia = styled.a`
   display: flex;
   align-items: center;
 
-  transition: color 500ms ease-out 100ms;
+  transition: color 0.4s ease;
   &:hover {
     color: ${colors.morea};
   }

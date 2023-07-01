@@ -61,7 +61,14 @@ export const Instagram = styled(InstagramLogo)`
   width: ${rem(size.base)};
   height: ${rem(size.base)};
   path {
+    transition: fill 0.4s ease;
     fill: var(--color);
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
+    }
   }
 `;
 
@@ -69,7 +76,14 @@ export const Twitter = styled(TwitterLogo)`
   width: ${rem(size.base)};
   height: ${rem(size.base)};
   path {
+    transition: fill 0.4s ease;
     fill: var(--color);
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
+    }
   }
 `;
 

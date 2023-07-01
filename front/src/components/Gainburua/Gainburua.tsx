@@ -40,7 +40,7 @@ export const Gainburua: React.FC<Props> = ({
             <MugikorLogoWrapper>
               <Link to="/">
                 <LogoWrapper>
-                  <Logo title="Laba gara" />
+                  <Logo title="Laba gara" atala={atala} />
                 </LogoWrapper>
               </Link>
             </MugikorLogoWrapper>
@@ -52,7 +52,7 @@ export const Gainburua: React.FC<Props> = ({
         <GainburuWrapper>
           <Link to="/">
             <LogoWrapper>
-              <Logo title="Laba gara" />
+              <Logo title="Laba gara" atala={atala} />
             </LogoWrapper>
           </Link>
 
@@ -96,6 +96,7 @@ const GeziaWrapper = styled.div`
 const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
   cursor: pointer;
   path {
+    transition: fill 0.4s ease;
     fill: var(--color);
   }
 
@@ -113,6 +114,12 @@ const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
     }
     100% {
       transform: rotate(90deg) translateX(0);
+    }
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
     }
   }
 `;
@@ -145,6 +152,7 @@ const MugikorLogoWrapper = styled.div`
 
 const Wrapper = styled.div<{ atala?: AtalaName }>`
   --color: ${({ atala }) => getAtalaColor(atala)};
+  --hover-color: ${({ atala }) => getAtalaHoverColor(atala)};
 
   display: flex;
   flex-direction: column;
@@ -162,9 +170,16 @@ const LogoWrapper = styled.div`
   width: ${rem(size.huge)};
 `;
 
-const Logo = styled(LabaLogo)`
+const Logo = styled(LabaLogo)<{ atala?: AtalaName }>`
   path {
+    transition: fill 0.4s ease;
     fill: var(--color);
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
+    }
   }
 `;
 
@@ -225,7 +240,11 @@ function getAtalaBackground(atala?: AtalaName) {
     return colors.gorria;
   }
 
-  return colors.horia;
+  if (atala === 'kafetegia') {
+    return colors.horia;
+  }
+
+  return colors.beltza;
 }
 
 function getAtalaColor(atala?: AtalaName) {
@@ -233,5 +252,17 @@ function getAtalaColor(atala?: AtalaName) {
     return colors.zuria;
   }
 
-  return colors.beltza;
+  if (atala === 'kafetegia') {
+    return colors.beltza;
+  }
+
+  return colors.zuria;
+}
+
+function getAtalaHoverColor(atala?: AtalaName) {
+  if (atala === 'sanferminak' || atala === 'hasiera') {
+    return colors.horia;
+  }
+
+  return colors.gorria;
 }
