@@ -42,7 +42,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/logo.png`,
+        icon: `src/assets/favicon.svg`,
       },
     },
     'gatsby-plugin-offline',
@@ -60,7 +60,7 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: 'Martel Sans',
+              family: 'Almarai',
               variants: ['300', '700'],
             },
           ],
