@@ -14,10 +14,10 @@ export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
     <Nabigazioa>
       <EstekaZerrenda>
         <Esteka aktiboa={atala === 'hasiera'}>
-          <Link to="/">Hasiera</Link>
+          <Link to="/">Laba gara</Link>
         </Esteka>
-        <Esteka aktiboa={atala === 'laba-gara'}>
-          <Link to="/laba-gara">Laba gara</Link>
+        <Esteka aktiboa={atala === 'sanferminak'}>
+          <Link to="/sanferminak">Sanferminak</Link>
         </Esteka>
         <Esteka aktiboa={atala === 'kafetegia'}>
           <Link to="/kafetegia">Dastatu Laba</Link>

@@ -14,7 +14,7 @@ import MediaQuery from 'react-responsive';
 import { KontaktuDatuak } from './KontaktuDatuak';
 import Gezia from '../../assets/gezia.svg';
 
-export type AtalaName = 'hasiera' | 'kafetegia' | 'laba-gara';
+export type AtalaName = 'hasiera' | 'kafetegia' | 'sanferminak';
 
 interface Props {
   izenburua?: string;
@@ -217,11 +217,11 @@ const Izenburua = styled.h1`
 `;
 
 function getAtalaBackground(atala?: AtalaName) {
-  if (atala === 'hasiera') {
+  if (atala === 'sanferminak') {
     return colors.morea;
   }
 
-  if (atala === 'laba-gara') {
+  if (atala === 'hasiera') {
     return colors.gorria;
   }
 
@@ -229,11 +229,7 @@ function getAtalaBackground(atala?: AtalaName) {
 }
 
 function getAtalaColor(atala?: AtalaName) {
-  if (atala === 'laba-gara') {
-    return colors.zuria;
-  }
-
-  if (atala === 'hasiera') {
+  if (atala === 'hasiera' || atala === 'sanferminak') {
     return colors.zuria;
   }
 

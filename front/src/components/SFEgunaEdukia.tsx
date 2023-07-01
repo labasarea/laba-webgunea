@@ -1,6 +1,6 @@
 import React from 'react';
 import { datesUtils } from '../utils/dateUtils';
-import { SFEguna } from '../pages';
+import { SFEguna } from '../pages/sanferminak';
 import styled from 'styled-components';
 import { rem } from 'polished';
 import { colors, font, fontWeight, size } from '../ui/theme';
