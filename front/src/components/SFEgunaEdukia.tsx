@@ -3,7 +3,7 @@ import { datesUtils } from '../utils/dateUtils';
 import { SFEguna } from '../pages/sanferminak';
 import styled from 'styled-components';
 import { rem } from 'polished';
-import { colors, font, fontWeight, size } from '../ui/theme';
+import { font, fontWeight, size } from '../ui/theme';
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface DataProps {
@@ -61,7 +61,6 @@ export const SFEgunaEdukia: React.FC<{ sfeguna: SFEguna }> = ({ sfeguna }) => {
 };
 
 const BesteHitzordua = styled.p`
-  color: ${colors.zuria};
   ${font.base()};
   font-weight: ${fontWeight.bold};
 
@@ -72,21 +71,20 @@ const SFEgunaEguna = styled.p`
   margin-bottom: ${rem(size.base)};
 
   ${font.large()};
-  color: ${colors.zuria};
 `;
 
 const SFEgunaNagusiaIzenburua = styled.h2`
   flex-grow: 1;
 
   ${font.large()};
-  color: ${colors.zuria};
+
   font-weight: ${fontWeight.bold};
   text-align: center;
 `;
 
 const SFEgunaNagusiaOrdua = styled.p`
   ${font.base()};
-  color: ${colors.zuria};
+
   font-weight: ${fontWeight.bold};
   text-align: center;
 `;

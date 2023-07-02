@@ -11,6 +11,7 @@ import { rem } from 'polished';
 import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
+import { datesUtils } from '../utils/dateUtils';
 
 export interface SFEguna {
   id: string;
@@ -88,7 +89,14 @@ const IndexPage: React.VFC<PageProps> = () => {
             strapiSanferminak.sf_egunak.length > 0 && (
               <SFEgunZerrenda>
                 {strapiSanferminak.sf_egunak.map(sfeguna => (
-                  <SFEgunaElementua key={sfeguna.id}>
+                  <SFEgunaElementua
+                    key={sfeguna.id}
+                    className={
+                      datesUtils.isToday(new Date(sfeguna.eguna))
+                        ? 'active'
+                        : ''
+                    }
+                  >
                     <SFEgunaEdukia sfeguna={sfeguna} />
                   </SFEgunaElementua>
                 ))}
@@ -107,6 +115,23 @@ const SFEgunaElementua = styled.li`
 
   width: 100%;
   background-color: ${colors.beltza};
+  color: ${colors.zuria};
+
+  &.active {
+    @keyframes mymove {
+      0% {
+        background-color: ${colors.beltza};
+      }
+      33% {
+        background-color: ${colors.morea};
+      }
+      66% {
+        background-color: ${colors.beltza};
+      }
+    }
+
+    animation: mymove 4s infinite;
+  }
 
   ${media.tablet`
     aspect-ratio: 1/1;
