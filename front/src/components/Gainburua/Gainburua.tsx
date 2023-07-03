@@ -234,11 +234,11 @@ const Izenburua = styled.h1`
 
 function getAtalaBackground(atala?: AtalaName) {
   if (atala === 'sanferminak') {
-    return colors.morea;
+    return colors.gorria;
   }
 
   if (atala === 'hasiera') {
-    return colors.gorria;
+    return colors.morea;
   }
 
   if (atala === 'kafetegia') {

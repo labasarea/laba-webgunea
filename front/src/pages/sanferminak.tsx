@@ -119,7 +119,7 @@ const SFEgunaElementua = styled.li`
         background-color: ${colors.beltza};
       }
       33% {
-        background-color: ${colors.morea};
+        background-color: ${colors.gorria};
       }
       66% {
         background-color: ${colors.beltza};
