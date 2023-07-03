@@ -2,7 +2,6 @@ import { graphql, navigate, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
-import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
 import styled from 'styled-components';
 import { colors, font, fontWeight, media, size } from '../ui/theme';
@@ -12,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
 import { datesUtils } from '../utils/dateUtils';
+import { SEO } from '../components/SEO';
 
 export interface SFEguna {
   id: string;
@@ -34,7 +34,7 @@ interface DataProps {
   };
 }
 
-const IndexPage: React.VFC<PageProps> = () => {
+const IndexPage: React.VFC<PageProps> = ({ location }) => {
   const { strapiSanferminak } = useStaticQuery<DataProps>(graphql`
     {
       strapiSanferminak {
@@ -58,17 +58,13 @@ const IndexPage: React.VFC<PageProps> = () => {
 
   return (
     <>
-      <Helmet
-        title={`${strapiSanferminak.datu_orokorrak.izenburua} | Laba`}
-        htmlAttributes={{ lang: 'eu' }}
-      >
-        <meta
-          name="description"
-          content={strapiSanferminak.datu_orokorrak.deskribapena}
-        />
-      </Helmet>
-
       <GlobalStyles />
+
+      <SEO
+        location={location}
+        title={strapiSanferminak.datu_orokorrak.izenburua}
+        description={strapiSanferminak.datu_orokorrak.izenburua}
+      />
 
       <Gainburua
         atala="sanferminak"
@@ -123,7 +119,7 @@ const SFEgunaElementua = styled.li`
         background-color: ${colors.beltza};
       }
       33% {
-        background-color: ${colors.morea};
+        background-color: ${colors.gorria};
       }
       66% {
         background-color: ${colors.beltza};

@@ -2,7 +2,6 @@ import { PageProps, navigate } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
-import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
 import { Container } from '../components/Container';
 import styled from 'styled-components';
@@ -15,8 +14,9 @@ import { Produktua } from '../domain/models/Produktua';
 import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
 import { AlergenoLegenda } from '../components/AlergenoLegenda';
 import { Oina } from '../components/Oina';
+import { SEO } from '../components/SEO';
 
-const Kafetegia: React.VFC<PageProps> = () => {
+const Kafetegia: React.VFC<PageProps> = ({ location }) => {
   const {
     izenburua,
     deskribapena,
@@ -32,9 +32,7 @@ const Kafetegia: React.VFC<PageProps> = () => {
 
   return (
     <>
-      <Helmet title={`${izenburua} | Laba`} htmlAttributes={{ lang: 'eu' }}>
-        <meta name="description" content={deskribapena} />
-      </Helmet>
+      <SEO title={izenburua} description={deskribapena} location={location} />
 
       <GlobalStyles />
 

@@ -2,7 +2,6 @@ import { graphql, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
-import { Helmet } from 'react-helmet';
 import { Container } from '../components/Container';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
@@ -10,6 +9,7 @@ import { font, fontWeight, size } from '../ui/theme';
 import { rem } from 'polished';
 import { Gainburua } from '../components/Gainburua';
 import { Oina } from '../components/Oina';
+import { SEO } from '../components/SEO';
 
 interface DataProps {
   strapiLegeOharra: {
@@ -18,7 +18,7 @@ interface DataProps {
   };
 }
 
-const LegeOharra: React.VFC<PageProps> = () => {
+const LegeOharra: React.VFC<PageProps> = ({ location }) => {
   const { strapiLegeOharra } = useStaticQuery<DataProps>(graphql`
     {
       strapiLegeOharra {
@@ -30,10 +30,7 @@ const LegeOharra: React.VFC<PageProps> = () => {
 
   return (
     <>
-      <Helmet
-        title={`${strapiLegeOharra.izenburua} | Laba`}
-        htmlAttributes={{ lang: 'eu' }}
-      />
+      <SEO title={strapiLegeOharra.izenburua} location={location} />
 
       <GlobalStyles />
 
