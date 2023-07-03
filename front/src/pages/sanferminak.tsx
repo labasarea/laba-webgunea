@@ -12,6 +12,7 @@ import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
 import { datesUtils } from '../utils/dateUtils';
+import ogImagePath from '../images/og-image.jpeg';
 
 export interface SFEguna {
   id: string;
@@ -34,7 +35,7 @@ interface DataProps {
   };
 }
 
-const IndexPage: React.VFC<PageProps> = () => {
+const IndexPage: React.VFC<PageProps> = ({ location }) => {
   const { strapiSanferminak } = useStaticQuery<DataProps>(graphql`
     {
       strapiSanferminak {
@@ -66,6 +67,12 @@ const IndexPage: React.VFC<PageProps> = () => {
           name="description"
           content={strapiSanferminak.datu_orokorrak.deskribapena}
         />
+        <meta
+          name="og:image"
+          content={`${location.protocol}//${location.host}${ogImagePath}`}
+        />
+        <meta name="og:image:height" content="500" />
+        <meta name="og:image:width" content="1500" />
       </Helmet>
 
       <GlobalStyles />
