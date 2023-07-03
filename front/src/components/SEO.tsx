@@ -3,13 +3,17 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import ogImagePath from '../images/og-image.jpeg';
 
-export const SEO: React.VFC<{
+interface Props {
   title: string;
-  description: string;
+  description?: string;
+
   location: PageProps['location'];
-}> = ({ title, description, location }) => (
+}
+
+export const SEO: React.VFC<Props> = ({ title, description, location }) => (
   <Helmet title={`${title} | Laba`} htmlAttributes={{ lang: 'eu' }}>
-    <meta name="description" content={description} />
+    {description && <meta name="description" content={description} />}
+
     <meta
       name="og:image"
       content={`${location.protocol}//${location.host}${ogImagePath}`}

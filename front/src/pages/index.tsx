@@ -2,7 +2,6 @@ import { graphql, navigate, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
-import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
 import styled from 'styled-components';
 import { colors, font, fontWeight, size } from '../ui/theme';
@@ -11,6 +10,7 @@ import { rem } from 'polished';
 import Gezia from '../assets/gezia.svg';
 import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
+import { SEO } from '../components/SEO';
 
 interface DataProps {
   strapiHasiera: {
@@ -20,7 +20,7 @@ interface DataProps {
   };
 }
 
-const IndexPage: React.VFC<PageProps> = () => {
+const IndexPage: React.VFC<PageProps> = ({ location }) => {
   const { strapiHasiera } = useStaticQuery<DataProps>(graphql`
     {
       strapiHasiera {
@@ -33,12 +33,11 @@ const IndexPage: React.VFC<PageProps> = () => {
 
   return (
     <>
-      <Helmet
-        title={`${strapiHasiera.izenburua} | Laba`}
-        htmlAttributes={{ lang: 'eu' }}
-      >
-        <meta name="description" content={strapiHasiera.deskribapena} />
-      </Helmet>
+      <SEO
+        title={strapiHasiera.izenburua}
+        description={strapiHasiera.deskribapena}
+        location={location}
+      />
 
       <GlobalStyles />
 

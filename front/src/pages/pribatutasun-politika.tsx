@@ -3,7 +3,6 @@ import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 import remarkGfm from 'remark-gfm';
 
-import { Helmet } from 'react-helmet';
 import { Container } from '../components/Container';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
@@ -11,6 +10,7 @@ import { colors, font, fontWeight, size } from '../ui/theme';
 import { rem } from 'polished';
 import { Gainburua } from '../components/Gainburua';
 import { Oina } from '../components/Oina';
+import { SEO } from '../components/SEO';
 
 interface DataProps {
   strapiPribatutasunPolitika: {
@@ -19,7 +19,7 @@ interface DataProps {
   };
 }
 
-const PribatutasunPolitika: React.VFC<PageProps> = () => {
+const PribatutasunPolitika: React.VFC<PageProps> = ({ location }) => {
   const { strapiPribatutasunPolitika } = useStaticQuery<DataProps>(graphql`
     {
       strapiPribatutasunPolitika {
@@ -31,10 +31,7 @@ const PribatutasunPolitika: React.VFC<PageProps> = () => {
 
   return (
     <>
-      <Helmet
-        title={`${strapiPribatutasunPolitika.izenburua} | Laba`}
-        htmlAttributes={{ lang: 'eu' }}
-      />
+      <SEO title={strapiPribatutasunPolitika.izenburua} location={location} />
 
       <GlobalStyles />
 
