@@ -6,12 +6,13 @@ import { Gainburua } from '../components/Gainburua';
 import styled from 'styled-components';
 import { colors, font, fontWeight, media, size } from '../ui/theme';
 import { Container } from '../components/Container';
-import { rem } from 'polished';
+import { rem, rgba } from 'polished';
 import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
 import { datesUtils } from '../utils/dateUtils';
 import { SEO } from '../components/SEO';
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 
 export interface SFEguna {
   id: string;
@@ -21,6 +22,8 @@ export interface SFEguna {
     hitzordua: string;
     izenburua: string;
   };
+  kartela?: { file: ImageDataLike };
+  atzealde_irudia?: { file: ImageDataLike };
 }
 
 interface DataProps {
@@ -30,7 +33,7 @@ interface DataProps {
       izenburua: string;
     };
     edukia?: string;
-    sf_egunak?: SFEguna[];
+    sf_egunak: SFEguna[];
   };
 }
 
@@ -50,6 +53,22 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
             id
             hitzordua
             izenburua
+          }
+          kartela {
+            alternativeText
+            file {
+              childImageSharp {
+                gatsbyImageData(width: 300, aspectRatio: 1)
+              }
+            }
+          }
+          atzealde_irudia {
+            alternativeText
+            file {
+              childImageSharp {
+                gatsbyImageData(width: 300, aspectRatio: 1)
+              }
+            }
           }
         }
       }
@@ -84,18 +103,28 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
           {strapiSanferminak.sf_egunak &&
             strapiSanferminak.sf_egunak.length > 0 && (
               <SFEgunZerrenda>
-                {strapiSanferminak.sf_egunak.map(sfeguna => (
-                  <SFEgunaElementua
-                    key={sfeguna.id}
-                    className={
-                      datesUtils.isToday(new Date(sfeguna.eguna))
-                        ? 'active'
-                        : ''
-                    }
-                  >
-                    <SFEgunaEdukia sfeguna={sfeguna} />
-                  </SFEgunaElementua>
-                ))}
+                {strapiSanferminak.sf_egunak.map(sfeguna => {
+                  return (
+                    <SFEgunaElementua key={sfeguna.id}>
+                      {sfeguna.atzealde_irudia && (
+                        <AtzealdeIrudia
+                          alt="Irudia"
+                          image={getImage(sfeguna.atzealde_irudia.file)}
+                        />
+                      )}
+
+                      <EdukiaWrapper
+                        className={
+                          datesUtils.isToday(new Date(sfeguna.eguna))
+                            ? 'active'
+                            : ''
+                        }
+                      >
+                        <SFEgunaEdukia sfeguna={sfeguna} />
+                      </EdukiaWrapper>
+                    </SFEgunaElementua>
+                  );
+                })}
               </SFEgunZerrenda>
             )}
         </Container>
@@ -106,12 +135,29 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
   );
 };
 
-const SFEgunaElementua = styled.li`
+const AtzealdeIrudia = styled(GatsbyImage)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+`;
+
+const EdukiaWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
   padding: ${rem(size.small)};
 
-  width: 100%;
   background-color: ${colors.beltza};
-  color: ${colors.zuria};
+  transition: background-color 1s ease;
+
+  &:hover {
+    background-color: ${rgba(colors.beltza, 0.8)};
+  }
 
   &.active {
     @keyframes mymove {
@@ -128,6 +174,13 @@ const SFEgunaElementua = styled.li`
 
     animation: mymove 4s infinite;
   }
+`;
+
+const SFEgunaElementua = styled.li`
+  position: relative;
+  width: 100%;
+
+  color: ${colors.zuria};
 
   ${media.tablet`
     aspect-ratio: 1/1;
