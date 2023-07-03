@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import { rem } from 'polished';
 import { size } from '../../ui/theme';
 import { AtalaName } from './Gainburua';
+import { GainburuLink } from './GainburuLink';
 
 interface Props {
   atala?: AtalaName;
@@ -14,13 +14,13 @@ export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
     <Nabigazioa>
       <EstekaZerrenda>
         <Esteka aktiboa={atala === 'hasiera'}>
-          <Link to="/">Laba gara</Link>
+          <GainburuLink to="/">Laba gara</GainburuLink>
         </Esteka>
         <Esteka aktiboa={atala === 'sanferminak'}>
-          <Link to="/sanferminak">Sanferminak</Link>
+          <GainburuLink to="/sanferminak">Sanferminak</GainburuLink>
         </Esteka>
         <Esteka aktiboa={atala === 'kafetegia'}>
-          <Link to="/kafetegia">Dastatu Laba</Link>
+          <GainburuLink to="/kafetegia">Dastatu Laba</GainburuLink>
         </Esteka>
       </EstekaZerrenda>
     </Nabigazioa>

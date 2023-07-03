@@ -95,6 +95,11 @@ const Botoia = styled.a`
   &:hover {
     color: ${colors.morea};
   }
+
+  &:focus {
+    border: 2px solid ${colors.zuria};
+    outline: 3px solid ${colors.morea};
+  }
 `;
 
 const GeziaLogo = styled(Gezia)`

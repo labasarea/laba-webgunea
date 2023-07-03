@@ -26,4 +26,8 @@ const Esteka = styled(Link)`
   &:hover {
     color: ${colors.morea};
   }
+
+  &:focus {
+    outline: 2px solid ${colors.morea};
+  }
 `;

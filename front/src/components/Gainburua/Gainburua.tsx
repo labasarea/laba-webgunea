@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import { rem } from 'polished';
 import styled from 'styled-components';
@@ -13,6 +12,7 @@ import { MugikorNabigazioa } from './MugikorNabigazioa';
 import MediaQuery from 'react-responsive';
 import { KontaktuDatuak } from './KontaktuDatuak';
 import Gezia from '../../assets/gezia.svg';
+import { GainburuLink } from './GainburuLink';
 
 export type AtalaName = 'hasiera' | 'kafetegia' | 'sanferminak';
 
@@ -27,7 +27,6 @@ export const Gainburua: React.FC<Props> = ({
   izenburua,
   deskribapena,
   atala,
-  onClick,
 }) => {
   return (
     <Wrapper atala={atala}>
@@ -38,11 +37,11 @@ export const Gainburua: React.FC<Props> = ({
               <MugikorNabigazioa />
             </MenuWrapper>
             <MugikorLogoWrapper>
-              <Link to="/">
+              <GainburuLink to="/">
                 <LogoWrapper>
                   <Logo title="Laba gara" atala={atala} />
                 </LogoWrapper>
-              </Link>
+              </GainburuLink>
             </MugikorLogoWrapper>
           </MugikorWrapper>
         </Container>
@@ -50,11 +49,11 @@ export const Gainburua: React.FC<Props> = ({
 
       <MediaQuery minWidth={breakpoints.tablet}>
         <GainburuWrapper>
-          <Link to="/">
+          <GainburuLink to="/">
             <LogoWrapper>
               <Logo title="Laba gara" atala={atala} />
             </LogoWrapper>
-          </Link>
+          </GainburuLink>
 
           <KontaktuDatuak />
         </GainburuWrapper>
@@ -71,7 +70,9 @@ export const Gainburua: React.FC<Props> = ({
             </IzenburuWrapper>
 
             <GeziaWrapper>
-              <GeziaLogo atala={atala} onClick={onClick} />
+              <GainburuLink to="#edukia">
+                <GeziaLogo atala={atala} />
+              </GainburuLink>
             </GeziaWrapper>
           </Container>
         </Nagusia>

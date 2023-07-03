@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { font, size } from '../../ui/theme';
 import InstagramLogo from '../../assets/instagram.svg';
 import TwitterLogo from '../../assets/twitter.svg';
+import { GainburuLink } from './GainburuLink';
 
 /**
  * ERREPIKATUA
@@ -22,23 +23,23 @@ export const KontaktuDatuak: React.FC = () => {
 
       <SareSozialak>
         <SareSoziala>
-          <a
+          <GainburuLink
             tabIndex={0}
             aria-label="Laba Twitterren"
-            href="https://twitter.com/labasarea/"
+            to="https://twitter.com/labasarea/"
           >
             <Twitter title="Laba Twitterren" />
-          </a>
+          </GainburuLink>
         </SareSoziala>
 
         <SareSoziala>
-          <a
+          <GainburuLink
             tabIndex={0}
             aria-label="Laba Instagramen"
-            href="https://www.instagram.com/labasarea/"
+            to="https://www.instagram.com/labasarea/"
           >
             <Instagram role="link" title="Laba Instagramen" />
-          </a>
+          </GainburuLink>
         </SareSoziala>
       </SareSozialak>
     </Kontaktua>
