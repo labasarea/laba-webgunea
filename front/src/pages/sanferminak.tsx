@@ -2,7 +2,6 @@ import { graphql, navigate, PageProps, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
-import { Helmet } from 'react-helmet';
 import { Gainburua } from '../components/Gainburua';
 import styled from 'styled-components';
 import { colors, font, fontWeight, media, size } from '../ui/theme';
@@ -12,7 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import { Oina } from '../components/Oina';
 import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
 import { datesUtils } from '../utils/dateUtils';
-import ogImagePath from '../images/og-image.jpeg';
+import { SEO } from '../components/SEO';
 
 export interface SFEguna {
   id: string;
@@ -59,23 +58,13 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
 
   return (
     <>
-      <Helmet
-        title={`${strapiSanferminak.datu_orokorrak.izenburua} | Laba`}
-        htmlAttributes={{ lang: 'eu' }}
-      >
-        <meta
-          name="description"
-          content={strapiSanferminak.datu_orokorrak.deskribapena}
-        />
-        <meta
-          name="og:image"
-          content={`${location.protocol}//${location.host}${ogImagePath}`}
-        />
-        <meta name="og:image:height" content="500" />
-        <meta name="og:image:width" content="1500" />
-      </Helmet>
-
       <GlobalStyles />
+
+      <SEO
+        location={location}
+        title={strapiSanferminak.datu_orokorrak.izenburua}
+        description={strapiSanferminak.datu_orokorrak.izenburua}
+      />
 
       <Gainburua
         atala="sanferminak"
