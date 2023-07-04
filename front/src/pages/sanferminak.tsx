@@ -1,5 +1,5 @@
 import { graphql, navigate, PageProps, useStaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import { GlobalStyles } from '../ui/GlobalStyles';
 
 import { Gainburua } from '../components/Gainburua';
@@ -13,6 +13,7 @@ import { SFEgunaEdukia } from '../components/SFEgunaEdukia';
 import { datesUtils } from '../utils/dateUtils';
 import { SEO } from '../components/SEO';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
+import { Dialog } from '../components/Dialog';
 
 export interface SFEguna {
   id: string;
@@ -58,7 +59,7 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
             alternativeText
             file {
               childImageSharp {
-                gatsbyImageData(width: 300, aspectRatio: 1)
+                gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1)
               }
             }
           }
@@ -74,6 +75,9 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
       }
     }
   `);
+
+  const [openKartela, setOpenKartela] = useState<ImageDataLike>();
+  const kartelaImage = openKartela && getImage(openKartela);
 
   return (
     <>
@@ -104,13 +108,14 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
             strapiSanferminak.sf_egunak.length > 0 && (
               <SFEgunZerrenda>
                 {strapiSanferminak.sf_egunak.map(sfeguna => {
+                  const image =
+                    sfeguna.atzealde_irudia &&
+                    getImage(sfeguna.atzealde_irudia?.file);
+
                   return (
                     <SFEgunaElementua key={sfeguna.id}>
-                      {sfeguna.atzealde_irudia && (
-                        <AtzealdeIrudia
-                          alt="Irudia"
-                          image={getImage(sfeguna.atzealde_irudia.file)}
-                        />
+                      {image && (
+                        <AtzealdeIrudia alt="Atzealdeko irudia" image={image} />
                       )}
 
                       <EdukiaWrapper
@@ -119,6 +124,7 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
                             ? 'active'
                             : ''
                         }
+                        onClick={() => setOpenKartela(sfeguna.kartela?.file)}
                       >
                         <SFEgunaEdukia sfeguna={sfeguna} />
                       </EdukiaWrapper>
@@ -131,6 +137,13 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
       </ContentWrapper>
 
       <Oina />
+
+      <Dialog
+        open={Boolean(openKartela)}
+        onClose={() => setOpenKartela(undefined)}
+      >
+        {kartelaImage && <Kartela alt="Kartela" image={kartelaImage} />}
+      </Dialog>
     </>
   );
 };
@@ -145,6 +158,11 @@ const AtzealdeIrudia = styled(GatsbyImage)`
   z-index: -1;
 `;
 
+const Kartela = styled(GatsbyImage)`
+  width: 100%;
+  height: 100%;
+`;
+
 const EdukiaWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -153,7 +171,9 @@ const EdukiaWrapper = styled.div`
   padding: ${rem(size.small)};
 
   background-color: ${colors.beltza};
-  transition: background-color 1s ease;
+  transition: background-color 0.75s ease;
+
+  cursor: pointer;
 
   &:hover {
     background-color: ${rgba(colors.beltza, 0.8)};

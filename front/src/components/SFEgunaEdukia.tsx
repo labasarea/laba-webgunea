@@ -52,7 +52,7 @@ export const SFEgunaEdukia: React.FC<{ sfeguna: SFEguna }> = ({ sfeguna }) => {
       </SFEgunaNagusiaIzenburua>
 
       {besteEgunak.map(eguna => (
-        <BesteHitzordua>
+        <BesteHitzordua key={eguna.id}>
           {datesUtils.getHour(new Date(eguna.hitzordua))} {eguna.izenburua}
         </BesteHitzordua>
       ))}
