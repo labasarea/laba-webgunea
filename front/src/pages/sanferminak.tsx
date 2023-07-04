@@ -119,6 +119,8 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
                       )}
 
                       <EdukiaWrapper
+                        role="button"
+                        aria-label={sfeguna.ekitaldi_nagusia.izenburua}
                         className={
                           datesUtils.isToday(new Date(sfeguna.eguna))
                             ? 'active'
