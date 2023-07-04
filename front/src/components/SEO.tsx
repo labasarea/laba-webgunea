@@ -18,7 +18,7 @@ export const SEO: React.VFC<Props> = ({ title, description, location }) => (
       name="og:image"
       content={`${location.protocol}//${location.host}${ogImagePath}`}
     />
-    <meta name="og:image:height" content="500" />
-    <meta name="og:image:width" content="1500" />
+    <meta name="og:image:height" content="669" />
+    <meta name="og:image:width" content="1205" />
   </Helmet>
 );
