@@ -43,11 +43,9 @@ export const Dialog: React.FC<PropsWithChildren<Props>> = ({
       }}
     >
       <DialogContent>
-        <div>
-          <Close title="Cerrar" onClick={onClose}>
-            ✕
-          </Close>
-        </div>
+        <Close title="Itxi" onClick={onClose}>
+          ✕
+        </Close>
 
         {children && <DialogBody>{children}</DialogBody>}
       </DialogContent>
@@ -63,9 +61,11 @@ const Close = styled.button`
   color: ${colors.zuria};
   ${font.base()};
 
-  background-color: transparent;
+  background-color: ${rgba(colors.beltza, 0.7)};
   border: none;
   cursor: pointer;
+  z-index: 1;
+  border-radius: 5px;
 
   &:hover {
     color: ${colors.urdina};
@@ -87,6 +87,7 @@ const DialogWrapper = styled.dialog`
   bottom: 0;
   margin: 30px auto;
   padding: 0;
+  width: 85vw;
 
   border: 1px solid ${colors.beltza};
   box-shadow: 0 5px 15px ${colors.beltza};
@@ -98,5 +99,17 @@ const DialogWrapper = styled.dialog`
   &::backdrop {
     backdrop-filter: blur(4px);
     background-color: ${rgba(colors.beltza, 0.6)};
+  }
+
+  &[open] {
+    animation: show 1s ease normal;
+  }
+  @keyframes show {
+    from {
+      transform: translateY(-110%);
+    }
+    to {
+      transform: translateY(0%);
+    }
   }
 `;

@@ -4,7 +4,14 @@ import { GlobalStyles } from '../ui/GlobalStyles';
 
 import { Gainburua } from '../components/Gainburua';
 import styled from 'styled-components';
-import { colors, font, fontWeight, media, size } from '../ui/theme';
+import {
+  breakpoints,
+  colors,
+  font,
+  fontWeight,
+  media,
+  size,
+} from '../ui/theme';
 import { Container } from '../components/Container';
 import { rem, rgba } from 'polished';
 import ReactMarkdown from 'react-markdown';
@@ -14,6 +21,7 @@ import { datesUtils } from '../utils/dateUtils';
 import { SEO } from '../components/SEO';
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import { Dialog } from '../components/Dialog';
+import MediaQuery from 'react-responsive';
 
 export interface SFEguna {
   id: string;
@@ -114,9 +122,14 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
 
                   return (
                     <SFEgunaElementua key={sfeguna.id}>
-                      {image && (
-                        <AtzealdeIrudia alt="Atzealdeko irudia" image={image} />
-                      )}
+                      <MediaQuery minWidth={breakpoints.tablet}>
+                        {image && (
+                          <AtzealdeIrudia
+                            alt="Atzealdeko irudia"
+                            image={image}
+                          />
+                        )}
+                      </MediaQuery>
 
                       <EdukiaWrapper
                         role="button"
@@ -166,7 +179,6 @@ const Kartela = styled(GatsbyImage)`
 `;
 
 const EdukiaWrapper = styled.div`
-  position: absolute;
   top: 0;
   height: 100%;
   width: 100%;
@@ -180,6 +192,10 @@ const EdukiaWrapper = styled.div`
   &:hover {
     background-color: ${rgba(colors.beltza, 0.8)};
   }
+
+  ${media.tablet`
+    position: absolute;
+  `}
 
   &.active {
     @keyframes mymove {
@@ -199,12 +215,12 @@ const EdukiaWrapper = styled.div`
 `;
 
 const SFEgunaElementua = styled.li`
-  position: relative;
   width: 100%;
 
   color: ${colors.zuria};
 
   ${media.tablet`
+    position: relative;
     aspect-ratio: 1/1;
     margin-bottom: 0;
   `}
