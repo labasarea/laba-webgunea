@@ -32,6 +32,7 @@ export const Dialog: React.FC<PropsWithChildren<Props>> = ({
   return (
     <DialogWrapper
       ref={modalRef}
+      // @ts-expect-error dialog-en tipoetan arazo bat dagoela dirudi
       onClose={onClose}
       onCancel={onClose}
       onClick={({ target }) => {
