@@ -132,7 +132,6 @@ const IndexPage: React.VFC<PageProps> = ({ location }) => {
                       </MediaQuery>
 
                       <EdukiaWrapper
-                        role="button"
                         aria-label={sfeguna.ekitaldi_nagusia.izenburua}
                         className={
                           datesUtils.isToday(new Date(sfeguna.eguna))
@@ -178,11 +177,15 @@ const Kartela = styled(GatsbyImage)`
   height: 100%;
 `;
 
-const EdukiaWrapper = styled.div`
+const EdukiaWrapper = styled.button`
+  display: block;
   top: 0;
   height: 100%;
   width: 100%;
   padding: ${rem(size.small)};
+
+  color: ${colors.zuria};
+  border: none;
 
   background-color: ${colors.beltza};
   transition: background-color 0.75s ease;
@@ -191,6 +194,10 @@ const EdukiaWrapper = styled.div`
 
   &:hover {
     background-color: ${rgba(colors.beltza, 0.8)};
+  }
+
+  &:focus {
+    outline: 4px solid ${colors.urdina};
   }
 
   ${media.tablet`
