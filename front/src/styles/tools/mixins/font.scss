@@ -1,0 +1,31 @@
+@import '../functions.scss';
+
+@mixin tiny() {
+  font-size: #{toRem(12.64)};
+  line-height: #{toRem(17)};
+}
+
+@mixin small() {
+  font-size: #{toRem(16)};
+  line-height: #{toRem(22)};
+}
+
+@mixin base() {
+  font-size: #{toRem(18)};
+  line-height: #{toRem(24)};
+}
+
+@mixin large() {
+  font-size: #{toRem(25.63)};
+  line-height: #{toRem(35)};
+}
+
+@mixin huge() {
+  font-size: #{toRem(36.41)};
+  line-height: #{toRem(50)};
+}
+
+@mixin gargantuan() {
+  font-size: #{toRem(41.83)};
+  line-height: #{toRem(57)};
+}

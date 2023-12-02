@@ -3,8 +3,8 @@
 @mixin container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-small);
-  padding-right: var(--space-small);
+  padding-left: var(--size-small);
+  padding-right: var(--size-small);
   width: 100%;
 
   @media #{$fromTablet} {
