@@ -1,5 +1,7 @@
 ---
 import "../styles/cssConfig.scss";
+import '@fontsource/martel';
+import {Gainburua} from '../components/Gainburua'
 ---
 
 <html lang="en">
@@ -10,23 +12,29 @@ import "../styles/cssConfig.scss";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
+
   <body>
-    <div class="container">
-      <h1 class="header">Astro</h1>
-      <p>Kaixo, Mundua!</p>
-    </div>
+    <Gainburua 
+      izenburua="Laba gara" 
+      deskribapena="Talde zabala gara, kopuruz zein izaeraz. Euskararekin eta euskal kulturarekin beste proiektu batzuetan parte hartzen dugu askok, baina bagara euskalgintzaren egituretatik aparte zeuden beste asko. Gazteak gara asko, baina beteranoak ere bagara. Ez baikara zerotik sortu, baina infinitua dugu amets. Eta zurekin, gertuago izanen da." 
+      atala="hasiera"
+    />
   </body>
 </html>
 
 <style lang="scss">
-  @use "../styles/tools/mixins/container.scss" as *;
-
-
-  .container {
-    @include container;
+  @use '../styles/tools/mixins/font.scss' as *;
+  
+  html {
+    scroll-behavior: smooth;
   }
 
-  .header {
-    color: var(--color-gorria);
+  body {
+    font-family: 'Martel Sans', sans-serif;
+
+    @include baseFont;
+    font-weight: 700;
+
+    color: var(--color-beltza);
   }
 </style>
