@@ -5,6 +5,7 @@
   "private": true,
   "workspaces": [
     "back",
+    "front",
     "e2e"
   ],
   "scripts": {
