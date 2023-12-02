@@ -18,7 +18,7 @@
     "pg": "^8.11.1",
     "pg-connection-string": "^2.6.1",
     "sqlite3": "5.1.6",
-    "strapi-plugin-netlify-deployments": "^2.0.0"
+    "strapi-plugin-netlify-deployments": "^2.0.2"
   },
   "author": {
     "name": "Laba Sarea"
@@ -27,7 +27,6 @@
     "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
   },
   "engines": {
-    "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
