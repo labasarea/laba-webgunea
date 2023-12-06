@@ -21,6 +21,7 @@
   "author": "Laba Sarea",
   "workspaces": [
     "back",
+    "front",
     "e2e"
   ],
   "scripts": {
