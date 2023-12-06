@@ -8,8 +8,8 @@ module.exports = {
   },
 
   // App customizations
-  app: (config) => {
-    config.locales = ["es"];
+  app: config => {
+    config.locales = ['es'];
 
     return config;
   },

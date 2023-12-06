@@ -10,13 +10,13 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.11.3",
-    "@strapi/plugin-i18n": "4.11.3",
-    "@strapi/plugin-users-permissions": "4.11.3",
-    "@strapi/provider-upload-cloudinary": "^4.11.3",
-    "@strapi/strapi": "4.11.3",
-    "pg": "^8.11.1",
-    "pg-connection-string": "^2.6.1",
+    "@strapi/plugin-graphql": "^4.15.5",
+    "@strapi/plugin-i18n": "4.15.5",
+    "@strapi/plugin-users-permissions": "4.15.5",
+    "@strapi/provider-upload-cloudinary": "^4.15.5",
+    "@strapi/strapi": "4.15.5",
+    "pg": "^8.11.3",
+    "pg-connection-string": "^2.6.2",
     "sqlite3": "5.1.6",
     "strapi-plugin-netlify-deployments": "^2.0.2"
   },
