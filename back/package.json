@@ -1,34 +1,30 @@
 {
   "name": "back",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "Laba webgunerako kudeaketa",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
-  },
-  "dependencies": {
-    "@strapi/plugin-graphql": "^4.11.3",
-    "@strapi/plugin-i18n": "4.11.3",
-    "@strapi/plugin-users-permissions": "4.11.3",
-    "@strapi/provider-upload-cloudinary": "^4.11.3",
-    "@strapi/strapi": "4.11.3",
-    "pg": "^8.11.1",
-    "pg-connection-string": "^2.6.1",
-    "sqlite3": "5.1.6",
-    "strapi-plugin-netlify-deployments": "^2.0.0"
-  },
+  "license": "MIT",
   "author": {
     "name": "Laba Sarea"
   },
+  "scripts": {
+    "build": "strapi build",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-graphql": "^4.15.5",
+    "@strapi/plugin-i18n": "4.15.5",
+    "@strapi/plugin-users-permissions": "4.15.5",
+    "@strapi/provider-upload-cloudinary": "^4.15.5",
+    "@strapi/strapi": "4.15.5",
+    "pg": "^8.11.3",
+    "pg-connection-string": "^2.6.2",
+    "sqlite3": "5.1.6",
+    "strapi-plugin-netlify-deployments": "^2.0.2"
+  },
   "strapi": {
     "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
-  },
-  "engines": {
-    "node": ">=12.x.x <=16.x.x",
-    "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+  }
 }

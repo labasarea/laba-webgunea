@@ -1,33 +1,32 @@
 {
   "name": "laba-webgunea",
   "version": "1.0.0",
-  "description": "Laba sarerako webgunea",
   "private": true,
-  "workspaces": [
-    "back",
-    "front",
-    "e2e"
-  ],
-  "scripts": {
-    "front": "yarn workspace front",
-    "back": "yarn workspace back",
-    "e2e": "yarn workspace e2e",
-    "heroku-postbuild": "yarn back build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/labasarea/laba-webgunea.git"
-  },
+  "description": "Laba sarerako webgunea",
   "keywords": [
     "laba",
     "webgunea",
     "labasarea",
     "laba.eus"
   ],
-  "author": "Laba Sarea",
-  "license": "ISC",
+  "homepage": "https://github.com/labasarea/laba-webgunea#readme",
   "bugs": {
     "url": "https://github.com/labasarea/laba-webgunea/issues"
   },
-  "homepage": "https://github.com/labasarea/laba-webgunea#readme"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labasarea/laba-webgunea.git"
+  },
+  "license": "ISC",
+  "author": "Laba Sarea",
+  "workspaces": [
+    "back",
+    "e2e"
+  ],
+  "scripts": {
+    "back": "yarn workspace back",
+    "e2e": "yarn workspace e2e",
+    "front": "yarn workspace front",
+    "heroku-postbuild": "yarn back build"
+  }
 }
