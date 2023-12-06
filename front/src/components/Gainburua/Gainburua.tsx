@@ -6,6 +6,7 @@ import Gezia from './assets/gezia.svg';
 
 import styles from './Gainburua.module.scss';
 import { DesktopNabigazioa } from './DesktopNabigazioa';
+import { KontaktuDatuak } from './KontaktuDatuak';
 
 export type AtalaName = 'hasiera' | 'kafetegia' | 'sanferminak';
 
@@ -35,7 +36,7 @@ export const Gainburua: React.FC<Props> = ({
           </div>
         </a>
 
-        {/* <KontaktuDatuak /> */}
+        <KontaktuDatuak />
       </header>
 
       {deskribapena && (
