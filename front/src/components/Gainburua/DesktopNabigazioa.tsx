@@ -16,9 +16,6 @@ export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
         <Esteka aktiboa={atala === 'hasiera'}>
           <GainburuLink to="/">Laba gara</GainburuLink>
         </Esteka>
-        <Esteka aktiboa={atala === 'sanferminak'}>
-          <GainburuLink to="/sanferminak">Sanferminak</GainburuLink>
-        </Esteka>
         <Esteka aktiboa={atala === 'kafetegia'}>
           <GainburuLink to="/kafetegia">Dastatu Laba</GainburuLink>
         </Esteka>

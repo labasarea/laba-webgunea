@@ -16,13 +16,12 @@ module.exports = {
       resolve: 'gatsby-source-strapi-graphql',
       options: {
         apiURL: process.env.API_URL,
-        collectionTypes: ['sf-ekitaldia'],
+        collectionTypes: [],
         singleTypes: [
           'hasiera',
           'kafetegia',
           'lege-oharra',
           'pribatutasun-politika',
-          'sanferminak',
         ],
         contentTypes: [],
         // Enable/disable cache.
