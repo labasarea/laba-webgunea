@@ -27,7 +27,9 @@
   "scripts": {
     "back": "yarn workspace back",
     "e2e": "yarn workspace e2e",
-    "front": "yarn workspace front",
-    "heroku-postbuild": "yarn back build"
+    "front": "yarn workspace front"
+  },
+  "resolutions": {
+    "@graphql-tools/schema": "8.5.1"
   }
 }

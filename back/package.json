@@ -21,8 +21,12 @@
     "@strapi/strapi": "4.15.5",
     "pg": "^8.11.3",
     "pg-connection-string": "^2.6.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^5.2.0",
     "sqlite3": "5.1.6",
-    "strapi-plugin-netlify-deployments": "^2.0.2"
+    "strapi-plugin-netlify-deployments": "^2.0.2",
+    "styled-components": "^5.2.1"
   },
   "strapi": {
     "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
