@@ -14,7 +14,7 @@ import { KontaktuDatuak } from './KontaktuDatuak';
 import Gezia from '../../assets/gezia.svg';
 import { GainburuLink } from './GainburuLink';
 
-export type AtalaName = 'hasiera' | 'kafetegia' | 'sanferminak';
+export type AtalaName = 'hasiera' | 'kafetegia';
 
 interface Props {
   izenburua?: string;
@@ -233,10 +233,6 @@ const Izenburua = styled.h1`
 `;
 
 function getAtalaBackground(atala?: AtalaName) {
-  if (atala === 'sanferminak') {
-    return colors.gorria;
-  }
-
   if (atala === 'hasiera') {
     return colors.morea;
   }
@@ -249,7 +245,7 @@ function getAtalaBackground(atala?: AtalaName) {
 }
 
 function getAtalaColor(atala?: AtalaName) {
-  if (atala === 'hasiera' || atala === 'sanferminak') {
+  if (atala === 'hasiera' ) {
     return colors.zuria;
   }
 
@@ -261,7 +257,7 @@ function getAtalaColor(atala?: AtalaName) {
 }
 
 function getAtalaHoverColor(atala?: AtalaName) {
-  if (atala === 'sanferminak' || atala === 'hasiera') {
+  if (atala === 'hasiera') {
     return colors.horia;
   }
 
