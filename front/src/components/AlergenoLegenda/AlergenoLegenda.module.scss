@@ -12,3 +12,42 @@
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+.izena {
+  margin-bottom: var(--size-tiny);
+  font-weight: 700;
+  text-align: center;
+}
+
+.zenbakia {
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-morea);
+}
+
+.alergenoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logoWrapper {
+  margin-bottom: var(--size-mini);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  height: var(--size-medium);
+
+  @media #{$fromDesktop} {
+    height: var(--size-huge);
+  }
+}
+
+.logo {
+  height: var(--size-medium);
+
+  @media #{$fromDesktop} {
+    height: var(--size-huge);
+  }
+}
