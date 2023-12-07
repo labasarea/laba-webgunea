@@ -11,7 +11,8 @@
     "build": "strapi build",
     "develop": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "public-proxy": "ngrok http --domain=vervet-big-dassie.ngrok-free.app 1337"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "^4.15.5",
