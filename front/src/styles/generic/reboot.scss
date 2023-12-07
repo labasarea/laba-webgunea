@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* 1 */
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* 4 */
+  /* stylelint-disable-line */
+  -ms-text-size-adjust: 100%;
+  /* 4 */
+  /* stylelint-disable-line */
+  -ms-overflow-style: scrollbar;
+  /* 5 */
+  -webkit-tap-highlight-color: rgba(#000, 0);
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  min-height: 100vh;
+}
+
+/* stylelint-disable-next-line */
+-ms-viewport {
+  width: device-width;
+}
+
+strong {
+  font-weight: 700;
+}

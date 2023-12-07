@@ -17,10 +17,12 @@ import Apioa from './assets/alergenoak/apioa.svg';
 import Ziapea from './assets/alergenoak/ziapea.svg';
 import styled from 'styled-components';
 import { rem } from 'polished';
-import { breakpoints, colors, fontWeight, media, size } from '../../ui/theme';
+import { breakpoints, colors, fontWeight, size } from '../../ui/theme';
 import { mapAlergenoIdentifikadoreaToIzena } from '../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
 import { mapAlergenoIdentifikadoreaToZenbakia } from '../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
 import { useMediaQuery } from 'react-responsive';
+
+import * as styles from './AlergenoLegenda.module.scss';
 
 const alergenoakOrdenaturik: AlergenoIdentifikadorea[] = [
   'esnekiak',
@@ -41,7 +43,7 @@ const alergenoakOrdenaturik: AlergenoIdentifikadorea[] = [
 
 export const AlergenoLegenda: React.VFC = () => {
   return (
-    <Wrapper>
+    <div className={styles.wrapper}>
       {alergenoakOrdenaturik.map(alergenoa => (
         <AlergenoWrapper>
           <LogoWrapper>
@@ -52,7 +54,7 @@ export const AlergenoLegenda: React.VFC = () => {
           <Zenbakia>{mapAlergenoIdentifikadoreaToZenbakia(alergenoa)}</Zenbakia>
         </AlergenoWrapper>
       ))}
-    </Wrapper>
+    </div>
   );
 };
 
@@ -72,18 +74,6 @@ const AlergenoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 100%;
-  display: grid;
-  grid-column-gap: ${rem(size.tiny)};
-  grid-row-gap: ${rem(size.base)};
-
-  grid-template-columns: repeat(3, 1fr);
-  ${media.tablet`
-    grid-template-columns: repeat(5, 1fr);
-  `};
 `;
 
 const LogoWrapper = styled.div`
