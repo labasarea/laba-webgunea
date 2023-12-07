@@ -53,7 +53,8 @@ export const Kontaktua = styled.div`
 export const SareSoziala = styled.li`
   width: ${rem(size.base)};
   height: ${rem(size.base)};
-  :not(:last-child) {
+
+  &:not(:last-child) {
     margin-right: ${rem(size.small)};
   }
 `;
