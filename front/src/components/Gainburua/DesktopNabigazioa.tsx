@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { rem } from 'polished';
-import { size } from '../../ui/theme';
-import { AtalaName } from './Gainburua';
-import { GainburuLink } from './GainburuLink';
+
+import { classNames } from '../../utilities/classnames';
+import * as styles from './DesktopNabigazioa.module.scss';
+
+import type { AtalaName } from './Gainburua';
 
 interface Props {
   atala?: AtalaName;
@@ -11,46 +11,30 @@ interface Props {
 
 export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
   return (
-    <Nabigazioa>
-      <EstekaZerrenda>
-        <Esteka aktiboa={atala === 'hasiera'}>
-          <GainburuLink to="/">Laba gara</GainburuLink>
-        </Esteka>
-        <Esteka aktiboa={atala === 'kafetegia'}>
-          <GainburuLink to="/kafetegia">Dastatu Laba</GainburuLink>
-        </Esteka>
-      </EstekaZerrenda>
-    </Nabigazioa>
+    <nav className={styles.nabigazioa}>
+      <ul className={styles.estekaZerrenda}>
+        <li
+          className={classNames(
+            styles.esteka,
+            atala === 'hasiera' && styles.active,
+          )}
+        >
+          <a className={styles.gainburuLink} href="/">
+            Laba gara
+          </a>
+        </li>
+
+        <li
+          className={classNames(
+            styles.esteka,
+            atala === 'kafetegia' && styles.active,
+          )}
+        >
+          <a className={styles.gainburuLink} href="/kafetegia">
+            Dastatu Laba
+          </a>
+        </li>
+      </ul>
+    </nav>
   );
 };
-
-export const Nabigazioa = styled.nav`
-  display: flex;
-  justify-content: center;
-  padding-bottom: ${rem(size.tiny)};
-`;
-
-export const EstekaZerrenda = styled.ul`
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-`;
-
-export const Esteka = styled.li<{ aktiboa?: boolean }>`
-  padding: ${rem(size.small)};
-
-  color: var(--color);
-
-  ${({ aktiboa }) =>
-    aktiboa
-      ? css`
-          border-bottom: 3px solid var(--color);
-        `
-      : css`
-          transition: color 0.4s ease;
-
-          &:hover {
-            color: var(--hover-color);
-          }
-        `}
-`;
