@@ -20,6 +20,8 @@ import { produktuaFactory } from '../domain/factories/produktuaFactory';
 const Kafetegia: React.VFC<PageProps> = ({ location }) => {
   const { izenburua, deskribapena, menua } = useKafetegiaData();
 
+  // oraingoz menuak alergenorik ez duenez, ezkutatuko dugu
+  // TODO modu dinamikoan aldatu balio hau
   const hasAlergenoak = false;
 
   return (
