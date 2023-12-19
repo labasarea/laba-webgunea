@@ -67,6 +67,30 @@ export interface KafetegiaEdaria extends Schema.Component {
   };
 }
 
+export interface KafetegiaIzenburua extends Schema.Component {
+  collectionName: 'components_kafetegia_izenburuas';
+  info: {
+    displayName: 'Izenburua';
+    icon: 'strikeThrough';
+    description: '';
+  };
+  attributes: {
+    izenburuBalioa: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface KafetegiaProduktuTaldea extends Schema.Component {
+  collectionName: 'components_kafetegia_produktu_taldeas';
+  info: {
+    displayName: 'Produktu taldea';
+  };
+  attributes: {
+    izenburua: Attribute.String;
+    produktuak: Attribute.Component<'kafetegia.edaria', true> &
+      Attribute.Required;
+  };
+}
+
 export interface OrokorraDatuOrokorrak extends Schema.Component {
   collectionName: 'components_orokorra_datu_orokorraks';
   info: {
@@ -97,6 +121,8 @@ declare module '@strapi/types' {
     export interface Components {
       'kafetegia.alergenoa': KafetegiaAlergenoa;
       'kafetegia.edaria': KafetegiaEdaria;
+      'kafetegia.izenburua': KafetegiaIzenburua;
+      'kafetegia.produktu-taldea': KafetegiaProduktuTaldea;
       'orokorra.datu-orokorrak': OrokorraDatuOrokorrak;
       'orokorra.helbidea': OrokorraHelbidea;
     }

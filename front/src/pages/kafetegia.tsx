@@ -15,20 +15,14 @@ import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
 import { AlergenoLegenda } from '../components/AlergenoLegenda';
 import { Oina } from '../components/Oina';
 import { SEO } from '../components/SEO';
+import { produktuaFactory } from '../domain/factories/produktuaFactory';
 
 const Kafetegia: React.VFC<PageProps> = ({ location }) => {
-  const {
-    izenburua,
-    deskribapena,
-    anizkoJogurta,
-    edariBeroak,
-    edariHotzak,
-    infusioEkologikoak,
-    pikatzekoak,
-    gozoak,
-    tostadak,
-    konboak,
-  } = useKafetegiaData();
+  const { izenburua, deskribapena, menua } = useKafetegiaData();
+
+  // oraingoz menuak alergenorik ez duenez, ezkutatuko dugu
+  // TODO modu dinamikoan aldatu balio hau
+  const hasAlergenoak = false;
 
   return (
     <>
@@ -47,80 +41,47 @@ const Kafetegia: React.VFC<PageProps> = ({ location }) => {
 
       <ContentWrapper id="edukia">
         <Container>
-          <TaldeWrapper>
-            <IzenburuWrapper>
-              <Marra />
-              <Izenburua>Edariak</Izenburua>
-            </IzenburuWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda
-                izena="Edari beroak"
-                produktuZerrenda={edariBeroak}
-              />
-            </ZerrendaWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda
-                izena="Infusio ekologikoak"
-                produktuZerrenda={infusioEkologikoak}
-              />
-            </ZerrendaWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda
-                izena="Edari hotzak"
-                produktuZerrenda={edariHotzak}
-              />
-            </ZerrendaWrapper>
-          </TaldeWrapper>
+          {menua.map(konponentea => {
+            if (
+              konponentea.konponentea ===
+              'StrapiComponentKafetegiaProduktuTaldea'
+            ) {
+              return (
+                <>
+                  <ZerrendaWrapper>
+                    <ProduktuZerrenda
+                      izena={konponentea.izenburua}
+                      produktuZerrenda={konponentea.produktuak.map(
+                        produktuaFactory,
+                      )}
+                    />
+                  </ZerrendaWrapper>
+                </>
+              );
+            }
 
-          <TaldeWrapper>
-            <IzenburuWrapper>
-              <Marra />
-              <Izenburua>Jakiak</Izenburua>
-            </IzenburuWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda
-                izena="Pikatzekoak"
-                produktuZerrenda={pikatzekoak}
-              />
-            </ZerrendaWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda izena="Tostadak" produktuZerrenda={tostadak} />
-            </ZerrendaWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda izena="Gozoak" produktuZerrenda={gozoak} />
-            </ZerrendaWrapper>
-            <ZerrendaWrapper>
-              <ProduktuZerrenda
-                izena="Anizko Jogurta"
-                produktuZerrenda={[anizkoJogurta]}
-              />
-            </ZerrendaWrapper>
-          </TaldeWrapper>
-        </Container>
+            if (
+              konponentea.konponentea === 'StrapiComponentKafetegiaIzenburua'
+            ) {
+              return (
+                <IzenburuWrapper>
+                  <Marra />
+                  <Izenburua>{konponentea.izenburuBalioa}</Izenburua>
+                </IzenburuWrapper>
+              );
+            }
+          })}
 
-        <KonboWrapper>
-          <Container>
-            <IzenburuWrapper>
-              <Marra />
-              <Izenburua>GOSARI KONBOAK</Izenburua>
-            </IzenburuWrapper>
-            <KonboAzalpena>
-              11:00ak arte. Gehitu hauetako bat zure tostada, pintxo edo
-              bizkotxoari.
-            </KonboAzalpena>
-            <ProduktuZerrenda produktuZerrenda={konboak} />
-          </Container>
-        </KonboWrapper>
+          {hasAlergenoak && (
+            <TaldeWrapper>
+              <IzenburuWrapper>
+                <Marra />
+                <Izenburua>Alergenoak</Izenburua>
+              </IzenburuWrapper>
 
-        <Container>
-          <TaldeWrapper>
-            <IzenburuWrapper>
-              <Marra />
-              <Izenburua>Alergenoak</Izenburua>
-            </IzenburuWrapper>
-
-            <AlergenoLegenda />
-          </TaldeWrapper>
+              <AlergenoLegenda />
+            </TaldeWrapper>
+          )}
 
           <OnEgin>
             <p>On egin!</p>
@@ -132,18 +93,6 @@ const Kafetegia: React.VFC<PageProps> = ({ location }) => {
     </>
   );
 };
-
-const KonboAzalpena = styled.p`
-  margin-bottom: ${size.base}px;
-  text-align: right;
-`;
-
-const KonboWrapper = styled.div`
-  background-color: ${colors.horia};
-  padding-top: ${size.base}px;
-  padding-bottom: ${size.base}px;
-  margin-bottom: ${size.large}px;
-`;
 
 const OnEgin = styled.div`
   text-align: center;
