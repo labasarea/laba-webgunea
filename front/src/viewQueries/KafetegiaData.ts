@@ -1,14 +1,7 @@
-import { Produktua } from '../domain/models/Produktua';
+import { MenuKonponentea } from './useKafetegiaData';
 
 export interface KafetegiaData {
   deskribapena: string;
   izenburua: string;
-  edariBeroak: Produktua[];
-  infusioEkologikoak: Produktua[];
-  edariHotzak: Produktua[];
-  pikatzekoak: Produktua[];
-  gozoak: Produktua[];
-  anizkoJogurta: Produktua;
-  tostadak: Produktua[];
-  konboak: Produktua[];
+  menua: MenuKonponentea[];
 }

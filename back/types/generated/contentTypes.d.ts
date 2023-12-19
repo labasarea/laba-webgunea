@@ -724,14 +724,9 @@ export interface ApiKafetegiaKafetegia extends Schema.SingleType {
   attributes: {
     izenburua: Attribute.String & Attribute.Required;
     deskribapena: Attribute.Text & Attribute.Required;
-    edariBeroak: Attribute.Component<'kafetegia.edaria', true>;
-    infusioEkologikoak: Attribute.Component<'kafetegia.edaria', true>;
-    edariHotzak: Attribute.Component<'kafetegia.edaria', true>;
-    pikatzekoak: Attribute.Component<'kafetegia.edaria', true>;
-    gozoak: Attribute.Component<'kafetegia.edaria', true>;
-    anizkoJogurta: Attribute.Component<'kafetegia.edaria'>;
-    tostadak: Attribute.Component<'kafetegia.edaria', true>;
-    konboak: Attribute.Component<'kafetegia.edaria', true>;
+    menua: Attribute.DynamicZone<
+      ['kafetegia.produktu-taldea', 'kafetegia.izenburua']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
