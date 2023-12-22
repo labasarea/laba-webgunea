@@ -20,46 +20,12 @@
       "type": "text",
       "required": true
     },
-    "edariBeroak": {
-      "displayName": "edaria",
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
-    },
-    "infusioEkologikoak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
-    },
-    "edariHotzak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
-    },
-    "pikatzekoak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
-    },
-    "gozoak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
-    },
-    "anizkoJogurta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "kafetegia.edaria"
-    },
-    "tostadak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
-    },
-    "konboak": {
-      "type": "component",
-      "repeatable": true,
-      "component": "kafetegia.edaria"
+    "menua": {
+      "type": "dynamiczone",
+      "components": [
+        "kafetegia.produktu-taldea",
+        "kafetegia.izenburua"
+      ]
     }
   }
 }
