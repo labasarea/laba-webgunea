@@ -1,0 +1,49 @@
+@import '../../styles/tools/mixins/font.scss';
+
+.wrapper {
+  display: flex;
+}
+
+.sareSozialak {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.sareSoziala {
+  width: var(--size-base);
+  height: var(--size-base);
+
+  &:not(:last-child) {
+    margin-right: var(--size-small);
+  }
+}
+
+.sareSozialLogo {
+  width: var(--size-base);
+  height: var(--size-base);
+  path {
+    transition: fill 0.4s ease;
+    fill: var(--color);
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
+    }
+  }
+}
+
+.helbidea {
+  border-right: 3px solid var(--color);
+  padding-right: var(--size-small);
+  margin-right: var(--size-small);
+
+  @include tinyFont;
+}
+
+.gainburuLink {
+  &:focus {
+    outline: 3px solid var(--hover-color);
+  }
+}

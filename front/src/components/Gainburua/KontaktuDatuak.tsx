@@ -1,10 +1,8 @@
-import { rem } from 'polished';
 import React from 'react';
-import styled from 'styled-components';
-import { font, size } from '../../ui/theme';
+
 import InstagramLogo from '../../assets/instagram.svg';
 import TwitterLogo from '../../assets/twitter.svg';
-import { GainburuLink } from './GainburuLink';
+import * as styles from './KontaktuDatuak.module.scss';
 
 /**
  * ERREPIKATUA
@@ -15,89 +13,41 @@ import { GainburuLink } from './GainburuLink';
 
 export const KontaktuDatuak: React.FC = () => {
   return (
-    <Kontaktua>
-      <Helbidea>
+    <div className={styles.wrapper}>
+      <address className={styles.helbidea}>
         <p>Gazteluko plaza, 2</p>
         <p>Iruñea</p>
-      </Helbidea>
+      </address>
 
-      <SareSozialak>
-        <SareSoziala>
-          <GainburuLink
+      <ul className={styles.sareSozialak}>
+        <li className={styles.sareSoziala}>
+          <a
+            className={styles.gainburuLink}
             tabIndex={0}
             aria-label="Laba Twitterren"
-            to="https://twitter.com/labasarea/"
+            href="https://twitter.com/labasarea/"
           >
-            <Twitter title="Laba Twitterren" />
-          </GainburuLink>
-        </SareSoziala>
+            <TwitterLogo
+              className={styles.sareSozialLogo}
+              title="Laba Twitterren"
+            />
+          </a>
+        </li>
 
-        <SareSoziala>
-          <GainburuLink
+        <li className={styles.sareSoziala}>
+          <a
+            className={styles.gainburuLink}
             tabIndex={0}
             aria-label="Laba Instagramen"
-            to="https://www.instagram.com/labasarea/"
+            href="https://www.instagram.com/labasarea/"
           >
-            <Instagram role="link" title="Laba Instagramen" />
-          </GainburuLink>
-        </SareSoziala>
-      </SareSozialak>
-    </Kontaktua>
+            <InstagramLogo
+              className={styles.sareSozialLogo}
+              title="Laba Instagramen"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
   );
 };
-
-export const Kontaktua = styled.div`
-  display: flex;
-`;
-
-export const SareSoziala = styled.li`
-  width: ${rem(size.base)};
-  height: ${rem(size.base)};
-
-  &:not(:last-child) {
-    margin-right: ${rem(size.small)};
-  }
-`;
-
-export const Instagram = styled(InstagramLogo)`
-  width: ${rem(size.base)};
-  height: ${rem(size.base)};
-  path {
-    transition: fill 0.4s ease;
-    fill: var(--color);
-  }
-
-  &:hover {
-    path {
-      fill: var(--hover-color);
-    }
-  }
-`;
-
-export const Twitter = styled(TwitterLogo)`
-  width: ${rem(size.base)};
-  height: ${rem(size.base)};
-  path {
-    transition: fill 0.4s ease;
-    fill: var(--color);
-  }
-
-  &:hover {
-    path {
-      fill: var(--hover-color);
-    }
-  }
-`;
-
-export const SareSozialak = styled.ul`
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-`;
-
-export const Helbidea = styled.address`
-  border-right: 3px solid var(--color);
-  padding-right: ${rem(size.small)};
-  margin-right: ${rem(size.small)};
-  ${font.tiny()};
-`;
