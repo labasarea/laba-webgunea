@@ -1,14 +1,17 @@
 import { graphql, useStaticQuery } from 'gatsby';
+
 import { ProduktuaDTO } from '../domain/dtos/ProduktuaDTO';
 import { KafetegiaData } from './KafetegiaData';
 
 export type MenuKonponentea =
   | {
       konponentea: 'StrapiComponentKafetegiaIzenburua';
+      id: string;
       izenburuBalioa: string;
     }
   | {
       konponentea: 'StrapiComponentKafetegiaProduktuTaldea';
+      id: string;
       izenburua: string;
       produktuak: ProduktuaDTO[];
     };
@@ -36,8 +39,10 @@ export function useKafetegiaData(): KafetegiaData {
             id
           }
           ... on StrapiComponentKafetegiaProduktuTaldea {
+            id
             izenburua
             produktuak {
+              id
               izena
               prezioa
               beganoa
