@@ -18,92 +18,39 @@ export const MugikorNabigazioa: React.FC = () => {
   return (
     <>
       {isOpen && (
-        <NabigazioaWrapper>
-          <OpenClose onClick={() => setIsOpen(false)}>
+        <div className={styles.nabigazioaWrapper}>
+          <div className={styles.openClose} onClick={() => setIsOpen(false)}>
             <Itxi />
-          </OpenClose>
+          </div>
 
           <nav>
             <ul>
-              <Esteka>
+              <li className={styles.esteka}>
                 <Link to="/">Laba gara</Link>
-              </Esteka>
-              <Esteka>
+              </li>
+              <li className={styles.esteka}>
                 <Link to="/kafetegia">Dastatu Laba</Link>
-              </Esteka>
+              </li>
             </ul>
           </nav>
 
           <div className={styles.kontaktuaWrapper}>
             <KontaktuDatuak />
           </div>
-        </NabigazioaWrapper>
+        </div>
       )}
 
-      <OpenClose
+      <div
+        className={styles.openClose}
         onClick={() => {
           setIsOpen(true);
         }}
       >
-        <Hamburger />
-      </OpenClose>
+        <HamburgerIcon className={styles.hamburguer} />
+      </div>
     </>
   );
 };
-
-const Esteka = styled.li`
-  color: ${colors.zuria};
-  ${font.large()};
-  text-align: right;
-
-  &:not(:last-child) {
-    margin-bottom: ${rem(size.base)};
-  }
-
-  &:after {
-    content: '.';
-  }
-`;
-
-const Hamburger = styled(HamburgerIcon)`
-  path {
-    fill: var(--color);
-  }
-`;
-
-const OpenClose = styled.div`
-  cursor: pointer;
-  width: ${rem(size.medium)};
-  margin-bottom: ${rem(size.base)};
-`;
-
-const NabigazioaWrapper = styled.div`
-  @keyframes sartu {
-    from {
-      right: -100vw;
-    }
-    to {
-      right: 0;
-    }
-  }
-  animation-name: sartu;
-  animation-duration: 0.25s;
-
-  /* Containerrak sartzen duen padding berdina */
-  padding: ${rem(size.base)};
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100dvw;
-  background-color: ${colors.beltza};
-  color: ${colors.zuria};
-  height: 100dvh;
-`;
 
 /**
  * ERREPIKATUA
