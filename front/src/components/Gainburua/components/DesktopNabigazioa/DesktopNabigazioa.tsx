@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { classNames } from '../../utilities/classnames';
+import { classNames } from '../../../../utilities/classnames';
 import * as styles from './DesktopNabigazioa.module.scss';
 
-import type { AtalaName } from './Gainburua';
+import type { AtalaName } from '../../AtalaName';
 
 interface Props {
   atala?: AtalaName;

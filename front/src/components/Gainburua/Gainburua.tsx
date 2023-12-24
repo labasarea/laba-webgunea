@@ -3,12 +3,11 @@ import React from 'react';
 import { classNames } from '../../utilities/classnames';
 import Gezia from './assets/gezia.svg';
 import Logo from './assets/logo.svg';
-import { DesktopNabigazioa } from './DesktopNabigazioa';
+import { AtalaName } from './AtalaName';
+import { DesktopNabigazioa } from './components/DesktopNabigazioa';
 import * as styles from './Gainburua.module.scss';
 import { KontaktuDatuak } from './KontaktuDatuak';
 import { MugikorNabigazioa } from './MugikorNabigazioa';
-
-export type AtalaName = 'hasiera' | 'kafetegia';
 
 interface Props {
   izenburua?: string;
