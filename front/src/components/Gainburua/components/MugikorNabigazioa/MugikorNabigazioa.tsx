@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 import HamburgerIcon from '../../assets/hamburguer.svg';
 import Itxi from '../../assets/itxi.svg';
-import { KontaktuDatuak } from '../../KontaktuDatuak';
+import { KontaktuDatuak } from '../KontaktuDatuak';
 import * as styles from './MugikorNabigazioa.module.scss';
 
 export const MugikorNabigazioa: React.FC = () => {

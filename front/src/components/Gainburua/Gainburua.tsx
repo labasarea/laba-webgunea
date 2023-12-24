@@ -5,9 +5,9 @@ import Gezia from './assets/gezia.svg';
 import Logo from './assets/logo.svg';
 import { AtalaName } from './AtalaName';
 import { DesktopNabigazioa } from './components/DesktopNabigazioa';
+import { KontaktuDatuak } from './components/KontaktuDatuak';
 import { MugikorNabigazioa } from './components/MugikorNabigazioa';
 import * as styles from './Gainburua.module.scss';
-import { KontaktuDatuak } from './KontaktuDatuak';
 
 interface Props {
   izenburua?: string;
