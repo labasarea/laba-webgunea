@@ -51,12 +51,7 @@ export const Gainburua: React.FC<Props> = ({
 
           <div className={styles.geziaWrapper}>
             <a className={styles.gainburuLink} href="#edukia">
-              <img
-                src={Gezia.src}
-                width={Gezia.width}
-                height={Gezia.height}
-                className={styles.geziaLogo}
-              />
+              <Gezia className={styles.geziaLogo} />
             </a>
           </div>
         </main>
