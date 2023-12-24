@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { GlobalStyles } from '../ui/GlobalStyles';
-import { Gainburua } from '../components/Gainburua';
-import { Container } from '../components/Container';
 import { Helmet } from 'react-helmet';
 
-const NotFoundPage: React.VFC = () => {
+import { Link } from 'gatsby';
+
+import { Container } from '../components/Container';
+import { Gainburua } from '../components/Gainburua';
+import { GlobalStyles } from '../ui/GlobalStyles';
+
+const NotFoundPage: React.FC = () => {
   return (
     <>
       <Helmet

@@ -1,0 +1,14 @@
+@import '../tools/functions.scss';
+
+:root {
+  --size-none: #{toRem(0)};
+  --size-xtiny: #{toRem(4)};
+  --size-tiny: #{toRem(8)};
+  --size-small: #{toRem(12)};
+  --size-mini: #{toRem(16)};
+  --size-base: #{toRem(24)};
+  --size-medium: #{toRem(32)};
+  --size-large: #{toRem(48)};
+  --size-xlarge: #{toRem(64)};
+  --size-huge: #{toRem(96)};
+}

@@ -1,0 +1,5 @@
+@import '../functions.scss';
+
+@mixin outline {
+  outline: #{toRem(2)} solid var(--focus-outline);
+}

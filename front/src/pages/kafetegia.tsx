@@ -1,23 +1,23 @@
-import { PageProps, navigate } from 'gatsby';
 import React from 'react';
-import { GlobalStyles } from '../ui/GlobalStyles';
 
-import { Gainburua } from '../components/Gainburua';
-import { Container } from '../components/Container';
+import { PageProps } from 'gatsby';
+import { rem } from 'polished';
 import styled from 'styled-components';
-import { colors, font, fontWeight, media, size } from '../ui/theme';
 
 import BeganoaLogo from '../assets/beganoa.svg';
 import EkologikoaLogo from '../assets/ekologikoa.svg';
-import { rem } from 'polished';
-import { Produktua } from '../domain/models/Produktua';
-import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
 import { AlergenoLegenda } from '../components/AlergenoLegenda';
+import { Container } from '../components/Container';
+import { Gainburua } from '../components/Gainburua';
 import { Oina } from '../components/Oina';
 import { SEO } from '../components/SEO';
 import { produktuaFactory } from '../domain/factories/produktuaFactory';
+import { Produktua } from '../domain/models/Produktua';
+import { GlobalStyles } from '../ui/GlobalStyles';
+import { colors, font, fontWeight, media, size } from '../ui/theme';
+import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
 
-const Kafetegia: React.VFC<PageProps> = ({ location }) => {
+const Kafetegia: React.FC<PageProps> = ({ location }) => {
   const { izenburua, deskribapena, menua } = useKafetegiaData();
 
   // oraingoz menuak alergenorik ez duenez, ezkutatuko dugu
@@ -34,9 +34,6 @@ const Kafetegia: React.VFC<PageProps> = ({ location }) => {
         atala="kafetegia"
         izenburua={izenburua}
         deskribapena={deskribapena}
-        onClick={() => {
-          navigate('/kafetegia#edukia');
-        }}
       />
 
       <ContentWrapper id="edukia">
@@ -47,16 +44,14 @@ const Kafetegia: React.VFC<PageProps> = ({ location }) => {
               'StrapiComponentKafetegiaProduktuTaldea'
             ) {
               return (
-                <>
-                  <ZerrendaWrapper>
-                    <ProduktuZerrenda
-                      izena={konponentea.izenburua}
-                      produktuZerrenda={konponentea.produktuak.map(
-                        produktuaFactory,
-                      )}
-                    />
-                  </ZerrendaWrapper>
-                </>
+                <ZerrendaWrapper key={konponentea.id}>
+                  <ProduktuZerrenda
+                    izena={konponentea.izenburua}
+                    produktuZerrenda={konponentea.produktuak.map(
+                      produktuaFactory,
+                    )}
+                  />
+                </ZerrendaWrapper>
               );
             }
 
@@ -64,7 +59,7 @@ const Kafetegia: React.VFC<PageProps> = ({ location }) => {
               konponentea.konponentea === 'StrapiComponentKafetegiaIzenburua'
             ) {
               return (
-                <IzenburuWrapper>
+                <IzenburuWrapper key={konponentea.id}>
                   <Marra />
                   <Izenburua>{konponentea.izenburuBalioa}</Izenburua>
                 </IzenburuWrapper>
@@ -120,30 +115,32 @@ const ProduktuZerrenda: React.FC<{
   <ProduktuTaula>
     {izena && <ProduktuMota>{izena}</ProduktuMota>}
 
-    {produktuZerrenda.map(produktua => (
-      <tr key={produktua.id}>
-        <Ezaugarria>
-          {produktua.beganoa && <BeganoaLogo title="Produktu beganoa" />}
-        </Ezaugarria>
-        <Ezaugarria>
-          {produktua.ekologikoa && (
-            <EkologikoaLogo title="Produktu ekologikoa" />
-          )}
-        </Ezaugarria>
-        <Izena scope="row">
-          {produktua.izena}{' '}
-          {produktua.alergenoak.map(alergenoa => (
-            <Alergenoa>{alergenoa.zenbakia}</Alergenoa>
-          ))}
-        </Izena>
-        <Prezioa>
-          {new Intl.NumberFormat('eu-ES', {
-            style: 'currency',
-            currency: 'EUR',
-          }).format(produktua.prezioa)}
-        </Prezioa>
-      </tr>
-    ))}
+    <tbody>
+      {produktuZerrenda.map(produktua => (
+        <tr key={produktua.id}>
+          <Ezaugarria>
+            {produktua.beganoa && <BeganoaLogo title="Produktu beganoa" />}
+          </Ezaugarria>
+          <Ezaugarria>
+            {produktua.ekologikoa && (
+              <EkologikoaLogo title="Produktu ekologikoa" />
+            )}
+          </Ezaugarria>
+          <Izena scope="row">
+            {produktua.izena}{' '}
+            {produktua.alergenoak.map(alergenoa => (
+              <Alergenoa>{alergenoa.zenbakia}</Alergenoa>
+            ))}
+          </Izena>
+          <Prezioa>
+            {new Intl.NumberFormat('eu-ES', {
+              style: 'currency',
+              currency: 'EUR',
+            }).format(produktua.prezioa)}
+          </Prezioa>
+        </tr>
+      ))}
+    </tbody>
   </ProduktuTaula>
 );
 

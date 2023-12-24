@@ -1,27 +1,24 @@
 import React from 'react';
 
-import { rem } from 'polished';
-import styled from 'styled-components';
-import { Container } from '../../components/Container';
-import { breakpoints, font, media, size } from '../../ui/theme';
-import LabaLogo from '../../assets/logo.svg';
-
-import { colors } from '../../ui/theme/colors';
-import { DesktopNabigazioa } from './DesktopNabigazioa';
-import { MugikorNabigazioa } from './MugikorNabigazioa';
-import MediaQuery from 'react-responsive';
-import { KontaktuDatuak } from './KontaktuDatuak';
-import Gezia from '../../assets/gezia.svg';
-import { GainburuLink } from './GainburuLink';
-
-export type AtalaName = 'hasiera' | 'kafetegia';
+import { classNames } from '../../utilities/classnames';
+import Gezia from './assets/gezia.svg';
+import Logo from './assets/logo.svg';
+import { AtalaName } from './AtalaName';
+import { DesktopNabigazioa } from './components/DesktopNabigazioa';
+import { KontaktuDatuak } from './components/KontaktuDatuak';
+import { MugikorNabigazioa } from './components/MugikorNabigazioa';
+import * as styles from './Gainburua.module.scss';
 
 interface Props {
   izenburua?: string;
   deskribapena?: string;
   atala?: AtalaName;
-  onClick?: () => void;
 }
+
+const atalaClassname: { [key in AtalaName]: string } = {
+  hasiera: styles.hasiera,
+  kafetegia: styles.kafetegia,
+};
 
 export const Gainburua: React.FC<Props> = ({
   izenburua,
@@ -29,237 +26,43 @@ export const Gainburua: React.FC<Props> = ({
   atala,
 }) => {
   return (
-    <Wrapper atala={atala}>
-      <MediaQuery maxWidth={breakpoints.tablet}>
-        <Container>
-          <MugikorWrapper>
-            <MenuWrapper>
-              <MugikorNabigazioa />
-            </MenuWrapper>
-            <MugikorLogoWrapper>
-              <GainburuLink to="/">
-                <LogoWrapper>
-                  <Logo title="Laba gara" atala={atala} />
-                </LogoWrapper>
-              </GainburuLink>
-            </MugikorLogoWrapper>
-          </MugikorWrapper>
-        </Container>
-      </MediaQuery>
+    <div className={classNames(styles.wrapper, atala && atalaClassname[atala])}>
+      <header className={styles.gainburuWrapper}>
+        <a className={styles.gainburuLink} href="/">
+          <div className={styles.logoWrapper}>
+            <Logo className={styles.logo} title="Laba gara" />
+          </div>
+        </a>
 
-      <MediaQuery minWidth={breakpoints.tablet}>
-        <GainburuWrapper>
-          <GainburuLink to="/">
-            <LogoWrapper>
-              <Logo title="Laba gara" atala={atala} />
-            </LogoWrapper>
-          </GainburuLink>
-
+        <div className={styles.kontaktuDatuakWrapper}>
           <KontaktuDatuak />
-        </GainburuWrapper>
-      </MediaQuery>
+        </div>
+      </header>
 
       {deskribapena && (
-        <Nagusia>
-          <Container>
-            <Deskribapena>{deskribapena}</Deskribapena>
+        <main className={styles.nagusia}>
+          <p className={styles.deskribapena}>{deskribapena}</p>
 
-            <IzenburuWrapper>
-              <Marra />
-              <Izenburua>{izenburua}</Izenburua>
-            </IzenburuWrapper>
+          <div className={styles.izenburuWrapper}>
+            <div className={styles.marra} />
+            <h1 className={styles.izenburua}>{izenburua}</h1>
+          </div>
 
-            <GeziaWrapper>
-              <GainburuLink to="#edukia">
-                <GeziaLogo atala={atala} />
-              </GainburuLink>
-            </GeziaWrapper>
-          </Container>
-        </Nagusia>
+          <div className={styles.geziaWrapper}>
+            <a className={styles.gainburuLink} href="#edukia">
+              <Gezia className={styles.geziaLogo} />
+            </a>
+          </div>
+        </main>
       )}
 
-      <MediaQuery minWidth={breakpoints.tablet}>
+      <div className={styles.desktopNavigazioaWrapper}>
         <DesktopNabigazioa atala={atala} />
-      </MediaQuery>
-    </Wrapper>
+      </div>
+
+      <div className={styles.mobileNabigazioaWrapper}>
+        <MugikorNabigazioa />
+      </div>
+    </div>
   );
 };
-
-const GeziaWrapper = styled.div`
-  display: none;
-
-  ${media.desktop`
-    display: flex;
-    justify-content: flex-end;
-  `}
-`;
-
-const GeziaLogo = styled(Gezia)<{ atala: 'hasiera' | 'kafetegia' }>`
-  cursor: pointer;
-  path {
-    transition: fill 0.4s ease;
-    fill: var(--color);
-  }
-
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-name: bounce-2;
-  animation-timing-function: ease;
-
-  @keyframes bounce-2 {
-    0% {
-      transform: rotate(90deg) translateX(0);
-    }
-    50% {
-      transform: rotate(90deg) translateX(-${size.base}px);
-    }
-    100% {
-      transform: rotate(90deg) translateX(0);
-    }
-  }
-
-  &:hover {
-    path {
-      fill: var(--hover-color);
-    }
-  }
-`;
-
-const Nagusia = styled.main`
-  flex-grow: 1;
-`;
-
-const MugikorWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: ${rem(size.base)};
-
-  margin-bottom: ${rem(size.medium)};
-`;
-
-const MenuWrapper = styled.div`
-  grid-column: 3;
-  grid-row: 1;
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const MugikorLogoWrapper = styled.div`
-  grid-row: 1;
-  grid-column: 2;
-  display: flex;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div<{ atala?: AtalaName }>`
-  --color: ${({ atala }) => getAtalaColor(atala)};
-  --hover-color: ${({ atala }) => getAtalaHoverColor(atala)};
-
-  display: flex;
-  flex-direction: column;
-
-  background-color: ${({ atala }) => getAtalaBackground(atala)};
-  color: var(--color);
-
-  ${media.desktop`
-    min-height: ${({ atala }: { atala: 'hasiera' | 'kafetegia' }) =>
-      Boolean(atala) ? '100vh' : '0'};  
-  `}
-`;
-
-const LogoWrapper = styled.div`
-  width: ${rem(size.huge)};
-`;
-
-const Logo = styled(LabaLogo)<{ atala?: AtalaName }>`
-  path {
-    transition: fill 0.4s ease;
-    fill: var(--color);
-  }
-
-  &:hover {
-    path {
-      fill: var(--hover-color);
-    }
-  }
-`;
-
-const GainburuWrapper = styled.header`
-  padding: ${rem(size.tiny)};
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-
-  ${media.tablet`
-    padding: ${rem(size.large)};
-  `};
-`;
-
-const Deskribapena = styled.p`
-  margin-bottom: ${rem(size.xlarge)};
-  hyphens: auto;
-
-  ${font.base()};
-
-  ${media.tablet`
-    ${font.large()};
-  `};
-`;
-
-const IzenburuWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: ${rem(size.large)};
-`;
-
-const Marra = styled.div`
-  /* altuera erabiliko den letraren berdina da */
-  height: ${rem(41.83)};
-  flex-grow: 1;
-  box-shadow: inset 0px -3px 0px 0px var(--color);
-  margin-right: ${rem(size.tiny)};
-`;
-
-const Izenburua = styled.h1`
-  text-align: right;
-  vertical-align: bottom;
-
-  &:after {
-    content: '.';
-  }
-
-  ${font.gargantuan()};
-`;
-
-function getAtalaBackground(atala?: AtalaName) {
-  if (atala === 'hasiera') {
-    return colors.morea;
-  }
-
-  if (atala === 'kafetegia') {
-    return colors.horia;
-  }
-
-  return colors.beltza;
-}
-
-function getAtalaColor(atala?: AtalaName) {
-  if (atala === 'hasiera' ) {
-    return colors.zuria;
-  }
-
-  if (atala === 'kafetegia') {
-    return colors.beltza;
-  }
-
-  return colors.zuria;
-}
-
-function getAtalaHoverColor(atala?: AtalaName) {
-  if (atala === 'hasiera') {
-    return colors.horia;
-  }
-
-  return colors.gorria;
-}

@@ -1,0 +1,63 @@
+@import '../../../../styles/tools/mixins/font.scss';
+
+.kontaktuaWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.hamburguer {
+  path {
+    fill: var(--color);
+  }
+}
+
+.esteka {
+  color: var(--color-zuria);
+  @include largeFont;
+  text-align: right;
+
+  &:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+
+  &:after {
+    content: '.';
+  }
+}
+
+.openClose {
+  cursor: pointer;
+  width: var(--size-medium);
+  margin-bottom: var(--size-base);
+}
+
+.nabigazioaWrapper {
+  @keyframes sartu {
+    from {
+      right: -100vw;
+    }
+    to {
+      right: 0;
+    }
+  }
+  animation-name: sartu;
+  animation-duration: 0.25s;
+
+  /* Containerrak sartzen duen padding berdina */
+  padding: var(--size-base);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100dvw;
+  background-color: var(--color-beltza);
+  color: var(--color-zuria);
+  height: 100dvh;
+}

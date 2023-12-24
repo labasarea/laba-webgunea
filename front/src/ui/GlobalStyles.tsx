@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
+
 import { font, fontWeight } from './theme';
 import { colors } from './theme/colors';
 
@@ -202,7 +203,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-      font-family: 'Martel Sans', sans-serif;
+      font-family: 'Almarai', sans-serif;
 
       ${font.base()}
       font-weight: ${fontWeight.bold};

@@ -1,4 +1,26 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "type": "importMember",
+      "regex": "^$",
+      "orderLevel": 10,
+      "disableSort": true
+    },
+    {
+      "regex": "react",
+      "orderLevel": 1,
+      "disableSort": true
+    },
+    {
+      "regex": "^[.$]|^(ui)|^(src)|^(models)|^(components)",
+      "orderLevel": 30
+    }
+  ],
+  "importSorter.importStringConfiguration.tabSize": 2,
+  "importSorter.importStringConfiguration.trailingComma": "multiLine",
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne"
 }
