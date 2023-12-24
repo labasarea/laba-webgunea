@@ -23,10 +23,10 @@ const atalaClassname: { [key in AtalaName]: string } = {
 export const Gainburua: React.FC<Props> = ({
   izenburua,
   deskribapena,
-  atala = 'hasiera',
+  atala,
 }) => {
   return (
-    <div className={classNames(styles.wrapper, atalaClassname[atala])}>
+    <div className={classNames(styles.wrapper, atala && atalaClassname[atala])}>
       <header className={styles.gainburuWrapper}>
         <a className={styles.gainburuLink} href="/">
           <div className={styles.logoWrapper}>

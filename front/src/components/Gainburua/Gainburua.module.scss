@@ -70,27 +70,35 @@
 }
 
 .wrapper {
+  --color: var(--color-zuria);
+  --hover-color: var(--color-gorria);
+  --background-color: var(--color-beltza);
+
   display: flex;
   flex-direction: column;
 
   background-color: var(--background-color);
   color: var(--color);
-
-  @media #{$fromDesktop} {
-    min-height: 100dvh;
-  }
 }
 
 .hasiera {
   --color: var(--color-zuria);
   --hover-color: var(--color-horia);
   --background-color: var(--color-morea);
+
+  @media #{$fromDesktop} {
+    min-height: 100dvh;
+  }
 }
 
 .kafetegia {
   --color: var(--color-beltza);
   --hover-color: var(--color-gorria);
   --background-color: var(--color-horia);
+
+  @media #{$fromDesktop} {
+    min-height: 100dvh;
+  }
 }
 
 .logoWrapper {
