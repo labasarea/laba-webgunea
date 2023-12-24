@@ -22,7 +22,24 @@
 .sareSozialLogo {
   width: var(--size-base);
   height: var(--size-base);
+}
 
+.helbidea {
+  padding-right: var(--size-small);
+  margin-right: var(--size-small);
+
+  @include tinyFont;
+}
+
+.themeBorder {
+  border-right: 3px solid var(--color);
+}
+
+.zuriBorder {
+  border-right: 3px solid var(--color-zuria);
+}
+
+.themeLogo {
   path {
     transition: fill 0.4s ease;
     fill: var(--color);
@@ -35,16 +52,27 @@
   }
 }
 
-.helbidea {
-  border-right: 3px solid var(--color);
-  padding-right: var(--size-small);
-  margin-right: var(--size-small);
+.zuriLogo {
+  path {
+    transition: fill 0.4s ease;
+    fill: var(--color-zuria);
+  }
 
-  @include tinyFont;
+  &:hover {
+    path {
+      fill: var(--color-gorria);
+    }
+  }
 }
 
-.gainburuLink {
+.themeLink {
   &:focus {
     outline: 3px solid var(--hover-color);
+  }
+}
+
+.zuriLink {
+  &:focus {
+    outline: 3px solid var(--color-gorria);
   }
 }
