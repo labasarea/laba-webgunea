@@ -1,13 +1,16 @@
+import React, { useState } from 'react';
+
 import { Link } from 'gatsby';
 import { rem } from 'polished';
-import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import InstagramLogo from '../../assets/instagram.svg';
+import TwitterLogo from '../../assets/twitter.svg';
 import { font, size } from '../../ui/theme';
 import { colors } from '../../ui/theme/colors';
 import HamburgerIcon from './assets/hamburguer.svg';
 import Itxi from './assets/itxi.svg';
-import InstagramLogo from '../../assets/instagram.svg';
-import TwitterLogo from '../../assets/twitter.svg';
+import * as styles from './MugikorNabigazioa.module.scss';
 
 export const MugikorNabigazioa: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,9 +34,9 @@ export const MugikorNabigazioa: React.FC = () => {
             </ul>
           </nav>
 
-          <KontaktuaWrapper>
+          <div className={styles.kontaktuaWrapper}>
             <KontaktuDatuak />
-          </KontaktuaWrapper>
+          </div>
         </NabigazioaWrapper>
       )}
 
@@ -47,14 +50,6 @@ export const MugikorNabigazioa: React.FC = () => {
     </>
   );
 };
-
-const KontaktuaWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-grow: 1;
-  width: 100%;
-`;
 
 const Esteka = styled.li`
   color: ${colors.zuria};
@@ -104,10 +99,10 @@ const NabigazioaWrapper = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  width: 100vw;
+  width: 100dvw;
   background-color: ${colors.beltza};
   color: ${colors.zuria};
-  height: 100vh;
+  height: 100dvh;
 `;
 
 /**

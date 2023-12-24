@@ -6,6 +6,7 @@ import Logo from './assets/logo.svg';
 import { DesktopNabigazioa } from './DesktopNabigazioa';
 import * as styles from './Gainburua.module.scss';
 import { KontaktuDatuak } from './KontaktuDatuak';
+import { MugikorNabigazioa } from './MugikorNabigazioa';
 
 export type AtalaName = 'hasiera' | 'kafetegia';
 
@@ -34,7 +35,9 @@ export const Gainburua: React.FC<Props> = ({
           </div>
         </a>
 
-        <KontaktuDatuak />
+        <div className={styles.kontaktuDatuakWrapper}>
+          <KontaktuDatuak />
+        </div>
       </header>
 
       {deskribapena && (
@@ -61,6 +64,10 @@ export const Gainburua: React.FC<Props> = ({
 
       <div className={styles.desktopNavigazioaWrapper}>
         <DesktopNabigazioa atala={atala} />
+      </div>
+
+      <div className={styles.mobileNabigazioaWrapper}>
+        <MugikorNabigazioa />
       </div>
     </div>
   );

@@ -124,13 +124,17 @@
 }
 
 .gainburuWrapper {
-  padding: var(--size-tiny);
+  padding: var(--size-base);
   display: flex;
   align-items: start;
-  justify-content: space-between;
+  justify-content: center;
 
   @media #{$fromTablet} {
     padding: var(--size-large);
+  }
+
+  @media #{$fromDesktop} {
+    justify-content: space-between;
   }
 }
 
@@ -178,6 +182,24 @@
 }
 
 .desktopNavigazioaWrapper {
+  display: none;
+
+  @media #{$fromDesktop} {
+    display: initial;
+  }
+}
+
+.mobileNabigazioaWrapper {
+  position: absolute;
+  top: var(--size-base);
+  right: var(--size-base);
+
+  @media #{$fromDesktop} {
+    display: none;
+  }
+}
+
+.kontaktuDatuakWrapper {
   display: none;
 
   @media #{$fromDesktop} {
