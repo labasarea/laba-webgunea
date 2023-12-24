@@ -31,7 +31,8 @@
     "front": "yarn workspace front"
   },
   "resolutions": {
-    "@graphql-tools/schema": "8.5.1"
+    "@graphql-tools/schema": "8.5.1",
+    "jackspeak": "2.1.1"
   },
   "devDependencies": {
     "rimraf": "^5.0.5"
