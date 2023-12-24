@@ -1,0 +1,7 @@
+@import '../../styles/tools/mixins/font.scss';
+
+.contentWrapper {
+  padding: var(--size-large) 0;
+  font-weight: 300;
+  @include largeFont;
+}
