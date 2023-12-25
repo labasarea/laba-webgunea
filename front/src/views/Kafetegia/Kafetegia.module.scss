@@ -1,0 +1,46 @@
+@import '../../styles/tools/mixins/font.scss';
+
+.contentWrapper {
+  padding: var(--size-huge) 0;
+}
+
+.onEgin {
+  text-align: center;
+  @include gargantuanFont;
+}
+
+.taldeWrapper {
+  margin-bottom: var(--size-large);
+}
+
+.izenburuWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: var(--size-medium);
+}
+
+.marra {
+  /* altuera erabiliko den letraren berdina da */
+  height: #{toRem(41.83)};
+  flex-grow: 1;
+  box-shadow: inset 0px -3px 0px 0px var(--color-beltza);
+  margin-right: var(--size-tiny);
+}
+
+.izenburua {
+  text-align: right;
+  vertical-align: bottom;
+
+  @include gargantuanFont;
+
+  &:after {
+    content: '.';
+  }
+}
+
+.zerrendaWrapper {
+  &:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+}

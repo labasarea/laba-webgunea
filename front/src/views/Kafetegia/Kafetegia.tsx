@@ -1,16 +1,13 @@
 import React from 'react';
 
-import { rem } from 'polished';
-import { styled } from 'styled-components';
-
 import { AlergenoLegenda } from '../../components/AlergenoLegenda';
 import { Container } from '../../components/Container';
 import { Gainburua } from '../../components/Gainburua';
 import { Oina } from '../../components/Oina';
 import { produktuaFactory } from '../../domain/factories/produktuaFactory';
-import { colors, font, size } from '../../ui/theme';
 import { KafetegiaData } from '../../viewQueries/KafetegiaData';
 import { ProduktuZerrenda } from './components/ProduktuZerrenda';
+import * as styles from './Kafetegia.module.scss';
 
 export const Kafetegia: React.FC<{ content: KafetegiaData }> = ({
   content,
@@ -29,7 +26,7 @@ export const Kafetegia: React.FC<{ content: KafetegiaData }> = ({
         deskribapena={deskribapena}
       />
 
-      <ContentWrapper id="edukia">
+      <div className={styles.contentWrapper} id="edukia">
         <Container>
           {menua.map(konponentea => {
             if (
@@ -37,14 +34,14 @@ export const Kafetegia: React.FC<{ content: KafetegiaData }> = ({
               'StrapiComponentKafetegiaProduktuTaldea'
             ) {
               return (
-                <ZerrendaWrapper key={konponentea.id}>
+                <div className={styles.zerrendaWrapper} key={konponentea.id}>
                   <ProduktuZerrenda
                     izena={konponentea.izenburua}
                     produktuZerrenda={konponentea.produktuak.map(
                       produktuaFactory,
                     )}
                   />
-                </ZerrendaWrapper>
+                </div>
               );
             }
 
@@ -52,77 +49,32 @@ export const Kafetegia: React.FC<{ content: KafetegiaData }> = ({
               konponentea.konponentea === 'StrapiComponentKafetegiaIzenburua'
             ) {
               return (
-                <IzenburuWrapper key={konponentea.id}>
-                  <Marra />
-                  <Izenburua>{konponentea.izenburuBalioa}</Izenburua>
-                </IzenburuWrapper>
+                <div className={styles.izenburuWrapper} key={konponentea.id}>
+                  <div className={styles.marra} />
+                  <h1 className={styles.izenburua}>
+                    {konponentea.izenburuBalioa}
+                  </h1>
+                </div>
               );
             }
           })}
 
           {hasAlergenoak && (
-            <TaldeWrapper>
-              <IzenburuWrapper>
-                <Marra />
-                <Izenburua>Alergenoak</Izenburua>
-              </IzenburuWrapper>
+            <section className={styles.taldeWrapper}>
+              <div className={styles.izenburuWrapper}>
+                <div className={styles.marra} />
+                <h1 className={styles.izenburua}>Alergenoak</h1>
+              </div>
 
               <AlergenoLegenda />
-            </TaldeWrapper>
+            </section>
           )}
 
-          <OnEgin>
-            <p>On egin!</p>
-          </OnEgin>
+          <p className={styles.onEgin}>On egin!</p>
         </Container>
-      </ContentWrapper>
+      </div>
 
       <Oina />
     </>
   );
 };
-
-const OnEgin = styled.div`
-  text-align: center;
-  ${font.gargantuan()};
-`;
-
-const ContentWrapper = styled.div`
-  padding: ${size.huge}px 0;
-`;
-
-const TaldeWrapper = styled.section`
-  margin-bottom: ${size.large}px;
-`;
-
-const ZerrendaWrapper = styled.div`
-  &:not(:last-child) {
-    margin-bottom: ${size.base}px;
-  }
-`;
-
-const IzenburuWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: ${rem(size.medium)};
-`;
-
-const Marra = styled.div`
-  /* altuera erabiliko den letraren berdina da */
-  height: ${rem(41.83)};
-  flex-grow: 1;
-  box-shadow: inset 0px -3px 0px 0px ${colors.beltza};
-  margin-right: ${rem(size.tiny)};
-`;
-
-const Izenburua = styled.h1`
-  text-align: right;
-  vertical-align: bottom;
-
-  &:after {
-    content: '.';
-  }
-
-  ${font.gargantuan()};
-`;
