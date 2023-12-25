@@ -2,3 +2,18 @@
 @import 'generic';
 @import 'tools';
 @import 'utilities';
+
+@import './tools/mixins/font.scss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Almarai', sans-serif;
+
+  @include baseFont;
+  font-weight: 700;
+
+  color: var(--color-beltza);
+}

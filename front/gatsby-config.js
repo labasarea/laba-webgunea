@@ -59,7 +59,7 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: 'Martel Sans',
+              family: 'Almarai',
               variants: ['300', '700'],
               fontDisplay: 'swap',
             },
