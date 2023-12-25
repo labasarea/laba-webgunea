@@ -3,6 +3,7 @@ require('dotenv').config({
 });
 
 module.exports = {
+  trailingSlash: 'never',
   plugins: [
     'gatsby-plugin-react-helmet',
     {
