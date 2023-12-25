@@ -3,7 +3,6 @@ import React from 'react';
 import { graphql, PageProps, useStaticQuery } from 'gatsby';
 
 import { SEO } from '../components/SEO';
-import { GlobalStyles } from '../ui/GlobalStyles';
 import { Hasiera } from '../views/Hasiera/Hasiera';
 import { HasieraContent } from '../views/Hasiera/HasieraContent';
 
@@ -29,8 +28,6 @@ const IndexPage: React.FC<PageProps> = ({ location }) => {
         description={strapiHasiera.deskribapena}
         location={location}
       />
-
-      <GlobalStyles />
 
       <Hasiera content={strapiHasiera} />
     </>
