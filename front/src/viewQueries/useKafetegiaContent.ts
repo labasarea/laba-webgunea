@@ -24,7 +24,7 @@ interface DataProps {
   };
 }
 
-export function useKafetegiaData(): KafetegiaData {
+export function useKafetegiaContent(): KafetegiaData {
   const {
     strapiKafetegia: { izenburua, deskribapena, menua },
   } = useStaticQuery<DataProps>(graphql`

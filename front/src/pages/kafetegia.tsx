@@ -3,11 +3,11 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
-import { useKafetegiaData } from '../viewQueries/useKafetegiaData';
+import { useKafetegiaContent } from '../viewQueries/useKafetegiaContent';
 import { Kafetegia } from '../views/Kafetegia';
 
 const KafetegiaPage: React.FC<PageProps> = ({ location }) => {
-  const content = useKafetegiaData();
+  const content = useKafetegiaContent();
 
   return (
     <>
