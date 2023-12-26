@@ -27,7 +27,7 @@
 
 .izena {
   text-align: left;
-  font-weight: 300;
+  font-weight: var(--font-weight-regular);
   padding: 0 var(--size-xtiny);
   vertical-align: top;
 }
@@ -35,7 +35,7 @@
 .prezioa {
   width: var(--size-huge);
   text-align: right;
-  font-weight: 300;
+  font-weight: var(--font-weight-regular);
   padding: 0 var(--size-xtiny);
   vertical-align: top;
 }
@@ -58,7 +58,7 @@
 
 .alergenoa {
   color: var(--color-morea);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 
   &:not(:last-child)::after {
     content: ', ';

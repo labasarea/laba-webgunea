@@ -2,7 +2,7 @@
 
 .contentWrapper {
   padding: var(--size-huge) 0;
-  font-weight: 300;
+  font-weight: var(--font-weight-regular);
   @include largeFont;
 }
 
@@ -24,7 +24,7 @@
   @include largeFont;
   padding: var(--size-base);
   background: var(--color-zuria);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   cursor: pointer;
   display: flex;
   align-items: center;

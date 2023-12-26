@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: var(--size-base);
+}
+
+.esteka {
+  &:not(:last-child) {
+    margin-right: var(--size-mini);
+  }
+
+  transition: color 500ms ease-out 100ms;
+  &:hover {
+    color: var(--color-morea);
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-morea);
+  }
+}
