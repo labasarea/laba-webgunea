@@ -44,7 +44,6 @@ module.exports = {
         icon: `src/assets/favicon.svg`,
       },
     },
-    'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
