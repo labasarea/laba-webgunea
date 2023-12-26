@@ -1,30 +1,16 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
-import { Link } from 'gatsby';
+import { PageProps } from 'gatsby';
 
-import { Container } from '../components/Container';
-import { Gainburua } from '../components/Gainburua';
-import { GlobalStyles } from '../ui/GlobalStyles';
+import { SEO } from '../components/SEO';
+import { NotFound } from '../views/NotFound';
 
-const NotFoundPage: React.FC = () => {
+const NotFoundPage: React.FC<PageProps> = ({ location }) => {
   return (
     <>
-      <Helmet
-        title={`Ez dugu orria topatu | Laba`}
-        htmlAttributes={{ lang: 'eu' }}
-      />
+      <SEO title="Ez dugu orria topatu" location={location} />
 
-      <GlobalStyles />
-      <Gainburua />
-
-      <Container>
-        <main>
-          <h1>Ez dugu orria topatu</h1>
-          <br />
-          <Link to="/">Hasierara bueltatu</Link>
-        </main>
-      </Container>
+      <NotFound />
     </>
   );
 };

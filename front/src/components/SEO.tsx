@@ -1,6 +1,8 @@
-import { PageProps } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+
+import { PageProps } from 'gatsby';
+
 import ogImagePath from '../images/og-image.jpeg';
 
 interface Props {
@@ -10,7 +12,7 @@ interface Props {
   location: PageProps['location'];
 }
 
-export const SEO: React.VFC<Props> = ({ title, description, location }) => (
+export const SEO: React.FC<Props> = ({ title, description, location }) => (
   <Helmet title={`${title} | Laba`} htmlAttributes={{ lang: 'eu' }}>
     {description && <meta name="description" content={description} />}
 
