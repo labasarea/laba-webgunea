@@ -15,12 +15,12 @@
 
 .izena {
   margin-bottom: var(--size-tiny);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   text-align: center;
 }
 
 .zenbakia {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   text-align: center;
   color: var(--color-morea);
 }

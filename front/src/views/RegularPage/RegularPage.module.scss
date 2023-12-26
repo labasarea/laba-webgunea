@@ -5,7 +5,7 @@
 }
 
 .edukia {
-  font-weight: 300;
+  font-weight: var(--font-weight-regular);
   @include baseFont;
 
   p:not(-last-child) {
@@ -14,24 +14,24 @@
 
   h1 {
     @include gargantuanFont;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--size-base);
   }
 
   h2 {
     @include hugeFont;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--size-base);
   }
 
   h3 {
     @include largeFont;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--size-base);
   }
 
   h4 {
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--size-mini);
   }
 
