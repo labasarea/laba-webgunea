@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { mapAlergenoIdentifikadoreaToIzena } from '../../domain/mappers/mapAlergenoIdentifikadoreaToIzena';
-import { mapAlergenoIdentifikadoreaToZenbakia } from '../../domain/mappers/mapAlergenoIdentifikadoreaToZenbakia';
-import { AlergenoIdentifikadorea } from '../../domain/models/AlergenoIdentifikadorea';
+import { mapAlergenoIdentifikadoreaToIzena } from '../../../../domain/kafetegia/mappers/mapAlergenoIdentifikadoreaToIzena';
+import { mapAlergenoIdentifikadoreaToZenbakia } from '../../../../domain/kafetegia/mappers/mapAlergenoIdentifikadoreaToZenbakia';
+import { AlergenoIdentifikadorea } from '../../../../domain/kafetegia/models/AlergenoIdentifikadorea';
 import * as styles from './AlergenoLegenda.module.scss';
 import { AlergenoLogoa } from './AlergenoLogoa';
 

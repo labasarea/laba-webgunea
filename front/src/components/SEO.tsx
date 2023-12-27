@@ -3,8 +3,6 @@ import { Helmet } from 'react-helmet';
 
 import { PageProps } from 'gatsby';
 
-import ogImagePath from '../images/og-image.jpeg';
-
 interface Props {
   title: string;
   description?: string;
@@ -18,7 +16,7 @@ export const SEO: React.FC<Props> = ({ title, description, location }) => (
 
     <meta
       name="og:image"
-      content={`${location.protocol}//${location.host}${ogImagePath}`}
+      content={`${location.protocol}//${location.host}/og-image.jpeg`}
     />
     <meta name="og:image:height" content="669" />
     <meta name="og:image:width" content="1205" />

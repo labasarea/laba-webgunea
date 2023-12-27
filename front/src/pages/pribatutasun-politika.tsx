@@ -1,30 +1,19 @@
 import React from 'react';
 
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
+import { usePribatutasunPolitikaContent } from '../domain/basicPage/hooks/usePribatutasunPolitikaContent';
 import { RegularPage } from '../views/RegularPage/RegularPage';
-import { RegularPageContent } from '../views/RegularPage/RegularPageContent';
-
-interface DataProps {
-  strapiPribatutasunPolitika: RegularPageContent;
-}
 
 const PribatutasunPolitika: React.FC<PageProps> = ({ location }) => {
-  const { strapiPribatutasunPolitika } = useStaticQuery<DataProps>(graphql`
-    {
-      strapiPribatutasunPolitika {
-        izenburua
-        edukia
-      }
-    }
-  `);
+  const content = usePribatutasunPolitikaContent();
 
   return (
     <>
-      <SEO title={strapiPribatutasunPolitika.izenburua} location={location} />
+      <SEO title={content.izenburua} location={location} />
 
-      <RegularPage content={strapiPribatutasunPolitika} />
+      <RegularPage content={content} />
     </>
   );
 };

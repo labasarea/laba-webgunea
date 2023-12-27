@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'gatsby';
 
-import { classNames } from '../../../../utilities/classnames';
+import { classNames } from '../../../../../utilities/classnames';
 import * as styles from './DesktopNabigazioa.module.scss';
 
 import type { AtalaName } from '../../AtalaName';

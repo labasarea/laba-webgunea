@@ -1,35 +1,23 @@
 import React from 'react';
 
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
+import { useHasieraContent } from '../domain/hasiera/hooks/useHasieraContent';
 import { Hasiera } from '../views/Hasiera/Hasiera';
-import { HasieraContent } from '../views/Hasiera/HasieraContent';
-
-interface DataProps {
-  strapiHasiera: HasieraContent;
-}
 
 const IndexPage: React.FC<PageProps> = ({ location }) => {
-  const { strapiHasiera } = useStaticQuery<DataProps>(graphql`
-    {
-      strapiHasiera {
-        deskribapena
-        izenburua
-        edukia
-      }
-    }
-  `);
+  const content = useHasieraContent();
 
   return (
     <>
       <SEO
-        title={strapiHasiera.izenburua}
-        description={strapiHasiera.deskribapena}
+        title={content.izenburua}
+        description={content.deskribapena}
         location={location}
       />
 
-      <Hasiera content={strapiHasiera} />
+      <Hasiera content={content} />
     </>
   );
 };

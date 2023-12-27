@@ -2,11 +2,11 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import Gezia from '../../assets/gezia.svg';
-import { Container } from '../../components/Container';
-import { Gainburua } from '../../components/Gainburua';
-import { Oina } from '../../components/Oina';
+import { HasieraContent } from '../../domain/hasiera/HasieraContent';
+import { Container } from '../components/Container';
+import { Gainburua } from '../components/Gainburua';
+import { Oina } from '../components/Oina';
 import * as styles from './Hasiera.module.scss';
-import { HasieraContent } from './HasieraContent';
 
 interface Props {
   content: HasieraContent;

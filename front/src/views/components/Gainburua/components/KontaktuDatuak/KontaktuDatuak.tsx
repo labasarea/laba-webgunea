@@ -1,8 +1,8 @@
 import React from 'react';
 
-import InstagramLogo from '../../../../assets/instagram.svg';
-import TwitterLogo from '../../../../assets/twitter.svg';
-import { classNames } from '../../../../utilities/classnames';
+import InstagramLogo from '../../../../../assets/instagram.svg';
+import TwitterLogo from '../../../../../assets/twitter.svg';
+import { classNames } from '../../../../../utilities/classnames';
 import * as styles from './KontaktuDatuak.module.scss';
 
 interface Props {

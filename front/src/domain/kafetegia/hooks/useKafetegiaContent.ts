@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-import { ProduktuaDTO } from '../domain/dtos/ProduktuaDTO';
-import { KafetegiaData } from './KafetegiaData';
+import { ProduktuaDTO } from '../dtos/ProduktuaDTO';
+import { KafetegiaContent } from '../KafetegiaContent';
 
 export type MenuKonponentea =
   | {
@@ -24,7 +24,7 @@ interface DataProps {
   };
 }
 
-export function useKafetegiaData(): KafetegiaData {
+export function useKafetegiaContent(): KafetegiaContent {
   const {
     strapiKafetegia: { izenburua, deskribapena, menua },
   } = useStaticQuery<DataProps>(graphql`
