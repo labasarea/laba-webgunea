@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Link } from 'gatsby';
 
-import { Container } from '../../components/Container';
 import { Gainburua } from '../../components/Gainburua';
+import { Container } from '../components/Container';
 
 export const NotFound: React.FC = () => (
   <>
