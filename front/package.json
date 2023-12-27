@@ -28,7 +28,6 @@
     "gatsby-plugin-sharp": "^5.12.3",
     "gatsby-plugin-sitemap": "^6.12.3",
     "gatsby-plugin-webfonts": "^2.3.2",
-    "gatsby-source-filesystem": "^5.12.1",
     "gatsby-source-strapi-graphql": "^6.1.2",
     "gatsby-transformer-sharp": "^5.12.3",
     "raw-loader": "^4.0.2",

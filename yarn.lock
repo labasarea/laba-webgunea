@@ -10325,21 +10325,6 @@ gatsby-source-filesystem@^4.17.0:
     valid-url "^1.0.9"
     xstate "4.32.1"
 
-gatsby-source-filesystem@^5.12.1:
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-5.13.0.tgz#33d6a5307a268a67c931dd3602d3e9150b597905"
-  integrity sha512-yn4axQhIPHLQDMgrhEmerXyoawiTVB1haUz36BTlQers0HfMmODyjbnIK01Dt1IKAbYVfS0A2suBjBjIbNLwAg==
-  dependencies:
-    "@babel/runtime" "^7.20.13"
-    chokidar "^3.5.3"
-    file-type "^16.5.4"
-    fs-extra "^11.1.1"
-    gatsby-core-utils "^4.13.0"
-    mime "^3.0.0"
-    pretty-bytes "^5.6.0"
-    valid-url "^1.0.9"
-    xstate "^4.38.0"
-
 gatsby-source-rest-api@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/gatsby-source-rest-api/-/gatsby-source-rest-api-0.2.3.tgz#1bbe2274a7ec686a5f07d0e5eabc84f537967287"
