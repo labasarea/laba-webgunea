@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Gainburua } from '../../components/Gainburua';
 import { Oina } from '../../components/Oina';
 import { produktuaFactory } from '../../domain/kafetegia/factories/produktuaFactory';
 import { KafetegiaContent } from '../../domain/kafetegia/KafetegiaContent';
 import { Container } from '../components/Container';
+import { Gainburua } from '../components/Gainburua';
 import { AlergenoLegenda } from './components/AlergenoLegenda';
 import { ProduktuZerrenda } from './components/ProduktuZerrenda';
 import * as styles from './Kafetegia.module.scss';

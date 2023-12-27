@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames } from '../../utilities/classnames';
+import { classNames } from '../../../utilities/classnames';
 import Gezia from './assets/gezia.svg';
 import Logo from './assets/logo.svg';
 import { AtalaName } from './AtalaName';
