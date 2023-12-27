@@ -3,7 +3,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
-import { usePribatutasunPolitikaContent } from '../viewQueries/usePribatutasunPolitikaContent';
+import { usePribatutasunPolitikaContent } from '../domain/basicPage/hooks/usePribatutasunPolitikaContent';
 import { RegularPage } from '../views/RegularPage/RegularPage';
 
 const PribatutasunPolitika: React.FC<PageProps> = ({ location }) => {

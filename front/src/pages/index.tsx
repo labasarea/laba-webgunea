@@ -3,7 +3,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
-import { useHasieraContent } from '../viewQueries/useHasieraContent';
+import { useHasieraContent } from '../domain/hasiera/hooks/useHasieraContent';
 import { Hasiera } from '../views/Hasiera/Hasiera';
 
 const IndexPage: React.FC<PageProps> = ({ location }) => {

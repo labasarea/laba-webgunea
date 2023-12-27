@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AlergenoIdentifikadorea } from '../../domain/models/AlergenoIdentifikadorea';
+import { AlergenoIdentifikadorea } from '../../domain/kafetegia/models/AlergenoIdentifikadorea';
 import Apioa from './assets/alergenoak/apioa.svg';
 import Arraina from './assets/alergenoak/arraina.svg';
 import Arrautzak from './assets/alergenoak/arrautzak.svg';

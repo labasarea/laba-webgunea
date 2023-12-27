@@ -3,7 +3,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
-import { useKafetegiaContent } from '../viewQueries/useKafetegiaContent';
+import { useKafetegiaContent } from '../domain/kafetegia/hooks/useKafetegiaContent';
 import { Kafetegia } from '../views/Kafetegia';
 
 const KafetegiaPage: React.FC<PageProps> = ({ location }) => {

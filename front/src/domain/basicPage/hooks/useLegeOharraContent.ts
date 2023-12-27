@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-import { RegularPageContent } from '../views/RegularPage/RegularPageContent';
+import { RegularPageContent } from '../RegularPageContent';
 
 interface DataProps {
   strapiLegeOharra: RegularPageContent;

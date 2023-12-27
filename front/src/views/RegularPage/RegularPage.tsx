@@ -6,8 +6,8 @@ import remarkGfm from 'remark-gfm';
 import { Container } from '../../components/Container';
 import { Gainburua } from '../../components/Gainburua';
 import { Oina } from '../../components/Oina';
+import { RegularPageContent } from '../../domain/basicPage/RegularPageContent';
 import * as styles from './RegularPage.module.scss';
-import { RegularPageContent } from './RegularPageContent';
 
 interface Props {
   content: RegularPageContent;

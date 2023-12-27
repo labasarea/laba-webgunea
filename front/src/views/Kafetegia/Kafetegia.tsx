@@ -4,12 +4,12 @@ import { AlergenoLegenda } from '../../components/AlergenoLegenda';
 import { Container } from '../../components/Container';
 import { Gainburua } from '../../components/Gainburua';
 import { Oina } from '../../components/Oina';
-import { produktuaFactory } from '../../domain/factories/produktuaFactory';
-import { KafetegiaData } from '../../viewQueries/KafetegiaData';
+import { produktuaFactory } from '../../domain/kafetegia/factories/produktuaFactory';
+import { KafetegiaContent } from '../../domain/kafetegia/KafetegiaContent';
 import { ProduktuZerrenda } from './components/ProduktuZerrenda';
 import * as styles from './Kafetegia.module.scss';
 
-export const Kafetegia: React.FC<{ content: KafetegiaData }> = ({
+export const Kafetegia: React.FC<{ content: KafetegiaContent }> = ({
   content,
 }) => {
   const { izenburua, deskribapena, menua } = content;

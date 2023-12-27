@@ -2,7 +2,7 @@ import React from 'react';
 
 import BeganoaLogo from '../../../../assets/beganoa.svg';
 import EkologikoaLogo from '../../../../assets/ekologikoa.svg';
-import { Produktua } from '../../../../domain/models/Produktua';
+import { Produktua } from '../../../../domain/kafetegia/models/Produktua';
 import * as styles from './ProduktuZerrenda.module.scss';
 
 interface Props {

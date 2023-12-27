@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-import { HasieraContent } from '../views/Hasiera/HasieraContent';
+import { HasieraContent } from '../HasieraContent';
 
 interface DataProps {
   strapiHasiera: HasieraContent;

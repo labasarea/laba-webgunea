@@ -3,7 +3,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 
 import { SEO } from '../components/SEO';
-import { useLegeOharraContent } from '../viewQueries/useLegeOharraContent';
+import { useLegeOharraContent } from '../domain/basicPage/hooks/useLegeOharraContent';
 import { RegularPage } from '../views/RegularPage';
 
 const LegeOharra: React.FC<PageProps> = ({ location }) => {
