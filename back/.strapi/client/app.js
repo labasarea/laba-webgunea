@@ -12,6 +12,7 @@ import customisations from "../../src/admin/app.js";
 
 renderAdmin(document.getElementById("strapi"), {
   customisations,
+
   plugins: {
     graphql: graphql,
     i18n: i18N,

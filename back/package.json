@@ -15,18 +15,19 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.15.5",
-    "@strapi/plugin-i18n": "4.15.5",
-    "@strapi/plugin-users-permissions": "4.15.5",
-    "@strapi/provider-upload-cloudinary": "^4.15.5",
-    "@strapi/strapi": "4.15.5",
+    "@strapi/plugin-graphql": "^4.16.2",
+    "@strapi/plugin-i18n": "^4.16.2",
+    "@strapi/plugin-users-permissions": "^4.16.2",
+    "@strapi/provider-upload-cloudinary": "^4.16.2",
+    "@strapi/strapi": "^4.16.2",
     "pg": "^8.11.3",
     "pg-connection-string": "^2.6.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^5.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
     "sqlite3": "5.1.6",
-    "strapi-plugin-netlify-deployments": "^2.0.2"
+    "strapi-plugin-netlify-deployments": "^2.0.2",
+    "styled-components": "^5.3.11"
   },
   "strapi": {
     "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
