@@ -1,7 +1,7 @@
 import React from 'react';
 
+import Gezia from '../../../assets/gezia.svg';
 import { classNames } from '../../../utilities/classnames';
-import Gezia from './assets/gezia.svg';
 import Logo from './assets/logo.svg';
 import { AtalaName } from './AtalaName';
 import { DesktopNabigazioa } from './components/DesktopNabigazioa';
@@ -50,6 +50,7 @@ export const Gainburua: React.FC<Props> = ({
 
           <div className={styles.geziaWrapper}>
             <a className={styles.gainburuLink} href="#edukia">
+              JAITSI
               <Gezia className={styles.geziaLogo} />
             </a>
           </div>
