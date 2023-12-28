@@ -39,8 +39,8 @@ module.exports = {
         fonts: {
           google: [
             {
-              family: 'Almarai',
-              variants: ['300', '700'],
+              family: 'Lato',
+              variants: ['400', '700'],
               fontDisplay: 'swap',
             },
           ],

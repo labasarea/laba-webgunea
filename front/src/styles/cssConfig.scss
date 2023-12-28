@@ -10,7 +10,8 @@ html {
 }
 
 body {
-  font-family: 'Almarai', sans-serif;
+  /* OHARRA: Logoan eta irudi korporatiboan Söhne familia erabili da */
+  font-family: 'Lato', sans-serif;
 
   @include baseFont;
   font-weight: var(--font-weight-bold);
