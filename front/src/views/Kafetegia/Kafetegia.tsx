@@ -5,7 +5,6 @@ import { KafetegiaContent } from '../../domain/kafetegia/KafetegiaContent';
 import { Container } from '../components/Container';
 import { Gainburua } from '../components/Gainburua';
 import { Oina } from '../components/Oina';
-import { AlergenoLegenda } from './components/AlergenoLegenda';
 import { ProduktuZerrenda } from './components/ProduktuZerrenda';
 import * as styles from './Kafetegia.module.scss';
 
@@ -14,9 +13,9 @@ export const Kafetegia: React.FC<{ content: KafetegiaContent }> = ({
 }) => {
   const { izenburua, deskribapena, menua } = content;
 
-  // oraingoz menuak alergenorik ez duenez, ezkutatuko dugu
-  // TODO modu dinamikoan aldatu balio hau
-  const hasAlergenoak = false;
+  // oraingoz menuak alergenorik ez duenez, alergeno legenda ezkutatuko dugu.
+  // AlergenoLegenda konponentea sortuta dago, baina ez dugu erabiltzen
+  // performance arrazoiengatik
 
   return (
     <>
@@ -58,17 +57,6 @@ export const Kafetegia: React.FC<{ content: KafetegiaContent }> = ({
               );
             }
           })}
-
-          {hasAlergenoak && (
-            <section className={styles.taldeWrapper}>
-              <div className={styles.izenburuWrapper}>
-                <div className={styles.marra} />
-                <h1 className={styles.izenburua}>Alergenoak</h1>
-              </div>
-
-              <AlergenoLegenda />
-            </section>
-          )}
 
           <p className={styles.onEgin}>On egin!</p>
         </Container>
