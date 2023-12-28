@@ -1,22 +1,5 @@
-@import '../../../styles/tools/mediaQueries.scss';
+@import '../../../styles/tools/mixins/container.scss';
 
 .wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--size-small);
-  padding-right: var(--size-small);
-
-  width: 100%;
-
-  @media #{$fromTablet} {
-    padding-left: 0;
-    padding-right: 0;
-    width: 744px;
-  }
-
-  @media #{$fromDesktop} {
-    padding-left: 0;
-    padding-right: 0;
-    width: 1014px;
-  }
+  @include container;
 }
