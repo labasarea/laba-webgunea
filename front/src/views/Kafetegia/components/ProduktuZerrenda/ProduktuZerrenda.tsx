@@ -3,6 +3,7 @@ import React from 'react';
 import BeganoaLogo from '../../../../assets/beganoa.svg';
 import EkologikoaLogo from '../../../../assets/ekologikoa.svg';
 import { Produktua } from '../../../../domain/kafetegia/models/Produktua';
+import { classNames } from '../../../../utilities/classnames';
 import * as styles from './ProduktuZerrenda.module.scss';
 
 interface Props {
@@ -17,7 +18,16 @@ export const ProduktuZerrenda: React.FC<Props> = ({
   <table className={styles.produktuTaula}>
     {izena && <caption className={styles.mota}>{izena}</caption>}
 
-    <tbody>
+    <thead className={classNames('visually-hidden', styles.tableGroup)}>
+      <tr>
+        <th>Beganoa</th>
+        <th>Ekologikoa</th>
+        <th>Produktuaren izena</th>
+        <th>Produktuaren prezioa</th>
+      </tr>
+    </thead>
+
+    <tbody className={styles.tableGroup}>
       {produktuZerrenda.map(produktua => (
         <tr key={produktua.id}>
           <td className={styles.ezaugarria}>
