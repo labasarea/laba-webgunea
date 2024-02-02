@@ -768,6 +768,83 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiEkintzaEkintza extends Schema.CollectionType {
+  collectionName: 'ekintzak';
+  info: {
+    singularName: 'ekintza';
+    pluralName: 'ekintzak';
+    displayName: 'Ekintza';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    izenburua: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::ekintza.ekintza', 'izenburua'> &
+      Attribute.Required;
+    hitzordua: Attribute.DateTime & Attribute.Required;
+    titularra: Attribute.Text;
+    elkarlana: Attribute.Component<'bizi.elkarlana', true>;
+    labakoUzta: Attribute.Boolean;
+    kartela: Attribute.Media & Attribute.Required;
+    zikloa: Attribute.Relation<
+      'api::ekintza.ekintza',
+      'manyToOne',
+      'api::zikloa.zikloa'
+    >;
+    deskribapena: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ekintza.ekintza',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ekintza.ekintza',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiErakundeaErakundea extends Schema.CollectionType {
+  collectionName: 'erakundeak';
+  info: {
+    singularName: 'erakundea';
+    pluralName: 'erakundeak';
+    displayName: 'Erakundea';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    izena: Attribute.String & Attribute.Required;
+    esteka: Attribute.String;
+    logoa: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::erakundea.erakundea',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::erakundea.erakundea',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHasieraHasiera extends Schema.SingleType {
   collectionName: 'hasierak';
   info: {
@@ -900,6 +977,43 @@ export interface ApiPribatutasunPolitikaPribatutasunPolitika
   };
 }
 
+export interface ApiZikloaZikloa extends Schema.CollectionType {
+  collectionName: 'zikloas';
+  info: {
+    singularName: 'zikloa';
+    pluralName: 'zikloas';
+    displayName: 'Zikloa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Izena: Attribute.String & Attribute.Required;
+    deskribapena: Attribute.RichText;
+    slug: Attribute.UID<'api::zikloa.zikloa', 'Izena'>;
+    ekintzak: Attribute.Relation<
+      'api::zikloa.zikloa',
+      'oneToMany',
+      'api::ekintza.ekintza'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::zikloa.zikloa',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::zikloa.zikloa',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -918,10 +1032,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::ekintza.ekintza': ApiEkintzaEkintza;
+      'api::erakundea.erakundea': ApiErakundeaErakundea;
       'api::hasiera.hasiera': ApiHasieraHasiera;
       'api::kafetegia.kafetegia': ApiKafetegiaKafetegia;
       'api::lege-oharra.lege-oharra': ApiLegeOharraLegeOharra;
       'api::pribatutasun-politika.pribatutasun-politika': ApiPribatutasunPolitikaPribatutasunPolitika;
+      'api::zikloa.zikloa': ApiZikloaZikloa;
     }
   }
 }

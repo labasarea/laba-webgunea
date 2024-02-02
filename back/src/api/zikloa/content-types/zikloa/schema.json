@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zikloas",
+  "info": {
+    "singularName": "zikloa",
+    "pluralName": "zikloas",
+    "displayName": "Zikloa"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Izena": {
+      "type": "string",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Izena"
+    },
+    "ekintzak": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ekintza.ekintza",
+      "mappedBy": "zikloa"
+    }
+  }
+}

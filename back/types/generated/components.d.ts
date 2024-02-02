@@ -1,5 +1,22 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface BiziElkarlana extends Schema.Component {
+  collectionName: 'components_bizi_elkarlanas';
+  info: {
+    displayName: 'elkarlana';
+    icon: 'handHeart';
+    description: '';
+  };
+  attributes: {
+    harremana: Attribute.String;
+    erakundeak: Attribute.Relation<
+      'bizi.elkarlana',
+      'oneToMany',
+      'api::erakundea.erakundea'
+    >;
+  };
+}
+
 export interface KafetegiaAlergenoa extends Schema.Component {
   collectionName: 'components_kafetegia_alergenoas';
   info: {
@@ -119,6 +136,7 @@ export interface OrokorraHelbidea extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'bizi.elkarlana': BiziElkarlana;
       'kafetegia.alergenoa': KafetegiaAlergenoa;
       'kafetegia.edaria': KafetegiaEdaria;
       'kafetegia.izenburua': KafetegiaIzenburua;
