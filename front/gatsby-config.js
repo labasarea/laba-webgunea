@@ -10,14 +10,13 @@ module.exports = {
       resolve: 'gatsby-source-strapi-graphql',
       options: {
         apiURL: process.env.API_URL,
-        collectionTypes: [],
+        collectionTypes: ['ekintza', 'erakundea', 'zikloa'],
         singleTypes: [
           'hasiera',
           'kafetegia',
           'lege-oharra',
           'pribatutasun-politika',
         ],
-        contentTypes: [],
         // Enable/disable cache.
         cache: false,
         token: process.env.STRAPI_GRAPHQL_TOKEN,

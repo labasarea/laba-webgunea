@@ -799,7 +799,9 @@ export interface ApiEkintzaEkintza extends Schema.CollectionType {
     hitzordua: Attribute.DateTime & Attribute.Required;
     titularra: Attribute.Text;
     elkarlana: Attribute.Component<'bizi.elkarlana', true>;
-    labakoUzta: Attribute.Boolean;
+    labakoUzta: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     kartela: Attribute.Media & Attribute.Required;
     zikloa: Attribute.Relation<
       'api::ekintza.ekintza',

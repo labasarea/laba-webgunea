@@ -34,7 +34,9 @@
       "component": "bizi.elkarlana"
     },
     "labakoUzta": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false,
+      "required": true
     },
     "kartela": {
       "type": "media",
