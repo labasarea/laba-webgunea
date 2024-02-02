@@ -998,14 +998,15 @@ export interface ApiZikloaZikloa extends Schema.CollectionType {
     singularName: 'zikloa';
     pluralName: 'zikloas';
     displayName: 'Zikloa';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Izena: Attribute.String & Attribute.Required;
+    izena: Attribute.String & Attribute.Required;
     deskribapena: Attribute.RichText;
-    slug: Attribute.UID<'api::zikloa.zikloa', 'Izena'>;
+    slug: Attribute.UID;
     ekintzak: Attribute.Relation<
       'api::zikloa.zikloa',
       'oneToMany',
