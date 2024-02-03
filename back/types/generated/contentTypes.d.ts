@@ -1006,7 +1006,7 @@ export interface ApiZikloaZikloa extends Schema.CollectionType {
   attributes: {
     izena: Attribute.String & Attribute.Required;
     deskribapena: Attribute.RichText;
-    slug: Attribute.UID;
+    slug: Attribute.UID<'api::zikloa.zikloa', 'izena'> & Attribute.Required;
     ekintzak: Attribute.Relation<
       'api::zikloa.zikloa',
       'oneToMany',

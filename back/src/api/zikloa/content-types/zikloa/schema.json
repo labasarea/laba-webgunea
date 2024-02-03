@@ -20,7 +20,9 @@
       "type": "richtext"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "required": true,
+      "targetField": "izena"
     },
     "ekintzak": {
       "type": "relation",
