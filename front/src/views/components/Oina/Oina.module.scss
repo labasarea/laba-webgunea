@@ -79,4 +79,6 @@
 .igoWrapper {
   display: flex;
   justify-content: center;
+  // padding-a jartzen diogu geziaren animazioari lekua uzteko
+  padding-top: var(--size-small);
 }
