@@ -825,7 +825,7 @@ export interface ApiEkintzaEkintza extends Schema.CollectionType {
     labakoUzta: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    kartela: Attribute.Media & Attribute.Required;
+    kartela: Attribute.Media;
     zikloa: Attribute.Relation<
       'api::ekintza.ekintza',
       'manyToOne',
