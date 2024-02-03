@@ -18,6 +18,7 @@ interface Props {
 const atalaClassname: { [key in AtalaName]: string } = {
   hasiera: styles.hasiera,
   kafetegia: styles.kafetegia,
+  bizi: styles.bizi,
 };
 
 export const Gainburua: React.FC<Props> = ({

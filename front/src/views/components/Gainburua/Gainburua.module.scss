@@ -89,6 +89,16 @@
   }
 }
 
+.bizi {
+  --color: var(--color-beltza);
+  --hover-color: var(--color-gorria);
+  --background-color: var(--color-urdina);
+
+  @media #{$fromDesktop} {
+    min-height: 100dvh;
+  }
+}
+
 .logoWrapper {
   width: var(--size-huge);
 }
@@ -175,7 +185,7 @@
     }
   }
 
-  &:focus {
+  &:focus-visible {
     outline: 3px solid var(--hover-color);
   }
 

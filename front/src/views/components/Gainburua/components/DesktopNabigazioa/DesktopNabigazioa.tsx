@@ -28,6 +28,17 @@ export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
         <li
           className={classNames(
             styles.esteka,
+            atala === 'bizi' && styles.active,
+          )}
+        >
+          <Link className={styles.gainburuLink} to="/bizi">
+            Bizi Laba
+          </Link>
+        </li>
+
+        <li
+          className={classNames(
+            styles.esteka,
             atala === 'kafetegia' && styles.active,
           )}
         >

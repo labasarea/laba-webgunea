@@ -781,6 +781,29 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBiziBizi extends Schema.SingleType {
+  collectionName: 'bizis';
+  info: {
+    singularName: 'bizi';
+    pluralName: 'bizis';
+    displayName: 'Bizi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    izenburua: Attribute.String & Attribute.Required;
+    deskribapena: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::bizi.bizi', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::bizi.bizi', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiEkintzaEkintza extends Schema.CollectionType {
   collectionName: 'ekintzak';
   info: {
@@ -1048,6 +1071,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::bizi.bizi': ApiBiziBizi;
       'api::ekintza.ekintza': ApiEkintzaEkintza;
       'api::erakundea.erakundea': ApiErakundeaErakundea;
       'api::hasiera.hasiera': ApiHasieraHasiera;

@@ -13,6 +13,7 @@ module.exports = {
         collectionTypes: ['ekintza', 'erakundea', 'zikloa'],
         singleTypes: [
           'hasiera',
+          'bizi',
           'kafetegia',
           'lege-oharra',
           'pribatutasun-politika',

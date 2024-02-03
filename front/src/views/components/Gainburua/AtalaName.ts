@@ -1,1 +1,1 @@
-export type AtalaName = 'hasiera' | 'kafetegia';
+export type AtalaName = 'hasiera' | 'kafetegia' | 'bizi';

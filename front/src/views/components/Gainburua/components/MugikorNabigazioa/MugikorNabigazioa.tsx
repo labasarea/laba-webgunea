@@ -24,6 +24,9 @@ export const MugikorNabigazioa: React.FC = () => {
                 <Link to="/">Laba gara</Link>
               </li>
               <li className={styles.esteka}>
+                <Link to="/bizi">Bizi Laba</Link>
+              </li>
+              <li className={styles.esteka}>
                 <Link to="/kafetegia">Dastatu Laba</Link>
               </li>
             </ul>
