@@ -3,7 +3,7 @@ import React from 'react';
 import { PageProps } from 'gatsby';
 
 import { SEO } from '../../../components/SEO';
-import { useZikloaContent } from '../../../domain/zikloa/hooks/useEkintzaContent';
+import { useZikloaContent } from '../../../domain/zikloa/hooks/useZikloaContent';
 import { Zikloa } from '../../../views/Zikloa/Zikloa';
 
 const ZikloaPage: React.FC<PageProps> = ({ location }) => {
