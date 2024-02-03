@@ -8,15 +8,18 @@ import { Oina } from '../components/Oina';
 import { ProduktuZerrenda } from './components/ProduktuZerrenda';
 import * as styles from './Kafetegia.module.scss';
 
-export const Kafetegia: React.FC<{ content: KafetegiaContent }> = ({
-  content,
-}) => {
+interface Props {
+  content: KafetegiaContent;
+}
+
+export const Kafetegia: React.FC<Props> = ({ content }) => {
   const { izenburua, deskribapena, menua } = content;
 
-  // oraingoz menuak alergenorik ez duenez, alergeno legenda ezkutatuko dugu.
-  // AlergenoLegenda konponentea sortuta dago, baina ez dugu erabiltzen
-  // performance arrazoiengatik
-
+  /**
+   * oraingoz menuak alergenorik ez duenez, alergeno legenda ezkutatuko dugu.
+   * AlergenoLegenda konponentea sortuta dago, baina ez dugu erabiltzen
+   * performance arrazoiengatik
+   */
   return (
     <>
       <Gainburua
