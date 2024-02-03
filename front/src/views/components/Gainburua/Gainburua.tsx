@@ -41,7 +41,7 @@ export const Gainburua: React.FC<Props> = ({
       </header>
 
       {deskribapena && (
-        <main className={styles.nagusia}>
+        <div className={styles.nagusia}>
           <p className={styles.deskribapena}>{deskribapena}</p>
 
           <div className={styles.izenburuWrapper}>
@@ -55,7 +55,7 @@ export const Gainburua: React.FC<Props> = ({
               <Gezia className={styles.geziaLogo} />
             </a>
           </div>
-        </main>
+        </div>
       )}
 
       <div className={styles.desktopNavigazioaWrapper}>
