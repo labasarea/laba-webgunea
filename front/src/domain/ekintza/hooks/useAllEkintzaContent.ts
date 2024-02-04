@@ -15,7 +15,7 @@ export function useAllEkintzaContent(): EkintzaContent[] {
         nodes {
           slug
           izenburua
-          hitzordua
+          titularra
         }
       }
     }

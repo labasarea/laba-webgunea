@@ -1,0 +1,65 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: var(--size-base);
+
+  padding-left: var(--size-huge);
+  padding-right: var(--size-huge);
+  padding-top: var(--size-huge);
+  margin-bottom: var(--size-huge);
+}
+
+.section {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: clamp(2rem, 5dvw, 5rem);
+  color: var(--color-grisa-2);
+
+  filter: blur(1px);
+  transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-90%);
+}
+
+.card {
+  position: relative;
+  padding: var(--size-base);
+
+  &:not(:last-child) {
+    margin-bottom: var(--size-medium);
+  }
+}
+
+.ekintzaCardList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--size-medium);
+}
+
+.cardTitle {
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: clamp(2rem, 1.75dvw, 3rem);
+  line-height: 125%;
+}
+
+.cardHeadline {
+  margin-top: var(--size-small);
+
+  color: var(--color-grisa-2);
+}
+
+.cardLink {
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

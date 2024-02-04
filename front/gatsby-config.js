@@ -43,6 +43,11 @@ module.exports = {
               variants: ['400', '700'],
               fontDisplay: 'swap',
             },
+            {
+              family: 'Abril Fatface',
+              variants: ['400'],
+              fontDisplay: 'swap',
+            },
           ],
         },
       },
