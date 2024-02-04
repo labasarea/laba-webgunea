@@ -14,35 +14,34 @@ export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
   return (
     <nav className={styles.nabigazioa}>
       <ul className={styles.estekaZerrenda}>
-        <li
-          className={classNames(
-            styles.esteka,
-            atala === 'hasiera' && styles.active,
-          )}
-        >
-          <Link className={styles.gainburuLink} to="/">
+        <li>
+          <Link
+            className={styles.gainburuLink}
+            to="/"
+            activeClassName={styles.active}
+          >
             Laba gara
           </Link>
         </li>
 
-        <li
-          className={classNames(
-            styles.esteka,
-            atala === 'bizi' && styles.active,
-          )}
-        >
-          <Link className={styles.gainburuLink} to="/bizi">
+        <li>
+          <Link
+            className={styles.gainburuLink}
+            to="/bizi"
+            activeClassName={styles.active}
+            partiallyActive
+          >
             Bizi Laba
           </Link>
         </li>
 
-        <li
-          className={classNames(
-            styles.esteka,
-            atala === 'kafetegia' && styles.active,
-          )}
-        >
-          <Link className={styles.gainburuLink} to="/kafetegia">
+        <li>
+          <Link
+            className={styles.gainburuLink}
+            to="/kafetegia"
+            activeClassName={styles.active}
+            partiallyActive
+          >
             Dastatu Laba
           </Link>
         </li>

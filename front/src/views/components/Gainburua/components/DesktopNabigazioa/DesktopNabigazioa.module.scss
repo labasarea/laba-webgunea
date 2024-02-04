@@ -10,7 +10,9 @@
   list-style-type: none;
 }
 
-.esteka {
+.gainburuLink {
+  display: inline-block;
+  position: relative;
   padding: var(--size-small);
 
   color: var(--color);
@@ -20,14 +22,12 @@
   &:hover {
     color: var(--hover-color);
   }
+
+  &:focus-visible {
+    outline: 3px solid var(--hover-color);
+  }
 }
 
 .active {
   border-bottom: 3px solid var(--color);
-}
-
-.gainburuLink {
-  &:focus-visible {
-    outline: 3px solid var(--hover-color);
-  }
 }
