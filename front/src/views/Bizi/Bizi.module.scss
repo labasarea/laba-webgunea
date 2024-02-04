@@ -32,8 +32,8 @@
   color: var(--color-grisa-3);
 
   transition:
-    transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
-    filter 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform 0.3s ease-in-out,
+    filter 0.3s ease-in-out;
   filter: blur(1px);
   transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-90%);
 }
