@@ -10,13 +10,22 @@ interface Props {
 }
 
 export const Ekintza: React.FC<Props> = ({ content }) => {
-  const { izenburua } = content;
+  const { izenburua, kartela } = content;
 
   return (
     <Layout>
       <Gainburua izenburua={izenburua} />
 
       <h1>{izenburua}</h1>
+
+      {kartela && (
+        <img
+          src={kartela.formats.small.url}
+          alt={kartela.alternativeText}
+          height={kartela.formats.small.height}
+          width={kartela.formats.small.width}
+        ></img>
+      )}
 
       <Oina />
     </Layout>

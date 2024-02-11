@@ -1,13 +1,16 @@
 import React from 'react';
 
-import { PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 
 import { SEO } from '../../../components/SEO';
-import { useEkintzaContent } from '../../../domain/ekintza/hooks/useEkintzaContent';
+import { EkintzaContent } from '../../../domain/ekintza/EkintzaContent';
 import { Ekintza } from '../../../views/Ekintza/Ekintza';
 
-const EkintzaPage: React.FC<PageProps> = ({ location }) => {
-  const content = useEkintzaContent();
+const EkintzaPage: React.FC<PageProps<{ strapiEkintza: EkintzaContent }>> = ({
+  location,
+  data,
+}) => {
+  const content = data.strapiEkintza;
 
   return (
     <>
@@ -17,5 +20,18 @@ const EkintzaPage: React.FC<PageProps> = ({ location }) => {
     </>
   );
 };
+
+export const query = graphql`
+  query ($slug: String) {
+    strapiEkintza(slug: { eq: $slug }) {
+      slug
+      izenburua
+      kartela {
+        alternativeText
+        formats
+      }
+    }
+  }
+`;
 
 export default EkintzaPage;

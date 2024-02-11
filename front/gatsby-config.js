@@ -23,7 +23,7 @@ module.exports = {
         token: process.env.STRAPI_GRAPHQL_TOKEN,
       },
     },
-    'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-react-svg',
