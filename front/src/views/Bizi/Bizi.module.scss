@@ -31,10 +31,7 @@
   font-size: clamp(2rem, 4.2dvw, 5rem);
   color: var(--color-grisa-3);
 
-  transition:
-    transform 0.3s ease-in-out,
-    filter 0.3s ease-in-out;
-  filter: blur(1px);
+  transition: transform 0.3s ease-in-out;
   transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-120%);
 }
 
