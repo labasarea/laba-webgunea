@@ -7,4 +7,5 @@ export interface EkintzaContent {
   titularra?: string;
   deskribapena?: Markdown;
   kartela?: Irudia;
+  hitzordua?: IsoDate;
 }

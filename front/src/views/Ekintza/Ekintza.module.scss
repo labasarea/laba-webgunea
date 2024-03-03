@@ -1,0 +1,53 @@
+@import '../../styles/tools/mixins/font.scss';
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 25%;
+  gap: var(--size-base);
+  padding: var(--size-base);
+}
+
+.kartela {
+  width: 100%;
+  height: auto;
+}
+
+.izenburuWrapper {
+  margin-bottom: var(--size-base);
+}
+
+.hitzordua {
+  margin-bottom: var(--size-base);
+
+  @include largeFont;
+  color: var(--color-grisa-1);
+}
+
+.izenburua {
+  margin-bottom: var(--size-base);
+
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: clamp(2rem, 4.2dvw, 5rem);
+  line-height: 125%;
+}
+
+.titularra {
+  @include hugeFont;
+
+  &:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+}
+
+.deskribapena {
+  padding-top: var(--size-base);
+
+  @include largeFont;
+
+  border-top: 3px solid var(--color-grisa-3);
+
+  p:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+}
