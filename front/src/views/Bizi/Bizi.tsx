@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import { BiziContent } from '../../domain/bizi/BiziContent';
 import { useAllEkintzaContent } from '../../domain/ekintza/hooks/useAllEkintzaContent';
 import { useAllZikloaContent } from '../../domain/zikloa/hooks/useAllZikloaContent';
-import { Gainburua } from '../components/Gainburua';
+import { Hero } from '../components/Hero';
 import { Layout } from '../components/Layout';
 import { Oina } from '../components/Oina';
 import * as styles from './Bizi.module.scss';
@@ -19,11 +19,7 @@ export const Bizi: React.FC<{ content: BiziContent }> = ({ content }) => {
 
   return (
     <Layout>
-      <Gainburua
-        izenburua={izenburua}
-        deskribapena={deskribapena}
-        atala="bizi"
-      />
+      <Hero izenburua={izenburua} deskribapena={deskribapena} atala="bizi" />
 
       <main className={styles.wrapper} id="edukia">
         <section className={styles.section}>

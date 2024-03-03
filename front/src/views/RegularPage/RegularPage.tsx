@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 
 import { RegularPageContent } from '../../domain/basicPage/RegularPageContent';
 import { Container } from '../components/Container';
-import { Gainburua } from '../components/Gainburua';
+import { Hero } from '../components/Hero';
 import { Oina } from '../components/Oina';
 import * as styles from './RegularPage.module.scss';
 
@@ -18,7 +18,7 @@ export const RegularPage: React.FC<Props> = ({ content }) => {
 
   return (
     <>
-      <Gainburua />
+      <Hero />
 
       <Container>
         <section className={styles.atala}>

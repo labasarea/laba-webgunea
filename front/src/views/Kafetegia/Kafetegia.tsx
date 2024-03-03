@@ -3,7 +3,7 @@ import React from 'react';
 import { produktuaFactory } from '../../domain/kafetegia/factories/produktuaFactory';
 import { KafetegiaContent } from '../../domain/kafetegia/KafetegiaContent';
 import { Container } from '../components/Container';
-import { Gainburua } from '../components/Gainburua';
+import { Hero } from '../components/Hero';
 import { Oina } from '../components/Oina';
 import { ProduktuZerrenda } from './components/ProduktuZerrenda';
 import * as styles from './Kafetegia.module.scss';
@@ -22,7 +22,7 @@ export const Kafetegia: React.FC<Props> = ({ content }) => {
    */
   return (
     <>
-      <Gainburua
+      <Hero
         atala="kafetegia"
         izenburua={izenburua}
         deskribapena={deskribapena}

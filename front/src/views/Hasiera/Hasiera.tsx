@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import Gezia from '../../assets/gezia.svg';
 import { HasieraContent } from '../../domain/hasiera/HasieraContent';
 import { Container } from '../components/Container';
-import { Gainburua } from '../components/Gainburua';
+import { Hero } from '../components/Hero';
 import { Oina } from '../components/Oina';
 import * as styles from './Hasiera.module.scss';
 
@@ -16,11 +16,7 @@ export const Hasiera: React.FC<Props> = ({ content }) => {
   const { izenburua, deskribapena, edukia } = content;
   return (
     <>
-      <Gainburua
-        atala="hasiera"
-        izenburua={izenburua}
-        deskribapena={deskribapena}
-      />
+      <Hero atala="hasiera" izenburua={izenburua} deskribapena={deskribapena} />
 
       <div className={styles.contentWrapper} id="edukia">
         <Container>

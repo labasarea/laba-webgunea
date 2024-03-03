@@ -7,7 +7,7 @@ import { AtalaName } from './AtalaName';
 import { DesktopNabigazioa } from './components/DesktopNabigazioa';
 import { KontaktuDatuak } from './components/KontaktuDatuak';
 import { MugikorNabigazioa } from './components/MugikorNabigazioa';
-import * as styles from './Gainburua.module.scss';
+import * as styles from './Hero.module.scss';
 
 interface Props {
   izenburua?: string;
@@ -21,11 +21,7 @@ const atalaClassname: { [key in AtalaName]: string } = {
   bizi: styles.bizi,
 };
 
-export const Gainburua: React.FC<Props> = ({
-  izenburua,
-  deskribapena,
-  atala,
-}) => {
+export const Hero: React.FC<Props> = ({ izenburua, deskribapena, atala }) => {
   return (
     <div className={classNames(styles.wrapper, atala && atalaClassname[atala])}>
       <header className={styles.gainburuWrapper}>
