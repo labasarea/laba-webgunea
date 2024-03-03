@@ -16,7 +16,7 @@
 
   &:hover {
     & > .title {
-      transform: translateY(-115%);
+      transform: translateY(-200%);
       filter: none;
     }
   }
@@ -35,7 +35,7 @@
     transform 0.3s ease-in-out,
     filter 0.3s ease-in-out;
   filter: blur(1px);
-  transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-90%);
+  transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-120%);
 }
 
 .card {
