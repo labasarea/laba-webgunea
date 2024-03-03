@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 
 import { EkintzaContent } from '../../domain/ekintza/EkintzaContent';
-import { Hero } from '../components/Hero';
+import { Gainburua } from '../components/Gainburua/Gainburua';
 import { Layout } from '../components/Layout';
 import { Oina } from '../components/Oina';
 import * as styles from './Ekintza.module.scss';
@@ -24,7 +24,7 @@ export const Ekintza: React.FC<Props> = ({ content }) => {
 
   return (
     <Layout>
-      <Hero izenburua={izenburua} />
+      <Gainburua atala="bizi" />
 
       <div className={styles.wrapper}>
         <section className={styles.izenburuWrapper}>

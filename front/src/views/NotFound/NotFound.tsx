@@ -3,11 +3,11 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { Container } from '../components/Container';
-import { Hero } from '../components/Hero';
+import { Gainburua } from '../components/Gainburua/Gainburua';
 
 export const NotFound: React.FC = () => (
   <>
-    <Hero />
+    <Gainburua />
 
     <Container>
       <main>

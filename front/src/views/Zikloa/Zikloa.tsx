@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ZikloaContent } from '../../domain/zikloa/ZikloaContent';
-import { Hero } from '../components/Hero';
+import { Gainburua } from '../components/Gainburua/Gainburua';
 import { Layout } from '../components/Layout';
 import { Oina } from '../components/Oina';
 
@@ -14,7 +14,7 @@ export const Zikloa: React.FC<Props> = ({ content }) => {
 
   return (
     <Layout>
-      <Hero izenburua={izena} />
+      <Gainburua atala="bizi" />
 
       <h1>{izena}</h1>
 

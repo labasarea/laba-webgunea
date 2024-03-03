@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Gezia from '../../../assets/gezia.svg';
+import { AtalaName } from '../../../domain/AtalaName';
 import { classNames } from '../../../utilities/classnames';
 import Logo from './assets/logo.svg';
-import { AtalaName } from './AtalaName';
 import { DesktopNabigazioa } from './components/DesktopNabigazioa';
 import { KontaktuDatuak } from './components/KontaktuDatuak';
 import { MugikorNabigazioa } from './components/MugikorNabigazioa';
