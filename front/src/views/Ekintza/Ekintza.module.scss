@@ -3,9 +3,9 @@
 .wrapper {
   width: 100%;
   display: grid;
-  grid-template-columns: auto 25%;
+  grid-template-columns: auto 30%;
   gap: var(--size-base);
-  padding: var(--size-base);
+  padding: var(--size-huge) var(--size-base) var(--size-base) var(--size-base);
 }
 
 .kartela {
@@ -49,6 +49,6 @@
   border-top: 3px solid var(--color-grisa-3);
 
   p:not(:last-child) {
-    margin-bottom: var(--size-base);
+    margin-bottom: var(--size-mini);
   }
 }

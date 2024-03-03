@@ -45,10 +45,10 @@ export const Ekintza: React.FC<Props> = ({ content }) => {
           <aside>
             <img
               className={styles.kartela}
-              src={kartela.formats.small.url}
+              src={kartela.formats.medium.url}
               alt={kartela.alternativeText}
-              height={kartela.formats.small.height}
-              width={kartela.formats.small.width}
+              height={kartela.formats.medium.height}
+              width={kartela.formats.medium.width}
             ></img>
           </aside>
         )}

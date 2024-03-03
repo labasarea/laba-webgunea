@@ -71,6 +71,8 @@
 }
 
 .logo {
+  display: block;
+
   path {
     transition: fill 0.4s ease;
     fill: var(--color);
