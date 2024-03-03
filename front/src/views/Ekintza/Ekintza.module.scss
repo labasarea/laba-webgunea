@@ -44,6 +44,7 @@
   padding-top: var(--size-base);
 
   @include largeFont;
+  font-weight: var(--font-weight-regular);
 
   border-top: 3px solid var(--color-grisa-3);
 
