@@ -11,11 +11,17 @@ export function useAllEkintzaContent(): EkintzaContent[] {
     allStrapiEkintza: { nodes },
   } = useStaticQuery<DataProps>(graphql`
     query {
-      allStrapiEkintza {
+      allStrapiEkintza(sort: { hitzordua: ASC }) {
         nodes {
           slug
           izenburua
           titularra
+          deskribapena
+          hitzordua
+          kartela {
+            alternativeText
+            formats
+          }
         }
       }
     }

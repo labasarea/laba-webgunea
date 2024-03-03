@@ -17,6 +17,10 @@ export const Bizi: React.FC<{ content: BiziContent }> = ({ content }) => {
   const ekintzak = useAllEkintzaContent();
   const zikloak = useAllZikloaContent();
 
+  const ekintzakToShow = ekintzak.filter(
+    ekintza => new Date(ekintza.hitzordua) >= new Date(),
+  );
+
   return (
     <Layout>
       <Hero izenburua={izenburua} deskribapena={deskribapena} atala="bizi" />
@@ -25,21 +29,33 @@ export const Bizi: React.FC<{ content: BiziContent }> = ({ content }) => {
         <section className={styles.section}>
           <h2 className={styles.title}>ekintzak</h2>
           <ul className={styles.ekintzaCardList}>
-            {ekintzak.map(ekintza => (
+            {ekintzakToShow.map(ekintza => (
               <li className={styles.card} key={ekintza.slug}>
-                <h3 className={styles.cardTitle}>
-                  <Link
-                    to={`/bizi/ekintzak/${ekintza.slug}`}
-                    className={styles.cardLink}
-                  >
-                    {ekintza.izenburua}
-                  </Link>
-                </h3>
+                <div>
+                  <h3 className={styles.cardTitle}>
+                    <Link
+                      to={`/bizi/ekintzak/${ekintza.slug}`}
+                      className={styles.cardLink}
+                    >
+                      {ekintza.izenburua}
+                    </Link>
+                  </h3>
 
-                {ekintza.titularra && (
-                  <ReactMarkdown className={styles.cardHeadline}>
-                    {ekintza.titularra}
-                  </ReactMarkdown>
+                  {ekintza.titularra && (
+                    <ReactMarkdown className={styles.cardHeadline}>
+                      {ekintza.titularra}
+                    </ReactMarkdown>
+                  )}
+                </div>
+
+                {ekintza.kartela && (
+                  <img
+                    className={styles.kartela}
+                    src={ekintza.kartela.formats.small.url}
+                    alt={ekintza.kartela.alternativeText}
+                    height={ekintza.kartela.formats.small.height}
+                    width={ekintza.kartela.formats.small.width}
+                  ></img>
                 )}
               </li>
             ))}

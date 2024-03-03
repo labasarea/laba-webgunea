@@ -2,8 +2,8 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: 5fr 2fr;
-  gap: var(--size-base);
+  grid-template-columns: 4fr 2fr;
+  gap: var(--size-large);
 
   padding-left: var(--size-huge);
   padding-right: var(--size-huge);
@@ -28,7 +28,7 @@
   left: 0;
 
   font-family: 'Abril Fatface', sans-serif;
-  font-size: clamp(2rem, 5dvw, 5rem);
+  font-size: clamp(2rem, 4.2dvw, 5rem);
   color: var(--color-grisa-3);
 
   transition:
@@ -40,7 +40,9 @@
 
 .card {
   position: relative;
-  padding: var(--size-base);
+  display: flex;
+  gap: var(--size-base);
+  justify-content: space-between;
 
   &:not(:last-child) {
     margin-bottom: var(--size-medium);
@@ -48,25 +50,39 @@
 }
 
 .ekintzaCardList {
+  padding: var(--size-base);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--size-medium);
 }
 
 .cardTitle {
+  grid-area: izenburua;
+
   font-family: 'Abril Fatface', sans-serif;
-  font-size: clamp(2rem, 1.75dvw, 3rem);
-  line-height: 125%;
+  @include gargantuanFont;
 }
 
 .cardHeadline {
-  margin-top: var(--size-small);
+  grid-area: titularra;
 
-  @include baseFont;
-  color: var(--color-grisa-2);
+  @include largeFont;
+  font-weight: var(--font-weight-regular);
+}
+
+.kartela {
+  grid-area: kartela;
+  height: 8rem;
+  width: auto;
+  justify-self: end;
 }
 
 .cardLink {
+  transition: color 0.4s ease;
+
+  &:hover {
+    color: var(--color-morea);
+  }
+
   &::after {
     position: absolute;
     content: '';

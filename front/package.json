@@ -10,6 +10,7 @@
   "main": "gatsby-config.js",
   "scripts": {
     "develop": "gatsby develop",
+    "preview": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
