@@ -4,18 +4,21 @@ import ReactMarkdown from 'react-markdown';
 import { Link } from 'gatsby';
 
 import { BiziContent } from '../../domain/bizi/BiziContent';
-import { useAllEkintzaContent } from '../../domain/ekintza/hooks/useAllEkintzaContent';
-import { useAllZikloaContent } from '../../domain/zikloa/hooks/useAllZikloaContent';
+import { EkintzaContent } from '../../domain/ekintza/EkintzaContent';
+import { ZikloaContent } from '../../domain/zikloa/ZikloaContent';
 import { Hero } from '../components/Hero';
 import { Layout } from '../components/Layout';
 import { Oina } from '../components/Oina';
 import * as styles from './Bizi.module.scss';
 
-export const Bizi: React.FC<{ content: BiziContent }> = ({ content }) => {
-  const { izenburua, deskribapena } = content;
+interface Props {
+  content: BiziContent;
+  ekintzak: EkintzaContent[];
+  zikloak: ZikloaContent[];
+}
 
-  const ekintzak = useAllEkintzaContent();
-  const zikloak = useAllZikloaContent();
+export const Bizi: React.FC<Props> = ({ content, ekintzak, zikloak }) => {
+  const { izenburua, deskribapena } = content;
 
   const ekintzakToShow = ekintzak.filter(
     ekintza => new Date(ekintza.hitzordua) >= new Date(),
