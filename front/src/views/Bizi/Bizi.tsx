@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import dayjs from 'dayjs';
 import { Link } from 'gatsby';
 
 import { BiziContent } from '../../domain/bizi/BiziContent';
@@ -34,21 +35,23 @@ export const Bizi: React.FC<Props> = ({ content, ekintzak, zikloak }) => {
           <ul className={styles.ekintzaCardList}>
             {ekintzakToShow.map(ekintza => (
               <li className={styles.card} key={ekintza.slug}>
-                <div>
-                  <h3 className={styles.cardTitle}>
-                    <Link
-                      to={`/bizi/ekintzak/${ekintza.slug}`}
-                      className={styles.cardLink}
-                    >
-                      {ekintza.izenburua}
-                    </Link>
-                  </h3>
+                <div className={styles.ekintzaInformation}>
+                  <Link
+                    to={`/bizi/ekintzak/${ekintza.slug}`}
+                    className={styles.cardLink}
+                  >
+                    {ekintza.izenburua}
+                  </Link>
 
                   {ekintza.titularra && (
                     <ReactMarkdown className={styles.cardHeadline}>
                       {ekintza.titularra}
                     </ReactMarkdown>
                   )}
+
+                  <p className={styles.cardHitzordua}>
+                    {dayjs(ekintza.hitzordua).format('MMM D, dddd, LT[etan]')}
+                  </p>
                 </div>
 
                 {ekintza.kartela && (

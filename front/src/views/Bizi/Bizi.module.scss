@@ -3,7 +3,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 4fr 2fr;
-  gap: var(--size-large);
+  gap: var(--size-huge);
 
   padding-left: var(--size-huge);
   padding-right: var(--size-huge);
@@ -46,34 +46,35 @@
   }
 }
 
+.ekintzaInformation {
+  display: flex;
+  flex-direction: column;
+}
+
 .ekintzaCardList {
   padding: var(--size-base);
   display: grid;
-  gap: var(--size-medium);
-}
-
-.cardTitle {
-  grid-area: izenburua;
-
-  font-family: 'Abril Fatface', sans-serif;
-  @include gargantuanFont;
+  gap: var(--size-large);
 }
 
 .cardHeadline {
-  grid-area: titularra;
-
   @include largeFont;
   font-weight: var(--font-weight-regular);
+
+  order: 3;
 }
 
 .kartela {
-  grid-area: kartela;
   height: 8rem;
   width: auto;
   justify-self: end;
 }
 
 .cardLink {
+  font-family: 'Abril Fatface', sans-serif;
+  @include gargantuanFont;
+
+  order: 2;
   transition: color 0.4s ease;
 
   &:hover {
@@ -88,4 +89,10 @@
     right: 0;
     bottom: 0;
   }
+}
+
+.cardHitzordua {
+  @include largeFont;
+
+  order: 1;
 }
