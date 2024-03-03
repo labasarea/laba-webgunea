@@ -1,19 +1,12 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import 'dayjs/locale/eu';
-
-import dayjs from 'dayjs';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-
 import { EkintzaContent } from '../../domain/ekintza/EkintzaContent';
+import { formatLargeDate } from '../../utilities/dateUtils';
 import { Gainburua } from '../components/Gainburua/Gainburua';
 import { Layout } from '../components/Layout';
 import { Oina } from '../components/Oina';
 import * as styles from './Ekintza.module.scss';
-
-dayjs.extend(localizedFormat);
-dayjs.locale('eu');
 
 interface Props {
   content: EkintzaContent;
@@ -28,9 +21,7 @@ export const Ekintza: React.FC<Props> = ({ content }) => {
 
       <div className={styles.wrapper}>
         <section className={styles.izenburuWrapper}>
-          <p className={styles.hitzordua}>
-            {dayjs(hitzordua).format('LL, dddd, LT[etan]')}
-          </p>
+          <p className={styles.hitzordua}>{formatLargeDate(hitzordua)}</p>
           <h1 className={styles.izenburua}>{izenburua}</h1>
           <p className={styles.titularra}>{titularra}</p>
 

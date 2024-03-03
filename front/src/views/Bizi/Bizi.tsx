@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import dayjs from 'dayjs';
 import { Link } from 'gatsby';
 
 import { BiziContent } from '../../domain/bizi/BiziContent';
 import { EkintzaContent } from '../../domain/ekintza/EkintzaContent';
 import { ZikloaContent } from '../../domain/zikloa/ZikloaContent';
+import { formatAbbreviatedDate } from '../../utilities/dateUtils';
 import { Hero } from '../components/Hero';
 import { Layout } from '../components/Layout';
 import { Oina } from '../components/Oina';
@@ -50,7 +50,7 @@ export const Bizi: React.FC<Props> = ({ content, ekintzak, zikloak }) => {
                   )}
 
                   <p className={styles.cardHitzordua}>
-                    {dayjs(ekintza.hitzordua).format('MMM D, dddd, LT[etan]')}
+                    {formatAbbreviatedDate(ekintza.hitzordua)}
                   </p>
                 </div>
 
