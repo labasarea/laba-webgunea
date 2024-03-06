@@ -1,0 +1,63 @@
+@import '../../../styles/tools/mixins/font.scss';
+
+.card {
+  position: relative;
+  display: flex;
+  gap: var(--size-base);
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: var(--size-medium);
+  }
+}
+
+.ekintzaInformation {
+  display: flex;
+  flex-direction: column;
+}
+
+.ekintzaCardList {
+  padding: var(--size-base);
+  display: grid;
+  gap: var(--size-large);
+}
+
+.cardHeadline {
+  @include largeFont;
+  font-weight: var(--font-weight-regular);
+
+  order: 3;
+}
+
+.kartela {
+  height: 9rem;
+  width: auto;
+  justify-self: end;
+}
+
+.cardLink {
+  font-family: 'Abril Fatface', sans-serif;
+  @include gargantuanFont;
+
+  order: 2;
+  transition: color 0.4s ease;
+
+  &:hover {
+    color: var(--color-morea);
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.cardHitzordua {
+  @include largeFont;
+
+  order: 1;
+}

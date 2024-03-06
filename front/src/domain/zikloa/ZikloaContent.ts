@@ -1,4 +1,9 @@
+import { Markdown } from '../_valueObjects/Markdown';
+import { EkintzaContent } from '../ekintza/EkintzaContent';
+
 export interface ZikloaContent {
-  izena: string;
   slug: string;
+  izena: string;
+  deskribapena?: Markdown;
+  ekintzak: EkintzaContent[];
 }

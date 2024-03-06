@@ -1,0 +1,22 @@
+@import '../../styles/tools/mixins/font.scss';
+
+.wrapper {
+  padding: var(--size-huge) var(--size-base) var(--size-base) var(--size-base);
+}
+
+.izenburua {
+  margin-bottom: var(--size-base);
+
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: clamp(2rem, 4.2dvw, 5rem);
+  line-height: 125%;
+}
+
+.deskribapena {
+  @include hugeFont;
+  font-weight: var(--font-weight-regular);
+
+  &:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+}

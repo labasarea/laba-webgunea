@@ -27,6 +27,18 @@ export const query = graphql`
     strapiZikloa(slug: { eq: $slug }) {
       slug
       izena
+      deskribapena
+      ekintzak {
+        slug
+        izenburua
+        titularra
+        deskribapena
+        hitzordua
+        kartela {
+          alternativeText
+          formats
+        }
+      }
     }
   }
 `;
