@@ -34,3 +34,43 @@
   transition: transform 0.3s ease-in-out;
   transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-120%);
 }
+
+/* ------ */
+.zikloaCardList {
+  padding: var(--size-base);
+  display: grid;
+  gap: var(--size-large);
+}
+
+.card {
+  position: relative;
+}
+
+.cardLink {
+  font-family: 'Abril Fatface', sans-serif;
+  @include largeFont;
+
+  transition: color 0.4s ease;
+
+  &:hover {
+    color: var(--color-morea);
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.deskribapena {
+  @include baseFont;
+  font-weight: var(--font-weight-regular);
+}
+
+.cardHitzordua {
+  @include baseFont;
+}

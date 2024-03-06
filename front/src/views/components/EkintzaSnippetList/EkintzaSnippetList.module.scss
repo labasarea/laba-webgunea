@@ -5,10 +5,6 @@
   display: flex;
   gap: var(--size-base);
   justify-content: space-between;
-
-  &:not(:last-child) {
-    margin-bottom: var(--size-medium);
-  }
 }
 
 .ekintzaInformation {

@@ -13,3 +13,7 @@ export function formatAbbreviatedDate(date: IsoDate) {
 export function formatLargeDate(date: IsoDate) {
   return dayjs(date).format('LL, dddd, LT[etan]');
 }
+
+export function formatAbbreviatedDay(date: IsoDate) {
+  return dayjs(date).format('MMM D');
+}

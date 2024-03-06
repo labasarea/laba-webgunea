@@ -51,6 +51,18 @@ export const query = graphql`
       nodes {
         slug
         izena
+        deskribapena
+        ekintzak {
+          slug
+          izenburua
+          titularra
+          deskribapena
+          hitzordua
+          kartela {
+            alternativeText
+            formats
+          }
+        }
       }
     }
   }
