@@ -861,7 +861,7 @@ export interface ApiErakundeaErakundea extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     izena: Attribute.String & Attribute.Required;
@@ -869,7 +869,6 @@ export interface ApiErakundeaErakundea extends Schema.CollectionType {
     logoa: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::erakundea.erakundea',
       'oneToOne',
