@@ -1,13 +1,17 @@
 import React from 'react';
 
-import { PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 
 import { SEO } from '../../../components/SEO';
-import { useZikloaContent } from '../../../domain/zikloa/hooks/useZikloaContent';
+import { ZikloaContent } from '../../../domain/zikloa/ZikloaContent';
 import { Zikloa } from '../../../views/Zikloa/Zikloa';
 
-const ZikloaPage: React.FC<PageProps> = ({ location }) => {
-  const content = useZikloaContent();
+interface QueryData {
+  strapiZikloa: ZikloaContent;
+}
+
+const ZikloaPage: React.FC<PageProps<QueryData>> = ({ location, data }) => {
+  const content = data.strapiZikloa;
 
   return (
     <>
@@ -17,5 +21,14 @@ const ZikloaPage: React.FC<PageProps> = ({ location }) => {
     </>
   );
 };
+
+export const query = graphql`
+  query ($slug: String) {
+    strapiZikloa(slug: { eq: $slug }) {
+      slug
+      izena
+    }
+  }
+`;
 
 export default ZikloaPage;
