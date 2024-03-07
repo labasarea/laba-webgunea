@@ -28,15 +28,7 @@ export const query = graphql`
     izena
     deskribapena
     ekintzak {
-      slug
-      izenburua
-      titularra
-      deskribapena
-      hitzordua
-      kartela {
-        alternativeText
-        formats
-      }
+      ...Ekintza
     }
   }
 
