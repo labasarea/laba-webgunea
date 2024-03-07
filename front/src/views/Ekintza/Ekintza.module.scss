@@ -3,13 +3,14 @@
 .wrapper {
   width: 100%;
   display: grid;
-  grid-template-columns: auto 30%;
+  grid-template-columns: 2fr 1fr;
   gap: var(--size-base);
   padding: var(--size-huge) var(--size-base) var(--size-base) var(--size-base);
 }
 
 .kartela {
   width: 100%;
+  min-width: 360px;
   height: auto;
 }
 
