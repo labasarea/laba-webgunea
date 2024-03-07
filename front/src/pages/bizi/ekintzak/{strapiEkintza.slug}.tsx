@@ -29,6 +29,10 @@ export const query = graphql`
     titularra
     deskribapena
     hitzordua
+    zikloa {
+      slug
+      izena
+    }
     kartela {
       alternativeText
       formats

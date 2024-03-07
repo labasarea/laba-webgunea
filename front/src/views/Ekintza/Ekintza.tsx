@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import { Link } from 'gatsby';
+
+import Gezia from '../../assets/gezia.svg';
 import { EkintzaContent } from '../../domain/ekintza/EkintzaContent';
 import { formatLargeDate } from '../../utilities/dateUtils';
 import { Gainburua } from '../components/Gainburua/Gainburua';
@@ -13,7 +16,8 @@ interface Props {
 }
 
 export const Ekintza: React.FC<Props> = ({ content }) => {
-  const { izenburua, kartela, titularra, hitzordua, deskribapena } = content;
+  const { izenburua, kartela, titularra, hitzordua, deskribapena, zikloa } =
+    content;
 
   return (
     <Layout>
@@ -21,6 +25,12 @@ export const Ekintza: React.FC<Props> = ({ content }) => {
 
       <div className={styles.wrapper}>
         <section className={styles.izenburuWrapper}>
+          {zikloa && (
+            <Link to={`/bizi/zikloak/${zikloa.slug}`} className={styles.zikloa}>
+              {zikloa.izena}{' '}
+              <Gezia aria-hidden={true} className={styles.gezia} />
+            </Link>
+          )}
           <p className={styles.hitzordua}>{formatLargeDate(hitzordua)}</p>
           <h1 className={styles.izenburua}>{izenburua}</h1>
           <p className={styles.titularra}>{titularra}</p>

@@ -15,6 +15,8 @@
 }
 
 .izenburuWrapper {
+  display: flex;
+  flex-direction: column;
   margin-bottom: var(--size-base);
 }
 
@@ -52,4 +54,37 @@
   p:not(:last-child) {
     margin-bottom: var(--size-base);
   }
+}
+
+.zikloa {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--size-small);
+  width: fit-content;
+
+  @include baseFont;
+  text-decoration: underline;
+
+  transition: color 0.3s ease;
+
+  .gezia {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    color: var(--color-morea);
+
+    .gezia {
+      transform: translateX(var(--size-small));
+    }
+  }
+
+  &:visited,
+  &:link {
+    text-decoration: underline;
+  }
+}
+
+.gezia {
+  height: 1rem;
 }
