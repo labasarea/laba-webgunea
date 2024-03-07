@@ -23,17 +23,21 @@ const EkintzaPage: React.FC<PageProps<QueryData>> = ({ location, data }) => {
 };
 
 export const query = graphql`
+  fragment Ekintza on StrapiEkintza {
+    slug
+    izenburua
+    titularra
+    deskribapena
+    hitzordua
+    kartela {
+      alternativeText
+      formats
+    }
+  }
+
   query ($slug: String) {
     strapiEkintza(slug: { eq: $slug }) {
-      slug
-      izenburua
-      titularra
-      deskribapena
-      hitzordua
-      kartela {
-        alternativeText
-        formats
-      }
+      ...Ekintza
     }
   }
 `;

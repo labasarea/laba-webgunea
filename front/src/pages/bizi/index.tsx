@@ -36,33 +36,12 @@ export const query = graphql`
     }
     allStrapiEkintza(sort: { hitzordua: ASC }) {
       nodes {
-        slug
-        izenburua
-        titularra
-        deskribapena
-        hitzordua
-        kartela {
-          alternativeText
-          formats
-        }
+        ...Ekintza
       }
     }
     allStrapiZikloa {
       nodes {
-        slug
-        izena
-        deskribapena
-        ekintzak {
-          slug
-          izenburua
-          titularra
-          deskribapena
-          hitzordua
-          kartela {
-            alternativeText
-            formats
-          }
-        }
+        ...Zikloa
       }
     }
   }

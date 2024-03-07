@@ -23,22 +23,26 @@ const ZikloaPage: React.FC<PageProps<QueryData>> = ({ location, data }) => {
 };
 
 export const query = graphql`
+  fragment Zikloa on StrapiZikloa {
+    slug
+    izena
+    deskribapena
+    ekintzak {
+      slug
+      izenburua
+      titularra
+      deskribapena
+      hitzordua
+      kartela {
+        alternativeText
+        formats
+      }
+    }
+  }
+
   query ($slug: String) {
     strapiZikloa(slug: { eq: $slug }) {
-      slug
-      izena
-      deskribapena
-      ekintzak {
-        slug
-        izenburua
-        titularra
-        deskribapena
-        hitzordua
-        kartela {
-          alternativeText
-          formats
-        }
-      }
+      ...Zikloa
     }
   }
 `;
