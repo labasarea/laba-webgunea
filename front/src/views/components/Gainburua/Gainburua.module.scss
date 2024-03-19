@@ -92,8 +92,7 @@
   justify-content: center;
 
   @media #{$fromTablet} {
-    padding: var(--size-large) var(--size-large) var(--size-tiny)
-      var(--size-large);
+    padding: var(--size-mini) var(--size-large);
   }
 
   @media #{$fromDesktop} {
