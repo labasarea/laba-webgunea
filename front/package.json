@@ -18,7 +18,7 @@
     "prettier": "prettier . --write"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.15.5",
+    "@strapi/plugin-graphql": "^4.24.0",
     "dayjs": "^1.11.10",
     "gatsby": "^5.12.11",
     "gatsby-plugin-image": "^3.12.3",
