@@ -1,41 +1,54 @@
 @import '../../styles/tools/mixins/font.scss';
+@import '../../styles/tools/mediaQueries.scss';
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 4fr 2fr;
-  gap: var(--size-huge);
-
-  padding-left: var(--size-huge);
-  padding-right: var(--size-huge);
+  padding-left: var(--size-small);
+  padding-right: var(--size-small);
   padding-top: var(--size-huge);
   margin-bottom: var(--size-huge);
+
+  @media #{$fromDesktop} {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: var(--size-huge);
+
+    padding-left: var(--size-huge);
+    padding-right: var(--size-huge);
+  }
 }
 
 .section {
-  position: relative;
+  @media #{$fromDesktop} {
+    position: relative;
 
-  &:hover {
-    & > .title {
-      transform: translateY(-200%);
-      filter: none;
+    &:hover {
+      & > .title {
+        transform: translateY(-200%);
+        filter: none;
+      }
     }
   }
 }
 
 .title {
-  position: absolute;
-  top: 0;
-  left: 0;
-
   font-family: 'Abril Fatface', sans-serif;
   font-size: clamp(2rem, 4.2dvw, 5rem);
   color: var(--color-grisa-3);
 
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(-50%) rotate(-90deg) translateX(-50%) translateY(-120%);
+  z-index: 10;
+  mix-blend-mode: difference;
+
+  @media #{$fromDesktop} {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-50%) rotate(-90deg) translateX(-50%)
+      translateY(-120%);
+  }
 }
 
-/* ------ */
 .zikloaCardList {
   padding: var(--size-base);
   display: grid;

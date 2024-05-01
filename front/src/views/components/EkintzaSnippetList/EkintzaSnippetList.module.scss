@@ -1,10 +1,15 @@
 @import '../../../styles/tools/mixins/font.scss';
+@import '../../../styles/tools/mediaQueries.scss';
 
 .card {
   position: relative;
-  display: flex;
-  gap: var(--size-base);
-  justify-content: space-between;
+
+  @media #{$fromTablet} {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: var(--size-base);
+  }
 }
 
 .ekintzaInformation {
@@ -13,7 +18,8 @@
 }
 
 .ekintzaCardList {
-  padding: var(--size-base);
+  padding-top: var(--size-base);
+  padding-bottom: var(--size-base);
   display: grid;
   gap: var(--size-large);
 }
@@ -32,6 +38,8 @@
 }
 
 .cardLink {
+  margin-bottom: var(--size-base);
+
   font-family: 'Abril Fatface', sans-serif;
   @include gargantuanFont;
 
