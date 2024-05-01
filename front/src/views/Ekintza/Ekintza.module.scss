@@ -1,17 +1,30 @@
 @import '../../styles/tools/mixins/font.scss';
+@import '../../styles/tools/mediaQueries.scss';
 
 .wrapper {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--size-base);
-  padding: var(--size-huge) var(--size-base) var(--size-base) var(--size-base);
+  display: flex;
+  flex-direction: column-reverse;
+  padding: var(--size-base) var(--size-small) var(--size-base) var(--size-small);
+
+  @media #{$fromTablet} {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--size-base);
+    padding: var(--size-huge) var(--size-base) var(--size-base) var(--size-base);
+  }
 }
 
 .kartela {
-  width: 100%;
-  min-width: 360px;
+  width: 56%;
   height: auto;
+  margin-bottom: var(--size-base);
+
+  @media #{$fromTablet} {
+    width: 100%;
+    min-width: 360px;
+    height: auto;
+  }
 }
 
 .izenburuWrapper {
