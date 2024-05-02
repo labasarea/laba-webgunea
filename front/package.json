@@ -11,7 +11,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "preview": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
-    "start": "gatsby develop",
+    "start": "gatsby build && gatsby serve",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
