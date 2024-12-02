@@ -1,1 +1,1 @@
-export { Gainburua } from './Gainburua';
+export { Gainburua as Hero } from './Gainburua';

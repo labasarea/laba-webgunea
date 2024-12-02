@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ekintzak",
+  "info": {
+    "singularName": "ekintza",
+    "pluralName": "ekintzak",
+    "displayName": "Ekintza",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "izenburua",
+      "required": true
+    },
+    "hitzordua": {
+      "type": "datetime",
+      "required": true
+    },
+    "titularra": {
+      "type": "text"
+    },
+    "elkarlana": {
+      "type": "component",
+      "repeatable": true,
+      "component": "bizi.elkarlana"
+    },
+    "labakoUzta": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "kartela": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "zikloa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::zikloa.zikloa",
+      "inversedBy": "ekintzak"
+    },
+    "deskribapena": {
+      "type": "richtext"
+    }
+  }
+}

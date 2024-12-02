@@ -10,20 +10,20 @@ module.exports = {
       resolve: 'gatsby-source-strapi-graphql',
       options: {
         apiURL: process.env.API_URL,
-        collectionTypes: [],
+        collectionTypes: ['ekintza', 'erakundea', 'zikloa'],
         singleTypes: [
           'hasiera',
+          'bizi',
           'kafetegia',
           'lege-oharra',
           'pribatutasun-politika',
         ],
-        contentTypes: [],
         // Enable/disable cache.
         cache: false,
         token: process.env.STRAPI_GRAPHQL_TOKEN,
       },
     },
-    'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-react-svg',
@@ -41,6 +41,11 @@ module.exports = {
             {
               family: 'Lato',
               variants: ['400', '700'],
+              fontDisplay: 'swap',
+            },
+            {
+              family: 'Abril Fatface',
+              variants: ['400'],
               fontDisplay: 'swap',
             },
           ],

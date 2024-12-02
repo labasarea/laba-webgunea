@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import { classNames } from '../../../../../utilities/classnames';
 import * as styles from './DesktopNabigazioa.module.scss';
 
-import type { AtalaName } from '../../AtalaName';
+import type { AtalaName } from '../../../../../domain/AtalaName';
 interface Props {
   atala?: AtalaName;
 }
@@ -14,24 +14,34 @@ export const DesktopNabigazioa: React.FC<Props> = ({ atala }) => {
   return (
     <nav className={styles.nabigazioa}>
       <ul className={styles.estekaZerrenda}>
-        <li
-          className={classNames(
-            styles.esteka,
-            atala === 'hasiera' && styles.active,
-          )}
-        >
-          <Link className={styles.gainburuLink} to="/">
+        <li>
+          <Link
+            className={styles.gainburuLink}
+            to="/"
+            activeClassName={styles.active}
+          >
             Laba gara
           </Link>
         </li>
 
-        <li
-          className={classNames(
-            styles.esteka,
-            atala === 'kafetegia' && styles.active,
-          )}
-        >
-          <Link className={styles.gainburuLink} to="/kafetegia">
+        <li>
+          <Link
+            className={styles.gainburuLink}
+            to="/bizi"
+            activeClassName={styles.active}
+            partiallyActive
+          >
+            Bizi Laba
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            className={styles.gainburuLink}
+            to="/kafetegia"
+            activeClassName={styles.active}
+            partiallyActive
+          >
             Dastatu Laba
           </Link>
         </li>

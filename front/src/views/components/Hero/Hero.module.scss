@@ -1,0 +1,230 @@
+@import '../../../styles/tools/mediaQueries.scss';
+@import '../../../styles/tools/mixins/font.scss';
+@import '../../../styles/tools/mixins/container.scss';
+
+.geziaWrapper {
+  display: none;
+
+  @media #{$fromDesktop} {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.geziaLogo {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: bounce-2;
+  animation-timing-function: ease;
+
+  @keyframes bounce-2 {
+    0% {
+      transform: rotate(90deg) translateX(0);
+    }
+    50% {
+      transform: rotate(90deg) translateX(var(--size-base));
+    }
+    100% {
+      transform: rotate(90deg) translateX(0);
+    }
+  }
+}
+
+.nagusia {
+  flex-grow: 1;
+  @include container;
+}
+
+.mugikorWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: var(--size-base);
+
+  margin-bottom: var(--size-medium);
+}
+
+.menuWrapper {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mugikorLogoWrapper {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  --color: var(--color-zuria);
+  --hover-color: var(--color-gorria);
+  --background-color: var(--color-beltza);
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+.hasiera {
+  --color: var(--color-zuria);
+  --hover-color: var(--color-horia);
+  --background-color: var(--color-morea);
+
+  @media #{$fromDesktop} {
+    min-height: 100dvh;
+  }
+}
+
+.kafetegia {
+  --color: var(--color-beltza);
+  --hover-color: var(--color-gorria);
+  --background-color: var(--color-horia);
+
+  @media #{$fromDesktop} {
+    min-height: 100dvh;
+  }
+}
+
+.bizi {
+  --color: var(--color-beltza);
+  --hover-color: var(--color-gorria);
+  --background-color: var(--color-urdina);
+
+  @media #{$fromDesktop} {
+    min-height: 100dvh;
+  }
+}
+
+.logoWrapper {
+  width: var(--size-huge);
+}
+
+.logo {
+  path {
+    transition: fill 0.4s ease;
+    fill: var(--color);
+  }
+
+  &:hover {
+    path {
+      fill: var(--hover-color);
+    }
+  }
+}
+
+.gainburuWrapper {
+  padding: var(--size-base);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+
+  @media #{$fromTablet} {
+    padding: var(--size-large);
+  }
+
+  @media #{$fromDesktop} {
+    justify-content: space-between;
+  }
+}
+
+.deskribapena {
+  margin-bottom: var(--size-xlarge);
+  hyphens: auto;
+
+  @include baseFont;
+
+  @media #{$fromTablet} {
+    @include largeFont;
+  }
+}
+
+.izenburuWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: var(--size-large);
+}
+
+.marra {
+  /* altuera erabiliko den letraren berdina da */
+  height: #{toRem(41.83)};
+  flex-grow: 1;
+  box-shadow: inset 0px -3px 0px 0px var(--color);
+  margin-right: var(--size-tiny);
+}
+
+.izenburua {
+  text-align: right;
+  vertical-align: bottom;
+  font-family: 'Abril Fatface', serif;
+  letter-spacing: 0.1rem;
+
+  &:after {
+    content: '.';
+  }
+
+  @include gargantuanFont;
+}
+
+.gainburuLink {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-tiny);
+
+  @include smallFont;
+
+  transition: color 0.4s ease;
+
+  svg {
+    path {
+      transition: fill 0.4s ease;
+      fill: var(--color);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--hover-color);
+  }
+
+  &:hover {
+    color: var(--hover-color);
+
+    svg {
+      path {
+        transition: fill 0.4s ease;
+        fill: var(--hover-color);
+      }
+    }
+  }
+}
+
+.desktopNavigazioaWrapper {
+  display: none;
+
+  @media #{$fromDesktop} {
+    display: initial;
+  }
+}
+
+.mobileNabigazioaWrapper {
+  position: absolute;
+  top: var(--size-base);
+  right: var(--size-base);
+
+  @media #{$fromDesktop} {
+    display: none;
+  }
+}
+
+.kontaktuDatuakWrapper {
+  display: none;
+
+  @media #{$fromDesktop} {
+    display: initial;
+  }
+}

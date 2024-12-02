@@ -5,5 +5,10 @@ module.exports = ({ env }) => ({
   apiToken: {
     salt: env("API_TOKEN_SALT", "4444a34644486306e97051f610dfdae4"),
   },
+  transfer: {
+    token: {
+      salt: env("TRANSFER_SALT", "NDDFL8BZi0QK5oYDbRgNow=="),
+    },
+  },
   url: "/kudeatu",
 });

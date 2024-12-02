@@ -1,0 +1,103 @@
+@import '../../styles/tools/mixins/font.scss';
+@import '../../styles/tools/mediaQueries.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: var(--size-base) var(--size-small) var(--size-base) var(--size-small);
+
+  @media #{$fromTablet} {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--size-base);
+    padding: var(--size-huge) var(--size-base) var(--size-base) var(--size-base);
+  }
+}
+
+.kartela {
+  width: 56%;
+  height: auto;
+  margin-bottom: var(--size-base);
+
+  @media #{$fromTablet} {
+    width: 100%;
+    min-width: 360px;
+    height: auto;
+  }
+}
+
+.izenburuWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--size-base);
+}
+
+.hitzordua {
+  margin-bottom: var(--size-base);
+
+  @include largeFont;
+  color: var(--color-grisa-1);
+}
+
+.izenburua {
+  margin-bottom: var(--size-base);
+
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: clamp(2rem, 4.2dvw, 5rem);
+  line-height: 125%;
+}
+
+.titularra {
+  @include hugeFont;
+
+  &:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+}
+
+.deskribapena {
+  padding-top: var(--size-base);
+
+  @include largeFont;
+  font-weight: var(--font-weight-regular);
+
+  border-top: 3px solid var(--color-grisa-3);
+
+  p:not(:last-child) {
+    margin-bottom: var(--size-base);
+  }
+}
+
+.zikloa {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--size-small);
+  width: fit-content;
+
+  @include baseFont;
+  text-decoration: underline;
+
+  transition: color 0.3s ease;
+
+  .gezia {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    color: var(--color-morea);
+
+    .gezia {
+      transform: translateX(var(--size-small));
+    }
+  }
+
+  &:visited,
+  &:link {
+    text-decoration: underline;
+  }
+}
+
+.gezia {
+  height: 1rem;
+}
