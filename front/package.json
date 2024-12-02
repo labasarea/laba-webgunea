@@ -12,13 +12,13 @@
     "develop": "gatsby develop",
     "preview": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop -H 0.0.0.0 -p 8000",
     "start": "gatsby build && gatsby serve",
-    "build": "rm -rf public && rm -rf .cache && gatsby build",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "prettier": "prettier . --write"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.24.0",
+    "@strapi/plugin-graphql": "^4.25.17",
     "dayjs": "^1.11.10",
     "gatsby": "^5.12.11",
     "gatsby-plugin-image": "^3.12.3",
