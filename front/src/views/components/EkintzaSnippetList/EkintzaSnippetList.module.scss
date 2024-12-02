@@ -58,6 +58,12 @@
     right: 0;
     bottom: 0;
   }
+
+  &:focus-visible {
+    &::after {
+      outline: 2px solid var(--color-morea);
+    }
+  }
 }
 
 .cardHitzordua {
