@@ -5,7 +5,10 @@ import { Link } from 'gatsby';
 
 import { BiziContent } from '../../domain/bizi/BiziContent';
 import { EkintzaContent } from '../../domain/ekintza/EkintzaContent';
-import { ZikloaContent } from '../../domain/zikloa/ZikloaContent';
+import {
+  getLastEkintza,
+  ZikloaContent,
+} from '../../domain/zikloa/ZikloaContent';
 import { formatAbbreviatedDay } from '../../utilities/dateUtils';
 import { EkintzaSnippetList } from '../components/EkintzaSnippetList/EkintzaSnippetList';
 import { Hero } from '../components/Hero';
@@ -25,6 +28,9 @@ export const Bizi: React.FC<Props> = ({ content, ekintzak, zikloak }) => {
   const ekintzakToShow = ekintzak.filter(
     ekintza => new Date(ekintza.hitzordua) >= new Date(),
   );
+  const zikloakToShow = zikloak.filter(
+    zikloa => new Date(getLastEkintza(zikloa)) >= new Date(),
+  );
 
   return (
     <Layout>
@@ -36,36 +42,33 @@ export const Bizi: React.FC<Props> = ({ content, ekintzak, zikloak }) => {
           <EkintzaSnippetList ekintzak={ekintzakToShow} />
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.title}>zikloak</h2>
-          <ul className={styles.zikloaCardList}>
-            {zikloak.map(zikloa => (
-              <li className={styles.card} key={zikloa.slug}>
-                <p className={styles.cardHitzordua}>
-                  {formatAbbreviatedDay(
-                    zikloa.ekintzak
-                      .sort((a, b) => (a.hitzordua > b.hitzordua ? 1 : -1))
-                      .slice(-1)[0].hitzordua,
-                  )}{' '}
-                  arte
-                </p>
+        {zikloakToShow.length > 0 && (
+          <section className={styles.section}>
+            <h2 className={styles.title}>zikloak</h2>
+            <ul className={styles.zikloaCardList}>
+              {zikloakToShow.map(zikloa => (
+                <li className={styles.card} key={zikloa.slug}>
+                  <p className={styles.cardHitzordua}>
+                    {formatAbbreviatedDay(getLastEkintza(zikloa))} arte
+                  </p>
 
-                <Link
-                  className={styles.cardLink}
-                  to={`/bizi/zikloak/${zikloa.slug}`}
-                >
-                  {zikloa.izena}
-                </Link>
+                  <Link
+                    className={styles.cardLink}
+                    to={`/bizi/zikloak/${zikloa.slug}`}
+                  >
+                    {zikloa.izena}
+                  </Link>
 
-                {zikloa.deskribapena && (
-                  <ReactMarkdown className={styles.deskribapena}>
-                    {zikloa.deskribapena}
-                  </ReactMarkdown>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
+                  {zikloa.deskribapena && (
+                    <ReactMarkdown className={styles.deskribapena}>
+                      {zikloa.deskribapena}
+                    </ReactMarkdown>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </main>
 
       <Oina />

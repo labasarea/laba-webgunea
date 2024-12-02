@@ -7,3 +7,9 @@ export interface ZikloaContent {
   deskribapena?: Markdown;
   ekintzak: EkintzaContent[];
 }
+
+export function getLastEkintza(zikloa: ZikloaContent) {
+  return zikloa.ekintzak
+    .sort((a, b) => (a.hitzordua > b.hitzordua ? 1 : -1))
+    .slice(-1)[0].hitzordua;
+}
