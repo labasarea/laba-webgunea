@@ -55,7 +55,7 @@ export const Hero: React.FC<Props> = ({ izenburua, deskribapena, atala }) => {
       )}
 
       <div className={styles.desktopNavigazioaWrapper}>
-        <DesktopNabigazioa atala={atala} />
+        <DesktopNabigazioa />
       </div>
 
       <div className={styles.mobileNabigazioaWrapper}>

@@ -23,9 +23,16 @@ export const MugikorNabigazioa: React.FC = () => {
               <li className={styles.esteka}>
                 <Link to="/">Laba gara</Link>
               </li>
-              <li className={styles.esteka}>
-                <Link to="/bizi">Bizi Laba</Link>
-              </li>
+
+              {
+                // TODO testeatu eta produkzioan jarri
+                process.env.NODE_ENV === 'development' && (
+                  <li className={styles.esteka}>
+                    <Link to="/bizi">Bizi Laba</Link>
+                  </li>
+                )
+              }
+
               <li className={styles.esteka}>
                 <Link to="/kafetegia">Dastatu Laba</Link>
               </li>
