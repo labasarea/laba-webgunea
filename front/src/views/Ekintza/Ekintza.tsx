@@ -46,10 +46,22 @@ export const Ekintza: React.FC<Props> = ({ content }) => {
           <aside>
             <img
               className={styles.kartela}
-              src={kartela.formats.medium.url}
+              src={
+                kartela.formats.medium
+                  ? kartela.formats.medium.url
+                  : kartela.formats.small.url
+              }
               alt={kartela.alternativeText}
-              height={kartela.formats.medium.height}
-              width={kartela.formats.medium.width}
+              height={
+                kartela.formats.medium
+                  ? kartela.formats.medium.height
+                  : kartela.formats.small.height
+              }
+              width={
+                kartela.formats.medium
+                  ? kartela.formats.medium.width
+                  : kartela.formats.small.width
+              }
             ></img>
           </aside>
         )}
