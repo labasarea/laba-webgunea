@@ -4,6 +4,7 @@ import { graphql, PageProps } from 'gatsby';
 
 import { SEO } from '../../../components/SEO';
 import { ZikloaContent } from '../../../domain/zikloa/ZikloaContent';
+import { NotFound } from '../../../views/NotFound';
 import { Zikloa } from '../../../views/Zikloa/Zikloa';
 
 interface QueryData {
@@ -12,6 +13,11 @@ interface QueryData {
 
 const ZikloaPage: React.FC<PageProps<QueryData>> = ({ location, data }) => {
   const content = data.strapiZikloa;
+
+  // TODO testeatu eta produkzioan jarri
+  if (process.env.NODE_ENV === 'production') {
+    return <NotFound />;
+  }
 
   return (
     <>
