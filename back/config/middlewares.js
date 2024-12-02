@@ -33,4 +33,7 @@ module.exports = [
   "strapi::body",
   "strapi::favicon",
   "strapi::public",
+  {
+    resolve: "./middlewares/preview",
+  },
 ];

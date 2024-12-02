@@ -40,4 +40,60 @@ module.exports = ({ env }) => ({
       ],
     },
   },
+  "preview-button": {
+    config: {
+      contentTypes: [
+        {
+          uid: "api::hasiera.hasiera",
+          published: {
+            url: "http://localhost:1337/api/preview",
+          },
+        },
+        {
+          uid: "api::bizi.bizi",
+          published: {
+            url: "http://localhost:1337/api/preview/bizi",
+          },
+        },
+        {
+          uid: "api::kafetegia.kafetegia",
+          published: {
+            url: "http://localhost:1337/api/preview/kafetegia",
+          },
+        },
+        {
+          uid: "api::ekintza.ekintza",
+          published: {
+            url: "http://localhost:1337/api/preview/bizi/ekintzak/{slug}",
+          },
+        },
+        // {
+        //   uid: "api::page.page",
+        //   draft: {
+        //     url: "http://localhost:3000/api/preview",
+        //     query: {
+        //       type: "page",
+        //       slug: "{slug}",
+        //     },
+        //   },
+        //   published: {
+        //     url: "http://localhost:3000/{slug}",
+        //   },
+        // },
+        // {
+        //   uid: "api::post.post",
+        //   draft: {
+        //     url: "http://localhost:3000/api/preview",
+        //     query: {
+        //       type: "post",
+        //       slug: "{slug}",
+        //     },
+        //   },
+        //   published: {
+        //     url: "http://localhost:3000/blog/{slug}",
+        //   },
+        // },
+      ],
+    },
+  },
 });

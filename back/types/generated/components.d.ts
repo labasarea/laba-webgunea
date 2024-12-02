@@ -1,55 +1,56 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Attribute, Schema } from '@strapi/strapi';
 
 export interface BiziElkarlana extends Schema.Component {
   collectionName: 'components_bizi_elkarlanas';
   info: {
+    description: '';
     displayName: 'elkarlana';
     icon: 'handHeart';
-    description: '';
   };
   attributes: {
-    harremana: Attribute.String;
     erakundeak: Attribute.Relation<
       'bizi.elkarlana',
       'oneToMany',
       'api::erakundea.erakundea'
     >;
+    harremana: Attribute.String;
   };
 }
 
 export interface KafetegiaAlergenoa extends Schema.Component {
   collectionName: 'components_kafetegia_alergenoas';
   info: {
+    description: '';
     displayName: 'alergenoa';
     icon: 'cat';
-    description: '';
   };
   attributes: {
-    esnekiak: Attribute.Boolean &
+    apioa: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    arraina: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
     arrautzak: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    glutena: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    moluskuak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    krustazeoak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    arraina: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    lupinuak: Attribute.Boolean &
+    esnekiak: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
     fruituLehorrak: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    glutena: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     kakahueteak: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    krustazeoak: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    lupinuak: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    moluskuak: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
     sesamoa: Attribute.Boolean &
@@ -59,7 +60,6 @@ export interface KafetegiaAlergenoa extends Schema.Component {
     sulfitoak: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    apioa: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     ziapea: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
   };
 }
@@ -67,29 +67,29 @@ export interface KafetegiaAlergenoa extends Schema.Component {
 export interface KafetegiaEdaria extends Schema.Component {
   collectionName: 'components_kafetegia_edarias';
   info: {
+    description: '';
     displayName: 'produktua';
     icon: 'coffee';
-    description: '';
   };
   attributes: {
+    alergenoak: Attribute.Component<'kafetegia.alergenoa'> & Attribute.Required;
     beganoa: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
     ekologikoa: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    prezioa: Attribute.Decimal & Attribute.Required & Attribute.DefaultTo<0>;
     izena: Attribute.String & Attribute.Required;
-    alergenoak: Attribute.Component<'kafetegia.alergenoa'> & Attribute.Required;
+    prezioa: Attribute.Decimal & Attribute.Required & Attribute.DefaultTo<0>;
   };
 }
 
 export interface KafetegiaIzenburua extends Schema.Component {
   collectionName: 'components_kafetegia_izenburuas';
   info: {
+    description: '';
     displayName: 'Izenburua';
     icon: 'strikeThrough';
-    description: '';
   };
   attributes: {
     izenburuBalioa: Attribute.String & Attribute.Required;
@@ -115,21 +115,21 @@ export interface OrokorraDatuOrokorrak extends Schema.Component {
     icon: 'house';
   };
   attributes: {
-    izenburua: Attribute.String;
     deskribapena: Attribute.Text;
+    izenburua: Attribute.String;
   };
 }
 
 export interface OrokorraHelbidea extends Schema.Component {
   collectionName: 'components_helbidea_helbideas';
   info: {
+    description: '';
     displayName: 'helbidea';
     icon: 'home';
-    description: '';
   };
   attributes: {
-    lehenLerroa: Attribute.String;
     bigarrenLerroa: Attribute.String;
+    lehenLerroa: Attribute.String;
   };
 }
 

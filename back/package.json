@@ -27,6 +27,7 @@
     "react-router-dom": "^5.3.4",
     "sqlite3": "5.1.7",
     "strapi-plugin-netlify-deployments": "^2.0.2",
+    "strapi-plugin-preview-button": "^2.2.2",
     "styled-components": "^5.3.11"
   },
   "strapi": {
