@@ -4,23 +4,14 @@
   "info": {
     "singularName": "hasiera",
     "pluralName": "hasierak",
-    "displayName": "Hasiera",
-    "description": ""
+    "displayName": "Hasiera"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
   "attributes": {
-    "deskribapena": {
-      "type": "text"
-    },
-    "izenburua": {
+    "Izenburua": {
       "type": "string"
-    },
-    "edukia": {
-      "type": "richtext",
-      "required": false
     }
   }
 }

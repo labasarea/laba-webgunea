@@ -25,17 +25,9 @@
     "e2e"
   ],
   "scripts": {
-    "back": "yarn workspace back",
-    "clear-node-modules": "yarn rimraf node_modules back/node_modules front/node_modules e2e/node_modules",
-    "e2e": "yarn workspace e2e",
-    "front": "yarn workspace front"
-  },
-  "resolutions": {
-    "@graphql-tools/schema": "8.5.1",
-    "jackspeak": "2.1.1"
-  },
-  "devDependencies": {
-    "rimraf": "^5.0.5"
+    "back:start": "npm run -w back start",
+    "back:dev": "npm run -w back dev",
+    "back:build": "npm run -w back build"
   },
   "dependencies": {}
 }

@@ -2,33 +2,39 @@
   "name": "back",
   "version": "0.1.0",
   "private": true,
-  "description": "Laba webgunerako kudeaketa",
-  "license": "MIT",
-  "author": {
-    "name": "Laba Sarea"
-  },
+  "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
     "develop": "strapi develop",
-    "public-proxy": "ngrok http --domain=vervet-big-dassie.ngrok-free.app 1337",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.25.17",
-    "@strapi/plugin-i18n": "^4.25.13",
-    "@strapi/plugin-users-permissions": "^4.25.17",
-    "@strapi/provider-upload-cloudinary": "^4.25.17",
-    "@strapi/strapi": "^4.25.17",
-    "pg": "^8.13.1",
-    "pg-connection-string": "^2.7.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^5.3.4",
-    "sqlite3": "5.1.7",
-    "styled-components": "^5.3.11"
+    "@strapi/plugin-cloud": "5.12.3",
+    "@strapi/plugin-users-permissions": "5.12.3",
+    "@strapi/strapi": "5.12.3",
+    "better-sqlite3": "11.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
+    "uuid": "80b4f18d-c205-4488-9fc1-abea26dc35dd"
   }
 }
