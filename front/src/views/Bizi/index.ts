@@ -1,1 +1,0 @@
-export { Bizi } from './Bizi';

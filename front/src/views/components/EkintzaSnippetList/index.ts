@@ -1,1 +1,0 @@
-export { EkintzaSnippetList } from './EkintzaSnippetList';

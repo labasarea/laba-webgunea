@@ -1,1 +1,0 @@
-export { Oina } from './Oina';

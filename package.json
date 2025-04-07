@@ -27,7 +27,10 @@
   "scripts": {
     "back:start": "npm run -w back start",
     "back:dev": "npm run -w back dev",
-    "back:build": "npm run -w back build"
+    "back:build": "npm run -w back build",
+    "front:dev": "npm run -w front dev",
+    "front:build": "npm run -w front build",
+    "front:preview": "npm run -w front preview"
   },
   "dependencies": {}
 }

@@ -1,1 +1,0 @@
-export { KontaktuDatuak } from './KontaktuDatuak';
