@@ -30,7 +30,8 @@
     "back:build": "npm run -w back build",
     "front:dev": "npm run -w front dev",
     "front:build": "npm run -w front build",
-    "front:preview": "npm run -w front preview"
+    "front:preview": "npm run -w front preview",
+    "e2e:open": "npm run -w e2e open"
   },
   "dependencies": {}
 }
