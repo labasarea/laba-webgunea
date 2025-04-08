@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
   collectionName: 'hasierak';
   info: {
+    description: '';
     displayName: 'Hasiera';
     pluralName: 'hasierak';
     singularName: 'hasiera';
@@ -383,7 +384,7 @@ export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Izenburua: Schema.Attribute.String;
+    izenburua: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

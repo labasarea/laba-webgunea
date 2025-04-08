@@ -4,13 +4,14 @@
   "info": {
     "singularName": "hasiera",
     "pluralName": "hasierak",
-    "displayName": "Hasiera"
+    "displayName": "Hasiera",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Izenburua": {
+    "izenburua": {
       "type": "string"
     }
   }
