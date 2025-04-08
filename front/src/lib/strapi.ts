@@ -16,14 +16,16 @@ interface Props {
 export default async function fetchApi<T>({
   endpoint,
   query,
-  wrappedByKey,
+  wrappedByKey = "data",
   wrappedByList,
 }: Props): Promise<T> {
   if (endpoint.startsWith("/")) {
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
+  const url = new URL(
+    `${import.meta.env.STRAPI_URL}/api/${endpoint}?status=draft`
+  );
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
