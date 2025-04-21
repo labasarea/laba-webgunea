@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ekintzak",
+  "info": {
+    "singularName": "ekintza",
+    "pluralName": "ekintzak",
+    "displayName": "Ekintza",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "izenburua": {
+      "type": "string",
+      "required": true
+    },
+    "titularra": {
+      "type": "text"
+    },
+    "deskribapena": {
+      "type": "richtext"
+    },
+    "hitzordua": {
+      "type": "datetime",
+      "required": true
+    },
+    "labakoUzta": {
+      "type": "boolean"
+    },
+    "mainMedia": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "izenburua",
+      "required": true
+    },
+    "Sarrera": {
+      "displayName": "Sarrera",
+      "type": "component",
+      "repeatable": false,
+      "component": "ekintza.sarrera"
+    },
+    "edukiLibrea": {
+      "type": "dynamiczone",
+      "components": [
+        "paragraph.youtube",
+        "paragraph.testua",
+        "paragraph.irudia"
+      ]
+    }
+  }
+}

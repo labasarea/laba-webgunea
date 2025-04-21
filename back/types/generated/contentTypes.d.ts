@@ -369,6 +369,46 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEkintzaEkintza extends Struct.CollectionTypeSchema {
+  collectionName: 'ekintzak';
+  info: {
+    description: '';
+    displayName: 'Ekintza';
+    pluralName: 'ekintzak';
+    singularName: 'ekintza';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deskribapena: Schema.Attribute.RichText;
+    edukiLibrea: Schema.Attribute.DynamicZone<
+      ['paragraph.youtube', 'paragraph.testua', 'paragraph.irudia']
+    >;
+    hitzordua: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    izenburua: Schema.Attribute.String & Schema.Attribute.Required;
+    labakoUzta: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ekintza.ekintza'
+    > &
+      Schema.Attribute.Private;
+    mainMedia: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Sarrera: Schema.Attribute.Component<'ekintza.sarrera', false>;
+    slug: Schema.Attribute.UID<'izenburua'> & Schema.Attribute.Required;
+    titularra: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
   collectionName: 'hasierak';
   info: {
@@ -907,6 +947,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::ekintza.ekintza': ApiEkintzaEkintza;
       'api::hasiera.hasiera': ApiHasieraHasiera;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_paragraph_youtubes",
+  "info": {
+    "displayName": "youtube",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "regex": "^(https?:\\\\/\\\\/)?([\\\\da-z\\\\.-]+)\\\\.([a-z\\\\.]{2,6})(:[0-9]+)?([\\\\/\\\\w \\\\.-]*)*\\\\/?$",
+      "required": true
+    }
+  }
+}

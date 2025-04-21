@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_paragraph_irudias",
+  "info": {
+    "displayName": "irudia",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}
