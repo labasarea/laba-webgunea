@@ -25,14 +25,18 @@
     "e2e"
   ],
   "scripts": {
-    "back:start": "npm run -w back start",
-    "back:dev": "npm run -w back dev",
-    "back:build": "npm run -w back build",
-    "back:upgrade": "npm run -w back upgrade",
-    "front:dev": "npm run -w front dev",
-    "front:build": "npm run -w front build",
-    "front:preview": "npm run -w front preview",
-    "e2e:open": "npm run -w e2e open"
+    "back:start": "pnpm --filter back start",
+    "back:dev": "pnpm --filter back dev",
+    "back:build": "pnpm --filter back build",
+    "back:upgrade": "pnpm --filter back upgrade",
+    "front:dev": "pnpm --filter front dev",
+    "front:build": "pnpm --filter front build",
+    "front:preview": "pnpm --filter front preview",
+    "e2e:open": "pnpm --filter e2e open"
   },
-  "dependencies": {}
+  "dependencies": {
+    "back": "workspace:*",
+    "front": "workspace:*",
+    "e2e": "workspace:*"
+  }
 }
