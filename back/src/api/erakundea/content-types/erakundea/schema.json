@@ -4,10 +4,11 @@
   "info": {
     "singularName": "erakundea",
     "pluralName": "erakundeak",
-    "displayName": "Erakundea"
+    "displayName": "Erakundea",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "izena": {
@@ -18,14 +19,15 @@
       "type": "string"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

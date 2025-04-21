@@ -414,12 +414,13 @@ export interface ApiEkintzaEkintza extends Struct.CollectionTypeSchema {
 export interface ApiErakundeaErakundea extends Struct.CollectionTypeSchema {
   collectionName: 'erakundeak';
   info: {
+    description: '';
     displayName: 'Erakundea';
     pluralName: 'erakundeak';
     singularName: 'erakundea';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
