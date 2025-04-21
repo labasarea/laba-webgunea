@@ -55,6 +55,18 @@
         "paragraph.testua",
         "paragraph.irudia"
       ]
+    },
+    "zikloa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::zikloa.zikloa",
+      "inversedBy": "ekintzak"
+    },
+    "elkarlana": {
+      "displayName": "elkarlana",
+      "type": "component",
+      "repeatable": false,
+      "component": "ekintza.elkarlana"
     }
   }
 }

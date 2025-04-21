@@ -388,6 +388,7 @@ export interface ApiEkintzaEkintza extends Struct.CollectionTypeSchema {
     edukiLibrea: Schema.Attribute.DynamicZone<
       ['paragraph.youtube', 'paragraph.testua', 'paragraph.irudia']
     >;
+    elkarlana: Schema.Attribute.Component<'ekintza.elkarlana', false>;
     hitzordua: Schema.Attribute.DateTime & Schema.Attribute.Required;
     izenburua: Schema.Attribute.String & Schema.Attribute.Required;
     labakoUzta: Schema.Attribute.Boolean;
@@ -403,6 +404,37 @@ export interface ApiEkintzaEkintza extends Struct.CollectionTypeSchema {
     Sarrera: Schema.Attribute.Component<'ekintza.sarrera', false>;
     slug: Schema.Attribute.UID<'izenburua'> & Schema.Attribute.Required;
     titularra: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    zikloa: Schema.Attribute.Relation<'manyToOne', 'api::zikloa.zikloa'>;
+  };
+}
+
+export interface ApiErakundeaErakundea extends Struct.CollectionTypeSchema {
+  collectionName: 'erakundeak';
+  info: {
+    displayName: 'Erakundea';
+    pluralName: 'erakundeak';
+    singularName: 'erakundea';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    esteka: Schema.Attribute.String;
+    izena: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::erakundea.erakundea'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -429,6 +461,37 @@ export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::hasiera.hasiera'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiZikloaZikloa extends Struct.CollectionTypeSchema {
+  collectionName: 'zikloak';
+  info: {
+    description: '';
+    displayName: 'Zikloa';
+    pluralName: 'zikloak';
+    singularName: 'zikloa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deskribapena: Schema.Attribute.Text;
+    ekintzak: Schema.Attribute.Relation<'oneToMany', 'api::ekintza.ekintza'>;
+    izena: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::zikloa.zikloa'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -948,7 +1011,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::ekintza.ekintza': ApiEkintzaEkintza;
+      'api::erakundea.erakundea': ApiErakundeaErakundea;
       'api::hasiera.hasiera': ApiHasieraHasiera;
+      'api::zikloa.zikloa': ApiZikloaZikloa;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

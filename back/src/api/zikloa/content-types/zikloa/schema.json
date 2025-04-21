@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "zikloak",
+  "info": {
+    "singularName": "zikloa",
+    "pluralName": "zikloak",
+    "displayName": "Zikloa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "izena": {
+      "type": "string",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "text"
+    },
+    "ekintzak": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ekintza.ekintza",
+      "mappedBy": "zikloa"
+    }
+  }
+}

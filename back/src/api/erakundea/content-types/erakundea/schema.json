@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "erakundeak",
+  "info": {
+    "singularName": "erakundea",
+    "pluralName": "erakundeak",
+    "displayName": "Erakundea"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "izena": {
+      "type": "string",
+      "required": true
+    },
+    "esteka": {
+      "type": "string"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
