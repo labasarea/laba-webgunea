@@ -42,7 +42,7 @@
       "targetField": "izenburua",
       "required": true
     },
-    "Sarrera": {
+    "sarrera": {
       "displayName": "Sarrera",
       "type": "component",
       "repeatable": false,

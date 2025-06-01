@@ -1,0 +1,90 @@
+---
+export const prerender = true;
+
+import Layout from "../../layouts/Layout.astro";
+import fetchApi from "../../lib/strapi";
+import { marked } from "marked";
+
+interface Ekintza {
+  slug: string;
+  izenburua: string;
+  titularra: string;
+  deskribapena: string;
+  hitzordua: string;
+  sarrera: {
+    label: string;
+    deskribapena: string;
+  };
+  mainMedia: {
+    alternativeText?: string;
+    height: number;
+    width: number;
+    formats: {
+      large?: {
+        url: string;
+      };
+      medium?: {
+        url: string;
+      };
+    };
+  };
+}
+
+export async function getStaticPaths() {
+  try {
+    const ekintzak = await fetchApi<Ekintza[]>({
+      endpoint: "/ekintzak",
+      query: {
+        "populate[elkarlana][populate][0]": "erakundeak",
+      },
+    });
+    return ekintzak.map((ekintza) => ({
+      params: { ekintza: ekintza.slug },
+      props: { ekintza },
+    }));
+  } catch (error) {
+    console.error("Error en getStaticPaths:", error);
+    return [];
+  }
+}
+
+const { ekintza } = Astro.props;
+const hitzordua = new Date(ekintza.hitzordua);
+---
+
+<Layout title={ekintza?.izenburua}>
+  <main>
+    <article>
+      <figure>
+        <picture>
+          <source
+            srcset={`${import.meta.env.STRAPI_URL}${ekintza.mainMedia?.formats.large?.url}`}
+            media="(min-width: 1024px)"
+          />
+
+          <img
+            src={`${import.meta.env.STRAPI_URL}${ekintza.mainMedia?.formats.medium?.url}`}
+            alt={ekintza.izenburua}
+            style="width: 33%; height: auto;"
+            width={ekintza.mainMedia?.width}
+            height={ekintza.mainMedia?.height}
+          />
+        </picture>
+      </figure>
+      <h1>{ekintza?.izenburua}</h1>
+      <p>{hitzordua.toLocaleString("eu")}</p>
+      <p>{ekintza.titularra}</p>
+
+      <hr />
+
+      <div set:html={marked.parse(ekintza.deskribapena)} />
+
+      <hr />
+
+      <p>{ekintza.sarrera?.label}</p>
+      <p><em>{ekintza.sarrera?.deskribapena}</em></p>
+
+      <pre>{JSON.stringify(ekintza, null, 2)}</pre>
+    </article>
+  </main>
+</Layout>

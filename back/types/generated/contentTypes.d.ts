@@ -34,6 +34,10 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }> &
       Schema.Attribute.DefaultTo<''>;
+    encryptedKey: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     expiresAt: Schema.Attribute.DateTime;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
@@ -401,7 +405,7 @@ export interface ApiEkintzaEkintza extends Struct.CollectionTypeSchema {
     mainMedia: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Sarrera: Schema.Attribute.Component<'ekintza.sarrera', false>;
+    sarrera: Schema.Attribute.Component<'ekintza.sarrera', false>;
     slug: Schema.Attribute.UID<'izenburua'> & Schema.Attribute.Required;
     titularra: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
