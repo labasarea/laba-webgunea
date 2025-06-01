@@ -34,6 +34,9 @@ export default async function fetchApi<T>({
       url.searchParams.append(key, value);
     });
   }
+
+  console.log("Url", url.toString());
+
   const res = await fetch(url.toString());
   let data = await res.json();
 

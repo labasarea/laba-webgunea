@@ -2,7 +2,6 @@
 export const prerender = true;
 
 import Layout from "../../layouts/Layout.astro";
-import fetchApi from "../../lib/strapi";
 import { marked } from "marked";
 
 interface Ekintza {
@@ -32,18 +31,55 @@ interface Ekintza {
 
 export async function getStaticPaths() {
   try {
-    const ekintzak = await fetchApi<Ekintza[]>({
-      endpoint: "/ekintzak",
-      query: {
-        "populate[elkarlana][populate][0]": "erakundeak",
-      },
+    const response = await fetch(`${import.meta.env.STRAPI_URL}/graphql`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `
+            query {
+              ekintzak {
+                slug
+                elkarlana {
+                  label
+                  erakundeak {
+                    izena
+                    logo {
+                      formats
+                    }
+                  }
+                }
+                hitzordua
+                deskribapena
+                izenburua
+                labakoUzta
+                mainMedia {
+                  alternativeText
+                  formats
+                }
+                sarrera {
+                  deskribapena
+                  id
+                  label
+                  url
+                }
+                titularra
+                zikloa {
+                  izena
+                }
+              }
+            }
+          `,
+      }),
     });
-    return ekintzak.map((ekintza) => ({
+
+    const json = await response.json();
+    const { ekintzak } = json.data;
+    return (ekintzak as Ekintza[]).map((ekintza: Ekintza) => ({
       params: { ekintza: ekintza.slug },
       props: { ekintza },
     }));
   } catch (error) {
-    console.error("Error en getStaticPaths:", error);
+    console.error("Error getStaticPaths funtzioan:", error);
     return [];
   }
 }
