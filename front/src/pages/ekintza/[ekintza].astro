@@ -1,87 +1,16 @@
 ---
 export const prerender = true;
 
+import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { marked } from "marked";
 
-interface Ekintza {
-  slug: string;
-  izenburua: string;
-  titularra: string;
-  deskribapena: string;
-  hitzordua: string;
-  sarrera: {
-    label: string;
-    deskribapena: string;
-  };
-  mainMedia: {
-    alternativeText?: string;
-    height: number;
-    width: number;
-    formats: {
-      large?: {
-        url: string;
-      };
-      medium?: {
-        url: string;
-      };
-    };
-  };
-}
-
 export async function getStaticPaths() {
-  try {
-    const response = await fetch(`${import.meta.env.STRAPI_URL}/graphql`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: `
-            query {
-              ekintzak {
-                slug
-                elkarlana {
-                  label
-                  erakundeak {
-                    izena
-                    logo {
-                      formats
-                    }
-                  }
-                }
-                hitzordua
-                deskribapena
-                izenburua
-                labakoUzta
-                mainMedia {
-                  alternativeText
-                  formats
-                }
-                sarrera {
-                  deskribapena
-                  id
-                  label
-                  url
-                }
-                titularra
-                zikloa {
-                  izena
-                }
-              }
-            }
-          `,
-      }),
-    });
-
-    const json = await response.json();
-    const { ekintzak } = json.data;
-    return (ekintzak as Ekintza[]).map((ekintza: Ekintza) => ({
-      params: { ekintza: ekintza.slug },
-      props: { ekintza },
-    }));
-  } catch (error) {
-    console.error("Error getStaticPaths funtzioan:", error);
-    return [];
-  }
+  const ekintzak = await getCollection("ekintzak");
+  return ekintzak.map((ekintza) => ({
+    params: { ekintza: ekintza.data.slug },
+    props: { ekintza: ekintza.data },
+  }));
 }
 
 const { ekintza } = Astro.props;
@@ -89,7 +18,7 @@ const hitzordua = new Date(ekintza.hitzordua);
 ---
 
 <Layout title={ekintza?.izenburua}>
-  <main>
+  <main class="wrapper">
     <article>
       <figure>
         <picture>
@@ -124,3 +53,10 @@ const hitzordua = new Date(ekintza.hitzordua);
     </article>
   </main>
 </Layout>
+
+<style>
+  .wrapper {
+    margin-left: 8em;
+    margin-right: 8em;
+  }
+</style>
