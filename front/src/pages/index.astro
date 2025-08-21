@@ -3,6 +3,7 @@ export const prerender = false;
 import Layout from "../layouts/Layout.astro";
 import fetchApi from "../lib/strapi";
 import type { Hasiera } from "../models/Hasiera";
+import Logo from "../assets/labaLogo.svg";
 
 const { izenburua } = await fetchApi<Hasiera>({
   endpoint: "hasiera",
@@ -10,5 +11,128 @@ const { izenburua } = await fetchApi<Hasiera>({
 ---
 
 <Layout title={izenburua}>
-  <h1>{izenburua}</h1>
+  <header></header>
+
+  <main class="main">
+    <section class="hero">
+      <Logo class="logo" aria-title="Laba" />
+    </section>
+
+    <section class="agenda">
+      <div class="agenda-wrapper">
+        <h2 class="title">Agenda</h2>
+      </div>
+    </section>
+
+    <section class="izan-labazkide">
+      <div class="labazkide-wrapper">
+        <h2 class="title">Izan Labazkide</h2>
+
+        <p>
+          Labako bazkideak dira proiektuaren oinarria: haiek izanen dira Labaren
+          berme ekonomikoa. Bazkideek urteko batzar orokorrean parte hartuko
+          dute, barne informazioa jasoko dute eta aukera izanen dute erabakietan
+          parte hartzeko. Gainera, Labak antolatutako jardueretan abantailak
+          izanen dituzte bazkideek.
+        </p>
+
+        <p>
+          Urtean 120€ ordainduko dute bazkideek. Kontuan izan bazkide ekarpena
+          errentaren aitorpenean %80a desgrabatu dezakezula.
+        </p>
+      </div>
+    </section>
+
+    <section class="parte-hartu">
+      <h2 class="title">Proiektuan parte hartu nahi dut</h2>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <Logo class="footer-logo" />
+  </footer>
 </Layout>
+
+<style lang="scss">
+  :root {
+    --zuria: #ffffff;
+    --gorria: rgb(255 62 62);
+    --gorria-backgound: rgba(var(--gorria), 0.05);
+    --marroia: #4b2125;
+  }
+
+  .main {
+    background-color: var(--gorria-backgound);
+  }
+
+  .hero {
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-end;
+    padding: 48px;
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+  }
+
+  .logo {
+    height: 33dvh;
+  }
+
+  .agenda {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 24px;
+    padding: 148px 48px 148px 48px;
+
+    color: var(--gorria);
+  }
+
+  .agenda-wrapper {
+    grid-column: col-start 5 / -1;
+  }
+
+  .izan-labazkide {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 24px;
+    padding: 148px 48px 148px 48px;
+
+    background-color: var(--gorria);
+    color: var(--zuria);
+  }
+
+  .labazkide-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    grid-column: col-start 4 / span 6;
+  }
+
+  .parte-hartu {
+    display: flex;
+    justify-content: center;
+    padding: 148px 48px 148px 48px;
+
+    color: var(--marroia);
+  }
+
+  .title {
+    font-family: "Sohne", sans-serif;
+    font-size: 49px;
+    line-height: 110%;
+  }
+
+  .footer {
+    padding: 48px;
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+  }
+
+  .footer-logo {
+    height: 56px;
+  }
+</style>
