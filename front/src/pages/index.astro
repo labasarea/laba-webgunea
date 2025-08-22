@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import fetchApi from "../lib/strapi";
 import type { Hasiera } from "../models/Hasiera";
 import Logo from "../assets/labaLogo.svg";
+import ZigZag from "../components/ZigZag.astro";
 
 const { izenburua } = await fetchApi<Hasiera>({
   endpoint: "hasiera",
@@ -18,11 +19,15 @@ const { izenburua } = await fetchApi<Hasiera>({
       <Logo class="logo" aria-title="Laba" />
     </section>
 
+    <ZigZag from="marroia" />
+
     <section class="agenda">
       <div class="agenda-wrapper">
         <h2 class="title">Agenda</h2>
       </div>
     </section>
+
+    <ZigZag from="gorria-background" to="gorria" />
 
     <section class="izan-labazkide">
       <div class="labazkide-wrapper">
@@ -43,10 +48,14 @@ const { izenburua } = await fetchApi<Hasiera>({
       </div>
     </section>
 
+    <ZigZag from="gorria" to="gorria-background" />
+
     <section class="parte-hartu">
       <h2 class="title">Proiektuan parte hartu nahi dut</h2>
     </section>
   </main>
+
+  <ZigZag from="gorria-background" to="marroia" />
 
   <footer class="footer">
     <Logo class="footer-logo" />
@@ -56,13 +65,13 @@ const { izenburua } = await fetchApi<Hasiera>({
 <style lang="scss">
   :root {
     --zuria: #ffffff;
-    --gorria: rgb(255 62 62);
-    --gorria-backgound: rgba(var(--gorria), 0.05);
+    --gorria: #ff3e3e;
+    --gorria-background: #fffbfb; // gorriari %5 opazitatea fondo zurian
     --marroia: #4b2125;
   }
 
   .main {
-    background-color: var(--gorria-backgound);
+    background-color: var(--gorria-background);
   }
 
   .hero {
