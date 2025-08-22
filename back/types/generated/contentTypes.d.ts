@@ -460,6 +460,8 @@ export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    izanLabazkide: Schema.Attribute.Component<'hasiera.izan-labazkide', false> &
+      Schema.Attribute.Required;
     izenburua: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

@@ -1,0 +1,24 @@
+---
+import { marked } from "marked";
+
+type Markdown = string;
+
+interface Props {
+  content: Markdown;
+}
+
+const { content } = Astro.props;
+---
+
+<div class="markdown-wrapper" set:html={marked.parse(content, {})} />
+
+<!-- global jartzen dugu, marked-en sortutako HTMLa estilizatzeko -->
+<style lang="scss" is:global>
+  .markdown-wrapper {
+    p {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+</style>

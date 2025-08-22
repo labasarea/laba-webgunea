@@ -29,6 +29,33 @@ export interface EkintzaSarrera extends Struct.ComponentSchema {
   };
 }
 
+export interface HasieraIzanLabazkide extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_izan_labazkides';
+  info: {
+    displayName: 'Izan labazkide';
+    icon: 'pencil';
+  };
+  attributes: {
+    deskribapena: Schema.Attribute.RichText;
+    izenburua: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.Component<'hasiera.url', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface HasieraUrl extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_urls';
+  info: {
+    displayName: 'url';
+    icon: 'link';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    target: Schema.Attribute.Enumeration<['self', 'blank']>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ParagraphIrudia extends Struct.ComponentSchema {
   collectionName: 'components_paragraph_irudias';
   info: {
@@ -71,6 +98,8 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'ekintza.elkarlana': EkintzaElkarlana;
       'ekintza.sarrera': EkintzaSarrera;
+      'hasiera.izan-labazkide': HasieraIzanLabazkide;
+      'hasiera.url': HasieraUrl;
       'paragraph.irudia': ParagraphIrudia;
       'paragraph.testua': ParagraphTestua;
       'paragraph.youtube': ParagraphYoutube;
