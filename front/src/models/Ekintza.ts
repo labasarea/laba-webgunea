@@ -23,3 +23,11 @@ export interface Ekintza {
     };
   };
 }
+
+export function getShortDate(ekintza: Ekintza): string {
+  const date = new Date(ekintza.hitzordua);
+  const day = date.getDate();
+  const month = date.toLocaleString("eu", { month: "short" });
+
+  return `${month} ${day}`;
+}

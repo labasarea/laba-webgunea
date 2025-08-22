@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "izenburua": {
       "type": "string",
@@ -31,7 +32,7 @@
     "mainMedia": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"
@@ -43,10 +44,9 @@
       "required": true
     },
     "sarrera": {
-      "displayName": "Sarrera",
       "type": "component",
-      "repeatable": false,
-      "component": "ekintza.sarrera"
+      "component": "ekintza.sarrera",
+      "repeatable": false
     },
     "edukiLibrea": {
       "type": "dynamiczone",
@@ -63,10 +63,9 @@
       "inversedBy": "ekintzak"
     },
     "elkarlana": {
-      "displayName": "elkarlana",
       "type": "component",
-      "repeatable": false,
-      "component": "ekintza.elkarlana"
+      "component": "ekintza.elkarlana",
+      "repeatable": false
     }
   }
 }

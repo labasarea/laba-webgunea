@@ -5,10 +5,15 @@ import fetchApi from "../lib/strapi";
 import type { Hasiera } from "../models/Hasiera";
 import Logo from "../assets/labaLogo.svg";
 import ZigZag from "../components/ZigZag.astro";
+import { getCollection } from "astro:content";
+import { getShortDate, type Ekintza } from "../models/Ekintza";
 
 const { izenburua } = await fetchApi<Hasiera>({
   endpoint: "hasiera",
 });
+
+const ekintzakCollection = await getCollection("ekintzak");
+const ekintzak: Ekintza[] = ekintzakCollection.map(({ data }) => data);
 ---
 
 <Layout title={izenburua}>
@@ -24,6 +29,19 @@ const { izenburua } = await fetchApi<Hasiera>({
     <section class="agenda">
       <div class="agenda-wrapper">
         <h2 class="title">Agenda</h2>
+
+        <ul class="ekintzak-zerrenda">
+          {
+            ekintzak.map((ekintza) => (
+              <li class="ekintzak-elementua">
+                <>
+                  <span>{ekintza.izenburua}</span>
+                  <span>{getShortDate(ekintza)}</span>
+                </>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
 
@@ -143,5 +161,26 @@ const { izenburua } = await fetchApi<Hasiera>({
 
   .footer-logo {
     height: 56px;
+  }
+
+  .ekintzak-zerrenda {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: 24px;
+
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .ekintzak-elementua {
+    display: inline-flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    font-family: "Sohne", sans-serif;
+    font-size: 21px;
+    line-height: 110%;
   }
 </style>

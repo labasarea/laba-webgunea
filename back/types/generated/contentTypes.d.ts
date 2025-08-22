@@ -402,8 +402,7 @@ export interface ApiEkintzaEkintza extends Struct.CollectionTypeSchema {
       'api::ekintza.ekintza'
     > &
       Schema.Attribute.Private;
-    mainMedia: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
+    mainMedia: Schema.Attribute.Media<'images' | 'files'>;
     publishedAt: Schema.Attribute.DateTime;
     sarrera: Schema.Attribute.Component<'ekintza.sarrera', false>;
     slug: Schema.Attribute.UID<'izenburua'> & Schema.Attribute.Required;
