@@ -1,0 +1,20 @@
+---
+import type { ExternalSVG } from "../../../models/Hasiera";
+
+interface Props {
+  externalSVG: ExternalSVG;
+}
+
+const { externalSVG } = Astro.props;
+---
+
+<div class="external-svg" set:html={externalSVG} />
+
+<style lang="scss" is:global>
+  .external-svg {
+    svg {
+      width: 48px;
+      height: auto;
+    }
+  }
+</style>

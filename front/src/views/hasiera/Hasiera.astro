@@ -1,0 +1,209 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Logo from "../../assets/labaLogo.svg";
+import ZigZag from "../../components/ZigZag.astro";
+import { getShortDate, type Ekintza } from "../../models/Ekintza";
+import MarkdownParser from "../../components/MarkdownParser.astro";
+import type { Hasiera } from "../../models/Hasiera";
+import PartehartzeaCard from "./components/PartehartzeaCard.astro";
+
+interface Props {
+  hasiera: Hasiera;
+  ekintzak: Ekintza[];
+}
+
+const { hasiera, ekintzak } = Astro.props;
+
+const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
+---
+
+<Layout title={izenburua}>
+  <header></header>
+
+  <main class="main">
+    <section class="hero">
+      <Logo class="logo" aria-title="Laba" />
+    </section>
+
+    <ZigZag from="marroia" />
+
+    <section class="agenda">
+      <div class="agenda-wrapper">
+        <h2 class="title">Agenda</h2>
+
+        <ul class="ekintzak-zerrenda">
+          {
+            ekintzak.map((ekintza) => (
+              <li class="ekintzak-elementua">
+                <span>{ekintza.izenburua}</span>
+                <span>{getShortDate(ekintza)}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <ZigZag from="gorria-background" to="gorria" />
+
+    <section class="izan-labazkide">
+      <div class="labazkide-wrapper">
+        <h2 class="title">{izanLabazkide.izenburua}</h2>
+
+        <MarkdownParser content={izanLabazkide.deskribapena} />
+
+        <a class="izan-labazkide--url" href={izanLabazkide.url.url}
+          >{izanLabazkide.url.label}</a
+        >
+      </div>
+    </section>
+
+    <ZigZag from="gorria" to="gorria-background" />
+
+    <section class="parte-hartu">
+      <h2 class="title">{parteHartu.izenburua}</h2>
+
+      <div class="parte-hartzeak--wrapper">
+        <ul class="parte-hartzeak">
+          {
+            parteHartu.parteHartzea.map((parteHartzea) => (
+              <PartehartzeaCard partehartzea={parteHartzea} />
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <ZigZag from="gorria-background" to="marroia" />
+
+  <footer class="footer">
+    <Logo class="footer-logo" />
+  </footer>
+</Layout>
+
+<style lang="scss">
+  :root {
+    --zuria: #ffffff;
+    --gorria: #ff3e3e;
+    --gorria-background: #fffbfb; // gorriari %5 opazitatea fondo zurian
+    --marroia: #4b2125;
+  }
+
+  .main {
+    background-color: var(--gorria-background);
+  }
+
+  .hero {
+    min-height: 97dvh;
+    display: flex;
+    align-items: flex-end;
+    padding: 48px;
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+  }
+
+  .logo {
+    height: 33dvh;
+  }
+
+  .agenda {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 24px;
+    padding: 148px 48px 148px 48px;
+
+    color: var(--gorria);
+  }
+
+  .agenda-wrapper {
+    grid-column: col-start 5 / -1;
+  }
+
+  .izan-labazkide {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 24px;
+    padding: 148px 48px 148px 48px;
+
+    background-color: var(--gorria);
+    color: var(--zuria);
+  }
+
+  .labazkide-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    grid-column: col-start 4 / span 6;
+  }
+
+  .izan-labazkide--url {
+    color: var(--zuria);
+  }
+
+  .parte-hartu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 148px 48px 148px 48px;
+    gap: 32px;
+
+    color: var(--marroia);
+  }
+
+  .parte-hartzeak {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    gap: 24px;
+    grid-column: col-start 2 / span 10;
+  }
+
+  .parte-hartzeak--wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 24px;
+  }
+
+  .title {
+    font-family: "Sohne", sans-serif;
+    font-size: 49px;
+    line-height: 110%;
+  }
+
+  .footer {
+    padding: 48px;
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+  }
+
+  .footer-logo {
+    height: 56px;
+  }
+
+  .ekintzak-zerrenda {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-top: 24px;
+
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .ekintzak-elementua {
+    display: inline-flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    font-family: "Sohne", sans-serif;
+    font-size: 21px;
+    line-height: 110%;
+  }
+</style>

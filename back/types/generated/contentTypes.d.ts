@@ -469,6 +469,7 @@ export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
       'api::hasiera.hasiera'
     > &
       Schema.Attribute.Private;
+    parteHartu: Schema.Attribute.Component<'hasiera.parte-hartu', false>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "back": "workspace:*",
+    "e2e": "workspace:*",
     "front": "workspace:*",
-    "e2e": "workspace:*"
+    "prettier": "^3.6.2"
   }
 }

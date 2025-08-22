@@ -43,6 +43,38 @@ export interface HasieraIzanLabazkide extends Struct.ComponentSchema {
   };
 }
 
+export interface HasieraParteHartu extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_parte_hartus';
+  info: {
+    displayName: 'Parte hartu';
+    icon: 'handHeart';
+  };
+  attributes: {
+    izenburua: Schema.Attribute.String & Schema.Attribute.Required;
+    parteHartzea: Schema.Attribute.Component<'hasiera.parte-hartzea', true>;
+  };
+}
+
+export interface HasieraParteHartzea extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_parte_hartzeas';
+  info: {
+    displayName: 'Parte hartzea';
+    icon: 'handHeart';
+  };
+  attributes: {
+    deskribapena: Schema.Attribute.Text;
+    email: Schema.Attribute.String;
+    ikonoa: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::icons-field.icon',
+        {
+          output: 'svg';
+        }
+      >;
+    izenburua: Schema.Attribute.String;
+  };
+}
+
 export interface HasieraUrl extends Struct.ComponentSchema {
   collectionName: 'components_hasiera_urls';
   info: {
@@ -99,6 +131,8 @@ declare module '@strapi/strapi' {
       'ekintza.elkarlana': EkintzaElkarlana;
       'ekintza.sarrera': EkintzaSarrera;
       'hasiera.izan-labazkide': HasieraIzanLabazkide;
+      'hasiera.parte-hartu': HasieraParteHartu;
+      'hasiera.parte-hartzea': HasieraParteHartzea;
       'hasiera.url': HasieraUrl;
       'paragraph.irudia': ParagraphIrudia;
       'paragraph.testua': ParagraphTestua;

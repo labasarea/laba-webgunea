@@ -20,6 +20,11 @@
       "component": "hasiera.izan-labazkide",
       "repeatable": false,
       "required": true
+    },
+    "parteHartu": {
+      "type": "component",
+      "component": "hasiera.parte-hartu",
+      "repeatable": false
     }
   }
 }
