@@ -1,0 +1,94 @@
+---
+import Logo from "../../assets/labaLogo.svg";
+---
+
+<footer class="footer">
+  <div class="lehenengo-lerroa">
+    <Logo class="footer-logo" />
+
+    <address>Gazteluko plaza, 2. 31001 Iruñea, Nafarroa</address>
+  </div>
+
+  <div class="bigarren-lerroa">
+    <nav>
+      <ul>
+        <li class="elementu-legala">
+          <a href="/lege-oharra">Lege oharra</a>
+        </li>
+
+        <li class="elementu-legala">
+          <a href="/lege-oharra">Pribatutasun politika</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <ul class="sare-sozialak">
+        <li><a href="https://twitter.com/labasarea/">X</a></li>
+        <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<style lang="scss">
+  .footer {
+    padding: 48px;
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+  }
+
+  .footer-logo {
+    height: 56px;
+  }
+
+  .lehenengo-lerroa {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--gorria);
+    padding-bottom: 48px;
+  }
+
+  .bigarren-lerroa {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 48px;
+  }
+
+  address {
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+  }
+
+  .elementu-legala {
+    &:not(:last-child) {
+      margin-right: 8px;
+
+      &::after {
+        content: "/";
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .sare-sozialak {
+    gap: 16px;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: var(--gorria);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+</style>

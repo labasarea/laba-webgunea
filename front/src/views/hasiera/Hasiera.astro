@@ -7,6 +7,7 @@ import MarkdownParser from "../../components/MarkdownParser.astro";
 import type { Hasiera } from "../../models/Hasiera";
 import PartehartzeaCard from "./components/PartehartzeaCard.astro";
 import Header from "./Header.astro";
+import Footer from "./Footer.astro";
 
 interface Props {
   hasiera: Hasiera;
@@ -78,9 +79,7 @@ const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
 
   <ZigZag from="gorria-background" to="marroia" />
 
-  <footer class="footer">
-    <Logo class="footer-logo" />
-  </footer>
+  <Footer />
 </Layout>
 
 <style lang="scss">
@@ -174,17 +173,6 @@ const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
     font-family: "Sohne", sans-serif;
     font-size: 49px;
     line-height: 110%;
-  }
-
-  .footer {
-    padding: 48px;
-
-    background-color: var(--marroia);
-    color: var(--gorria);
-  }
-
-  .footer-logo {
-    height: 56px;
   }
 
   .ekintzak-zerrenda {
