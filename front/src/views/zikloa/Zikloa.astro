@@ -15,7 +15,11 @@ const { zikloa } = Astro.props;
 <Layout title={zikloa.izena}>
   <Header />
   <main>
-    <EkintzaZerrenda ekintzak={zikloa.ekintzak} title={zikloa.izena} />
+    <EkintzaZerrenda
+      ekintzak={zikloa.ekintzak}
+      title={zikloa.izena}
+      description={zikloa.deskribapena}
+    />
   </main>
   <Footer />
 </Layout>

@@ -4,14 +4,17 @@ import { getShortDate, type Ekintza } from "models/Ekintza";
 interface Props {
   ekintzak: Pick<Ekintza, "izenburua" | "hitzordua">[];
   title?: string;
+  description?: string;
 }
 
-const { ekintzak, title } = Astro.props;
+const { ekintzak, title, description } = Astro.props;
 ---
 
 <div class="wrapper">
   <div class="agenda-wrapper">
     {title && <h2>{title}</h2>}
+
+    {description && <p>{description}</p>}
 
     <ul>
       {
