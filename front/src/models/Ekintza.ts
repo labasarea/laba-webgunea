@@ -24,7 +24,7 @@ export interface Ekintza {
   };
 }
 
-export function getShortDate(ekintza: Ekintza): string {
+export function getShortDate(ekintza: Pick<Ekintza, "hitzordua">): string {
   const date = new Date(ekintza.hitzordua);
   const day = date.getDate();
   const month = date.toLocaleString("eu", { month: "short" });

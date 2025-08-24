@@ -2,7 +2,7 @@
 import { getShortDate, type Ekintza } from "../../models/Ekintza";
 
 interface Props {
-  ekintzak: Ekintza[];
+  ekintzak: Pick<Ekintza, "izenburua" | "hitzordua">[];
   title?: string;
 }
 

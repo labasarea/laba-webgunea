@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 
 import type { Ekintza } from "./models/Ekintza";
+import type { Zikloa } from "./models/Zikloa";
 
 const ekintzak = defineCollection({
   loader: async () => {
@@ -52,4 +53,33 @@ const ekintzak = defineCollection({
   },
 });
 
-export const collections = { ekintzak };
+const zikloak = defineCollection({
+  loader: async () => {
+    const response = await fetch(`${import.meta.env.STRAPI_URL}/graphql`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `
+            query {
+              zikloak {
+                id:documentId
+                slug
+                izena
+                deskribapena
+                ekintzak {
+                  izenburua
+                  hitzordua
+                }
+              }
+            }
+          `,
+      }),
+    });
+
+    const json = await response.json();
+    const { zikloak } = json.data;
+    return zikloak as Zikloa[];
+  },
+});
+
+export const collections = { ekintzak, zikloak };

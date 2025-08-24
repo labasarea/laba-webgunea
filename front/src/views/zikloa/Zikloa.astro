@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { Zikloa } from "../../models/Zikloa";
+import EkintzaZerrenda from "../_components/EkintzaZerrenda.astro";
+import Footer from "../_components/Footer.astro";
+import Header from "../_components/Header.astro";
+
+interface Props {
+  zikloa: Zikloa;
+}
+
+const { zikloa } = Astro.props;
+---
+
+<Layout title={zikloa.izena}>
+  <Header />
+  <main>
+    <EkintzaZerrenda ekintzak={zikloa.ekintzak} title={zikloa.izena} />
+  </main>
+  <Footer />
+</Layout>
+
+<style lang="scss">
+  main {
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 48px;
+    padding-bottom: 96px;
+  }
+</style>
