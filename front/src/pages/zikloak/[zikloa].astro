@@ -2,7 +2,7 @@
 export const prerender = true;
 
 import { getCollection } from "astro:content";
-import ZikloaView from "../../views/zikloa/Zikloa.astro";
+import ZikloaView from "views/zikloa/Zikloa.astro";
 
 export async function getStaticPaths() {
   const zikloak = await getCollection("zikloak");

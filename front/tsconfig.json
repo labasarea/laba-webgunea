@@ -4,7 +4,8 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "paths": {
-      "models/*": ["./src/models/*"]
+      "models/*": ["./src/models/*"],
+      "views/*": ["./src/views/*"]
     }
   }
 }

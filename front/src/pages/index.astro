@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { type Ekintza } from "models/Ekintza";
-import Hasiera from "../views/hasiera/Hasiera.astro";
+import Hasiera from "views/hasiera/Hasiera.astro";
 
 const response = await fetch(`${import.meta.env.STRAPI_URL}/graphql`, {
   method: "POST",
