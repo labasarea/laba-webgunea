@@ -1,8 +1,8 @@
 ---
-import { getShortDate, type Ekintza } from "models/Ekintza";
+import { getShortDate, getUrl, type Ekintza } from "models/Ekintza";
 
 interface Props {
-  ekintzak: Pick<Ekintza, "izenburua" | "hitzordua">[];
+  ekintzak: Pick<Ekintza, "izenburua" | "hitzordua" | "slug">[];
   title?: string;
   description?: string;
 }
@@ -20,8 +20,10 @@ const { ekintzak, title, description } = Astro.props;
       {
         ekintzak.map((ekintza) => (
           <li>
-            <span>{ekintza.izenburua}</span>
-            <span>{getShortDate(ekintza)}</span>
+            <a href={getUrl(ekintza)}>
+              <span>{ekintza.izenburua}</span>
+              <span>{getShortDate(ekintza)}</span>
+            </a>
           </li>
         ))
       }
@@ -53,14 +55,22 @@ const { ekintzak, title, description } = Astro.props;
     padding: 0;
   }
 
-  li {
+  a {
     display: inline-flex;
     gap: 16px;
     justify-content: space-between;
+    width: 100%;
 
     font-family: "Sohne", sans-serif;
     font-size: 21px;
     line-height: 110%;
+    color: var(--gorria);
+
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   h2 {

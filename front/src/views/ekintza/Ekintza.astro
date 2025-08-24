@@ -1,0 +1,96 @@
+---
+import type { Ekintza } from "models/Ekintza";
+import Footer from "views/_components/Footer.astro";
+import Header from "views/_components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import MarkdownParser from "views/_components/MarkdownParser.astro";
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  ekintza: Ekintza;
+}
+
+const { ekintza } = Astro.props;
+---
+
+<Layout title={ekintza.izenburua}>
+  <Header />
+
+  <main>
+    <aside>
+      {
+        ekintza.mainMedia?.formats.small && (
+          <Image
+            class="irudia"
+            alt={ekintza.mainMedia.alternativeText ?? ""}
+            src={`http://localhost:1337${ekintza.mainMedia.formats.small?.url}`}
+            width={ekintza.mainMedia.formats.small.width}
+            height={ekintza.mainMedia.formats.small.height}
+          />
+        )
+      }
+    </aside>
+    <article>
+      <h1>{ekintza.izenburua}</h1>
+
+      <h2>{ekintza.titularra}</h2>
+
+      {
+        ekintza.deskribapena && (
+          <div class="deskribapena">
+            <MarkdownParser content={ekintza.deskribapena} />
+          </div>
+        )
+      }
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style lang="scss">
+  main {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: 24px;
+
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  aside {
+    grid-column: 1 / span 4;
+  }
+
+  .irudia {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  article {
+    grid-column: 5 / -1;
+  }
+
+  h1 {
+    font-family: "Sohne", sans-serif;
+    color: var(--gorria);
+    font-size: 49px;
+    line-height: 110%;
+  }
+
+  h2 {
+    color: var(--marroia);
+    font-family: "Sohne", sans-serif;
+    font-size: 28px;
+    line-height: 110%;
+  }
+
+  .deskribapena {
+    margin-top: 48px;
+  }
+</style>

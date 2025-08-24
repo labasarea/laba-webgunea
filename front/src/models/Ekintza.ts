@@ -11,14 +11,11 @@ export interface Ekintza {
   };
   mainMedia: {
     alternativeText?: string;
-    height: number;
-    width: number;
     formats: {
-      large?: {
+      small?: {
         url: string;
-      };
-      medium?: {
-        url: string;
+        height: number;
+        width: number;
       };
     };
   };
@@ -30,4 +27,8 @@ export function getShortDate(ekintza: Pick<Ekintza, "hitzordua">): string {
   const month = date.toLocaleString("eu", { month: "short" });
 
   return `${month} ${day}`;
+}
+
+export function getUrl(ekintza: Pick<Ekintza, "slug">): string {
+  return `/ekintzak/${ekintza.slug}`;
 }

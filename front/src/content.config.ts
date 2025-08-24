@@ -67,6 +67,7 @@ const zikloak = defineCollection({
                 izena
                 deskribapena
                 ekintzak {
+                  slug
                   izenburua
                   hitzordua
                 }

@@ -2,8 +2,7 @@
 export const prerender = true;
 
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { marked } from "marked";
+import EkintzaView from "views/ekintza/Ekintza.astro";
 
 export async function getStaticPaths() {
   const ekintzak = await getCollection("ekintzak");
@@ -14,49 +13,6 @@ export async function getStaticPaths() {
 }
 
 const { ekintza } = Astro.props;
-const hitzordua = new Date(ekintza.hitzordua);
 ---
 
-<Layout title={ekintza?.izenburua}>
-  <main class="wrapper">
-    <article>
-      <figure>
-        <picture>
-          <source
-            srcset={`${import.meta.env.STRAPI_URL}${ekintza.mainMedia?.formats.large?.url}`}
-            media="(min-width: 1024px)"
-          />
-
-          <img
-            src={`${import.meta.env.STRAPI_URL}${ekintza.mainMedia?.formats.medium?.url}`}
-            alt={ekintza.izenburua}
-            style="width: 33%; height: auto;"
-            width={ekintza.mainMedia?.width}
-            height={ekintza.mainMedia?.height}
-          />
-        </picture>
-      </figure>
-      <h1>{ekintza?.izenburua}</h1>
-      <p>{hitzordua.toLocaleString("eu")}</p>
-      <p>{ekintza.titularra}</p>
-
-      <hr />
-
-      <div set:html={marked.parse(ekintza.deskribapena)} />
-
-      <hr />
-
-      <p>{ekintza.sarrera?.label}</p>
-      <p><em>{ekintza.sarrera?.deskribapena}</em></p>
-
-      <pre>{JSON.stringify(ekintza, null, 2)}</pre>
-    </article>
-  </main>
-</Layout>
-
-<style>
-  .wrapper {
-    margin-left: 8em;
-    margin-right: 8em;
-  }
-</style>
+<EkintzaView ekintza={ekintza} />

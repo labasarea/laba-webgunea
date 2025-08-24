@@ -5,5 +5,5 @@ export interface Zikloa {
   slug: string;
   izena: string;
   deskribapena?: string;
-  ekintzak: Pick<Ekintza, "izenburua" | "hitzordua">[];
+  ekintzak: Pick<Ekintza, "izenburua" | "hitzordua" | "slug">[];
 }
