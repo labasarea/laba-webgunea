@@ -7,6 +7,7 @@ import MarkdownParser from "views/_components/MarkdownParser.astro";
 import Image from "astro/components/Image.astro";
 import ZigZagMarra from "views/_components/ZigZagMarra.astro";
 import moment from "moment";
+import { getUrl } from "models/Zikloa";
 moment.locale("eu");
 
 interface Props {
@@ -43,6 +44,8 @@ const { ekintza } = Astro.props;
       <p class="hitzordua">
         {moment(ekintza.hitzordua).format("MMMM[k] D. H:mm")}
       </p>
+
+      <a class="zikloa" href={getUrl(ekintza.zikloa)}>{ekintza.zikloa.izena}</a>
 
       <h2>{ekintza.titularra}</h2>
 
@@ -106,6 +109,20 @@ const { ekintza } = Astro.props;
     line-height: 110%;
 
     text-transform: capitalize;
+  }
+
+  .zikloa {
+    display: inline-block;
+    color: var(--marroia);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 32px;
+    border: 1px solid var(--marroia);
+    margin-top: 24px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   h2 {

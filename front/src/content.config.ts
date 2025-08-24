@@ -40,6 +40,7 @@ const ekintzak = defineCollection({
                 titularra
                 zikloa {
                   izena
+                  slug
                 }
               }
             }

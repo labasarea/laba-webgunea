@@ -1,3 +1,5 @@
+import type { Zikloa } from "./Zikloa";
+
 export interface Ekintza {
   id: string;
   slug: string;
@@ -19,6 +21,7 @@ export interface Ekintza {
       };
     };
   };
+  zikloa: Pick<Zikloa, "izena" | "slug">;
 }
 
 export function getShortDate(ekintza: Pick<Ekintza, "hitzordua">): string {
