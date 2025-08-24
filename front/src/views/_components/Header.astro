@@ -1,8 +1,28 @@
-<header>
-  <address>
-    <p>Gazteluko plaza, 2</p>
-    <p>Iruñea</p>
-  </address>
+---
+import Logo from "../../assets/labaLogo.svg";
+
+interface Props {
+  isAbsolutePosition?: boolean;
+}
+
+const { isAbsolutePosition = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<header class={isAbsolutePosition ? "absolute-position" : ""}>
+  <div class="address">
+    {
+      currentPath != "/" && (
+        <a href="/">
+          <Logo class="logo" />
+        </a>
+      )
+    }
+    <address>
+      <p>Gazteluko plaza, 2</p>
+      <p>Iruñea</p>
+    </address>
+  </div>
 
   <nav>
     <h2>MENUA</h2>
@@ -31,13 +51,26 @@
   header {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr 1fr;
+    padding: 48px;
+
+    color: var(--gorria);
+  }
+
+  .absolute-position {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    padding: 48px;
+  }
 
-    color: var(--gorria);
+  .address {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .logo {
+    width: 112px;
   }
 
   address {
