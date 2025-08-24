@@ -6,6 +6,8 @@ import Layout from "../../layouts/Layout.astro";
 import MarkdownParser from "views/_components/MarkdownParser.astro";
 import Image from "astro/components/Image.astro";
 import ZigZagMarra from "views/_components/ZigZagMarra.astro";
+import moment from "moment";
+moment.locale("eu");
 
 interface Props {
   ekintza: Ekintza;
@@ -37,6 +39,10 @@ const { ekintza } = Astro.props;
       <div class="zigzag-wrapper">
         <ZigZagMarra />
       </div>
+
+      <p class="hitzordua">
+        {moment(ekintza.hitzordua).format("MMMM[k] D. H:mm")}
+      </p>
 
       <h2>{ekintza.titularra}</h2>
 
@@ -93,7 +99,18 @@ const { ekintza } = Astro.props;
     margin-bottom: 16px;
   }
 
+  .hitzordua {
+    font-family: "Sohne", sans-serif;
+    color: var(--gorria);
+    font-size: 37px;
+    line-height: 110%;
+
+    text-transform: capitalize;
+  }
+
   h2 {
+    margin-top: 24px;
+
     color: var(--marroia);
     font-family: "Sohne", sans-serif;
     font-size: 28px;
@@ -101,6 +118,6 @@ const { ekintza } = Astro.props;
   }
 
   .deskribapena {
-    margin-top: 48px;
+    margin-top: 24px;
   }
 </style>
