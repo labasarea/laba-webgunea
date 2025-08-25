@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { type Ekintza, getShortDate, getUrl } from "models/Ekintza";
+import { getImageData, type ImageData } from "models/ImageMedia";
 import styles from "./EkintzaZerrenda.module.scss";
-import Image from "astro/components/Image.astro";
 
 interface Props {
   ekintzak: Pick<
@@ -18,21 +18,18 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   description,
   ekintzak,
 }) => {
-  const [focusedEkintza, setFocusedEkintza] =
-    useState<
-      Pick<Ekintza, "id" | "izenburua" | "hitzordua" | "slug" | "mainMedia">
-    >();
+  const [imageToShow, setImageToShow] = useState<ImageData>();
 
   return (
     <div className={styles.wrapper}>
       <div aria-hidden className={styles.mainMediaWrapper}>
-        {focusedEkintza && focusedEkintza.mainMedia.formats.small && (
+        {imageToShow && (
           <img
             className={styles.mainMedia}
-            alt={focusedEkintza.mainMedia.alternativeText ?? ""}
-            src={`http://localhost:1337${focusedEkintza.mainMedia.formats.small?.url}`}
-            width={focusedEkintza.mainMedia.formats.small.width}
-            height={focusedEkintza.mainMedia.formats.small.height}
+            alt={imageToShow.alt}
+            src={imageToShow.src}
+            width={imageToShow.width}
+            height={imageToShow.height}
           />
         )}
       </div>
@@ -45,10 +42,12 @@ export const EkintzaZerrenda: React.FC<Props> = ({
             <li
               key={ekintza.id}
               onMouseEnter={() => {
-                console.log("Focus ekintza", ekintza);
-                setFocusedEkintza(ekintza);
+                if (!ekintza.mainMedia) {
+                  return;
+                }
+                setImageToShow(getImageData(ekintza.mainMedia));
               }}
-              onMouseLeave={() => setFocusedEkintza(undefined)}
+              onMouseLeave={() => setImageToShow(undefined)}
             >
               <a className={styles.esteka} href={getUrl(ekintza)}>
                 <span>{ekintza.izenburua}</span>

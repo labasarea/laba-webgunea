@@ -1,3 +1,4 @@
+import type { ImageMedia } from "./ImageMedia";
 import type { Zikloa } from "./Zikloa";
 
 export interface Ekintza {
@@ -11,16 +12,7 @@ export interface Ekintza {
     label: string;
     deskribapena: string;
   };
-  mainMedia: {
-    alternativeText?: string;
-    formats: {
-      small?: {
-        url: string;
-        height: number;
-        width: number;
-      };
-    };
-  };
+  mainMedia: ImageMedia;
   zikloa: Pick<Zikloa, "izena" | "slug">;
 }
 

@@ -8,6 +8,7 @@ import Image from "astro/components/Image.astro";
 import ZigZagMarra from "views/_components/ZigZagMarra.astro";
 import moment from "moment";
 import { getUrl } from "models/Zikloa";
+import { getImageData } from "models/ImageMedia";
 moment.locale("eu");
 
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const { ekintza } = Astro.props;
+
+const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
 ---
 
 <Layout title={ekintza.izenburua}>
@@ -23,13 +26,13 @@ const { ekintza } = Astro.props;
   <main>
     <aside>
       {
-        ekintza.mainMedia?.formats.small && (
+        irudia && (
           <Image
             class="irudia"
-            alt={ekintza.mainMedia.alternativeText ?? ""}
-            src={`http://localhost:1337${ekintza.mainMedia.formats.small?.url}`}
-            width={ekintza.mainMedia.formats.small.width}
-            height={ekintza.mainMedia.formats.small.height}
+            alt={irudia.alt}
+            src={irudia.src}
+            width={irudia.width}
+            height={irudia.height}
           />
         )
       }
@@ -45,7 +48,13 @@ const { ekintza } = Astro.props;
         {moment(ekintza.hitzordua).format("MMMM[k] D. H:mm")}
       </p>
 
-      <a class="zikloa" href={getUrl(ekintza.zikloa)}>{ekintza.zikloa.izena}</a>
+      {
+        ekintza.zikloa && (
+          <a class="zikloa" href={getUrl(ekintza.zikloa)}>
+            {ekintza.zikloa.izena}
+          </a>
+        )
+      }
 
       <h2>{ekintza.titularra}</h2>
 
