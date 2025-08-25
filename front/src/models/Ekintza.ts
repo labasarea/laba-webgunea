@@ -16,6 +16,11 @@ export interface Ekintza {
   zikloa: Pick<Zikloa, "izena" | "slug">;
 }
 
+export type EkintzaSnippet = Pick<
+  Ekintza,
+  "id" | "izenburua" | "hitzordua" | "slug" | "mainMedia"
+>;
+
 export function getShortDate(ekintza: Pick<Ekintza, "hitzordua">): string {
   const date = new Date(ekintza.hitzordua);
   const day = date.getDate();

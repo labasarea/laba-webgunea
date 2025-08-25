@@ -68,9 +68,14 @@ const zikloak = defineCollection({
                 izena
                 deskribapena
                 ekintzak {
+                  id:documentId
                   slug
                   izenburua
                   hitzordua
+                  mainMedia {
+                    alternativeText
+                    formats
+                  }
                 }
               }
             }

@@ -1,12 +1,9 @@
 ---
-import { type Ekintza } from "models/Ekintza";
+import { type EkintzaSnippet } from "models/Ekintza";
 import { EkintzaZerrenda as EkintzaZerrendaReact } from "./react/EkintzaZerrenda";
 
 interface Props {
-  ekintzak: Pick<
-    Ekintza,
-    "id" | "izenburua" | "hitzordua" | "slug" | "mainMedia"
-  >[];
+  ekintzak: EkintzaSnippet[];
   title?: string;
   description?: string;
 }

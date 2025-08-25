@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 
-import { type Ekintza, getShortDate, getUrl } from "models/Ekintza";
+import { type EkintzaSnippet, getShortDate, getUrl } from "models/Ekintza";
 import { getImageData, type ImageData } from "models/ImageMedia";
 import styles from "./EkintzaZerrenda.module.scss";
 
 interface Props {
-  ekintzak: Pick<
-    Ekintza,
-    "id" | "izenburua" | "hitzordua" | "slug" | "mainMedia"
-  >[];
+  ekintzak: EkintzaSnippet[];
   title?: string;
   description?: string;
 }
