@@ -33,7 +33,9 @@ export const EkintzaZerrenda: React.FC<Props> = ({
 
       <div className={styles.agendaWrapper}>
         {title && <h2 className={styles.izenburua}>{title}</h2>}
-        {description && <p>{description}</p>}
+
+        {description && <p className={styles.description}>{description}</p>}
+
         <ul className={styles.zerrenda}>
           {ekintzak.map((ekintza) => (
             <li
