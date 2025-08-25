@@ -2,7 +2,7 @@
 {
   "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "importSorter.generalConfiguration.sortOnBeforeSave": false,
   "importSorter.sortConfiguration.customOrderingRules.rules": [
     {
       "type": "importMember",

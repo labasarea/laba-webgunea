@@ -1,11 +1,22 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "paths": {
-      "models/*": ["./src/models/*"],
-      "views/*": ["./src/views/*"]
-    }
+      "models/*": [
+        "./src/models/*"
+      ],
+      "views/*": [
+        "./src/views/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
