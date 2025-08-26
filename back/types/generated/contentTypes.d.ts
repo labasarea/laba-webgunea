@@ -479,6 +479,39 @@ export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiOrriBasikoaOrriBasikoa extends Struct.CollectionTypeSchema {
+  collectionName: 'orri_basikoak';
+  info: {
+    displayName: 'Orri Basikoa';
+    pluralName: 'orri-basikoak';
+    singularName: 'orri-basikoa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deskribapena: Schema.Attribute.Text;
+    edukiLibrea: Schema.Attribute.DynamicZone<
+      ['paragraph.testua', 'paragraph.youtube', 'paragraph.irudia']
+    >;
+    izenburua: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::orri-basikoa.orri-basikoa'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'izenburua'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiZikloaZikloa extends Struct.CollectionTypeSchema {
   collectionName: 'zikloak';
   info: {
@@ -1023,6 +1056,7 @@ declare module '@strapi/strapi' {
       'api::ekintza.ekintza': ApiEkintzaEkintza;
       'api::erakundea.erakundea': ApiErakundeaErakundea;
       'api::hasiera.hasiera': ApiHasieraHasiera;
+      'api::orri-basikoa.orri-basikoa': ApiOrriBasikoaOrriBasikoa;
       'api::zikloa.zikloa': ApiZikloaZikloa;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -13,11 +13,75 @@ const { content } = Astro.props;
 
 <!-- global jartzen dugu, marked-en sortutako HTMLa estilizatzeko -->
 <style lang="scss" is:global>
+  @use "../../style/mixins/displayFonts.scss";
+
   .markdown-wrapper {
     p {
       &:not(:last-child) {
         margin-bottom: var(--space-05-desktop);
       }
+    }
+
+    h2 {
+      margin-bottom: var(--space-04-desktop);
+
+      @include displayFonts.display2;
+    }
+
+    h3 {
+      margin-bottom: var(--space-04-desktop);
+
+      @include displayFonts.display3;
+    }
+
+    h4 {
+      margin-bottom: var(--space-03-desktop);
+
+      @include displayFonts.display4;
+    }
+
+    h4 {
+      margin-bottom: var(--space-03-desktop);
+
+      @include displayFonts.display4;
+    }
+
+    h5 {
+      margin-bottom: var(--space-02-desktop);
+
+      @include displayFonts.display5;
+    }
+
+    h6 {
+      margin-bottom: var(--space-02-desktop);
+
+      @include displayFonts.display6;
+    }
+
+    a {
+      color: var(--marroia);
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    li {
+      margin-bottom: var(--space-02-desktop);
+    }
+
+    ul ul {
+      margin-top: var(--space-02-desktop);
+    }
+
+    hr {
+      height: 2px;
+      margin-top: var(--space-05-desktop);
+      margin-bottom: var(--space-05-desktop);
+
+      border: none;
+      background-color: var(--gorria);
     }
   }
 </style>

@@ -1,0 +1,18 @@
+---
+export const prerender = true;
+
+import OrriBasikoaView from "views/orriBasikoa/OrriBasikoa.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const orriBasikoak = await getCollection("orriBasikoak");
+  return orriBasikoak.map((orriBasikoa) => ({
+    params: { orriBasikoa: orriBasikoa.data.slug },
+    props: { orriBasikoa: orriBasikoa.data },
+  }));
+}
+
+const { orriBasikoa } = Astro.props;
+---
+
+<OrriBasikoaView orriBasikoa={orriBasikoa} />

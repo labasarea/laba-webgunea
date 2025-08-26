@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orri_basikoak",
+  "info": {
+    "singularName": "orri-basikoa",
+    "pluralName": "orri-basikoak",
+    "displayName": "Orri Basikoa"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "izenburua",
+      "required": true
+    },
+    "edukiLibrea": {
+      "type": "dynamiczone",
+      "components": [
+        "paragraph.testua",
+        "paragraph.youtube",
+        "paragraph.irudia"
+      ]
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { defineCollection } from "astro:content";
 
 import type { Ekintza } from "./models/Ekintza";
 import type { Zikloa } from "./models/Zikloa";
+import type { OrriBasikoa } from "models/OrriBasikoa";
 
 const ekintzak = defineCollection({
   loader: async () => {
@@ -89,4 +90,35 @@ const zikloak = defineCollection({
   },
 });
 
-export const collections = { ekintzak, zikloak };
+const orriBasikoak = defineCollection({
+  loader: async () => {
+    const response = await fetch(`${import.meta.env.STRAPI_URL}/graphql`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: `
+          query {
+            orriBasikoak {
+              id: documentId
+              izenburua
+              slug
+              deskribapena
+              edukiLibrea {
+                ... on ComponentParagraphTestua {
+                  id
+                  testua
+                }
+              }
+            }
+          }
+          `,
+      }),
+    });
+
+    const json = await response.json();
+    const { orriBasikoak } = json.data;
+    return orriBasikoak as OrriBasikoa[];
+  },
+});
+
+export const collections = { ekintzak, zikloak, orriBasikoak };
