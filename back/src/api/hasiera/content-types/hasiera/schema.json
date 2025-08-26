@@ -25,6 +25,14 @@
       "type": "component",
       "component": "hasiera.parte-hartu",
       "repeatable": false
+    },
+    "mosaikoa": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

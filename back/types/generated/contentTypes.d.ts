@@ -469,6 +469,8 @@ export interface ApiHasieraHasiera extends Struct.SingleTypeSchema {
       'api::hasiera.hasiera'
     > &
       Schema.Attribute.Private;
+    mosaikoa: Schema.Attribute.Media<'images', true> &
+      Schema.Attribute.Required;
     parteHartu: Schema.Attribute.Component<'hasiera.parte-hartu', false>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

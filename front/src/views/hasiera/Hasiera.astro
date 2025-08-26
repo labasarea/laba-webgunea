@@ -9,6 +9,7 @@ import PartehartzeaCard from "./components/PartehartzeaCard.astro";
 import Header from "../_components/Header.astro";
 import Footer from "../_components/Footer.astro";
 import EkintzaZerrenda from "../_components/EkintzaZerrenda.astro";
+import IrudiEstela from "views/_components/IrudiEstela.astro";
 
 interface Props {
   hasiera: Hasiera;
@@ -17,7 +18,7 @@ interface Props {
 
 const { hasiera, ekintzak } = Astro.props;
 
-const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
+const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
 ---
 
 <Layout title={izenburua}>
@@ -29,6 +30,8 @@ const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
         <span class="visually-hidden">Laba</span>
         <Logo class="logo" aria-title="Laba" />
       </h1>
+
+      <IrudiEstela mosaikoa={mosaikoa} />
     </section>
 
     <ZigZag from="marroia" />
@@ -79,6 +82,8 @@ const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
   }
 
   .hero {
+    position: relative;
+
     min-height: 97dvh;
     display: flex;
     align-items: flex-end;
@@ -86,6 +91,10 @@ const { izenburua, izanLabazkide, parteHartu }: Hasiera = hasiera;
 
     background-color: var(--marroia);
     color: var(--gorria);
+  }
+
+  h1 {
+    z-index: 20;
   }
 
   .logo {

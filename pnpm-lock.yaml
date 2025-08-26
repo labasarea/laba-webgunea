@@ -97,6 +97,9 @@ importers:
       astro:
         specifier: ^5.13.2
         version: 5.13.2(@types/node@24.0.15)(rollup@4.45.1)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.43.1)(typescript@5.8.3)
+      gsap:
+        specifier: ^3.13.0
+        version: 3.13.0
       marked:
         specifier: ^15.0.11
         version: 15.0.12
@@ -4437,6 +4440,9 @@ packages:
   graphql@16.11.0:
     resolution: {integrity: sha512-mS1lbMsxgQj6hge1XZ6p7GPhbrtFwUFYi3wRzXAC/FmYnyXMTvvI3td3rjmQ2u8ewXueaSvRPWaEcgVVOT9Jnw==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+
+  gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
 
   gzip-size@6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
@@ -13772,6 +13778,8 @@ snapshots:
       tslib: 2.8.1
 
   graphql@16.11.0: {}
+
+  gsap@3.13.0: {}
 
   gzip-size@6.0.0:
     dependencies:

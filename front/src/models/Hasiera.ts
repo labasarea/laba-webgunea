@@ -1,3 +1,4 @@
+import type { ImageMedia } from "./ImageMedia";
 import type { Markdown } from "./Markdown";
 
 export type ExternalSVG = string;
@@ -18,10 +19,11 @@ export interface Hasiera {
     url: {
       label: string;
       url: string;
-    }
-  }
+    };
+  };
   parteHartu: {
     izenburua: string;
-    parteHartzea: Partehartzea[]
-  }
+    parteHartzea: Partehartzea[];
+  };
+  mosaikoa: ImageMedia[];
 }
