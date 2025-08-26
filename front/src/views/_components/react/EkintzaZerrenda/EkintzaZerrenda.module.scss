@@ -1,7 +1,9 @@
+@use "../../../../style/mixins/displayFonts.scss";
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
-  gap: 24px;
+  gap: var(--space-05-desktop);
 }
 
 .mainMediaWrapper {
@@ -25,15 +27,15 @@
 }
 
 .description {
-  margin-top: 24px;
+  margin-top: var(--space-05-desktop);
 }
 
 .zerrenda {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-04-desktop);
 
-  margin-top: 24px;
+  margin-top: var(--space-05-desktop);
 
   list-style-type: none;
   padding: 0;
@@ -41,13 +43,11 @@
 
 .esteka {
   display: inline-flex;
-  gap: 16px;
+  gap: var(--space-04-desktop);
   justify-content: space-between;
   width: 100%;
 
-  font-family: "Sohne", sans-serif;
-  font-size: 21px;
-  line-height: 110%;
+  @include displayFonts.display5;
   color: var(--gorria);
 
   text-decoration: none;
@@ -58,7 +58,5 @@
 }
 
 .izenburua {
-  font-family: "Sohne", sans-serif;
-  font-size: 49px;
-  line-height: 110%;
+  @include displayFonts.display2;
 }

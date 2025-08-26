@@ -9,6 +9,7 @@ import ZigZagMarra from "views/_components/ZigZagMarra.astro";
 import moment from "moment";
 import { getUrl } from "models/Zikloa";
 import { getImageData } from "models/ImageMedia";
+import ZigZag from "views/_components/ZigZag.astro";
 moment.locale("eu");
 
 interface Props {
@@ -72,15 +73,16 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
 </Layout>
 
 <style lang="scss">
+  @use "../../style/mixins/displayFonts.scss";
+  @use "../../style/mixins/textFonts.scss";
+  @use "../../style/tools/toDVW.scss";
+
   main {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: 24px;
+    gap: var(--space-05-desktop);
 
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding: var(--space-07-desktop);
   }
 
   aside {
@@ -100,34 +102,32 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   }
 
   h1 {
-    font-family: "Sohne", sans-serif;
+    margin-bottom: var(--space-04-desktop);
+
+    @include displayFonts.display2;
     color: var(--gorria);
-    font-size: 49px;
-    line-height: 110%;
-    margin-bottom: 16px;
   }
 
   .zigzag-wrapper {
-    margin-bottom: 16px;
+    margin-bottom: var(--space-04-desktop);
   }
 
   .hitzordua {
-    font-family: "Sohne", sans-serif;
+    @include displayFonts.display3;
     color: var(--gorria);
-    font-size: 37px;
-    line-height: 110%;
-
     text-transform: capitalize;
   }
 
   .zikloa {
     display: inline-block;
+    padding: var(--space-02-desktop) var(--space-04-desktop);
+    margin-top: var(--space-05-desktop);
+
+    @include textFonts.captionFont;
     color: var(--marroia);
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 32px;
-    border: 1px solid var(--marroia);
-    margin-top: 24px;
+    border-radius: var(--space-06-desktop);
+    border: #{toDVW.toDesktopDVW(1)} solid var(--marroia);
 
     &:hover {
       text-decoration: underline;
@@ -135,15 +135,13 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   }
 
   h2 {
-    margin-top: 24px;
+    margin-top: var(--space-05-desktop);
 
+    @include displayFonts.display4;
     color: var(--marroia);
-    font-family: "Sohne", sans-serif;
-    font-size: 28px;
-    line-height: 110%;
   }
 
   .deskribapena {
-    margin-top: 24px;
+    margin-top: var(--space-05-desktop);
   }
 </style>

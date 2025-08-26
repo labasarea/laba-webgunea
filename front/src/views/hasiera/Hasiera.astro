@@ -71,12 +71,14 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     </section>
   </main>
 
-  <ZigZag from="gorria-background" to="marroia" />
-
   <Footer />
 </Layout>
 
 <style lang="scss">
+  @use "../../style/mixins/displayFonts.scss";
+
+  $section-padding: var(--space-10-desktop) var(--space-07-desktop);
+
   .main {
     background-color: var(--gorria-background);
   }
@@ -87,7 +89,7 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     min-height: 97dvh;
     display: flex;
     align-items: flex-end;
-    padding: 48px;
+    padding: var(--space-07-desktop);
 
     background-color: var(--marroia);
     color: var(--gorria);
@@ -102,14 +104,14 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
   }
 
   .agenda {
-    padding: 148px 48px 148px 48px;
+    padding: $section-padding;
   }
 
   .izan-labazkide {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: 24px;
-    padding: 148px 48px 148px 48px;
+    gap: var(--space-05-desktop);
+    padding: $section-padding;
 
     background-color: var(--gorria);
     color: var(--zuria);
@@ -119,7 +121,7 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-05-desktop);
 
     grid-column: col-start 4 / span 6;
   }
@@ -132,8 +134,8 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 148px 48px 148px 48px;
-    gap: 32px;
+    padding: $section-padding;
+    gap: var(--space-06-desktop);
 
     color: var(--marroia);
   }
@@ -143,19 +145,17 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     justify-content: center;
     list-style: none;
     padding: 0;
-    gap: 24px;
+    gap: var(--space-05-desktop);
     grid-column: col-start 2 / span 10;
   }
 
   .parte-hartzeak--wrapper {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: 24px;
+    gap: var(--space-05-desktop);
   }
 
   .title {
-    font-family: "Sohne", sans-serif;
-    font-size: 49px;
-    line-height: 110%;
+    @include displayFonts.display2;
   }
 </style>

@@ -1,7 +1,6 @@
 ---
-import "../style/colors.scss";
-import "../style/reset.scss";
-import "../style/font-faces.scss";
+import "../style/config/reset.scss";
+import "../style/vars/index.scss";
 
 interface Props {
   title: string;
@@ -23,6 +22,14 @@ const { title } = Astro.props;
     <slot />
   </body>
 </html>
+
+<style lang="scss">
+  @import "../style/mixins/textFonts.scss";
+
+  body {
+    @include bodyFont;
+  }
+</style>
 
 <style is:global>
   .visually-hidden {

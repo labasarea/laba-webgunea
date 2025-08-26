@@ -1,7 +1,9 @@
 ---
 import Logo from "../../assets/labaLogo.svg";
+import ZigZag from "./ZigZag.astro";
 ---
 
+<ZigZag from="gorria-background" to="marroia" />
 <footer class="footer">
   <div class="lehenengo-lerroa">
     <Logo class="footer-logo" />
@@ -32,29 +34,31 @@ import Logo from "../../assets/labaLogo.svg";
 </footer>
 
 <style lang="scss">
+  @use "../../style/tools/toDVW.scss";
+
   .footer {
-    padding: 48px;
+    padding: var(--space-07-desktop);
 
     background-color: var(--marroia);
     color: var(--gorria);
   }
 
   .footer-logo {
-    height: 56px;
+    height: var(--space-07-desktop);
   }
 
   .lehenengo-lerroa {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 2px solid var(--gorria);
-    padding-bottom: 48px;
+    border-bottom: #{toDVW.toDesktopDVW(2)} solid var(--gorria);
+    padding-bottom: var(--space-07-desktop);
   }
 
   .bigarren-lerroa {
     display: flex;
     justify-content: space-between;
-    padding-top: 48px;
+    padding-top: var(--space-07-desktop);
   }
 
   address {
@@ -70,17 +74,17 @@ import Logo from "../../assets/labaLogo.svg";
 
   .elementu-legala {
     &:not(:last-child) {
-      margin-right: 8px;
+      margin-right: var(--space-02-desktop);
 
       &::after {
         content: "/";
-        margin-left: 8px;
+        margin-left: var(--space-02-desktop);
       }
     }
   }
 
   .sare-sozialak {
-    gap: 16px;
+    gap: var(--space-04-desktop);
     text-transform: uppercase;
   }
 

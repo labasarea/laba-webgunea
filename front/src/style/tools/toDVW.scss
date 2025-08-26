@@ -1,0 +1,14 @@
+$desktopReferenceWidth: 1440;
+$mobileReferenceWidth: 390;
+
+@function toDesktopDVW($size) {
+  $dvwValue: calc($size * 100 / $desktopReferenceWidth) + dvw;
+
+  @return $dvwValue;
+}
+
+@function toMobileDVW($size) {
+  $dvwValue: calc($size * 100 / $mobileReferenceWidth) + dvw;
+
+  @return $dvwValue;
+}

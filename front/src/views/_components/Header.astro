@@ -12,17 +12,18 @@ const currentPath = Astro.url.pathname;
 <header class={isAbsolutePosition ? "absolute-position" : ""}>
   <div class="address">
     {
-      currentPath != "/" && (
+      currentPath != "/" ? (
         <a href="/">
           <span class="visually-hidden">Laba</span>
           <Logo class="logo" />
         </a>
+      ) : (
+        <address>
+          <p>Gazteluko plaza, 2</p>
+          <p>Iruñea</p>
+        </address>
       )
     }
-    <address>
-      <p>Gazteluko plaza, 2</p>
-      <p>Iruñea</p>
-    </address>
   </div>
 
   <nav>
@@ -49,10 +50,12 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <style lang="scss">
+  @use "../../style/mixins/textFonts.scss";
+
   header {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr 1fr;
-    padding: 48px;
+    padding: var(--space-07-desktop);
 
     z-index: 15;
 
@@ -68,12 +71,12 @@ const currentPath = Astro.url.pathname;
 
   .address {
     display: flex;
-    gap: 24px;
+    gap: var(--space-05-desktop);
     align-items: center;
   }
 
   .logo {
-    width: 112px;
+    width: var(--space-09-desktop);
   }
 
   address {
@@ -81,14 +84,13 @@ const currentPath = Astro.url.pathname;
   }
 
   h2 {
+    @include textFonts.bodyFont;
     text-transform: uppercase;
-    font-size: 16px;
-    line-height: 150%;
   }
 
   ul {
     display: flex;
-    gap: 24px;
+    gap: var(--space-03-desktop);
     padding: 0;
     list-style: none;
   }

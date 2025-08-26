@@ -19,34 +19,35 @@ const { partehartzea } = Astro.props;
 </li>
 
 <style lang="scss">
+  @use "../../../style/mixins/displayFonts.scss";
+
   li {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px;
+    padding: var(--space-04-desktop);
 
     width: 30%;
   }
 
   div {
     color: var(--gorria);
-    margin-bottom: 8px;
+    margin-bottom: var(--space-03-desktop);
   }
 
   h3 {
-    font-family: "Sohne", sans-serif;
-    font-size: 28px;
-    margin-bottom: 24px;
+    @include displayFonts.display4;
+    margin-bottom: var(--space-05-desktop);
   }
 
   p {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: var(--space-05-desktop);
   }
 
   a {
-    font-family: "Sohne", sans-serif;
+    @include displayFonts.display6;
     color: var(--marroia);
     text-decoration: none;
 
