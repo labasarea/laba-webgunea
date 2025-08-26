@@ -1,4 +1,5 @@
 @use "../../../../style/mixins/displayFonts.scss";
+@use "../../../../style/tools/mediaQueries.scss";
 
 .wrapper {
   display: grid;
@@ -7,9 +8,14 @@
 }
 
 .mainMediaWrapper {
-  grid-column: col-start 1 / span 4;
+  display: none;
 
-  aspect-ratio: 1;
+  @include mediaQueries.aboveTablet {
+    display: grid;
+    grid-column: col-start 1 / span 4;
+
+    aspect-ratio: 1;
+  }
 }
 
 .mainMedia {
@@ -21,9 +27,13 @@
 }
 
 .agendaWrapper {
-  grid-column: col-start 5 / -1;
+  grid-column: col-start 1 / -1;
 
   color: var(--gorria);
+
+  @include mediaQueries.aboveTablet {
+    grid-column: col-start 5 / -1;
+  }
 }
 
 .description {
@@ -33,17 +43,23 @@
 .zerrenda {
   display: flex;
   flex-direction: column;
-  gap: var(--space-04-desktop);
+  gap: var(--space-04-mobile);
 
-  margin-top: var(--space-05-desktop);
+  margin-top: var(--space-05-mobile);
 
   list-style-type: none;
   padding: 0;
+
+  @include mediaQueries.aboveTablet {
+    gap: var(--space-04-desktop);
+    margin-top: var(--space-05-desktop);
+  }
 }
 
 .esteka {
-  display: inline-flex;
-  gap: var(--space-04-desktop);
+  display: grid;
+  gap: var(--space-04-mobile);
+  grid-template-columns: 1fr auto;
   justify-content: space-between;
   width: 100%;
 
@@ -54,6 +70,10 @@
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @include mediaQueries.aboveTablet {
+    gap: var(--space-04-desktop);
   }
 }
 

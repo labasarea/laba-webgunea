@@ -76,8 +76,15 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
 
 <style lang="scss">
   @use "../../style/mixins/displayFonts.scss";
+  @use "../../style/tools/mediaQueries.scss";
 
-  $section-padding: var(--space-10-desktop) var(--space-07-desktop);
+  @mixin sectionPadding() {
+    padding: var(--space-07-mobile) var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-10-desktop) var(--space-07-desktop);
+    }
+  }
 
   .main {
     background-color: var(--gorria-background);
@@ -89,41 +96,66 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     min-height: 97dvh;
     display: flex;
     align-items: flex-end;
-    padding: var(--space-07-desktop);
+    padding: var(--space-05-mobile);
 
     background-color: var(--marroia);
     color: var(--gorria);
+
+    // TODO lortu bertikalean overflow-ak funtzionatzea
+    overflow-x: hidden;
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-07-desktop);
+    }
   }
 
   h1 {
+    width: 100%;
     z-index: 20;
+
+    @include mediaQueries.aboveTablet {
+      width: fit-content;
+    }
   }
 
   .logo {
-    height: 33dvh;
+    width: 100%;
+
+    @include mediaQueries.aboveTablet {
+      height: 33dvh;
+    }
   }
 
   .agenda {
-    padding: $section-padding;
+    @include sectionPadding;
   }
 
   .izan-labazkide {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: var(--space-05-desktop);
-    padding: $section-padding;
+    gap: var(--space-03-mobile);
+    @include sectionPadding;
 
     background-color: var(--gorria);
     color: var(--zuria);
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-05-desktop);
+    }
   }
 
   .labazkide-wrapper {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: var(--space-05-desktop);
+    gap: var(--space-05-mobile);
 
-    grid-column: col-start 4 / span 6;
+    grid-column: col-start 1 / -1;
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-05-desktop);
+      grid-column: col-start 4 / span 6;
+    }
   }
 
   .izan-labazkide--url {
@@ -134,19 +166,30 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: $section-padding;
-    gap: var(--space-06-desktop);
+    @include sectionPadding;
+    gap: var(--space-06-mobile);
 
     color: var(--marroia);
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-06-desktop);
+    }
   }
 
   .parte-hartzeak {
     display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
+    flex-direction: column;
     gap: var(--space-05-desktop);
     grid-column: col-start 2 / span 10;
+    padding: 0;
+
+    list-style: none;
+
+    @include mediaQueries.aboveTablet {
+      flex-direction: row;
+      gap: var(--space-05-desktop);
+      justify-content: center;
+    }
   }
 
   .parte-hartzeak--wrapper {

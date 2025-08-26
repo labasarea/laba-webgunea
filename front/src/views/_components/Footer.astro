@@ -35,35 +35,67 @@ import ZigZag from "./ZigZag.astro";
 
 <style lang="scss">
   @use "../../style/tools/toDVW.scss";
+  @use "../../style/tools/mediaQueries.scss";
+  @use "../../style/mixins/textFonts.scss";
 
   .footer {
-    padding: var(--space-07-desktop);
+    padding: var(--space-05-mobile);
 
     background-color: var(--marroia);
     color: var(--gorria);
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-07-desktop);
+    }
   }
 
   .footer-logo {
-    height: var(--space-07-desktop);
+    height: var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      height: var(--space-07-desktop);
+    }
   }
 
   .lehenengo-lerroa {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: #{toDVW.toDesktopDVW(2)} solid var(--gorria);
-    padding-bottom: var(--space-07-desktop);
+    border-bottom: #{toDVW.toMobileDVW(2)} solid var(--gorria);
+    padding-bottom: var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      padding-bottom: var(--space-07-desktop);
+
+      border-bottom: #{toDVW.toDesktopDVW(2)} solid var(--gorria);
+    }
   }
 
   .bigarren-lerroa {
     display: flex;
-    justify-content: space-between;
-    padding-top: var(--space-07-desktop);
+    flex-direction: column;
+    padding-top: var(--space-05-mobile);
+    gap: var(--space-02-mobile);
+
+    @include mediaQueries.aboveTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: var(--space-07-desktop);
+      gap: var(--space-02-desktop);
+    }
   }
 
   address {
+    @include textFonts.captionFont;
     font-style: normal;
     text-transform: uppercase;
+    text-align: end;
+
+    @include mediaQueries.aboveTablet {
+      @include textFonts.bodyFont;
+
+      text-align: initial;
+    }
   }
 
   ul {
@@ -74,11 +106,22 @@ import ZigZag from "./ZigZag.astro";
 
   .elementu-legala {
     &:not(:last-child) {
-      margin-right: var(--space-02-desktop);
+      margin-right: var(--space-02-mobile);
 
       &::after {
         content: "/";
-        margin-left: var(--space-02-desktop);
+        margin-left: var(--space-02-mobile);
+      }
+    }
+
+    @include mediaQueries.aboveTablet {
+      &:not(:last-child) {
+        margin-right: var(--space-02-desktop);
+
+        &::after {
+          content: "/";
+          margin-left: var(--space-02-desktop);
+        }
       }
     }
   }

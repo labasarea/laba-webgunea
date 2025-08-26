@@ -11,10 +11,16 @@ const { externalSVG } = Astro.props;
 <div class="external-svg" set:html={externalSVG} />
 
 <style lang="scss" is:global>
+  @use "../../../style/tools/mediaQueries.scss";
+
   .external-svg {
     svg {
-      width: var(--space-07-desktop);
+      width: var(--space-06-mobile);
       height: auto;
+
+      @include mediaQueries.aboveTablet {
+        width: var(--space-07-desktop);
+      }
     }
   }
 </style>
