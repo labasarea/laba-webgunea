@@ -10,22 +10,46 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class={isAbsolutePosition ? "absolute-position" : ""}>
-  <div class="address">
-    {
-      currentPath != "/" ? (
-        <a href="/">
-          <span class="visually-hidden">Laba</span>
-          <Logo class="logo" />
-        </a>
-      ) : (
-        <address>
-          <p>Gazteluko plaza, 2</p>
-          <p>Iruñea</p>
-        </address>
-      )
-    }
-  </div>
+  {
+    currentPath != "/" ? (
+      <a href="/">
+        <span class="visually-hidden">Laba</span>
+        <Logo class="logo" />
+      </a>
+    ) : (
+      <address>
+        <p>Gazteluko plaza, 2</p>
+        <p>Iruñea</p>
+      </address>
+    )
+  }
 
+  <button class="mobile-only" id="ham-btn">HAM</button>
+
+  <nav class="desktop-only">
+    <h2>MENUA</h2>
+    <ul>
+      <li><a href="/#agenda">Agenda</a></li>
+      <li><a href="/#izan-labazkide">Izan Labazkide</a></li>
+      <li><a href="/#parte-hartu">Parte hartu</a></li>
+    </ul>
+  </nav>
+
+  <nav class="desktop-only">
+    <h2>HARREMANDU</h2>
+    <ul>
+      <li><a href="https://twitter.com/labasarea/">X</a></li>
+      <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
+    </ul>
+  </nav>
+
+  <address class="desktop-only">
+    <h2>IDATZI</h2>
+    <a href="mailto:info@laba.eus">info@laba.eus</a>
+  </address>
+</header>
+
+<dialog id="ham-dialog">
   <nav>
     <h2>MENUA</h2>
     <ul>
@@ -47,23 +71,56 @@ const currentPath = Astro.url.pathname;
     <h2>IDATZI</h2>
     <a href="mailto:info@laba.eus">info@laba.eus</a>
   </address>
-</header>
+  <button id="close-dialog">Itxi</button>
+</dialog>
+
+<script is:inline>
+  const hamBtn = document.getElementById("ham-btn");
+  const dialog = document.getElementById("ham-dialog");
+  const closeBtn = document.getElementById("close-dialog");
+
+  hamBtn?.addEventListener("click", () => {
+    if (dialog) {
+      dialog.showModal();
+      // Esperar un tick para que el navegador "pinte" el open
+      requestAnimationFrame(() => {
+        dialog.classList.add("show");
+      });
+      document.body.classList.add("no-scroll");
+    }
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    if (dialog) {
+      dialog.classList.remove("show");
+      dialog.classList.add("hide");
+      setTimeout(() => {
+        dialog.close();
+        dialog.classList.remove("hide");
+      }, 300);
+      document.body.classList.remove("no-scroll");
+    }
+  });
+</script>
 
 <style lang="scss">
   @use "../../style/mixins/textFonts.scss";
   @use "../../style/tools/mediaQueries.scss";
+  @use "sass:color";
 
   header {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr 1fr;
-    padding: var(--space-07-desktop);
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-05-mobile);
 
     z-index: 15;
 
     color: var(--gorria);
 
-    @include mediaQueries.belowTablet {
-      display: none;
+    @include mediaQueries.aboveTablet {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr 1fr;
+      padding: var(--space-07-desktop);
     }
   }
 
@@ -74,14 +131,25 @@ const currentPath = Astro.url.pathname;
     right: 0;
   }
 
-  .address {
-    display: flex;
-    gap: var(--space-05-desktop);
-    align-items: center;
+  .desktop-only {
+    @include mediaQueries.belowTablet {
+      display: none;
+    }
+  }
+
+  .mobile-only {
+    @include mediaQueries.aboveTablet {
+      display: none;
+    }
   }
 
   .logo {
-    width: var(--space-09-desktop);
+    width: var(--space-08-mobile);
+    height: auto;
+
+    @include mediaQueries.aboveTablet {
+      width: var(--space-09-desktop);
+    }
   }
 
   address {
@@ -115,6 +183,46 @@ const currentPath = Astro.url.pathname;
 
     &:hover {
       text-decoration: none;
+    }
+  }
+
+  dialog {
+    position: absolute;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100dvw;
+    height: 100dvh;
+    padding: var(--space-05-mobile);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-05-mobile);
+
+    color: var(--gorria);
+
+    border: none;
+
+    opacity: 0;
+    transform: translate(-50%, -70%); /* un poco más arriba */
+    transition: all 0.3s ease-out;
+
+    &.show {
+      opacity: 1;
+      transform: translate(-50%, -50%); /* centrado */
+    }
+
+    &.hide {
+      opacity: 0;
+      transform: translate(-50%, -70%); /* se va hacia arriba */
+    }
+
+    &::backdrop {
+      background: rgba(75, 33, 37, 0.4);
+    }
+
+    &.hide::backdrop {
+      background: transparent;
     }
   }
 </style>
