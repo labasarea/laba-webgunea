@@ -32,6 +32,7 @@
     "front:dev": "pnpm --filter front dev",
     "front:build": "pnpm --filter front build",
     "front:preview": "pnpm --filter front preview",
+    "front:serve": "pnpm --filter front serve",
     "e2e:open": "pnpm --filter e2e open"
   },
   "dependencies": {

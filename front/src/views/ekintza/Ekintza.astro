@@ -4,12 +4,10 @@ import Footer from "views/_components/Footer.astro";
 import Header from "views/_components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import MarkdownParser from "views/_components/MarkdownParser.astro";
-import Image from "astro/components/Image.astro";
 import ZigZagMarra from "views/_components/ZigZagMarra.astro";
 import moment from "moment";
 import { getUrl } from "models/Zikloa";
 import { getImageData } from "models/ImageMedia";
-import ZigZag from "views/_components/ZigZag.astro";
 moment.locale("eu");
 
 interface Props {
@@ -28,7 +26,7 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
     <aside>
       {
         irudia && (
-          <Image
+          <img
             class="irudia"
             alt={irudia.alt}
             src={irudia.src}
