@@ -64,9 +64,11 @@
   width: 100%;
 
   @include displayFonts.display5;
-  color: var(--gorria);
 
-  text-decoration: none;
+  & {
+    color: var(--gorria);
+    text-decoration: none;
+  }
 
   &:hover {
     text-decoration: underline;

@@ -4,7 +4,7 @@ import Logo from "../../assets/labaLogo.svg";
 import ZigZag from "../_components/ZigZag.astro";
 import { type Ekintza } from "models/Ekintza";
 import MarkdownParser from "../_components/MarkdownParser.astro";
-import type { Hasiera } from "models/Hasiera";
+import { type Hasiera } from "models/Hasiera";
 import PartehartzeaCard from "./components/PartehartzeaCard.astro";
 import Header from "../_components/Header.astro";
 import Footer from "../_components/Footer.astro";
@@ -101,6 +101,8 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     background-color: var(--marroia);
     color: var(--gorria);
 
+    overflow: hidden;
+
     @include mediaQueries.aboveTablet {
       padding: var(--space-07-desktop);
     }
@@ -167,9 +169,11 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     gap: var(--space-06-mobile);
 
     color: var(--marroia);
+    text-align: center;
 
     @include mediaQueries.aboveTablet {
       gap: var(--space-06-desktop);
+      text-align: left;
     }
   }
 
