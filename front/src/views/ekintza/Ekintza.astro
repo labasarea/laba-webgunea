@@ -75,18 +75,28 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
 <style lang="scss">
   @use "../../style/mixins/displayFonts.scss";
   @use "../../style/mixins/textFonts.scss";
+  @use "../../style/mixins/grid12Columns.scss";
   @use "../../style/tools/toDVW.scss";
+  @use "../../style/tools/mediaQueries.scss";
 
   main {
-    display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    gap: var(--space-05-desktop);
+    @include grid12Columns.grid;
+    gap: var(--space-05-mobile);
+    padding: var(--space-05-mobile);
 
-    padding: var(--space-07-desktop);
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-07-desktop);
+    }
   }
 
   aside {
-    grid-column: 1 / span 4;
+    grid-column: 3 / span 8;
+    margin-bottom: var(--space-04-mobile);
+
+    @include mediaQueries.aboveTablet {
+      grid-column: 1 / span 4;
+      margin-bottom: 0;
+    }
   }
 
   .irudia {
@@ -98,18 +108,30 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   }
 
   article {
-    grid-column: 5 / span 6;
+    grid-column: 1 / -1;
+
+    @include mediaQueries.aboveTablet {
+      grid-column: 5 / span 6;
+    }
   }
 
   h1 {
-    margin-bottom: var(--space-04-desktop);
+    margin-bottom: var(--space-04-mobile);
 
     @include displayFonts.display2;
     color: var(--gorria);
+
+    @include mediaQueries.aboveTablet {
+      margin-bottom: var(--space-04-desktop);
+    }
   }
 
   .zigzag-wrapper {
-    margin-bottom: var(--space-04-desktop);
+    margin-bottom: var(--space-04-mobile);
+
+    @include mediaQueries.aboveTablet {
+      margin-bottom: var(--space-04-desktop);
+    }
   }
 
   .hitzordua {
@@ -120,28 +142,44 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
 
   .zikloa {
     display: inline-block;
-    padding: var(--space-02-desktop) var(--space-04-desktop);
-    margin-top: var(--space-05-desktop);
+    padding: var(--space-02-mobile) var(--space-03-mobile);
+    margin-top: var(--space-04-mobile);
 
     @include textFonts.captionFont;
     color: var(--marroia);
     text-decoration: none;
-    border-radius: var(--space-06-desktop);
-    border: #{toDVW.toDesktopDVW(1)} solid var(--marroia);
+    border-radius: var(--space-05-mobile);
+    border: #{toDVW.toMobileDVW(1)} solid var(--marroia);
 
     &:hover {
       text-decoration: underline;
     }
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-02-desktop) var(--space-04-desktop);
+      margin-top: var(--space-05-desktop);
+
+      border-radius: var(--space-06-desktop);
+      border: #{toDVW.toDesktopDVW(1)} solid var(--marroia);
+    }
   }
 
   h2 {
-    margin-top: var(--space-05-desktop);
+    margin-top: var(--space-04-mobile);
 
     @include displayFonts.display4;
     color: var(--marroia);
+
+    @include mediaQueries.aboveTablet {
+      margin-top: var(--space-05-desktop);
+    }
   }
 
   .deskribapena {
-    margin-top: var(--space-05-desktop);
+    margin-top: var(--space-04-mobile);
+
+    @include mediaQueries.aboveTablet {
+      margin-top: var(--space-05-desktop);
+    }
   }
 </style>

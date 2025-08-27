@@ -14,48 +14,79 @@ const { content } = Astro.props;
 <!-- global jartzen dugu, marked-en sortutako HTMLa estilizatzeko -->
 <style lang="scss" is:global>
   @use "../../style/mixins/displayFonts.scss";
+  @use "../../style/tools/mediaQueries.scss";
 
   .markdown-wrapper {
     p {
       &:not(:last-child) {
-        margin-bottom: var(--space-05-desktop);
+        margin-bottom: var(--space-04-mobile);
+      }
+
+      @include mediaQueries.aboveTablet {
+        &:not(:last-child) {
+          margin-bottom: var(--space-05-desktop);
+        }
       }
     }
 
     h2 {
-      margin-bottom: var(--space-04-desktop);
+      margin-bottom: var(--space-04-mobile);
 
       @include displayFonts.display2;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-04-desktop);
+      }
     }
 
     h3 {
-      margin-bottom: var(--space-04-desktop);
+      margin-bottom: var(--space-03-mobile);
 
       @include displayFonts.display3;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-04-desktop);
+      }
     }
 
     h4 {
-      margin-bottom: var(--space-03-desktop);
+      margin-bottom: var(--space-02-mobile);
 
       @include displayFonts.display4;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-03-desktop);
+      }
     }
 
     h4 {
-      margin-bottom: var(--space-03-desktop);
+      margin-bottom: var(--space-02-mobile);
 
       @include displayFonts.display4;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-03-desktop);
+      }
     }
 
     h5 {
-      margin-bottom: var(--space-02-desktop);
+      margin-bottom: var(--space-01-mobile);
 
       @include displayFonts.display5;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-02-desktop);
+      }
     }
 
     h6 {
-      margin-bottom: var(--space-02-desktop);
+      margin-bottom: var(--space-01-mobile);
 
       @include displayFonts.display6;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-02-desktop);
+      }
     }
 
     a {
@@ -68,20 +99,37 @@ const { content } = Astro.props;
     }
 
     li {
-      margin-bottom: var(--space-02-desktop);
+      width: 100%;
+      margin-bottom: var(--space-01-mobile);
+
+      overflow-wrap: break-word;
+
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-02-desktop);
+      }
     }
 
     ul ul {
-      margin-top: var(--space-02-desktop);
+      margin-top: var(--space-01-mobile);
+
+      @include mediaQueries.aboveTablet {
+        margin-top: var(--space-02-desktop);
+      }
     }
 
     hr {
+      width: 100%;
       height: 2px;
-      margin-top: var(--space-05-desktop);
-      margin-bottom: var(--space-05-desktop);
+      margin-top: var(--space-04-mobile);
+      margin-bottom: var(--space-04-mobile);
 
       border: none;
       background-color: var(--gorria);
+
+      @include mediaQueries.aboveTablet {
+        margin-top: var(--space-05-desktop);
+        margin-bottom: var(--space-05-desktop);
+      }
     }
   }
 </style>

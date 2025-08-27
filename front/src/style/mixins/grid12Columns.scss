@@ -1,0 +1,11 @@
+@use "../tools/mediaQueries.scss";
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: var(--space-05-mobile);
+
+  @include mediaQueries.aboveTablet {
+    gap: var(--space-05-desktop);
+  }
+}
