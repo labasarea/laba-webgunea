@@ -25,7 +25,7 @@ export function getImageData(imageMedia: ImageMedia): ImageData {
   if (imageMedia.formats.small) {
     return {
       alt: imageMedia.alternativeText ?? "",
-      src: `http://localhost:1337${imageMedia.formats.small.url}`,
+      src: `${import.meta.env.STRAPI_URL}${imageMedia.formats.small.url}`,
       width: imageMedia.formats.small.width,
       height: imageMedia.formats.small.height,
     };
@@ -33,7 +33,7 @@ export function getImageData(imageMedia: ImageMedia): ImageData {
 
   return {
     alt: imageMedia.alternativeText ?? "",
-    src: `http://localhost:1337${imageMedia.formats.thumbnail.url}`,
+    src: `${import.meta.env.STRAPI_URL}${imageMedia.formats.thumbnail.url}`,
     width: imageMedia.formats.thumbnail.width,
     height: imageMedia.formats.thumbnail.height,
   };
