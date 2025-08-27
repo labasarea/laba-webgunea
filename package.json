@@ -29,6 +29,7 @@
     "back:dev": "pnpm --filter back dev",
     "back:build": "pnpm --filter back build",
     "back:upgrade": "pnpm --filter back upgrade",
+    "back:public-proxy": "pnpm --filter back public-proxy",
     "front:dev": "pnpm --filter front dev",
     "front:build": "pnpm --filter front build",
     "front:preview": "pnpm --filter front preview",
