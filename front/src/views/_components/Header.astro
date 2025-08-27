@@ -1,5 +1,8 @@
 ---
 import Logo from "../../assets/labaLogo.svg";
+import Hamburger from "../../assets/hamburger.svg";
+import Close from "../../assets/close.svg";
+import ZigZagMarra from "./ZigZagMarra.astro";
 
 interface Props {
   isAbsolutePosition?: boolean;
@@ -24,7 +27,7 @@ const currentPath = Astro.url.pathname;
     )
   }
 
-  <button class="mobile-only" id="ham-btn">HAM</button>
+  <button class="mobile-only menu-button" id="ham-btn"><Hamburger /></button>
 
   <nav class="desktop-only">
     <h2>MENUA</h2>
@@ -50,6 +53,10 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <dialog id="ham-dialog">
+  <button class="close-button" id="close-dialog"
+    ><Close class="menu-button" /></button
+  >
+
   <nav>
     <h2>MENUA</h2>
     <ul>
@@ -71,7 +78,22 @@ const currentPath = Astro.url.pathname;
     <h2>IDATZI</h2>
     <a href="mailto:info@laba.eus">info@laba.eus</a>
   </address>
-  <button id="close-dialog">Itxi</button>
+
+  <ZigZagMarra />
+
+  {
+    currentPath === "/" ? (
+      <a class="dialog-footer" href="/">
+        <span class="visually-hidden">Laba</span>
+        <Logo class="logo" />
+      </a>
+    ) : (
+      <address class="dialog-footer">
+        <p>Gazteluko plaza, 2</p>
+        <p>Iruñea</p>
+      </address>
+    )
+  }
 </dialog>
 
 <script is:inline>
@@ -111,6 +133,7 @@ const currentPath = Astro.url.pathname;
   header {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     padding: var(--space-05-mobile);
 
     z-index: 15;
@@ -152,6 +175,20 @@ const currentPath = Astro.url.pathname;
     }
   }
 
+  button {
+    padding: 0;
+
+    color: var(--gorria);
+
+    border: none;
+    background-color: transparent;
+  }
+
+  .menu-button {
+    width: var(--space-06-mobile);
+    height: auto;
+  }
+
   address {
     font-style: normal;
   }
@@ -163,9 +200,13 @@ const currentPath = Astro.url.pathname;
 
   ul {
     display: flex;
-    gap: var(--space-03-desktop);
+    gap: var(--space-03-mobile);
     padding: 0;
     list-style: none;
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-03-desktop);
+    }
   }
 
   li {
@@ -186,18 +227,21 @@ const currentPath = Astro.url.pathname;
     }
   }
 
-  dialog {
+  .close-button {
     position: absolute;
+    right: var(--space-05-mobile);
+    top: var(--space-05-mobile);
+  }
+
+  dialog {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100dvw;
     height: 100dvh;
-    padding: var(--space-05-mobile);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-05-mobile);
+    padding: var(--space-08-mobile) var(--space-05-mobile)
+      var(--space-05-mobile) var(--space-05-mobile);
 
     color: var(--gorria);
 
@@ -208,6 +252,9 @@ const currentPath = Astro.url.pathname;
     transition: all 0.3s ease-out;
 
     &.show {
+      display: grid;
+      grid-template-rows: auto auto auto auto 1fr;
+      gap: var(--space-05-mobile);
       opacity: 1;
       transform: translate(-50%, -50%); /* centrado */
     }
@@ -218,11 +265,16 @@ const currentPath = Astro.url.pathname;
     }
 
     &::backdrop {
-      background: rgba(75, 33, 37, 0.4);
+      background: var(--gorria);
     }
 
     &.hide::backdrop {
       background: transparent;
     }
+  }
+
+  .dialog-footer {
+    justify-self: center;
+    align-self: flex-end;
   }
 </style>
