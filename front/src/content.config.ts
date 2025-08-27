@@ -14,6 +14,7 @@ const ekintzak = defineCollection({
             query {
               ekintzak {
                 id: documentId
+                createdAt
                 slug
                 elkarlana {
                   label

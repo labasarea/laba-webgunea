@@ -4,6 +4,7 @@ import type { Zikloa } from "./Zikloa";
 export interface Ekintza {
   id: string;
   slug: string;
+  createdAt: string;
   izenburua: string;
   titularra: string;
   deskribapena: string;
