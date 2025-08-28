@@ -25,7 +25,9 @@ export function getImageData(imageMedia: ImageMedia): ImageData {
   if (imageMedia.formats.small) {
     return {
       alt: imageMedia.alternativeText ?? "",
-      src: `${import.meta.env.STRAPI_URL}${imageMedia.formats.small.url}`,
+      // react konponentean ingurune aldagaiak undefined ematen du
+      // TODO STRAPI_URL ingurune aldagaia erabili
+      src: `http://127.0.0.1:1337${imageMedia.formats.small.url}`,
       width: imageMedia.formats.small.width,
       height: imageMedia.formats.small.height,
     };
