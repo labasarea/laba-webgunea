@@ -101,8 +101,6 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     background-color: var(--marroia);
     color: var(--gorria);
 
-    overflow: hidden;
-
     @include mediaQueries.aboveTablet {
       padding: var(--space-07-desktop);
     }
@@ -127,6 +125,8 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
 
   .agenda {
     @include sectionPadding;
+
+    z-index: 20;
   }
 
   .izan-labazkide {

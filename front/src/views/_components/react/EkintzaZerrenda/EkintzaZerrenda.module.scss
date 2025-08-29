@@ -62,8 +62,12 @@
   grid-template-columns: 1fr auto;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 
   @include displayFonts.display5;
+
+  // irudi estelaren wrapper-a ekiditeko z-index ezartzen da
+  z-index: 20;
 
   & {
     color: var(--gorria);
@@ -80,5 +84,10 @@
 }
 
 .izenburua {
+  position: relative;
+
   @include displayFonts.display2;
+
+  // irudi estelaren wrapper-a ekiditeko z-index ezartzen da
+  z-index: 20;
 }
