@@ -53,26 +53,8 @@ export const EkintzaZerrenda: React.FC<Props> = ({
           {ekintzak.map((ekintza) => (
             <li
               key={ekintza.id}
-              onMouseEnter={() => {
-                if (!ekintza.mainMedia) {
-                  return;
-                }
-                setImageToShow(getImageData(ekintza.mainMedia));
-              }}
-              onMouseLeave={() => {
-                if (imgRef.current) {
-                  // animamos salida antes de desmontar
-                  gsap.to(imgRef.current, {
-                    autoAlpha: 0,
-                    scale: 0.95,
-                    duration: 0.3,
-                    ease: "power2.in",
-                    onComplete: () => setImageToShow(undefined),
-                  });
-                } else {
-                  setImageToShow(undefined);
-                }
-              }}
+              onMouseEnter={() => handleMouseEnter(ekintza)}
+              onMouseLeave={handleMouseLeave}
             >
               <a className={styles.esteka} href={getUrl(ekintza)}>
                 <span>{ekintza.izenburua}</span>
@@ -84,4 +66,26 @@ export const EkintzaZerrenda: React.FC<Props> = ({
       </div>
     </div>
   );
+
+  function handleMouseEnter(ekintza: EkintzaSnippet) {
+    if (!ekintza.mainMedia) {
+      return;
+    }
+    setImageToShow(getImageData(ekintza.mainMedia));
+  }
+
+  function handleMouseLeave() {
+    if (!imgRef.current) {
+      setImageToShow(undefined);
+      return;
+    }
+
+    gsap.to(imgRef.current, {
+      autoAlpha: 0,
+      scale: 0.95,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: () => setImageToShow(undefined),
+    });
+  }
 };
