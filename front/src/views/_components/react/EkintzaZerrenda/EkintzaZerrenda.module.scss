@@ -1,5 +1,6 @@
 @use "../../../../style/mixins/displayFonts.scss";
 @use "../../../../style/tools/mediaQueries.scss";
+@use "sass:color";
 
 .wrapper {
   display: grid;
@@ -69,11 +70,12 @@
 
   & {
     color: var(--gorria);
+    opacity: 0.65;
     text-decoration: none;
   }
 
-  &:hover {
-    text-decoration: underline;
+  &.active {
+    opacity: 1;
   }
 
   @include displayFonts.display5;

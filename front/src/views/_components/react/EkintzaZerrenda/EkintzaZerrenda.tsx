@@ -18,8 +18,28 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   ekintzak,
   isMainTitle = false,
 }) => {
-  const [imageToShow, setImageToShow] = useState<ImageData>();
+  const [activeEkintza, setActiveEkintza] = useState<EkintzaSnippet>();
+  const [playInterval, setPlayInterval] = useState(true);
+
+  const imageToShow = activeEkintza?.mainMedia
+    ? getImageData(activeEkintza.mainMedia)
+    : undefined;
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      if (!playInterval) {
+        return;
+      }
+
+      setActiveEkintza(ekintzak[Math.floor(Math.random() * ekintzak.length)]);
+    }, 1800);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [playInterval]);
 
   useEffect(() => {
     if (imgRef.current) {
@@ -29,7 +49,7 @@ export const EkintzaZerrenda: React.FC<Props> = ({
         { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power2.out" }
       );
     }
-  }, [imageToShow]);
+  }, [activeEkintza]);
 
   return (
     <div className={styles.wrapper}>
@@ -66,7 +86,10 @@ export const EkintzaZerrenda: React.FC<Props> = ({
               onMouseEnter={() => handleMouseEnter(ekintza)}
               onMouseLeave={handleMouseLeave}
             >
-              <a className={styles.esteka} href={getUrl(ekintza)}>
+              <a
+                className={`${styles.esteka} ${activeEkintza?.id === ekintza.id && styles.active}`}
+                href={getUrl(ekintza)}
+              >
                 <span>{ekintza.izenburua}</span>
                 <span>{getShortDate(ekintza)}</span>
               </a>
@@ -78,29 +101,11 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   );
 
   function handleMouseEnter(ekintza: EkintzaSnippet) {
-    if (!ekintza.mainMedia) {
-      return;
-    }
-    setImageToShow(getImageData(ekintza.mainMedia));
+    setPlayInterval(false);
+    setActiveEkintza(ekintza);
   }
 
   function handleMouseLeave() {
-    if (!imgRef.current || !imageToShow) {
-      setImageToShow(undefined);
-      return;
-    }
-
-    const currentSrc = imageToShow.src;
-    const el = imgRef.current;
-
-    gsap.to(el, {
-      autoAlpha: 0,
-      scale: 0.95,
-      duration: 0.3,
-      ease: "power2.in",
-      onComplete: () => {
-        setImageToShow((prev) => (prev?.src === currentSrc ? undefined : prev));
-      },
-    });
+    setPlayInterval(true);
   }
 };
