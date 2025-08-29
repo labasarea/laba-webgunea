@@ -75,17 +75,22 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   }
 
   function handleMouseLeave() {
-    if (!imgRef.current) {
+    if (!imgRef.current || !imageToShow) {
       setImageToShow(undefined);
       return;
     }
 
-    gsap.to(imgRef.current, {
+    const currentSrc = imageToShow.src;
+    const el = imgRef.current;
+
+    gsap.to(el, {
       autoAlpha: 0,
       scale: 0.95,
       duration: 0.3,
       ease: "power2.in",
-      onComplete: () => setImageToShow(undefined),
+      onComplete: () => {
+        setImageToShow((prev) => (prev?.src === currentSrc ? undefined : prev));
+      },
     });
   }
 };

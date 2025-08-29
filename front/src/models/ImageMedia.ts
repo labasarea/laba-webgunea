@@ -35,7 +35,7 @@ export function getImageData(imageMedia: ImageMedia): ImageData {
 
   return {
     alt: imageMedia.alternativeText ?? "",
-    src: `${import.meta.env.STRAPI_URL}${imageMedia.formats.thumbnail.url}`,
+    src: `http://127.0.0.1:1337${imageMedia.formats.thumbnail.url}`,
     width: imageMedia.formats.thumbnail.width,
     height: imageMedia.formats.thumbnail.height,
   };
