@@ -66,6 +66,14 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
       <h2 class="title">{parteHartu.izenburua}</h2>
 
       <div class="parte-hartzeak--wrapper">
+        {
+          parteHartu.deskribapena && (
+            <div class="parte-hartu--deskribapena">
+              <MarkdownParser content={parteHartu.deskribapena} />
+            </div>
+          )
+        }
+
         <ul class="parte-hartzeak">
           {
             parteHartu.parteHartzea.map((parteHartzea) => (
@@ -180,6 +188,16 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
     @include mediaQueries.aboveTablet {
       gap: var(--space-06-desktop);
       text-align: left;
+    }
+  }
+
+  .parte-hartu--deskribapena {
+    grid-column: col-start 2 / span 10;
+
+    text-align: center;
+
+    @include mediaQueries.aboveTablet {
+      grid-column: col-start 5 / span 4;
     }
   }
 

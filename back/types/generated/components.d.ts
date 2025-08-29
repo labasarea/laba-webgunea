@@ -50,6 +50,7 @@ export interface HasieraParteHartu extends Struct.ComponentSchema {
     icon: 'handHeart';
   };
   attributes: {
+    deskribapena: Schema.Attribute.RichText;
     izenburua: Schema.Attribute.String & Schema.Attribute.Required;
     parteHartzea: Schema.Attribute.Component<'hasiera.parte-hartzea', true>;
   };

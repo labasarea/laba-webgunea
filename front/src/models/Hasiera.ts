@@ -23,6 +23,7 @@ export interface Hasiera {
   };
   parteHartu: {
     izenburua: string;
+    deskribapena?: Markdown;
     parteHartzea: Partehartzea[];
   };
   mosaikoa: ImageMedia[];
