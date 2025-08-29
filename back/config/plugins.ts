@@ -1,4 +1,4 @@
-export default () => ({
+export default ({ env }) => ({
   "icons-field": {
     enabled: true,
     config: {
@@ -28,6 +28,22 @@ export default () => ({
 
       options: {
         // WebP options: https://sharp.pixelplumbing.com/api-output#webp
+      },
+    },
+    upload: {
+      config: {
+        provider: "cloudinary",
+
+        providerOptions: {
+          cloud_name: env("CLOUDINARY_NAME"),
+          api_key: env("CLOUDINARY_KEY"),
+          api_secret: env("CLOUDINARY_SECRET"),
+        },
+
+        actionOptions: {
+          upload: {},
+          delete: {},
+        },
       },
     },
   },
