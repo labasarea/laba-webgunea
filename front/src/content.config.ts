@@ -12,11 +12,7 @@ const ekintzak = defineCollection({
       body: JSON.stringify({
         query: `
             query {
-              ekintzak (filters:  {
-                hitzordua:  {
-                    gte: "${new Date().toISOString()}"
-                }
-              })  {
+              ekintzak {
                 id: documentId
                 createdAt
                 slug

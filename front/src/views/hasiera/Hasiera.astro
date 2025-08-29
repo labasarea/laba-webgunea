@@ -1,4 +1,6 @@
 ---
+import dayjs from "dayjs";
+
 import Layout from "../../layouts/Layout.astro";
 import Logo from "../../assets/labaLogo.svg";
 import ZigZag from "../_components/ZigZag.astro";
@@ -19,6 +21,10 @@ interface Props {
 const { hasiera, ekintzak } = Astro.props;
 
 const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
+
+const hurrengoEkintzak = ekintzak.filter((ekintza) =>
+  dayjs().isBefore(ekintza.hitzordua)
+);
 ---
 
 <Layout title={izenburua}>
@@ -37,7 +43,7 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     <ZigZag from="marroia" />
 
     <section class="agenda" id="agenda">
-      <EkintzaZerrenda ekintzak={ekintzak} title="Agenda" />
+      <EkintzaZerrenda ekintzak={hurrengoEkintzak} title="Agenda" />
     </section>
 
     <ZigZag from="gorria-background" to="gorria" />

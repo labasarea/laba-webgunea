@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
+import dayjs from "dayjs";
 
 import { type EkintzaSnippet, getShortDate, getUrl } from "models/Ekintza";
 import { getImageData, type ImageData } from "models/ImageMedia";
 import styles from "./EkintzaZerrenda.module.scss";
-import moment from "moment";
 
 interface Props {
   ekintzak: EkintzaSnippet[];
@@ -22,7 +22,7 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   const sortedEkintzak = useMemo(
     () =>
       [...ekintzak].sort((a, b) =>
-        moment(a.hitzordua).isBefore(b.hitzordua) ? -1 : 1
+        dayjs(a.hitzordua).isBefore(b.hitzordua) ? -1 : 1
       ),
     [ekintzak]
   );

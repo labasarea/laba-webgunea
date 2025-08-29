@@ -5,10 +5,12 @@ import Header from "views/_components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import MarkdownParser from "views/_components/MarkdownParser.astro";
 import ZigZagMarra from "views/_components/ZigZagMarra.astro";
-import moment from "moment";
+import dayjs from "dayjs";
 import { getUrl } from "models/Zikloa";
 import { getImageData } from "models/ImageMedia";
-moment.locale("eu");
+
+import "dayjs/locale/eu";
+dayjs.locale("eu");
 
 interface Props {
   ekintza: Ekintza;
@@ -44,7 +46,7 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
       </div>
 
       <p class="hitzordua">
-        {moment(ekintza.hitzordua).format("MMMM[k] D. H:mm")}
+        {dayjs(ekintza.hitzordua).format("MMMM[k] D. H:mm")}
       </p>
 
       {

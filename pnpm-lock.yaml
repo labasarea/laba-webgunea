@@ -106,15 +106,15 @@ importers:
       astro:
         specifier: ^5.13.2
         version: 5.13.2(@types/node@24.0.15)(rollup@4.45.1)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.43.1)(typescript@5.8.3)
+      dayjs:
+        specifier: ^1.11.15
+        version: 1.11.15
       gsap:
         specifier: ^3.13.0
         version: 3.13.0
       marked:
         specifier: ^15.0.11
         version: 15.0.12
-      moment:
-        specifier: ^2.30.1
-        version: 2.30.1
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -3642,6 +3642,9 @@ packages:
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
+  dayjs@1.11.15:
+    resolution: {integrity: sha512-MC+DfnSWiM9APs7fpiurHGCoeIx0Gdl6QZBy+5lu8MbYKN5FZEXqOgrundfibdfhGZ15o9hzmZ2xJjZnbvgKXQ==}
+
   debounce@1.2.1:
     resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
 
@@ -5748,9 +5751,6 @@ packages:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
     engines: {node: '>=10'}
     hasBin: true
-
-  moment@2.30.1:
-    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
   mrmime@2.0.1:
     resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
@@ -12965,6 +12965,8 @@ snapshots:
 
   dayjs@1.11.13: {}
 
+  dayjs@1.11.15: {}
+
   debounce@1.2.1: {}
 
   debug@2.6.9:
@@ -15463,8 +15465,6 @@ snapshots:
   mkdirp@1.0.4: {}
 
   mkdirp@3.0.1: {}
-
-  moment@2.30.1: {}
 
   mrmime@2.0.1: {}
 
