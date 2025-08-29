@@ -9,12 +9,14 @@ interface Props {
   ekintzak: EkintzaSnippet[];
   title?: string;
   description?: string;
+  isMainTitle?: boolean;
 }
 
 export const EkintzaZerrenda: React.FC<Props> = ({
   title,
   description,
   ekintzak,
+  isMainTitle = false,
 }) => {
   const [imageToShow, setImageToShow] = useState<ImageData>();
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -45,7 +47,15 @@ export const EkintzaZerrenda: React.FC<Props> = ({
       </div>
 
       <div className={styles.agendaWrapper}>
-        {title && <h2 className={styles.izenburua}>{title}</h2>}
+        {title && (
+          <>
+            {isMainTitle ? (
+              <h1 className={styles.izenburua}>{title}</h1>
+            ) : (
+              <h2 className={styles.izenburua}>{title}</h2>
+            )}
+          </>
+        )}
 
         {description && <p className={styles.description}>{description}</p>}
 

@@ -2,18 +2,20 @@
 import { type EkintzaSnippet } from "models/Ekintza";
 import { EkintzaZerrenda as EkintzaZerrendaReact } from "./react/EkintzaZerrenda";
 
-interface Props {
+export interface Props {
   ekintzak: EkintzaSnippet[];
   title?: string;
   description?: string;
+  isMainTitle?: boolean;
 }
 
-const { ekintzak, title, description } = Astro.props;
+const { ekintzak, title, description, isMainTitle = false } = Astro.props;
 ---
 
 <EkintzaZerrendaReact
   ekintzak={ekintzak}
   title={title}
   description={description}
+  isMainTitle
   client:idle
 />
