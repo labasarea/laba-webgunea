@@ -25,9 +25,7 @@ export function getImageData(imageMedia: ImageMedia): ImageData {
   if (imageMedia.formats.small) {
     return {
       alt: imageMedia.alternativeText ?? "",
-      // react konponentean ingurune aldagaiak undefined ematen du
-      // TODO STRAPI_URL ingurune aldagaia erabili
-      src: `http://127.0.0.1:1337${imageMedia.formats.small.url}`,
+      src: imageMedia.formats.small.url,
       width: imageMedia.formats.small.width,
       height: imageMedia.formats.small.height,
     };
@@ -35,7 +33,7 @@ export function getImageData(imageMedia: ImageMedia): ImageData {
 
   return {
     alt: imageMedia.alternativeText ?? "",
-    src: `http://127.0.0.1:1337${imageMedia.formats.thumbnail.url}`,
+    src: imageMedia.formats.thumbnail.url,
     width: imageMedia.formats.thumbnail.width,
     height: imageMedia.formats.thumbnail.height,
   };
