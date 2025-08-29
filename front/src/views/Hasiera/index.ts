@@ -1,1 +1,0 @@
-export { Hasiera } from './Hasiera';

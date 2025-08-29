@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "zikloas",
+  "collectionName": "zikloak",
   "info": {
     "singularName": "zikloa",
-    "pluralName": "zikloas",
+    "pluralName": "zikloak",
     "displayName": "Zikloa",
     "description": ""
   },
@@ -16,13 +16,13 @@
       "type": "string",
       "required": true
     },
-    "deskribapena": {
-      "type": "richtext"
-    },
     "slug": {
       "type": "uid",
-      "required": true,
-      "targetField": "izena"
+      "targetField": "izena",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "text"
     },
     "ekintzak": {
       "type": "relation",

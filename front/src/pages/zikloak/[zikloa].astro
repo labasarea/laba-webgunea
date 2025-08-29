@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import ZikloaView from "views/zikloa/Zikloa.astro";
+
+export async function getStaticPaths() {
+  const zikloak = await getCollection("zikloak");
+  return zikloak.map((zikloa) => ({
+    params: { zikloa: zikloa.data.slug },
+    props: { zikloa: zikloa.data },
+  }));
+}
+
+const { zikloa } = Astro.props;
+---
+
+<ZikloaView zikloa={zikloa} />

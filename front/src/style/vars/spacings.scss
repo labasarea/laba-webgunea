@@ -1,0 +1,36 @@
+@use "../tools/toDVW.scss";
+
+:root {
+  --space-01-desktop: #{toDVW.toDesktopDVW(4)};
+  --space-01-mobile: #{toDVW.toMobileDVW(4)};
+
+  --space-02-desktop: #{toDVW.toDesktopDVW(8)};
+  --space-02-mobile: #{toDVW.toMobileDVW(8)};
+
+  --space-03-desktop: #{toDVW.toDesktopDVW(12)};
+  --space-03-mobile: #{toDVW.toMobileDVW(12)};
+
+  --space-04-desktop: #{toDVW.toDesktopDVW(16)};
+  --space-04-mobile: #{toDVW.toMobileDVW(16)};
+
+  --space-05-desktop: #{toDVW.toDesktopDVW(24)};
+  --space-05-mobile: #{toDVW.toMobileDVW(24)};
+
+  --space-06-desktop: #{toDVW.toDesktopDVW(32)};
+  --space-06-mobile: #{toDVW.toMobileDVW(32)};
+
+  --space-07-desktop: #{toDVW.toDesktopDVW(48)};
+  --space-07-mobile: #{toDVW.toMobileDVW(48)};
+
+  --space-08-desktop: #{toDVW.toDesktopDVW(64)};
+  --space-08-mobile: #{toDVW.toMobileDVW(64)};
+
+  --space-09-desktop: #{toDVW.toDesktopDVW(96)};
+  --space-09-mobile: #{toDVW.toMobileDVW(96)};
+
+  --space-10-desktop: #{toDVW.toDesktopDVW(128)};
+  --space-10-mobile: #{toDVW.toMobileDVW(128)};
+
+  --space-11-desktop: #{toDVW.toDesktopDVW(192)};
+  --space-11-mobile: #{toDVW.toMobileDVW(192)};
+}

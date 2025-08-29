@@ -1,0 +1,140 @@
+---
+import Logo from "../../assets/labaLogo.svg";
+import ZigZag from "./ZigZag.astro";
+---
+
+<ZigZag from="gorria-background" to="marroia" />
+<footer class="footer">
+  <div class="lehenengo-lerroa">
+    <Logo class="footer-logo" />
+
+    <address>Gazteluko plaza, 2. 31001 Iruñea, Nafarroa</address>
+  </div>
+
+  <div class="bigarren-lerroa">
+    <nav>
+      <ul>
+        <li class="elementu-legala">
+          <a href="/lege-oharra">Lege oharra</a>
+        </li>
+
+        <li class="elementu-legala">
+          <a href="/pribatutasun-politika">Pribatutasun politika</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav>
+      <ul class="sare-sozialak">
+        <li><a href="https://twitter.com/labasarea/">X</a></li>
+        <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "../../style/tools/toDVW.scss";
+  @use "../../style/tools/mediaQueries.scss";
+  @use "../../style/mixins/textFonts.scss";
+
+  .footer {
+    padding: var(--space-05-mobile);
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-07-desktop);
+    }
+  }
+
+  .footer-logo {
+    height: var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      height: var(--space-07-desktop);
+    }
+  }
+
+  .lehenengo-lerroa {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: #{toDVW.toMobileDVW(2)} solid var(--gorria);
+    padding-bottom: var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      padding-bottom: var(--space-07-desktop);
+
+      border-bottom: #{toDVW.toDesktopDVW(2)} solid var(--gorria);
+    }
+  }
+
+  .bigarren-lerroa {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--space-05-mobile);
+    gap: var(--space-02-mobile);
+
+    @include mediaQueries.aboveTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: var(--space-07-desktop);
+      gap: var(--space-02-desktop);
+    }
+  }
+
+  address {
+    font-style: normal;
+    text-transform: uppercase;
+    text-align: end;
+
+    @include textFonts.captionFont;
+    @include mediaQueries.aboveTablet {
+      text-align: initial;
+      @include textFonts.bodyFont;
+    }
+  }
+
+  ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+  }
+
+  .elementu-legala {
+    &:not(:last-child) {
+      margin-right: var(--space-02-mobile);
+
+      &::after {
+        content: "/";
+        margin-left: var(--space-02-mobile);
+      }
+    }
+
+    @include mediaQueries.aboveTablet {
+      &:not(:last-child) {
+        margin-right: var(--space-02-desktop);
+
+        &::after {
+          content: "/";
+          margin-left: var(--space-02-desktop);
+        }
+      }
+    }
+  }
+
+  .sare-sozialak {
+    gap: var(--space-04-desktop);
+    text-transform: uppercase;
+  }
+
+  a {
+    color: var(--gorria);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+</style>

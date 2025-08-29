@@ -1,0 +1,124 @@
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import gsap from "gsap";
+import dayjs from "dayjs";
+
+import { type EkintzaSnippet, getShortDate, getUrl } from "models/Ekintza";
+import { getImageData, type ImageData } from "models/ImageMedia";
+import styles from "./EkintzaZerrenda.module.scss";
+
+interface Props {
+  ekintzak: EkintzaSnippet[];
+  title?: string;
+  description?: string;
+  isMainTitle?: boolean;
+}
+
+export const EkintzaZerrenda: React.FC<Props> = ({
+  title,
+  description,
+  ekintzak,
+  isMainTitle = false,
+}) => {
+  const sortedEkintzak = useMemo(
+    () =>
+      [...ekintzak].sort((a, b) =>
+        dayjs(a.hitzordua).isBefore(b.hitzordua) ? -1 : 1
+      ),
+    [ekintzak]
+  );
+
+  const [activeEkintza, setActiveEkintza] = useState<EkintzaSnippet>(
+    sortedEkintzak[0]
+  );
+  const [playInterval, setPlayInterval] = useState(true);
+
+  const imageToShow = activeEkintza?.mainMedia
+    ? getImageData(activeEkintza.mainMedia)
+    : undefined;
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      if (!playInterval) {
+        return;
+      }
+
+      setActiveEkintza(
+        sortedEkintzak[Math.floor(Math.random() * sortedEkintzak.length)]
+      );
+    }, 1800);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [playInterval]);
+
+  useEffect(() => {
+    if (imgRef.current) {
+      gsap.fromTo(
+        imgRef.current,
+        { autoAlpha: 0, scale: 1.05 },
+        { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power2.out" }
+      );
+    }
+  }, [activeEkintza]);
+
+  return (
+    <div className={styles.wrapper}>
+      <div aria-hidden className={styles.mainMediaWrapper}>
+        {imageToShow && (
+          <img
+            ref={imgRef}
+            className={styles.mainMedia}
+            alt={imageToShow.alt}
+            src={imageToShow.src}
+            width={imageToShow.width}
+            height={imageToShow.height}
+          />
+        )}
+      </div>
+
+      <div className={styles.agendaWrapper}>
+        {title && (
+          <>
+            {isMainTitle ? (
+              <h1 className={styles.izenburua}>{title}</h1>
+            ) : (
+              <h2 className={styles.izenburua}>{title}</h2>
+            )}
+          </>
+        )}
+
+        {description && <p className={styles.description}>{description}</p>}
+
+        <ul className={styles.zerrenda}>
+          {sortedEkintzak.map((ekintza) => (
+            <li
+              key={ekintza.id}
+              onMouseEnter={() => handleMouseEnter(ekintza)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <a
+                className={`${styles.esteka} ${activeEkintza?.id === ekintza.id && styles.active}`}
+                href={getUrl(ekintza)}
+              >
+                <span>{ekintza.izenburua}</span>
+                <span>{getShortDate(ekintza)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+
+  function handleMouseEnter(ekintza: EkintzaSnippet) {
+    setPlayInterval(false);
+    setActiveEkintza(ekintza);
+  }
+
+  function handleMouseLeave() {
+    setPlayInterval(true);
+  }
+};

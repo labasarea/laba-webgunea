@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_hasiera_parte_hartus",
+  "info": {
+    "displayName": "Parte hartu",
+    "icon": "handHeart"
+  },
+  "options": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "richtext"
+    },
+    "parteHartzea": {
+      "type": "component",
+      "component": "hasiera.parte-hartzea",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,94 @@
+@use "../../../../style/mixins/displayFonts.scss";
+@use "../../../../style/tools/mediaQueries.scss";
+@use "sass:color";
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: var(--space-05-desktop);
+}
+
+.mainMediaWrapper {
+  display: none;
+
+  @include mediaQueries.aboveTablet {
+    display: grid;
+    grid-column: col-start 1 / span 4;
+
+    aspect-ratio: 1;
+  }
+}
+
+.mainMedia {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.agendaWrapper {
+  grid-column: col-start 1 / -1;
+
+  color: var(--gorria);
+
+  @include mediaQueries.aboveTablet {
+    grid-column: col-start 5 / -1;
+  }
+}
+
+.description {
+  margin-top: var(--space-05-desktop);
+}
+
+.zerrenda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-04-mobile);
+
+  margin-top: var(--space-05-mobile);
+
+  list-style-type: none;
+  padding: 0;
+
+  @include mediaQueries.aboveTablet {
+    gap: var(--space-04-desktop);
+    margin-top: var(--space-05-desktop);
+  }
+}
+
+.esteka {
+  display: grid;
+  gap: var(--space-04-mobile);
+  grid-template-columns: 1fr auto;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+
+  // irudi estelaren wrapper-a ekiditeko z-index ezartzen da
+  z-index: 20;
+
+  & {
+    color: var(--gorria);
+    opacity: 0.65;
+    text-decoration: none;
+  }
+
+  &.active {
+    opacity: 1;
+  }
+
+  @include displayFonts.display5;
+  @include mediaQueries.aboveTablet {
+    gap: var(--space-04-desktop);
+  }
+}
+
+.izenburua {
+  position: relative;
+
+  // irudi estelaren wrapper-a ekiditeko z-index ezartzen da
+  z-index: 20;
+
+  @include displayFonts.display2;
+}

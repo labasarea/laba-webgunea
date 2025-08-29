@@ -1,0 +1,12 @@
+packages:
+  - back
+  - e2e
+  - front
+
+onlyBuiltDependencies:
+  - '@swc/core'
+  - better-sqlite3
+  - core-js-pure
+  - cypress
+  - esbuild
+  - sharp

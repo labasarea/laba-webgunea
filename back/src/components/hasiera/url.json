@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_hasiera_urls",
+  "info": {
+    "displayName": "url",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "self",
+        "blank"
+      ]
+    }
+  },
+  "config": {}
+}

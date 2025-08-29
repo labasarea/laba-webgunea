@@ -1,0 +1,41 @@
+---
+// TODO marrak elementuaren altu osoa hartzea lortu, marginak fidagarriagoak izan daitezen
+---
+
+<div>
+  <hr class="zig" />
+  <hr class="zag" />
+</div>
+
+<style>
+  hr {
+    border: none;
+    height: 32px;
+    margin: 0px;
+  }
+
+  .zig {
+    background:
+      linear-gradient(-135deg, #fff 20px, transparent 0) 0 5px,
+      linear-gradient(135deg, #fff 20px, transparent 0) 0 5px;
+    background-color: transparent;
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    background-size: 20px 40px;
+    z-index: 100;
+    position: relative;
+  }
+
+  .zag {
+    /* oraingoz, kolore gorria bakarrik margotzen du */
+    /* TODO beharrezko bada, kolorea currentColor bidez aldatu */
+    background:
+      linear-gradient(-135deg, var(--gorria) 20px, transparent 0) 0 5px,
+      linear-gradient(135deg, var(--gorria) 20px, #fff 0) 0 5px;
+    background-color: transparent;
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    background-size: 20px 40px;
+    margin-top: -31px;
+  }
+</style>

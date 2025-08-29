@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import EkintzaView from "views/ekintza/Ekintza.astro";
+
+export async function getStaticPaths() {
+  const ekintzak = await getCollection("ekintzak");
+  return ekintzak.map((ekintza) => ({
+    params: { ekintza: ekintza.data.slug },
+    props: { ekintza: ekintza.data },
+  }));
+}
+
+const { ekintza } = Astro.props;
+---
+
+<EkintzaView ekintza={ekintza} />

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_paragraph_youtubes",
+  "info": {
+    "displayName": "youtube",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

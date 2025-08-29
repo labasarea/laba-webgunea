@@ -1,0 +1,281 @@
+---
+import Logo from "../../assets/labaLogo.svg";
+import Hamburger from "../../assets/hamburger.svg";
+import Close from "../../assets/close.svg";
+import ZigZagMarra from "./ZigZagMarra.astro";
+
+interface Props {
+  isAbsolutePosition?: boolean;
+}
+
+const { isAbsolutePosition = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<header class={isAbsolutePosition ? "absolute-position" : ""}>
+  {
+    currentPath != "/" ? (
+      <a href="/">
+        <span class="visually-hidden">Laba</span>
+        <Logo class="logo" />
+      </a>
+    ) : (
+      <address>
+        <p>Gazteluko plaza, 2</p>
+        <p>Iruñea</p>
+      </address>
+    )
+  }
+
+  <button class="mobile-only menu-button" id="ham-btn"><Hamburger /></button>
+
+  <nav class="desktop-only">
+    <h2>Menua</h2>
+    <ul>
+      <li><a href="/#agenda">Agenda</a></li>
+      <li><a href="/#izan-labazkide">Izan Labazkide</a></li>
+      <li><a href="/#parte-hartu">Parte hartu</a></li>
+    </ul>
+  </nav>
+
+  <nav class="desktop-only">
+    <h2>Jarrai gaitzazu!</h2>
+    <ul>
+      <li><a href="https://mastodon.eus/@labasarea">Mastodon</a></li>
+      <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
+      <li><a href="https://twitter.com/labasarea/">X</a></li>
+    </ul>
+  </nav>
+
+  <address class="desktop-only">
+    <h2>Harremanetarako</h2>
+    <a href="mailto:info@laba.eus">info@laba.eus</a>
+  </address>
+</header>
+
+<dialog id="ham-dialog">
+  <button class="close-button" id="close-dialog"
+    ><Close class="menu-button" /></button
+  >
+
+  <nav>
+    <h2>Menua</h2>
+    <ul>
+      <li><a href="/#agenda">Agenda</a></li>
+      <li><a href="/#izan-labazkide">Izan Labazkide</a></li>
+      <li><a href="/#parte-hartu">Parte hartu</a></li>
+    </ul>
+  </nav>
+
+  <nav>
+    <h2>Jarrai gaitzazu!</h2>
+    <ul>
+      <li><a href="https://mastodon.eus/@labasarea">Mastodon</a></li>
+      <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
+      <li><a href="https://twitter.com/labasarea/">X</a></li>
+    </ul>
+  </nav>
+
+  <address>
+    <h2>Harremanetarako</h2>
+    <a href="mailto:info@laba.eus">info@laba.eus</a>
+  </address>
+
+  <ZigZagMarra />
+
+  {
+    currentPath === "/" ? (
+      <a class="dialog-footer" href="/">
+        <span class="visually-hidden">Laba</span>
+        <Logo class="logo" />
+      </a>
+    ) : (
+      <address class="dialog-footer">
+        <p>Gazteluko plaza, 2</p>
+        <p>Iruñea</p>
+      </address>
+    )
+  }
+</dialog>
+
+<script is:inline>
+  const hamBtn = document.getElementById("ham-btn");
+  const dialog = document.getElementById("ham-dialog");
+  const closeBtn = document.getElementById("close-dialog");
+
+  hamBtn?.addEventListener("click", () => {
+    if (dialog) {
+      dialog.showModal();
+      // Esperar un tick para que el navegador "pinte" el open
+      requestAnimationFrame(() => {
+        dialog.classList.add("show");
+      });
+      document.body.classList.add("no-scroll");
+    }
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    if (dialog) {
+      dialog.classList.remove("show");
+      dialog.classList.add("hide");
+      setTimeout(() => {
+        dialog.close();
+        dialog.classList.remove("hide");
+      }, 300);
+      document.body.classList.remove("no-scroll");
+    }
+  });
+</script>
+
+<style lang="scss">
+  @use "../../style/mixins/textFonts.scss";
+  @use "../../style/tools/mediaQueries.scss";
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-05-mobile);
+
+    z-index: 15;
+
+    color: var(--gorria);
+
+    @include mediaQueries.aboveTablet {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr 1fr;
+      padding: var(--space-07-desktop);
+    }
+  }
+
+  .absolute-position {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .desktop-only {
+    @include mediaQueries.belowTablet {
+      display: none;
+    }
+  }
+
+  .mobile-only {
+    @include mediaQueries.aboveTablet {
+      display: none;
+    }
+  }
+
+  .logo {
+    width: var(--space-08-mobile);
+    height: auto;
+
+    @include mediaQueries.aboveTablet {
+      width: var(--space-09-desktop);
+    }
+  }
+
+  button {
+    padding: 0;
+
+    color: var(--gorria);
+
+    border: none;
+    background-color: transparent;
+  }
+
+  .menu-button {
+    width: var(--space-06-mobile);
+    height: auto;
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    @include textFonts.bodyFont;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-03-mobile);
+    padding: 0;
+    list-style: none;
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-03-desktop);
+    }
+  }
+
+  li {
+    &:not(:last-child) {
+      &::after {
+        content: ",";
+      }
+    }
+  }
+
+  a {
+    color: var(--gorria);
+
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    right: var(--space-05-mobile);
+    top: var(--space-05-mobile);
+  }
+
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100dvw;
+    height: 100dvh;
+    padding: var(--space-08-mobile) var(--space-05-mobile)
+      var(--space-05-mobile) var(--space-05-mobile);
+
+    color: var(--gorria);
+
+    border: none;
+
+    opacity: 0;
+    transform: translate(-50%, -70%); /* un poco más arriba */
+    transition: all 0.3s ease-out;
+
+    &.show {
+      display: grid;
+      grid-template-rows: auto auto auto auto 1fr;
+      gap: var(--space-05-mobile);
+      opacity: 1;
+      transform: translate(-50%, -50%); /* centrado */
+    }
+
+    &.hide {
+      opacity: 0;
+      transform: translate(-50%, -70%); /* se va hacia arriba */
+    }
+
+    &::backdrop {
+      background: var(--gorria);
+    }
+
+    &.hide::backdrop {
+      background: transparent;
+    }
+  }
+
+  .dialog-footer {
+    justify-self: center;
+    align-self: flex-end;
+  }
+</style>

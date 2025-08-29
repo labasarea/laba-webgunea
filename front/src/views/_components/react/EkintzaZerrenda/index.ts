@@ -1,0 +1,1 @@
+export { EkintzaZerrenda } from "./EkintzaZerrenda";

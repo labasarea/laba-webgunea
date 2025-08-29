@@ -1,0 +1,149 @@
+---
+import { getImageData, type ImageMedia } from "models/ImageMedia";
+
+interface Props {
+  mosaikoa: ImageMedia[];
+}
+
+const { mosaikoa } = Astro.props;
+
+const mosaikoaImageDatas = shuffle(mosaikoa).map(getImageData);
+const imagesToShow = Array.from({ length: 60 }).map(
+  (_, i) => mosaikoaImageDatas[i % mosaikoaImageDatas.length]
+);
+
+function shuffle<T>(array: T[]) {
+  const copia = [...array];
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
+}
+---
+
+<div class="wrapper">
+  <div class="grid">
+    {
+      imagesToShow.map((imageData) => (
+        <div class="cell">
+          <img
+            src={imageData.src}
+            alt={imageData.alt}
+            width={imageData.width}
+            height={imageData.height}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  const cells = document.querySelectorAll(".cell img");
+
+  cells.forEach((img) => {
+    img?.parentElement?.addEventListener("mouseenter", () => {
+      gsap.to(img, {
+        scale: 2,
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+
+    img?.parentElement?.addEventListener("mouseleave", () => {
+      gsap.to(img, {
+        scale: 0,
+        opacity: 0.4,
+        duration: 1.6,
+        ease: "power2.inOut",
+      });
+    });
+
+    img?.parentElement?.addEventListener("touchstart", () => {
+      gsap.to(img, {
+        scale: 2,
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+
+    img?.parentElement?.addEventListener("touchend", () => {
+      gsap.to(img, {
+        scale: 0,
+        opacity: 0.4,
+        duration: 1.6,
+        ease: "power2.inOut",
+      });
+    });
+  });
+</script>
+
+<style lang="scss">
+  @use "../../style/tools/mediaQueries.scss";
+
+  .wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+
+    overflow: hidden;
+    background: transparent;
+
+    padding: var(--space-07-mobile);
+
+    z-index: 10;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background: var(--marroia);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 97dvh;
+
+    @include mediaQueries.aboveTablet {
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+    }
+  }
+
+  .cell {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+
+    &:nth-child(n + 31) {
+      display: none;
+    }
+
+    @include mediaQueries.aboveTablet {
+      &:nth-child(n + 31) {
+        display: block;
+      }
+    }
+  }
+
+  .cell img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transform: scale(0);
+    opacity: 0;
+    will-change: transform, opacity;
+    object-fit: contain;
+    z-index: 10;
+  }
+</style>

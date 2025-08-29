@@ -1,0 +1,44 @@
+---
+type Kolorea = "transparent" | "gorria" | "gorria-background" | "marroia";
+
+interface Props {
+  from?: Kolorea;
+  to?: Kolorea;
+}
+
+const { from = "transparent", to = "transparent" } = Astro.props;
+
+const colorToVar: { [key in Kolorea]: string } = {
+  transparent: "transparent",
+  gorria: "var(--gorria)",
+  marroia: "var(--marroia)",
+  "gorria-background": "var(--gorria-background)",
+};
+
+const fromColor = colorToVar[from];
+const toColor = colorToVar[to];
+---
+
+<div>
+  <hr />
+</div>
+
+<style lang="scss" define:vars={{ toColor, fromColor }}>
+  hr {
+    height: 16px;
+    background-color: var(--fromColor);
+
+    border: none;
+    mask: conic-gradient(
+        from -45deg at bottom,
+        #0000,
+        #000 1deg 89deg,
+        #0000 90deg
+      )
+      50%/32px 100%;
+  }
+
+  div {
+    background-color: var(--toColor);
+  }
+</style>

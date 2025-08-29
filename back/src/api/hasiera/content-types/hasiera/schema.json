@@ -12,15 +12,27 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "deskribapena": {
-      "type": "text"
-    },
     "izenburua": {
       "type": "string"
     },
-    "edukia": {
-      "type": "richtext",
-      "required": false
+    "izanLabazkide": {
+      "type": "component",
+      "component": "hasiera.izan-labazkide",
+      "repeatable": false,
+      "required": true
+    },
+    "parteHartu": {
+      "type": "component",
+      "component": "hasiera.parte-hartu",
+      "repeatable": false
+    },
+    "mosaikoa": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

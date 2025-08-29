@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { type Ekintza } from "models/Ekintza";
+import EkintzaZerrenda from "../_components/EkintzaZerrenda.astro";
+import Footer from "../_components/Footer.astro";
+import Header from "../_components/Header.astro";
+
+interface Props {
+  ekintzak: Ekintza[];
+}
+
+const { ekintzak } = Astro.props;
+---
+
+<Layout title="Ekintzak">
+  <Header />
+
+  <main>
+    <EkintzaZerrenda ekintzak={ekintzak} title="Ekintza guztiak" />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style lang="scss">
+  main {
+    padding-left: var(--space-07-desktop);
+    padding-right: var(--space-07-desktop);
+    padding-top: var(--space-07-desktop);
+    padding-bottom: var(--space-09-desktop);
+  }
+</style>

@@ -2,34 +2,44 @@
   "name": "back",
   "version": "0.1.0",
   "private": true,
-  "description": "Laba webgunerako kudeaketa",
-  "license": "MIT",
-  "author": {
-    "name": "Laba Sarea"
-  },
+  "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
     "develop": "strapi develop",
-    "public-proxy": "ngrok http --domain=vervet-big-dassie.ngrok-free.app 1337",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "upgrade": "pnpm dlx @strapi/upgrade latest",
+    "upgrade:dry": "pnpm dlx @strapi/upgrade latest --dry",
+    "public-proxy": "ngrok http --domain=vervet-big-dassie.ngrok-free.app 1337"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.25.17",
-    "@strapi/plugin-i18n": "^4.25.13",
-    "@strapi/plugin-users-permissions": "^4.25.17",
-    "@strapi/provider-upload-cloudinary": "^4.25.17",
-    "@strapi/strapi": "^4.25.17",
-    "pg": "^8.13.1",
-    "pg-connection-string": "^2.7.0",
+    "@strapi/plugin-cloud": "5.23.0",
+    "@strapi/plugin-graphql": "^5.18.1",
+    "@strapi/plugin-users-permissions": "5.23.0",
+    "@strapi/provider-upload-cloudinary": "^5.23.0",
+    "@strapi/strapi": "5.23.0",
+    "better-sqlite3": "11.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^5.3.4",
-    "sqlite3": "5.1.7",
-    "strapi-plugin-netlify-deployments": "^2.0.2",
-    "styled-components": "^5.3.11"
+    "react-router-dom": "^6.30.1",
+    "strapi-plugin-icons-field": "^0.1.3",
+    "strapi-plugin-webp-converter": "^1.0.4",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.9",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "b0fa2552-2961-4886-8673-c2d7fe07b8a1"
+    "uuid": "80b4f18d-c205-4488-9fc1-abea26dc35dd"
   }
 }

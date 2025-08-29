@@ -1,1 +1,0 @@
-export { DesktopNabigazioa } from './DesktopNabigazioa';

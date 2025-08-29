@@ -1,0 +1,13 @@
+$tablet: 1024px;
+
+@mixin aboveTablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin belowTablet {
+  @media (max-width: calc($tablet - 1px)) {
+    @content;
+  }
+}

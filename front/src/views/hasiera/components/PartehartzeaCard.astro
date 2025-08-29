@@ -1,0 +1,75 @@
+---
+import type { Partehartzea } from "models/Hasiera";
+import ExternalSVG from "./ExternalSVG.astro";
+
+interface Props {
+  partehartzea: Partehartzea;
+}
+
+const { partehartzea } = Astro.props;
+---
+
+<li>
+  <div><ExternalSVG externalSVG={partehartzea.ikonoa} /></div>
+
+  <h3>{partehartzea.izenburua}</h3>
+  <p>{partehartzea.deskribapena}</p>
+
+  <a href={`mailto:${partehartzea.email}`}>{partehartzea.email}</a>
+</li>
+
+<style lang="scss">
+  @use "../../../style/mixins/displayFonts.scss";
+  @use "../../../style/tools/mediaQueries.scss";
+
+  li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-04-mobile);
+
+    @include mediaQueries.aboveTablet {
+      width: 30%;
+      padding: var(--space-04-desktop);
+    }
+  }
+
+  div {
+    color: var(--gorria);
+    margin-bottom: var(--space-03-mobile);
+
+    @include mediaQueries.aboveTablet {
+      margin-bottom: var(--space-03-desktop);
+    }
+  }
+
+  h3 {
+    margin-bottom: var(--space-04-mobile);
+
+    @include displayFonts.display4;
+    @include mediaQueries.aboveTablet {
+      margin-bottom: var(--space-05-desktop);
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: var(--space-04-mobile);
+
+    @include mediaQueries.aboveTablet {
+      margin-bottom: var(--space-05-desktop);
+    }
+  }
+
+  a {
+    color: var(--marroia);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include displayFonts.display6;
+  }
+</style>

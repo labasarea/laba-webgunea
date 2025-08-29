@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import { type Ekintza } from "models/Ekintza";
+import Hasiera from "views/hasiera/Hasiera.astro";
+
+const response = await fetch(`${import.meta.env.STRAPI_URL}/graphql`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+      query {
+        hasiera {
+          izenburua
+          izanLabazkide {
+            izenburua
+            deskribapena
+            url {
+              label
+              url
+            }
+          }
+          parteHartu {
+            izenburua
+            deskribapena
+            parteHartzea {
+              ikonoa
+              izenburua
+              deskribapena
+              email
+            }
+          }
+          mosaikoa (pagination:  {
+             limit: 60
+          }) {
+            alternativeText
+            formats
+          }
+        }
+      }
+    `,
+  }),
+});
+
+const json = await response.json();
+const { hasiera } = json.data;
+
+const ekintzakCollection = await getCollection("ekintzak");
+const ekintzak: Ekintza[] = ekintzakCollection.map(({ data }) => data);
+---
+
+<Hasiera hasiera={hasiera} ekintzak={ekintzak} />

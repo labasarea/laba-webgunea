@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_paragraph_testuas",
+  "info": {
+    "displayName": "testua",
+    "icon": "pencil",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "testua": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_hasiera_parte_hartzeas",
+  "info": {
+    "displayName": "Parte hartzea",
+    "icon": "handHeart"
+  },
+  "options": {},
+  "attributes": {
+    "izenburua": {
+      "type": "string"
+    },
+    "deskribapena": {
+      "type": "text"
+    },
+    "email": {
+      "type": "string"
+    },
+    "ikonoa": {
+      "type": "customField",
+      "customField": "plugin::icons-field.icon",
+      "options": {
+        "output": "svg"
+      }
+    }
+  },
+  "config": {}
+}

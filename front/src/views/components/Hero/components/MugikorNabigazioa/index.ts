@@ -1,1 +1,0 @@
-export { MugikorNabigazioa } from './MugikorNabigazioa';

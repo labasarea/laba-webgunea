@@ -1,0 +1,229 @@
+---
+import dayjs from "dayjs";
+
+import Layout from "../../layouts/Layout.astro";
+import Logo from "../../assets/labaLogo.svg";
+import ZigZag from "../_components/ZigZag.astro";
+import { type Ekintza } from "models/Ekintza";
+import MarkdownParser from "../_components/MarkdownParser.astro";
+import { type Hasiera } from "models/Hasiera";
+import PartehartzeaCard from "./components/PartehartzeaCard.astro";
+import Header from "../_components/Header.astro";
+import Footer from "../_components/Footer.astro";
+import EkintzaZerrenda from "../_components/EkintzaZerrenda.astro";
+import IrudiEstela from "views/_components/IrudiEstela.astro";
+
+interface Props {
+  hasiera: Hasiera;
+  ekintzak: Ekintza[];
+}
+
+const { hasiera, ekintzak } = Astro.props;
+
+const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
+
+const hurrengoEkintzak = ekintzak.filter((ekintza) =>
+  dayjs().isBefore(ekintza.hitzordua)
+);
+---
+
+<Layout title={izenburua}>
+  <Header isAbsolutePosition />
+
+  <main class="main">
+    <section class="hero">
+      <h1>
+        <span class="visually-hidden">Laba</span>
+        <Logo class="logo" aria-title="Laba" />
+      </h1>
+
+      <IrudiEstela mosaikoa={mosaikoa} />
+    </section>
+
+    <ZigZag from="marroia" />
+
+    <section class="agenda" id="agenda">
+      <EkintzaZerrenda ekintzak={hurrengoEkintzak} title="Agenda" />
+    </section>
+
+    <ZigZag from="gorria-background" to="gorria" />
+
+    <section class="izan-labazkide" id="izan-labazkide">
+      <div class="labazkide-wrapper">
+        <h2 class="title">{izanLabazkide.izenburua}</h2>
+
+        <MarkdownParser content={izanLabazkide.deskribapena} />
+
+        <a class="izan-labazkide--url" href={izanLabazkide.url.url}
+          >{izanLabazkide.url.label}</a
+        >
+      </div>
+    </section>
+
+    <ZigZag from="gorria" to="gorria-background" />
+
+    <section class="parte-hartu" id="parte-hartu">
+      <h2 class="title">{parteHartu.izenburua}</h2>
+
+      <div class="parte-hartzeak--wrapper">
+        {
+          parteHartu.deskribapena && (
+            <div class="parte-hartu--deskribapena">
+              <MarkdownParser content={parteHartu.deskribapena} />
+            </div>
+          )
+        }
+
+        <ul class="parte-hartzeak">
+          {
+            parteHartu.parteHartzea.map((parteHartzea) => (
+              <PartehartzeaCard partehartzea={parteHartzea} />
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style lang="scss">
+  @use "../../style/mixins/displayFonts.scss";
+  @use "../../style/tools/mediaQueries.scss";
+
+  @mixin sectionPadding() {
+    padding: var(--space-07-mobile) var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-10-desktop) var(--space-07-desktop);
+    }
+  }
+
+  .main {
+    background-color: var(--gorria-background);
+  }
+
+  .hero {
+    position: relative;
+
+    min-height: 97dvh;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-05-mobile);
+
+    background-color: var(--marroia);
+    color: var(--gorria);
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-07-desktop);
+    }
+  }
+
+  h1 {
+    width: 100%;
+    z-index: 20;
+
+    @include mediaQueries.aboveTablet {
+      width: fit-content;
+    }
+  }
+
+  .logo {
+    width: 100%;
+
+    @include mediaQueries.aboveTablet {
+      height: 33dvh;
+    }
+  }
+
+  .agenda {
+    z-index: 20;
+
+    @include sectionPadding;
+  }
+
+  .izan-labazkide {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: var(--space-03-mobile);
+
+    background-color: var(--gorria);
+    color: var(--zuria);
+
+    @include sectionPadding;
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-05-desktop);
+    }
+  }
+
+  .labazkide-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-05-mobile);
+
+    grid-column: col-start 1 / -1;
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-05-desktop);
+      grid-column: col-start 4 / span 6;
+    }
+  }
+
+  .izan-labazkide--url {
+    color: var(--zuria);
+  }
+
+  .parte-hartu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-06-mobile);
+
+    color: var(--marroia);
+    text-align: center;
+
+    @include sectionPadding;
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-06-desktop);
+      text-align: left;
+    }
+  }
+
+  .parte-hartu--deskribapena {
+    grid-column: col-start 2 / span 10;
+
+    text-align: center;
+
+    @include mediaQueries.aboveTablet {
+      grid-column: col-start 5 / span 4;
+    }
+  }
+
+  .parte-hartzeak {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-05-desktop);
+    grid-column: col-start 2 / span 10;
+    padding: 0;
+
+    list-style: none;
+
+    @include mediaQueries.aboveTablet {
+      flex-direction: row;
+      gap: var(--space-05-desktop);
+      justify-content: center;
+    }
+  }
+
+  .parte-hartzeak--wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    gap: var(--space-05-desktop);
+  }
+
+  .title {
+    @include displayFonts.display2;
+  }
+</style>

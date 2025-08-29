@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_ekintza_sarreras",
+  "info": {
+    "displayName": "Sarrera",
+    "icon": "priceTag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "deskribapena": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string",
+      "regex": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})(:[0-9]+)?([\\/\\w \\.-]*)*\\/?$"
+    }
+  }
+}

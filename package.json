@@ -25,17 +25,21 @@
     "e2e"
   ],
   "scripts": {
-    "back": "yarn workspace back",
-    "clear-node-modules": "yarn rimraf node_modules back/node_modules front/node_modules e2e/node_modules",
-    "e2e": "yarn workspace e2e",
-    "front": "yarn workspace front"
+    "back:start": "pnpm --filter back start",
+    "back:dev": "pnpm --filter back dev",
+    "back:build": "pnpm --filter back build",
+    "back:upgrade": "pnpm --filter back upgrade",
+    "back:public-proxy": "pnpm --filter back public-proxy",
+    "front:dev": "pnpm --filter front dev",
+    "front:build": "pnpm --filter front build",
+    "front:preview": "pnpm --filter front preview",
+    "front:serve": "pnpm --filter front serve",
+    "e2e:open": "pnpm --filter e2e open"
   },
-  "resolutions": {
-    "@graphql-tools/schema": "8.5.1",
-    "jackspeak": "2.1.1"
-  },
-  "devDependencies": {
-    "rimraf": "^5.0.5"
-  },
-  "dependencies": {}
+  "dependencies": {
+    "back": "workspace:*",
+    "e2e": "workspace:*",
+    "front": "workspace:*",
+    "prettier": "^3.6.2"
+  }
 }

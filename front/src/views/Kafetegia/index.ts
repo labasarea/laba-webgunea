@@ -1,1 +1,0 @@
-export { Kafetegia } from './Kafetegia';

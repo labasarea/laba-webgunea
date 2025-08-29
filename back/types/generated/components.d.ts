@@ -1,148 +1,143 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface BiziElkarlana extends Schema.Component {
-  collectionName: 'components_bizi_elkarlanas';
+export interface EkintzaElkarlana extends Struct.ComponentSchema {
+  collectionName: 'components_ekintza_elkarlanas';
   info: {
     displayName: 'elkarlana';
     icon: 'handHeart';
-    description: '';
   };
   attributes: {
-    harremana: Attribute.String;
-    erakundeak: Attribute.Relation<
-      'bizi.elkarlana',
+    erakundeak: Schema.Attribute.Relation<
       'oneToMany',
       'api::erakundea.erakundea'
     >;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface KafetegiaAlergenoa extends Schema.Component {
-  collectionName: 'components_kafetegia_alergenoas';
+export interface EkintzaSarrera extends Struct.ComponentSchema {
+  collectionName: 'components_ekintza_sarreras';
   info: {
-    displayName: 'alergenoa';
-    icon: 'cat';
     description: '';
+    displayName: 'Sarrera';
+    icon: 'priceTag';
   };
   attributes: {
-    esnekiak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    arrautzak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    glutena: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    moluskuak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    krustazeoak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    arraina: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    lupinuak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    fruituLehorrak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    kakahueteak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    sesamoa: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    soja: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    sulfitoak: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    apioa: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    ziapea: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    deskribapena: Schema.Attribute.Text;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String;
   };
 }
 
-export interface KafetegiaEdaria extends Schema.Component {
-  collectionName: 'components_kafetegia_edarias';
+export interface HasieraIzanLabazkide extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_izan_labazkides';
   info: {
-    displayName: 'produktua';
-    icon: 'coffee';
+    displayName: 'Izan labazkide';
+    icon: 'pencil';
+  };
+  attributes: {
+    deskribapena: Schema.Attribute.RichText;
+    izenburua: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.Component<'hasiera.url', false> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface HasieraParteHartu extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_parte_hartus';
+  info: {
+    displayName: 'Parte hartu';
+    icon: 'handHeart';
+  };
+  attributes: {
+    deskribapena: Schema.Attribute.RichText;
+    izenburua: Schema.Attribute.String & Schema.Attribute.Required;
+    parteHartzea: Schema.Attribute.Component<'hasiera.parte-hartzea', true>;
+  };
+}
+
+export interface HasieraParteHartzea extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_parte_hartzeas';
+  info: {
+    displayName: 'Parte hartzea';
+    icon: 'handHeart';
+  };
+  attributes: {
+    deskribapena: Schema.Attribute.Text;
+    email: Schema.Attribute.String;
+    ikonoa: Schema.Attribute.Text &
+      Schema.Attribute.CustomField<
+        'plugin::icons-field.icon',
+        {
+          output: 'svg';
+        }
+      >;
+    izenburua: Schema.Attribute.String;
+  };
+}
+
+export interface HasieraUrl extends Struct.ComponentSchema {
+  collectionName: 'components_hasiera_urls';
+  info: {
+    displayName: 'url';
+    icon: 'link';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    target: Schema.Attribute.Enumeration<['self', 'blank']>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ParagraphIrudia extends Struct.ComponentSchema {
+  collectionName: 'components_paragraph_irudias';
+  info: {
     description: '';
+    displayName: 'irudia';
+    icon: 'picture';
   };
   attributes: {
-    beganoa: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    ekologikoa: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    prezioa: Attribute.Decimal & Attribute.Required & Attribute.DefaultTo<0>;
-    izena: Attribute.String & Attribute.Required;
-    alergenoak: Attribute.Component<'kafetegia.alergenoa'> & Attribute.Required;
+    media: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
   };
 }
 
-export interface KafetegiaIzenburua extends Schema.Component {
-  collectionName: 'components_kafetegia_izenburuas';
+export interface ParagraphTestua extends Struct.ComponentSchema {
+  collectionName: 'components_paragraph_testuas';
   info: {
-    displayName: 'Izenburua';
-    icon: 'strikeThrough';
     description: '';
+    displayName: 'testua';
+    icon: 'pencil';
   };
   attributes: {
-    izenburuBalioa: Attribute.String & Attribute.Required;
+    testua: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 
-export interface KafetegiaProduktuTaldea extends Schema.Component {
-  collectionName: 'components_kafetegia_produktu_taldeas';
+export interface ParagraphYoutube extends Struct.ComponentSchema {
+  collectionName: 'components_paragraph_youtubes';
   info: {
-    displayName: 'Produktu taldea';
-  };
-  attributes: {
-    izenburua: Attribute.String;
-    produktuak: Attribute.Component<'kafetegia.edaria', true> &
-      Attribute.Required;
-  };
-}
-
-export interface OrokorraDatuOrokorrak extends Schema.Component {
-  collectionName: 'components_orokorra_datu_orokorraks';
-  info: {
-    displayName: 'Datu orokorrak';
-    icon: 'house';
-  };
-  attributes: {
-    izenburua: Attribute.String;
-    deskribapena: Attribute.Text;
-  };
-}
-
-export interface OrokorraHelbidea extends Schema.Component {
-  collectionName: 'components_helbidea_helbideas';
-  info: {
-    displayName: 'helbidea';
-    icon: 'home';
     description: '';
+    displayName: 'youtube';
+    icon: 'play';
   };
   attributes: {
-    lehenLerroa: Attribute.String;
-    bigarrenLerroa: Attribute.String;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
-      'bizi.elkarlana': BiziElkarlana;
-      'kafetegia.alergenoa': KafetegiaAlergenoa;
-      'kafetegia.edaria': KafetegiaEdaria;
-      'kafetegia.izenburua': KafetegiaIzenburua;
-      'kafetegia.produktu-taldea': KafetegiaProduktuTaldea;
-      'orokorra.datu-orokorrak': OrokorraDatuOrokorrak;
-      'orokorra.helbidea': OrokorraHelbidea;
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
+      'ekintza.elkarlana': EkintzaElkarlana;
+      'ekintza.sarrera': EkintzaSarrera;
+      'hasiera.izan-labazkide': HasieraIzanLabazkide;
+      'hasiera.parte-hartu': HasieraParteHartu;
+      'hasiera.parte-hartzea': HasieraParteHartzea;
+      'hasiera.url': HasieraUrl;
+      'paragraph.irudia': ParagraphIrudia;
+      'paragraph.testua': ParagraphTestua;
+      'paragraph.youtube': ParagraphYoutube;
     }
   }
 }
