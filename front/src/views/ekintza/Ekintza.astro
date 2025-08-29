@@ -78,10 +78,10 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   @use "../../style/tools/mediaQueries.scss";
 
   main {
-    @include grid12Columns.grid;
     gap: var(--space-05-mobile);
     padding: var(--space-05-mobile);
 
+    @include grid12Columns.grid;
     @include mediaQueries.aboveTablet {
       padding: var(--space-07-desktop);
     }
@@ -116,9 +116,9 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   h1 {
     margin-bottom: var(--space-04-mobile);
 
-    @include displayFonts.display2;
     color: var(--gorria);
 
+    @include displayFonts.display2;
     @include mediaQueries.aboveTablet {
       margin-bottom: var(--space-04-desktop);
     }
@@ -133,9 +133,9 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   }
 
   .hitzordua {
-    @include displayFonts.display3;
     color: var(--gorria);
     text-transform: capitalize;
+    @include displayFonts.display3;
   }
 
   .zikloa {
@@ -143,7 +143,6 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
     padding: var(--space-02-mobile) var(--space-03-mobile);
     margin-top: var(--space-04-mobile);
 
-    @include textFonts.captionFont;
     color: var(--marroia);
     text-decoration: none;
     border-radius: var(--space-05-mobile);
@@ -153,6 +152,7 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
       text-decoration: underline;
     }
 
+    @include textFonts.captionFont;
     @include mediaQueries.aboveTablet {
       padding: var(--space-02-desktop) var(--space-04-desktop);
       margin-top: var(--space-05-desktop);
@@ -165,9 +165,9 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   h2 {
     margin-top: var(--space-04-mobile);
 
-    @include displayFonts.display4;
     color: var(--marroia);
 
+    @include displayFonts.display4;
     @include mediaQueries.aboveTablet {
       margin-top: var(--space-05-desktop);
     }

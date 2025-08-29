@@ -25,14 +25,14 @@ const { title } = Astro.props;
 </html>
 
 <style lang="scss">
-  @import "../style/mixins/textFonts.scss";
+  @use "../style/mixins/textFonts.scss";
 
   body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100dvh;
 
-    @include bodyFont;
+    @include textFonts.bodyFont;
 
     &.no-scroll {
       overflow: hidden;

@@ -128,7 +128,6 @@ const currentPath = Astro.url.pathname;
 <style lang="scss">
   @use "../../style/mixins/textFonts.scss";
   @use "../../style/tools/mediaQueries.scss";
-  @use "sass:color";
 
   header {
     display: flex;
@@ -194,8 +193,8 @@ const currentPath = Astro.url.pathname;
   }
 
   h2 {
-    @include textFonts.bodyFont;
     text-transform: uppercase;
+    @include textFonts.bodyFont;
   }
 
   ul {

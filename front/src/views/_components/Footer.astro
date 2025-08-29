@@ -86,15 +86,14 @@ import ZigZag from "./ZigZag.astro";
   }
 
   address {
-    @include textFonts.captionFont;
     font-style: normal;
     text-transform: uppercase;
     text-align: end;
 
+    @include textFonts.captionFont;
     @include mediaQueries.aboveTablet {
-      @include textFonts.bodyFont;
-
       text-align: initial;
+      @include textFonts.bodyFont;
     }
   }
 

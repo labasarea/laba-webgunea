@@ -124,20 +124,20 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
   }
 
   .agenda {
-    @include sectionPadding;
-
     z-index: 20;
+
+    @include sectionPadding;
   }
 
   .izan-labazkide {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: var(--space-03-mobile);
-    @include sectionPadding;
 
     background-color: var(--gorria);
     color: var(--zuria);
 
+    @include sectionPadding;
     @include mediaQueries.aboveTablet {
       gap: var(--space-05-desktop);
     }
@@ -165,12 +165,12 @@ const { izenburua, izanLabazkide, parteHartu, mosaikoa }: Hasiera = hasiera;
     display: flex;
     align-items: center;
     flex-direction: column;
-    @include sectionPadding;
     gap: var(--space-06-mobile);
 
     color: var(--marroia);
     text-align: center;
 
+    @include sectionPadding;
     @include mediaQueries.aboveTablet {
       gap: var(--space-06-desktop);
       text-align: left;

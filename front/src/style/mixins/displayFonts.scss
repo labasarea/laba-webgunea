@@ -3,7 +3,10 @@
 
 @mixin display1() {
   @include displayFontBase;
-  font-size: #{toDVW.toMobileDVW(44)};
+
+  & {
+    font-size: #{toDVW.toMobileDVW(44)};
+  }
 
   @include mediaQueries.aboveTablet {
     font-size: #{toDVW.toDesktopDVW(65)};
@@ -12,7 +15,10 @@
 
 @mixin display2() {
   @include displayFontBase;
-  font-size: #{toDVW.toMobileDVW(36)};
+
+  & {
+    font-size: #{toDVW.toMobileDVW(36)};
+  }
 
   @include mediaQueries.aboveTablet {
     font-size: #{toDVW.toDesktopDVW(49)};
@@ -21,7 +27,10 @@
 
 @mixin display3() {
   @include displayFontBase;
-  font-size: #{toDVW.toMobileDVW(26)};
+
+  & {
+    font-size: #{toDVW.toMobileDVW(26)};
+  }
 
   @include mediaQueries.aboveTablet {
     font-size: #{toDVW.toDesktopDVW(37)};
@@ -30,7 +39,10 @@
 
 @mixin display4() {
   @include displayFontBase;
-  font-size: #{toDVW.toMobileDVW(22)};
+
+  & {
+    font-size: #{toDVW.toMobileDVW(22)};
+  }
 
   @include mediaQueries.aboveTablet {
     font-size: #{toDVW.toDesktopDVW(28)};
@@ -39,7 +51,10 @@
 
 @mixin display5() {
   @include displayFontBase;
-  font-size: #{toDVW.toMobileDVW(19)};
+
+  & {
+    font-size: #{toDVW.toMobileDVW(19)};
+  }
 
   @include mediaQueries.aboveTablet {
     font-size: #{toDVW.toDesktopDVW(21)};
@@ -48,7 +63,10 @@
 
 @mixin display6() {
   @include displayFontBase;
-  font-size: #{toDVW.toMobileDVW(16)};
+
+  & {
+    font-size: #{toDVW.toMobileDVW(16)};
+  }
 
   @include mediaQueries.aboveTablet {
     font-size: #{toDVW.toDesktopDVW(16)};
@@ -56,6 +74,8 @@
 }
 
 @mixin displayFontBase() {
-  font-family: "Sohne", sans-serif;
-  line-height: 110%;
+  & {
+    font-family: "Sohne", sans-serif;
+    line-height: 110%;
+  }
 }

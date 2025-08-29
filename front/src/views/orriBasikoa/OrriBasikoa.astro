@@ -35,7 +35,6 @@ const { orriBasikoa } = Astro.props;
   @use "../../style/tools/mediaQueries.scss";
 
   main {
-    @include grid12Columns.grid;
     padding-left: var(--space-05-mobile);
     padding-right: var(--space-05-mobile);
     padding-top: var(--space-05-mobile);
@@ -43,6 +42,7 @@ const { orriBasikoa } = Astro.props;
 
     color: var(--marroia);
 
+    @include grid12Columns.grid;
     @include mediaQueries.aboveTablet {
       padding-left: var(--space-07-desktop);
       padding-right: var(--space-07-desktop);

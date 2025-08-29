@@ -45,9 +45,9 @@ const { partehartzea } = Astro.props;
   }
 
   h3 {
-    @include displayFonts.display4;
     margin-bottom: var(--space-04-mobile);
 
+    @include displayFonts.display4;
     @include mediaQueries.aboveTablet {
       margin-bottom: var(--space-05-desktop);
     }
@@ -63,12 +63,13 @@ const { partehartzea } = Astro.props;
   }
 
   a {
-    @include displayFonts.display6;
     color: var(--marroia);
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
     }
+
+    @include displayFonts.display6;
   }
 </style>
