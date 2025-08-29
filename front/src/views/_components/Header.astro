@@ -103,18 +103,7 @@ const currentPath = Astro.url.pathname;
   const dialog = document.getElementById("ham-dialog");
   const closeBtn = document.getElementById("close-dialog");
 
-  hamBtn?.addEventListener("click", () => {
-    if (dialog) {
-      dialog.showModal();
-      // Esperar un tick para que el navegador "pinte" el open
-      requestAnimationFrame(() => {
-        dialog.classList.add("show");
-      });
-      document.body.classList.add("no-scroll");
-    }
-  });
-
-  closeBtn?.addEventListener("click", () => {
+  function closeDialog() {
     if (dialog) {
       dialog.classList.remove("show");
       dialog.classList.add("hide");
@@ -124,6 +113,24 @@ const currentPath = Astro.url.pathname;
       }, 300);
       document.body.classList.remove("no-scroll");
     }
+  }
+
+  hamBtn?.addEventListener("click", () => {
+    if (dialog) {
+      dialog.showModal();
+      requestAnimationFrame(() => {
+        dialog.classList.add("show");
+      });
+      document.body.classList.add("no-scroll");
+    }
+  });
+
+  closeBtn?.addEventListener("click", closeDialog);
+
+  dialog?.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      closeDialog();
+    });
   });
 </script>
 
