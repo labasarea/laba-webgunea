@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 
 import { type EkintzaSnippet, getShortDate, getUrl } from "models/Ekintza";
 import { getImageData, type ImageData } from "models/ImageMedia";
 import styles from "./EkintzaZerrenda.module.scss";
+import moment from "moment";
 
 interface Props {
   ekintzak: EkintzaSnippet[];
@@ -18,7 +19,17 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   ekintzak,
   isMainTitle = false,
 }) => {
-  const [activeEkintza, setActiveEkintza] = useState<EkintzaSnippet>();
+  const sortedEkintzak = useMemo(
+    () =>
+      [...ekintzak].sort((a, b) =>
+        moment(a.hitzordua).isBefore(b.hitzordua) ? -1 : 1
+      ),
+    [ekintzak]
+  );
+
+  const [activeEkintza, setActiveEkintza] = useState<EkintzaSnippet>(
+    sortedEkintzak[0]
+  );
   const [playInterval, setPlayInterval] = useState(true);
 
   const imageToShow = activeEkintza?.mainMedia
@@ -33,7 +44,9 @@ export const EkintzaZerrenda: React.FC<Props> = ({
         return;
       }
 
-      setActiveEkintza(ekintzak[Math.floor(Math.random() * ekintzak.length)]);
+      setActiveEkintza(
+        sortedEkintzak[Math.floor(Math.random() * sortedEkintzak.length)]
+      );
     }, 1800);
 
     return () => {
@@ -80,7 +93,7 @@ export const EkintzaZerrenda: React.FC<Props> = ({
         {description && <p className={styles.description}>{description}</p>}
 
         <ul className={styles.zerrenda}>
-          {ekintzak.map((ekintza) => (
+          {sortedEkintzak.map((ekintza) => (
             <li
               key={ekintza.id}
               onMouseEnter={() => handleMouseEnter(ekintza)}
