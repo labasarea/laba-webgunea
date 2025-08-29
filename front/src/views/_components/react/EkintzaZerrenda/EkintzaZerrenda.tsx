@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 
 import { type EkintzaSnippet, getShortDate, getUrl } from "models/Ekintza";
 import { getImageData, type ImageData } from "models/ImageMedia";
@@ -16,12 +17,24 @@ export const EkintzaZerrenda: React.FC<Props> = ({
   ekintzak,
 }) => {
   const [imageToShow, setImageToShow] = useState<ImageData>();
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    if (imgRef.current) {
+      gsap.fromTo(
+        imgRef.current,
+        { autoAlpha: 0, scale: 1.05 },
+        { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power2.out" }
+      );
+    }
+  }, [imageToShow]);
 
   return (
     <div className={styles.wrapper}>
       <div aria-hidden className={styles.mainMediaWrapper}>
         {imageToShow && (
           <img
+            ref={imgRef}
             className={styles.mainMedia}
             alt={imageToShow.alt}
             src={imageToShow.src}
@@ -46,7 +59,20 @@ export const EkintzaZerrenda: React.FC<Props> = ({
                 }
                 setImageToShow(getImageData(ekintza.mainMedia));
               }}
-              onMouseLeave={() => setImageToShow(undefined)}
+              onMouseLeave={() => {
+                if (imgRef.current) {
+                  // animamos salida antes de desmontar
+                  gsap.to(imgRef.current, {
+                    autoAlpha: 0,
+                    scale: 0.95,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: () => setImageToShow(undefined),
+                  });
+                } else {
+                  setImageToShow(undefined);
+                }
+              }}
             >
               <a className={styles.esteka} href={getUrl(ekintza)}>
                 <span>{ekintza.izenburua}</span>
