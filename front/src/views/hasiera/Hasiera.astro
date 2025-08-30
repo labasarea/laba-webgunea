@@ -53,11 +53,11 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
         <h2 class="title">{izanLabazkide.izenburua}</h2>
 
         <MarkdownParser content={izanLabazkide.deskribapena} />
-
-        <a class="izan-labazkide--url" href={izanLabazkide.url.url}
-          >{izanLabazkide.url.label}</a
-        >
       </div>
+
+      <a class="izan-labazkide--url" href={izanLabazkide.url.url}
+        >{izanLabazkide.url.label}</a
+      >
     </section>
 
     <ZigZag from="gorria" to="gorria-background" />
@@ -91,6 +91,7 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
 <style lang="scss">
   @use "../../style/mixins/displayFonts.scss";
   @use "../../style/tools/mediaQueries.scss";
+  @use "../../style/tools/toDVW.scss";
 
   @mixin sectionPadding() {
     padding: var(--space-07-mobile) var(--space-05-mobile);
@@ -174,7 +175,29 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
   }
 
   .izan-labazkide--url {
+    display: inline-block;
+    padding: var(--space-02-mobile) var(--space-03-mobile);
+    margin-top: var(--space-04-mobile);
+    grid-column: col-start 3 / span 8;
+
     color: var(--zuria);
+    text-decoration: none;
+    text-align: center;
+    border-radius: var(--space-05-mobile);
+    border: #{toDVW.toMobileDVW(1)} solid var(--zuria);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-02-desktop) var(--space-04-desktop);
+      margin-top: var(--space-05-desktop);
+      grid-column: col-start 6 / span 2;
+
+      border-radius: var(--space-06-desktop);
+      border: #{toDVW.toDesktopDVW(1)} solid var(--zuria);
+    }
   }
 
   .parte-hartu {
