@@ -127,14 +127,8 @@ function shuffle<T>(array: T[]) {
     width: 100%;
     overflow: visible;
 
-    &:nth-child(n + 31) {
+    &:nth-child(n + 61) {
       display: none;
-    }
-
-    @include mediaQueries.aboveTablet {
-      &:nth-child(n + 31) {
-        display: block;
-      }
     }
   }
 
