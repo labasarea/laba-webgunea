@@ -130,10 +130,12 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
   }
 
   .logo {
-    width: 100%;
+    width: min(100%, fit-content);
+    max-height: 22svh;
 
     @include mediaQueries.aboveTablet {
       height: 33svh;
+      max-height: 33svh;
     }
   }
 
