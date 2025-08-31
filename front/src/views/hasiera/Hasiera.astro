@@ -177,7 +177,7 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
 
   .izan-labazkide--url {
     display: inline-block;
-    padding: var(--space-02-mobile) var(--space-03-mobile);
+    padding: var(--space-03-mobile) var(--space-04-mobile);
     margin-top: var(--space-04-mobile);
     grid-column: col-start 3 / span 8;
 
@@ -187,12 +187,17 @@ const hurrengoEkintzak = ekintzak.filter((ekintza) =>
     border-radius: var(--space-05-mobile);
     border: #{toDVW.toMobileDVW(1)} solid var(--zuria);
 
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+
     &:hover {
-      text-decoration: underline;
+      color: var(--gorria);
+      background-color: var(--zuria);
     }
 
     @include mediaQueries.aboveTablet {
-      padding: var(--space-02-desktop) var(--space-04-desktop);
+      padding: var(--space-04-desktop) var(--space-05-desktop);
       margin-top: var(--space-05-desktop);
       grid-column: col-start 6 / span 2;
 
