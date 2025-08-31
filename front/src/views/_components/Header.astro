@@ -27,7 +27,9 @@ const currentPath = Astro.url.pathname;
     )
   }
 
-  <button class="mobile-only menu-button" id="ham-btn"><Hamburger /></button>
+  <button class="mobile-only menu-button" id="ham-btn"
+    ><span class="visually-hidden">Menua ireki</span><Hamburger /></button
+  >
 
   <nav class="desktop-only">
     <h2>Menua</h2>
@@ -56,7 +58,9 @@ const currentPath = Astro.url.pathname;
 
 <dialog id="ham-dialog">
   <button class="close-button" id="close-dialog"
-    ><Close class="menu-button" /></button
+    ><span class="visually-hidden">Menua itxi</span><Close
+      class="menu-button"
+    /></button
   >
 
   <nav>
