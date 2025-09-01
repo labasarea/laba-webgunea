@@ -12,7 +12,7 @@ interface Props {
 const { zikloa } = Astro.props;
 ---
 
-<Layout title={zikloa.izena}>
+<Layout title={zikloa.izena} description={zikloa.deskribapena}>
   <Header />
   <main>
     <EkintzaZerrenda

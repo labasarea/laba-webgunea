@@ -21,7 +21,7 @@ const { ekintza } = Astro.props;
 const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
 ---
 
-<Layout title={ekintza.izenburua}>
+<Layout title={ekintza.izenburua} description={ekintza.titularra}>
   <Header />
 
   <main>
