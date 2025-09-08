@@ -45,6 +45,12 @@ const currentPath = Astro.url.pathname;
     <ul>
       <li><a href="https://mastodon.eus/@labasarea">Mastodon</a></li>
       <li><a href="/rss.xml">RSS</a></li>
+      <li>
+        <a href="https://bsky.app/profile/labasarea.bsky.social">Bluesky</a>
+      </li>
+      <li>
+        <a href="http://t.me/labasarea">Telegram</a>
+      </li>
       <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
       <li><a href="https://twitter.com/labasarea/">X</a></li>
     </ul>
@@ -77,6 +83,12 @@ const currentPath = Astro.url.pathname;
     <ul>
       <li><a href="https://mastodon.eus/@labasarea">Mastodon</a></li>
       <li><a href="/rss.xml">RSS</a></li>
+      <li>
+        <a href="https://bsky.app/profile/labasarea.bsky.social">Bluesky</a>
+      </li>
+      <li>
+        <a href="http://t.me/labasarea">Telegram</a>
+      </li>
       <li><a href="https://www.instagram.com/labasarea/">Instagram</a></li>
       <li><a href="https://twitter.com/labasarea/">X</a></li>
     </ul>
@@ -156,7 +168,8 @@ const currentPath = Astro.url.pathname;
 
     @include mediaQueries.aboveTablet {
       display: grid;
-      grid-template-columns: 1fr 1.5fr 1fr 1fr;
+      grid-template-columns: 1fr 1.2fr 1.7fr 0.8fr;
+      gap: var(--space-07-desktop);
       padding: var(--space-07-desktop);
     }
   }
@@ -217,6 +230,8 @@ const currentPath = Astro.url.pathname;
     gap: var(--space-03-mobile);
     padding: 0;
     list-style: none;
+    flex-wrap: wrap;
+    width: 100%;
 
     @include mediaQueries.aboveTablet {
       gap: var(--space-03-desktop);
@@ -224,6 +239,8 @@ const currentPath = Astro.url.pathname;
   }
 
   li {
+    display: inline-flex;
+
     &:not(:last-child) {
       &::after {
         content: ",";
