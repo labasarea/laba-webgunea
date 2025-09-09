@@ -10,14 +10,30 @@ interface Props {
 const { paragraph } = Astro.props;
 ---
 
-{
-  paragraph.type === "ComponentParagraphIrudia" && (
-    <ParagraphIrudia media={paragraph.media} />
-  )
-}
+<div>
+  {
+    paragraph.type === "ComponentParagraphIrudia" && (
+      <ParagraphIrudia media={paragraph.media} />
+    )
+  }
 
-{
-  paragraph.type === "ComponentParagraphTestua" && (
-    <ParagraphTestua testua={paragraph.testua} />
-  )
-}
+  {
+    paragraph.type === "ComponentParagraphTestua" && (
+      <ParagraphTestua testua={paragraph.testua} />
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use "../../../style/tools/mediaQueries.scss";
+
+  div {
+    margin-bottom: var(--space-05-mobile);
+
+    &:not(:last-child) {
+      @include mediaQueries.aboveTablet {
+        margin-bottom: var(--space-05-desktop);
+      }
+    }
+  }
+</style>
