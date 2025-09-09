@@ -118,6 +118,12 @@ const orriBasikoak = defineCollection({
                     formats
                   }
                 }
+                ... on ComponentParagraphCallToAction {
+                  type: __typename
+                  id
+                  url
+                  label
+                }
               }
             }
           }

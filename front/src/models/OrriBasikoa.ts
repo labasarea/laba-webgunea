@@ -13,7 +13,17 @@ interface ParagraphTestua {
   testua: Markdown;
 }
 
-export type Paragraph = ParagraphTestua | ParagraphIrudia;
+interface ParagraphCallToAction {
+  type: "ComponentParagraphCallToAction";
+  id: string;
+  url: string;
+  label: string;
+}
+
+export type Paragraph =
+  | ParagraphTestua
+  | ParagraphIrudia
+  | ParagraphCallToAction;
 
 export interface OrriBasikoa {
   id: string;

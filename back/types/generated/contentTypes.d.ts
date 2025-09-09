@@ -495,7 +495,7 @@ export interface ApiOrriBasikoaOrriBasikoa extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     deskribapena: Schema.Attribute.Text;
     edukiLibrea: Schema.Attribute.DynamicZone<
-      ['paragraph.testua', 'paragraph.youtube', 'paragraph.irudia']
+      ['paragraph.testua', 'paragraph.irudia', 'paragraph.call-to-action']
     >;
     izenburua: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

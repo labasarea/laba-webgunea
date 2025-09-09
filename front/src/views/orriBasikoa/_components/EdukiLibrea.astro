@@ -2,6 +2,7 @@
 import type { Paragraph } from "models/OrriBasikoa";
 import ParagraphIrudia from "./ParagraphIrudia.astro";
 import ParagraphTestua from "./ParagraphTestua.astro";
+import ParagraphCallToAction from "./ParagraphCallToAction.astro";
 
 interface Props {
   paragraph: Paragraph;
@@ -14,6 +15,12 @@ const { paragraph } = Astro.props;
   {
     paragraph.type === "ComponentParagraphIrudia" && (
       <ParagraphIrudia media={paragraph.media} />
+    )
+  }
+
+  {
+    paragraph.type === "ComponentParagraphCallToAction" && (
+      <ParagraphCallToAction url={paragraph.url} label={paragraph.label} />
     )
   }
 

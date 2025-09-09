@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_paragraph_call_to_actions",
+  "info": {
+    "displayName": "call to action",
+    "icon": "rocket"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

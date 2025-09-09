@@ -1,0 +1,47 @@
+---
+interface Props {
+  url: string;
+  label: string;
+}
+
+const { url, label } = Astro.props;
+---
+
+<div>
+  <a href={url}>{label}</a>
+</div>
+
+<style lang="scss">
+  @use "../../../style/tools/mediaQueries.scss";
+  @use "../../../style/tools/toDVW.scss";
+  @use "../../../style/mixins/displayFonts.scss";
+
+  div {
+    text-align: center;
+  }
+
+  a {
+    display: inline-block;
+    padding: var(--space-04-mobile) var(--space-06-mobile);
+
+    border-radius: var(--space-06-mobile);
+    background-color: var(--gorria);
+    text-decoration: none;
+    color: var(--zuria);
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      color: var(--gorria);
+      background-color: var(--zuria);
+    }
+
+    @include displayFonts.display6;
+    @include mediaQueries.aboveTablet {
+      border-radius: var(--space-06-desktop);
+      padding: var(--space-04-desktop) var(--space-06-desktop);
+    }
+  }
+</style>

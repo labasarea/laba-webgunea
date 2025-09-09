@@ -27,8 +27,8 @@
       "type": "dynamiczone",
       "components": [
         "paragraph.testua",
-        "paragraph.youtube",
-        "paragraph.irudia"
+        "paragraph.irudia",
+        "paragraph.call-to-action"
       ]
     }
   }

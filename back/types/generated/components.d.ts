@@ -89,6 +89,18 @@ export interface HasieraUrl extends Struct.ComponentSchema {
   };
 }
 
+export interface ParagraphCallToAction extends Struct.ComponentSchema {
+  collectionName: 'components_paragraph_call_to_actions';
+  info: {
+    displayName: 'call to action';
+    icon: 'rocket';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ParagraphIrudia extends Struct.ComponentSchema {
   collectionName: 'components_paragraph_irudias';
   info: {
@@ -135,6 +147,7 @@ declare module '@strapi/strapi' {
       'hasiera.parte-hartu': HasieraParteHartu;
       'hasiera.parte-hartzea': HasieraParteHartzea;
       'hasiera.url': HasieraUrl;
+      'paragraph.call-to-action': ParagraphCallToAction;
       'paragraph.irudia': ParagraphIrudia;
       'paragraph.testua': ParagraphTestua;
       'paragraph.youtube': ParagraphYoutube;
