@@ -1,5 +1,7 @@
 import type { ImageMedia } from "./ImageMedia";
 import type { Zikloa } from "./Zikloa";
+import dayjs from "dayjs";
+import "dayjs/locale/eu";
 
 export interface Ekintza {
   id: string;
@@ -24,10 +26,7 @@ export type EkintzaSnippet = Pick<
 
 export function getShortDate(ekintza: Pick<Ekintza, "hitzordua">): string {
   const date = new Date(ekintza.hitzordua);
-  const day = date.getDate();
-  const month = date.toLocaleString("eu", { month: "short" });
-
-  return `${month} ${day}`;
+  return dayjs(date).locale("eu").format("MMM D");
 }
 
 export function getUrl(ekintza: Pick<Ekintza, "slug">): string {
