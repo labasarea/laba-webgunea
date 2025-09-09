@@ -1,0 +1,26 @@
+---
+import { getImageData, type ImageMedia } from "models/ImageMedia";
+
+interface Props {
+  media: ImageMedia;
+}
+
+const { media } = Astro.props;
+
+const imageData = getImageData(media, { preferredFormat: "large" });
+---
+
+<img
+  class="irudia"
+  alt={media.alternativeText}
+  src={imageData.src}
+  width={imageData.width}
+  height={imageData.height}
+/>
+
+<style lang="scss">
+  img {
+    width: 100%;
+    height: auto;
+  }
+</style>

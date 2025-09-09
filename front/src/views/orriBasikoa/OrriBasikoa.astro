@@ -4,6 +4,8 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "views/_components/Header.astro";
 import Footer from "views/_components/Footer.astro";
 import MarkdownParser from "views/_components/MarkdownParser.astro";
+import { getImageData } from "models/ImageMedia";
+import EdukiLibrea from "./_components/EdukiLibrea.astro";
 
 interface Props {
   orriBasikoa: OrriBasikoa;
@@ -19,8 +21,8 @@ const { orriBasikoa } = Astro.props;
     <h1>{orriBasikoa.izenburua}</h1>
     <article>
       {
-        orriBasikoa.edukiLibrea.map((paragraphTestua) => (
-          <MarkdownParser content={paragraphTestua.testua} />
+        orriBasikoa.edukiLibrea.map((paragraph) => (
+          <EdukiLibrea paragraph={paragraph} />
         ))
       }
     </article>

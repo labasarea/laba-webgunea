@@ -1,17 +1,19 @@
+interface Format {
+  url: string;
+  height: number;
+  width: number;
+}
+
+interface FormatsObject {
+  thumbnail: Format;
+  small?: Format;
+  medium?: Format;
+  large?: Format;
+}
+
 export interface ImageMedia {
   alternativeText?: string;
-  formats: {
-    thumbnail: {
-      url: string;
-      height: number;
-      width: number;
-    };
-    small?: {
-      url: string;
-      height: number;
-      width: number;
-    };
-  };
+  formats: FormatsObject;
 }
 
 export interface ImageData {
@@ -21,7 +23,33 @@ export interface ImageData {
   width: number;
 }
 
-export function getImageData(imageMedia: ImageMedia): ImageData {
+export function getImageData(
+  imageMedia: ImageMedia,
+  options: { preferredFormat?: "thumbnail" | "small" | "medium" | "large" } = {
+    preferredFormat: "small",
+  }
+): ImageData {
+  if (imageMedia.formats.large && options.preferredFormat === "large") {
+    return {
+      alt: imageMedia.alternativeText ?? "",
+      src: imageMedia.formats.large.url,
+      width: imageMedia.formats.large.width,
+      height: imageMedia.formats.large.height,
+    };
+  }
+
+  if (
+    imageMedia.formats.medium &&
+    (options.preferredFormat === "large" || options.preferredFormat == "medium")
+  ) {
+    return {
+      alt: imageMedia.alternativeText ?? "",
+      src: imageMedia.formats.medium.url,
+      width: imageMedia.formats.medium.width,
+      height: imageMedia.formats.medium.height,
+    };
+  }
+
   if (imageMedia.formats.small) {
     return {
       alt: imageMedia.alternativeText ?? "",

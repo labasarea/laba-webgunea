@@ -106,8 +106,17 @@ const orriBasikoak = defineCollection({
               deskribapena
               edukiLibrea {
                 ... on ComponentParagraphTestua {
+                  type: __typename
                   id
                   testua
+                }
+                ... on ComponentParagraphIrudia {
+                  type: __typename
+                  id
+                  media {
+                    alternativeText
+                    formats
+                  }
                 }
               }
             }

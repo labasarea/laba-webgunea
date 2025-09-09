@@ -1,0 +1,23 @@
+---
+import type { Paragraph } from "models/OrriBasikoa";
+import ParagraphIrudia from "./ParagraphIrudia.astro";
+import ParagraphTestua from "./ParagraphTestua.astro";
+
+interface Props {
+  paragraph: Paragraph;
+}
+
+const { paragraph } = Astro.props;
+---
+
+{
+  paragraph.type === "ComponentParagraphIrudia" && (
+    <ParagraphIrudia media={paragraph.media} />
+  )
+}
+
+{
+  paragraph.type === "ComponentParagraphTestua" && (
+    <ParagraphTestua testua={paragraph.testua} />
+  )
+}

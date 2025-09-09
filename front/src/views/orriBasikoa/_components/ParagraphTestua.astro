@@ -1,0 +1,12 @@
+---
+import type { Markdown } from "models/Markdown";
+import MarkdownParser from "views/_components/MarkdownParser.astro";
+
+interface Props {
+  testua: Markdown;
+}
+
+const { testua } = Astro.props;
+---
+
+<MarkdownParser content={testua} />
