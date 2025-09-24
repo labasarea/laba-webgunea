@@ -39,10 +39,14 @@ const { elkarlana } = Astro.props;
   @use "../../../style/tools/mediaQueries.scss";
 
   h2 {
-    @include displayFonts.display5;
     color: var(--gorria);
     margin-bottom: var(--space-03-mobile);
 
+    &::after {
+      content: ":";
+    }
+
+    @include displayFonts.display5;
     @include mediaQueries.aboveTablet {
       margin-bottom: var(--space-05-desktop);
     }
