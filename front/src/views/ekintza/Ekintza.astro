@@ -11,6 +11,7 @@ import { getImageData } from "models/ImageMedia";
 
 import "dayjs/locale/eu";
 import Elkarlana from "./_components/Elkarlana.astro";
+import Sarrera from "./_components/Sarrera.astro";
 dayjs.locale("eu");
 
 interface Props {
@@ -67,6 +68,8 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
       }
 
       <h2>{ekintza.titularra}</h2>
+
+      {ekintza.sarrera && <Sarrera sarrera={ekintza.sarrera} />}
 
       {
         ekintza.deskribapena && (

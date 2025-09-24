@@ -1,0 +1,62 @@
+---
+import type { Sarrera } from "models/Ekintza";
+
+interface Props {
+  sarrera: Sarrera;
+}
+
+const { sarrera } = Astro.props;
+---
+
+{
+  sarrera.url ? (
+    <a href={sarrera.url}>{sarrera.label}</a>
+  ) : (
+    <p class="label">{sarrera.label}</p>
+  )
+}
+
+<p class="deskribapena">{sarrera.deskribapena}</p>
+
+<style lang="scss">
+  @use "../../../style/mixins/displayFonts.scss";
+  @use "../../../style/mixins/textFonts.scss";
+  @use "../../../style/tools/toDVW.scss";
+  @use "../../../style/tools/mediaQueries.scss";
+
+  .label {
+    color: var(--marroia);
+    @include displayFonts.display6;
+  }
+
+  .deskribapena {
+    margin-top: var(--space-01-mobile);
+
+    color: var(--marroia);
+    font-style: italic;
+    @include textFonts.captionFont;
+    @include mediaQueries.aboveTablet {
+      margin-top: var(--space-01-desktop);
+    }
+  }
+
+  a {
+    display: inline-block;
+    padding: var(--space-02-mobile) var(--space-03-mobile);
+
+    color: var(--marroia);
+    text-decoration: none;
+    border: #{toDVW.toMobileDVW(2)} solid var(--marroia);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include displayFonts.display6;
+    @include mediaQueries.aboveTablet {
+      padding: var(--space-02-desktop) var(--space-04-desktop);
+
+      border: #{toDVW.toDesktopDVW(2)} solid var(--marroia);
+    }
+  }
+</style>

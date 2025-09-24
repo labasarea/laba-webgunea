@@ -9,6 +9,12 @@ export interface Elkarlana {
   erakundeak?: Erakundea[];
 }
 
+export interface Sarrera {
+  label: string;
+  deskribapena?: string;
+  url?: string;
+}
+
 export interface Ekintza {
   id: string;
   slug: string;
@@ -18,10 +24,7 @@ export interface Ekintza {
   deskribapena: string;
   hitzordua: string;
   elkarlana?: Elkarlana;
-  sarrera: {
-    label: string;
-    deskribapena: string;
-  };
+  sarrera: Sarrera;
   mainMedia: ImageMedia;
   zikloa: Pick<Zikloa, "izena" | "slug">;
 }
