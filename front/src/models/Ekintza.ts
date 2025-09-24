@@ -1,7 +1,13 @@
+import type { Erakundea } from "./Erakundea";
 import type { ImageMedia } from "./ImageMedia";
 import type { Zikloa } from "./Zikloa";
 import dayjs from "dayjs";
 import "dayjs/locale/eu";
+
+export interface Elkarlana {
+  label: string;
+  erakundeak?: Erakundea[];
+}
 
 export interface Ekintza {
   id: string;
@@ -11,6 +17,7 @@ export interface Ekintza {
   titularra: string;
   deskribapena: string;
   hitzordua: string;
+  elkarlana?: Elkarlana;
   sarrera: {
     label: string;
     deskribapena: string;

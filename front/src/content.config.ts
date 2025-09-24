@@ -23,6 +23,7 @@ const ekintzak = defineCollection({
                     logo {
                       formats
                     }
+                    esteka
                   }
                 }
                 hitzordua

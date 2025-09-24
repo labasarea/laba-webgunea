@@ -10,6 +10,7 @@ import { getUrl } from "models/Zikloa";
 import { getImageData } from "models/ImageMedia";
 
 import "dayjs/locale/eu";
+import Elkarlana from "./_components/Elkarlana.astro";
 dayjs.locale("eu");
 
 interface Props {
@@ -35,6 +36,14 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
             width={irudia.width}
             height={irudia.height}
           />
+        )
+      }
+
+      {
+        ekintza.elkarlana && (
+          <div class="elkarlana-wrapper-desktop">
+            <Elkarlana elkarlana={ekintza.elkarlana} />
+          </div>
         )
       }
     </aside>
@@ -63,6 +72,14 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
         ekintza.deskribapena && (
           <div class="deskribapena">
             <MarkdownParser content={ekintza.deskribapena} />
+          </div>
+        )
+      }
+
+      {
+        ekintza.elkarlana && (
+          <div class="elkarlana-wrapper-mobile">
+            <Elkarlana elkarlana={ekintza.elkarlana} />
           </div>
         )
       }
@@ -178,8 +195,26 @@ const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
   .deskribapena {
     margin-top: var(--space-04-mobile);
 
+    color: var(--marroia);
+
     @include mediaQueries.aboveTablet {
       margin-top: var(--space-05-desktop);
+    }
+  }
+
+  .elkarlana-wrapper-desktop {
+    margin-top: var(--space-07-desktop);
+
+    @include mediaQueries.belowTablet {
+      display: none;
+    }
+  }
+
+  .elkarlana-wrapper-mobile {
+    margin-top: var(--space-05-mobile);
+
+    @include mediaQueries.aboveTablet {
+      display: none;
     }
   }
 </style>

@@ -1,0 +1,87 @@
+---
+import { type Elkarlana } from "models/Ekintza";
+import { getImageData } from "models/ImageMedia";
+
+interface Props {
+  elkarlana: Elkarlana;
+}
+
+const { elkarlana } = Astro.props;
+---
+
+<div>
+  <h2>{elkarlana.label}</h2>
+
+  {
+    elkarlana.erakundeak?.map((erakundea) => {
+      const irudia = erakundea.logo ? getImageData(erakundea.logo) : null;
+
+      return (
+        <a href={erakundea.esteka}>
+          {irudia && (
+            <img
+              src={irudia.src}
+              height={irudia.height}
+              width={irudia.width}
+              alt={irudia.alt}
+            />
+          )}
+
+          <span>{erakundea.izena}</span>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style lang="scss">
+  @use "../../../style/mixins/displayFonts.scss";
+  @use "../../../style/tools/mediaQueries.scss";
+
+  h2 {
+    @include displayFonts.display5;
+    color: var(--gorria);
+    margin-bottom: var(--space-03-mobile);
+
+    @include mediaQueries.aboveTablet {
+      margin-bottom: var(--space-05-desktop);
+    }
+  }
+
+  a {
+    display: inline-flex;
+    gap: var(--space-02-mobile);
+
+    color: var(--marroia);
+    text-decoration: none;
+
+    transition: opacity 0.3s ease-in;
+
+    @include displayFonts.display6;
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-02-desktop);
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: var(--space-03-mobile);
+
+      @include mediaQueries.aboveTablet {
+        gap: var(--space-04-desktop);
+      }
+    }
+  }
+
+  img {
+    height: var(--space-08-mobile);
+    width: auto;
+
+    @include mediaQueries.aboveTablet {
+      height: var(--space-08-desktop);
+    }
+  }
+</style>
