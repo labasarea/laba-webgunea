@@ -12,7 +12,7 @@ const ekintzak = defineCollection({
       body: JSON.stringify({
         query: `
             query {
-              ekintzak {
+              ekintzak(pagination: { limit: -1 }) {
                 id: documentId
                 createdAt
                 slug
