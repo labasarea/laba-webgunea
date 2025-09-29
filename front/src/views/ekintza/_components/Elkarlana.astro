@@ -12,26 +12,29 @@ const { elkarlana } = Astro.props;
 <div>
   <h2>{elkarlana.label}</h2>
 
-  {
-    elkarlana.erakundeak?.map((erakundea) => {
-      const irudia = erakundea.logo ? getImageData(erakundea.logo) : null;
+  <div class="erakundeak-wrapper">
+    {
+      elkarlana.erakundeak?.map((erakundea) => {
+        const irudia = erakundea.logo ? getImageData(erakundea.logo) : null;
 
-      return (
-        <a href={erakundea.esteka}>
-          {irudia && (
-            <img
-              src={irudia.src}
-              height={irudia.height}
-              width={irudia.width}
-              alt={irudia.alt}
-            />
-          )}
-
-          <span>{erakundea.izena}</span>
-        </a>
-      );
-    })
-  }
+        return (
+          <a href={erakundea.esteka}>
+            {irudia ? (
+              <img
+                src={irudia.src}
+                height={irudia.height}
+                width={irudia.width}
+                alt={irudia.alt}
+                aria-label={erakundea.izena}
+              />
+            ) : (
+              erakundea.izena
+            )}
+          </a>
+        );
+      })
+    }
+  </div>
 </div>
 
 <style lang="scss">
@@ -59,7 +62,8 @@ const { elkarlana } = Astro.props;
     color: var(--marroia);
     text-decoration: none;
 
-    transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
 
     @include displayFonts.display6;
 
@@ -86,6 +90,16 @@ const { elkarlana } = Astro.props;
 
     @include mediaQueries.aboveTablet {
       height: var(--space-08-desktop);
+    }
+  }
+
+  .erakundeak-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-04-mobile);
+
+    @include mediaQueries.aboveTablet {
+      gap: var(--space-05-desktop);
     }
   }
 </style>
