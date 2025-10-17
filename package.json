@@ -37,9 +37,6 @@
     "e2e:open": "pnpm --filter e2e open"
   },
   "dependencies": {
-    "back": "workspace:*",
-    "e2e": "workspace:*",
-    "front": "workspace:*",
     "prettier": "^3.6.2"
   }
 }

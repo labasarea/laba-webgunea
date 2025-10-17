@@ -2,14 +2,13 @@ services:
   strapi:
     build:
       context: .
-      dockerfile: dockerfile
-    container_name: strapi
+    container_name: laba-kudeatu
     ports:
       - "1337:1337"
     environment:
       NODE_ENV: production
     volumes:
-      - strapi_data:/app/back/.tmp
+      - /var/fosil/laba/kudeatu/back/.tmp:/app/back/.tmp
     restart: unless-stopped
 
 volumes:
