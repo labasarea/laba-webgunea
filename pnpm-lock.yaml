@@ -8,15 +8,6 @@ importers:
 
   .:
     dependencies:
-      back:
-        specifier: workspace:*
-        version: link:back
-      e2e:
-        specifier: workspace:*
-        version: link:e2e
-      front:
-        specifier: workspace:*
-        version: link:front
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
