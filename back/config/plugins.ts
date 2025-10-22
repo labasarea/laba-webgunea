@@ -13,6 +13,8 @@ export default () => ({
         upload: {},
         delete: {},
       },
+
+      sizeLimit: 10 * 1024 * 1024, // 10mb byte-tan
     },
   },
 
