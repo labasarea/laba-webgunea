@@ -23,7 +23,11 @@ const { ekintza } = Astro.props;
 const irudia = ekintza.mainMedia ? getImageData(ekintza.mainMedia) : null;
 ---
 
-<Layout title={ekintza.izenburua} description={ekintza.titularra}>
+<Layout
+  title={ekintza.izenburua}
+  description={ekintza.titularra}
+  ogImage=`${Astro.site}ekintzak/${ekintza.slug}/og.png`
+>
   <Header />
 
   <main>
