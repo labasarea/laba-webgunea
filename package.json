@@ -38,5 +38,10 @@
   },
   "dependencies": {
     "prettier": "^3.6.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "strapi-plugin-webp-converter@1.0.4": "patches/strapi-plugin-webp-converter.patch"
+    }
   }
 }
