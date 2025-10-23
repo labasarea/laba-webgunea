@@ -7,6 +7,7 @@ WORKDIR /app
 
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json .npmrc ./
 COPY back ./back
+COPY patches ./patches
 
 RUN pnpm install --filter back...
 
