@@ -1,0 +1,13 @@
+diff --git a/dist/server/index.js b/dist/server/index.js
+index 1f5757ed87903195b4fc7cb669a8ced0fccd00a5..ae69a36724a5206381a52c18272da8c6a41a73fd 100644
+--- a/dist/server/index.js
++++ b/dist/server/index.js
+@@ -36,7 +36,7 @@ const processFile = async (file, ctx, IMAGE_TYPES, SHARP_OPTIONS, strapi) => {
+     fileInfo.name = webpFileName;
+     ctx.request.body.fileInfo = JSON.stringify(fileInfo);
+     try {
+-      const sharpResult = await sharp__default.default(filePath).webp(SHARP_OPTIONS).toFile(webpFilePath);
++      const sharpResult = await sharp__default.default(filePath).autoOrient().webp(SHARP_OPTIONS).withMetadata().toFile(webpFilePath);
+       await fs.promises.unlink(filePath);
+       file.size = sharpResult.size;
+       file.filepath = webpFilePath;

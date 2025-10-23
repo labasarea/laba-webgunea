@@ -10,3 +10,6 @@ onlyBuiltDependencies:
   - cypress
   - esbuild
   - sharp
+
+patchedDependencies:
+  strapi-plugin-webp-converter: patches/strapi-plugin-webp-converter.patch
