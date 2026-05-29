@@ -1,7 +1,7 @@
 # 1.- Build
 FROM node:22-alpine AS builder
 
-RUN corepack enable && corepack prepare pnpm@10.18.2 --activate
+RUN corepack enable && corepack prepare pnpm@11.4.0 --activate
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ FROM node:22-alpine AS runner
 
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@10.18.2 --activate
+RUN corepack enable && corepack prepare pnpm@11.4.0 --activate
 
 COPY --from=builder /app/back ./back
 COPY --from=builder /app/node_modules ./node_modules
